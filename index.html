@@ -465,9 +465,155 @@ body.sb-col .sticky-title{left:14px}
 /* ── VERSION FOOTER ── */
 .footer-version{font-size:.62rem;color:var(--mu);margin-top:4px}
 
+
+/* ── TERM TOOLTIPS ── */
+.term{border-bottom:1px dashed var(--g1);cursor:help;color:inherit;position:relative}
+.term-tip{display:none;position:fixed;background:var(--s1);border:1px solid var(--g1);
+  border-radius:9px;padding:9px 13px;font-size:.76rem;color:var(--tx);z-index:7000;
+  max-width:260px;box-shadow:0 6px 24px rgba(0,0,0,.5);line-height:1.55;pointer-events:none}
+.term-tip strong{color:var(--g2);display:block;margin-bottom:3px;font-size:.8rem}
+
+/* ── CHECKLIST ── */
+.checklist{display:flex;flex-direction:column;gap:6px;margin:10px 0}
+.cl-item{display:flex;align-items:flex-start;gap:10px;background:var(--s2);
+  border:1px solid var(--bd);border-radius:9px;padding:9px 12px;cursor:pointer;
+  transition:all .15s;user-select:none}
+.cl-item:hover{border-color:var(--bd2)}
+.cl-item.done{background:rgba(76,175,80,.07);border-color:rgba(76,175,80,.35)}
+.cl-item.done .cl-box{background:var(--g1);border-color:var(--g1)}
+.cl-item.done .cl-box::after{content:'✓';color:#000;font-size:.72rem;font-weight:800}
+.cl-box{width:18px;height:18px;border:2px solid var(--bd);border-radius:5px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  margin-top:1px;transition:all .15s}
+.cl-text{font-size:.81rem;line-height:1.5;color:var(--tx2)}
+.cl-item.done .cl-text{color:var(--mu);text-decoration:line-through}
+.cl-link{font-size:.69rem;color:var(--g2);display:block;margin-top:1px}
+.cl-progress{height:5px;background:var(--bd);border-radius:3px;margin:8px 0 12px;overflow:hidden}
+.cl-progress-fill{height:100%;background:linear-gradient(90deg,var(--g1),var(--g2));
+  border-radius:3px;transition:width .4s}
+.cl-progress-label{font-size:.65rem;color:var(--mu);text-align:right;margin-bottom:4px}
+
+/* ── ROLE CARDS ── */
+.role-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:10px 0}
+.role-card{background:var(--s2);border:1px solid var(--bd);border-radius:11px;padding:14px}
+.role-card:hover{border-color:var(--bd2);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.25)}
+.role-card{transition:all .15s}
+.rc-icon{font-size:1.5rem;margin-bottom:6px}
+.rc-title{font-family:'Syne',sans-serif;font-weight:700;font-size:.88rem;margin-bottom:4px;color:var(--g2)}
+.rc-badge{font-size:.6rem;background:rgba(76,175,80,.15);border:1px solid rgba(76,175,80,.25);
+  color:var(--g2);padding:1px 6px;border-radius:5px;display:inline-block;margin-bottom:6px}
+.rc-desc{font-size:.76rem;color:var(--tx2);line-height:1.55}
+.rc-contact{font-size:.69rem;color:var(--g1);margin-top:5px;display:flex;align-items:center;gap:4px}
+
+/* ── ABHOLUNG CHECKLISTE ── */
+.pickup-checklist{counter-reset:pc;display:flex;flex-direction:column;gap:4px;margin:10px 0}
+.pc-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;
+  background:var(--s2);border:1px solid var(--bd);border-radius:9px;cursor:pointer;transition:all .15s}
+.pc-item:hover{border-color:var(--bd2)}
+.pc-item.done{background:rgba(76,175,80,.07);border-color:rgba(76,175,80,.3)}
+.pc-num{width:24px;height:24px;border-radius:50%;background:var(--bd);color:var(--mu);
+  font-size:.7rem;font-weight:700;display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-family:'Syne',sans-serif;transition:all .15s}
+.pc-item.done .pc-num{background:var(--g1);color:#000}
+.pc-body h4{font-size:.82rem;font-weight:600;color:var(--tx);margin-bottom:2px}
+.pc-body p{font-size:.75rem;color:var(--tx2);line-height:1.5}
+
+/* ── SECTION TOC ── */
+.sec-toc{background:var(--s2);border:1px solid var(--bd);border-radius:10px;
+  padding:10px 14px;margin:10px 0}
+.sec-toc-title{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--mu);margin-bottom:7px;display:flex;align-items:center;gap:5px}
+.sec-toc a{display:block;font-size:.77rem;color:var(--tx2);text-decoration:none;
+  padding:3px 0;border-bottom:1px solid var(--bd);transition:color .15s}
+.sec-toc a:last-child{border-bottom:none}
+.sec-toc a:hover{color:var(--g2)}
+
+/* ── EXPAND/COLLAPSE ALL ── */
+.acc-controls{display:flex;gap:6px;margin-bottom:6px}
+.acc-ctrl-btn{background:none;border:1px solid var(--bd);color:var(--mu);
+  padding:3px 9px;border-radius:7px;cursor:pointer;font-size:.68rem;font-family:inherit;
+  transition:all .15s}
+.acc-ctrl-btn:hover{border-color:var(--g1);color:var(--g2)}
+
+/* ── ACCENT COLOR PICKER ── */
+.color-picker-wrap{padding:6px 10px;border-bottom:1px solid var(--bd);flex-shrink:0}
+.cp-title{font-size:.6rem;color:var(--mu);font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:5px}
+.color-swatches{display:flex;gap:5px;flex-wrap:wrap}
+.cs{width:20px;height:20px;border-radius:50%;cursor:pointer;border:2px solid transparent;
+  transition:transform .15s;flex-shrink:0}
+.cs:hover{transform:scale(1.2)}
+.cs.active{border-color:var(--tx);transform:scale(1.1)}
+
+/* ── COMPACT MODE ── */
+body.compact .sec{padding:18px 22px}
+body.compact .sec-intro{font-size:.8rem;margin-bottom:12px}
+body.compact .sc-fig{max-width:500px}
+body.compact .steps .st-b{padding-bottom:10px}
+body.compact .cards{gap:5px}
+body.compact .card{padding:7px}
+body.compact .call{padding:7px 10px}
+body.compact .ssh{margin:10px 0 5px}
+
+/* ── RECOMMENDATION ── */
+.rec-bar{background:var(--s2);border:1px solid var(--bd);border-radius:10px;
+  padding:10px 14px;margin-top:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.rec-label{font-size:.68rem;color:var(--mu);flex-shrink:0}
+.rec-link{font-size:.78rem;background:var(--s3);border:1px solid var(--bd);color:var(--tx2);
+  padding:4px 10px;border-radius:8px;text-decoration:none;transition:all .15s}
+.rec-link:hover{border-color:var(--g1);color:var(--g2);text-decoration:none}
+
+/* ── POLL ── */
+.poll-wrap{background:var(--s2);border:1px solid var(--bd);border-radius:11px;
+  padding:14px;margin:10px 0}
+.poll-q{font-size:.85rem;font-weight:600;margin-bottom:10px;color:var(--tx)}
+.poll-opt{display:flex;align-items:center;gap:8px;margin-bottom:6px;cursor:pointer;
+  padding:7px 10px;background:var(--s1);border:1px solid var(--bd);border-radius:8px;
+  transition:all .15s;position:relative;overflow:hidden}
+.poll-opt:hover:not(.voted){border-color:var(--g1)}
+.poll-fill{position:absolute;left:0;top:0;bottom:0;background:rgba(76,175,80,.12);
+  transition:width .6s;pointer-events:none}
+.poll-text{font-size:.8rem;color:var(--tx2);z-index:1;flex:1}
+.poll-pct{font-size:.72rem;color:var(--g2);font-weight:700;z-index:1;flex-shrink:0}
+.poll-voted .poll-opt{cursor:default}
+.poll-note{font-size:.65rem;color:var(--mu);margin-top:5px}
+
+/* ── ANALYTICS ── */
+.analytics-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.ana-card{background:var(--s2);border:1px solid var(--bd);border-radius:9px;padding:9px 12px}
+.ana-card h4{font-size:.66rem;color:var(--mu);text-transform:uppercase;
+  letter-spacing:.08em;margin-bottom:6px}
+.ana-item{display:flex;justify-content:space-between;align-items:center;
+  font-size:.74rem;padding:2px 0;color:var(--tx2)}
+.ana-item .ana-bar{height:3px;background:var(--g1);border-radius:2px;min-width:4px;
+  max-width:80px;flex-shrink:0;margin-left:6px}
+.ana-reset{background:none;border:1px solid var(--bd);color:var(--mu);padding:4px 9px;
+  border-radius:7px;cursor:pointer;font-size:.67rem;font-family:inherit;margin-top:6px;
+  transition:all .15s}
+.ana-reset:hover{border-color:var(--r1);color:var(--r1)}
+
+/* ── PRINT TOC ── */
+@media print{
+  body.print-toc section.sec:not(#s-toc){display:none!important}
+  body.print-toc #s-toc{display:block!important}
+  body.print-toc #sb,#mob,#btt,.sbar,.ql-bar,.minimap,.chap-nav,.chap-actions,
+  .feedback-bar,.notes-area,.cert-overlay,.welcome-overlay{display:none!important}
+  body.print-toc #main{margin:0!important;padding:20px}
+}
+
+/* ── ACCESSIBILITY ── */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0,0,0,0);white-space:nowrap;border:0}
+:focus-visible{outline:2px solid var(--g1);outline-offset:2px;border-radius:3px}
+.skip-link{position:absolute;top:-40px;left:6px;background:var(--g1);color:#000;
+  padding:6px 12px;border-radius:0 0 8px 8px;font-weight:700;font-size:.8rem;
+  z-index:9999;transition:top .2s}
+.skip-link:focus{top:0}
+
 </style>
 </head>
 <body>
+<a href="#main" class="skip-link">Zum Hauptinhalt springen</a>
 
 <!-- LIGHTBOX -->
 <div id="lb">
@@ -484,7 +630,7 @@ body.sb-col .sticky-title{left:14px}
 <button id="mob" onclick="toggleSb()">☰ Menü</button>
 
 <!-- SIDEBAR -->
-<nav id="sb">
+<nav id="sb" role="navigation" aria-label="Kapitel-Navigation">
   <div class="sb-hd">
   <button class="sb-collapse-btn" id="sb-collapse" onclick="toggleSidebar()" title="Sidebar ein-/ausklappen">‹</button>
     <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAA4AHADASIAAhEBAxEB/8QAGgABAAMBAQEAAAAAAAAAAAAAAAQFBgIDB//EAC0QAAEEAQMCBAYCAwAAAAAAAAEAAgMRBAUSITFBE3GBkSIyUWGhsQYVwdHw/8QAGQEBAQADAQAAAAAAAAAAAAAAAAECAwQF/8QAHREBAAMBAAIDAAAAAAAAAAAAAAECEQMEMRIhQf/aAAwDAQACEQMRAD8A+YLSv0rFl0xohYHSCO2PHwlxq+b+v36LNLY6aW/12PsdY8Md75rlSXL5VprETEs7g4eQ3VYYnxuY5jw87h2B6/hXOvxul0/4OTG4PI710P7VjtG4uobiALrsEc0OaWuAIIogjqjkt3m14tnpmtK0t2TJ4mTG9sNWDdbjx61S61/GggnidC1rHPB3MbwBVUa7d/ZaIRsAaA1oDflodO3Hos5/IyDqLQCCWxgGjdGyjfy626dd/FUiIq7hERAREQEREGsZg6fk4zDHDG6Mi2ubwfUjn3UnGxo8WIxw7g3dYaTYb5KHpGBNhREyyk7wCYx0af8Af/cqd4sdgeIyzdDcOa6qPH6TOzWJ2HaLl0kbI/Ee9rWddxNBcMyseR4ZHkROcega8EqNeS9VEl0vBme6WWIukceSXu5/Plwpa5kYJI3MPRwIPAP7VWtprP1OM7r7MaOaJkDGMkAO8MFV0r/KqVP1HTcjFc6VxMsZNmT7n6qAq9bjnwjJ0RERtEREBERBc6lrLpHeHhPc1nd9UT5dwql8sj9u+RztoIbZugSTQ9SfdcIjCnOtIyBERGbuOWSJ26KR7HEVbTRU/H1rMgj2Etk5+aQEn3tVqIxtStvcLfL1s5GM6EY7RvFO3G68vwqhERKc60jKiIiMxERAREQEREBERAREQEREBERAREQEREH/2Q==" alt="Mariana" loading="lazy" class="sb-logo">
@@ -494,6 +640,10 @@ body.sb-col .sticky-title{left:14px}
   <div class="sb-bm-title"><span>🔖 Lesezeichen</span></div>
   <div id="sb-bm-list"><div class="sb-bm-empty">Noch keine Lesezeichen</div></div>
 </div>
+<div class="color-picker-wrap">
+  <div class="cp-title">🎨 Akzentfarbe</div>
+  <div class="color-swatches" id="color-swatches"><div class="cs  active" style="background:#4caf50" title="Grün (Standard)" onclick="setAccent('#4caf50','#66bb6a')" data-c1="#4caf50" data-c2="#66bb6a" aria-label="Grün (Standard)"></div><div class="cs" style="background:#1976d2" title="Blau" onclick="setAccent('#1976d2','#42a5f5')" data-c1="#1976d2" data-c2="#42a5f5" aria-label="Blau"></div><div class="cs" style="background:#e65100" title="Orange" onclick="setAccent('#e65100','#ff9800')" data-c1="#e65100" data-c2="#ff9800" aria-label="Orange"></div><div class="cs" style="background:#7b1fa2" title="Lila" onclick="setAccent('#7b1fa2','#ab47bc')" data-c1="#7b1fa2" data-c2="#ab47bc" aria-label="Lila"></div><div class="cs" style="background:#c62828" title="Rot" onclick="setAccent('#c62828','#ef5350')" data-c1="#c62828" data-c2="#ef5350" aria-label="Rot"></div><div class="cs" style="background:#00838f" title="Türkis" onclick="setAccent('#00838f','#26c6da')" data-c1="#00838f" data-c2="#26c6da" aria-label="Türkis"></div></div>
+</div>
 <div class="fs-controls">
   <span class="fs-lbl">Schrift:</span>
   <button class="fs-btn" onclick="fsChange(-1)" title="Kleiner">−</button>
@@ -502,7 +652,9 @@ body.sb-col .sticky-title{left:14px}
 </div>
 <div class="sb-tools">
   <button id="theme-btn" class="sb-tool-btn" onclick="toggleTheme()">☀️ Hell</button>
+  <button class="sb-tool-btn" id="compact-btn" onclick="toggleCompact()" title="Kompaktansicht">⊞ Kompakt</button>
   <button class="sb-tool-btn" onclick="printGuide()">🖨️ Drucken</button>
+  <button class="sb-tool-btn" onclick="printToc()">📋 Inhaltsverz.</button>
 </div>
 <a id="last-sec-btn" class="nl sb-last" style="color:var(--go2);border-left-color:var(--go)">
   <span class="ic">↩</span><span>Zuletzt gelesen</span>
@@ -554,10 +706,17 @@ body.sb-col .sticky-title{left:14px}
   <a href="#s-fehler" class="nl"><span class="ic">🔧</span>Fehler &amp; Lösungen</a>
   <a href="#s-lizenz" class="nl"><span class="ic">🚀</span>Nach der Anbaulizenz</a>
   <a href="#s-quiz" class="nl"><span class="ic">🧠</span>Quiz</a>
+  <a href="#s-vereinsstruktur" class="nl"><span class="ic">🏛️</span>Vereinsstruktur</a>
+  <a href="#s-abholung" class="nl"><span class="ic">📦</span>Abholung</a>
+<div class="sb-sec">📊 Statistik</div>
+<div style="padding:5px 10px 8px;flex-shrink:0">
+  <div id="ana-top-chapters" style="font-size:.68rem;color:var(--mu)">Wird geladen…</div>
+  <button class="ana-reset" onclick="resetAnalytics()" style="margin-top:4px;font-size:.62rem">🗑️ Zurücksetzen</button>
+</div>
 </nav>
 
 <!-- MAIN -->
-<div id="main">
+<main id="main" role="main">
 
 <!-- HERO -->
 <div class="hero">
@@ -579,7 +738,7 @@ body.sb-col .sticky-title{left:14px}
 <div class="sbar">
   <div class="sw">
     <span class="si">🔍</span>
-    <input type="search" class="ms-i" id="ms-i" placeholder='Suchen… z.B. "Gruppe erstellen", "Token", "kündigen"'>
+    <input type="search" class="ms-i" id="ms-i" aria-label="Kapitel durchsuchen" role="combobox" placeholder='Suchen… z.B. "Gruppe erstellen", "Token", "kündigen"'>
     <div id="sr" role="listbox">
   <div class="search-suggestions" id="ss">
     <p>Häufige Suchanfragen</p>
@@ -629,6 +788,45 @@ body.sb-col .sticky-title{left:14px}
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Willkommen</span><span>›</span><span>Was ist Terptrain?</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Terptrain ist die digitale Community-Plattform der <strong>Mariana Community</strong> – speziell für Mitglieder der Cannabis Social Clubs.</p>
+
+<div 
+<div class="acc-controls" data-ctrl="s-was"><button class="acc-ctrl-btn" onclick="expandAll('s-was')">▼ Alle aufklappen</button><button class="acc-ctrl-btn" onclick="collapseAll('s-was')">▲ Alle zuklappen</button></div>
+class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
+<div class="cl-progress-label" id="cl-pct">0 / 10 erledigt</div>
+<div class="cl-progress"><div class="cl-progress-fill" id="cl-fill" style="width:0%"></div></div>
+<div class="checklist" id="new-member-checklist">
+<div class="cl-item" id="clitem-0" onclick="toggleCl(0)" role="checkbox" aria-checked="false" tabindex="0">
+  <div class="cl-box"></div>
+  <div class="cl-text">Passwort ändern<span class="cl-link"><a href="#s-passwort" onclick="event.stopPropagation()">Das generierte Passwort durch ein eigenes ersetzen</a></span></div>
+</div><div class="cl-item" id="clitem-1" onclick="toggleCl(1)" role="checkbox" aria-checked="false" tabindex="0">
+  <div class="cl-box"></div>
+  <div class="cl-text">Profil ausfüllen<span class="cl-link"><a href="#s-profil" onclick="event.stopPropagation()">Anzeigename, Handle und Biografie setzen</a></span></div>
+</div><div class="cl-item" id="clitem-2" onclick="toggleCl(2)" role="checkbox" aria-checked="false" tabindex="0">
+  <div class="cl-box"></div>
+  <div class="cl-text">Profilbild hochladen<span class="cl-link"><a href="#s-profil" onclick="event.stopPropagation()">Macht dich in der Community erkennbar (freiwillig)</a></span></div>
+</div><div class="cl-item" id="clitem-3" onclick="toggleCl(3)" role="checkbox" aria-checked="false" tabindex="0">
+  <div class="cl-box"></div>
+  <div class="cl-text">Mein Verein anschauen<span class="cl-link"><a href="#s-standorte" onclick="event.stopPropagation()">Meilensteine und Infos zu deinem Club entdecken</a></span></div>
+</div><div class="cl-item" id="clitem-4" onclick="toggleCl(4)" role="checkbox" aria-checked="false" tabindex="0">
+  <div class="cl-box"></div>
+  <div class="cl-text">Feed erkunden<span class="cl-link"><a href="#s-feed" onclick="event.stopPropagation()">Erste Beiträge lesen und die Community kennenlernen</a></span></div>
+</div><div class="cl-item" id="clitem-5" onclick="toggleCl(5)" role="checkbox" aria-checked="false" tabindex="0">
+  <div class="cl-box"></div>
+  <div class="cl-text">Einer Gruppe beitreten<span class="cl-link"><a href="#s-gruppen" onclick="event.stopPropagation()">Passende Gruppen finden und beitreten</a></span></div>
+</div><div class="cl-item" id="clitem-6" onclick="toggleCl(6)" role="checkbox" aria-checked="false" tabindex="0">
+  <div class="cl-box"></div>
+  <div class="cl-text">Benachrichtigungen aktivieren<span class="cl-link"><a href="#s-benachrichtigungen" onclick="event.stopPropagation()">Bleib über Neuigkeiten auf dem Laufenden</a></span></div>
+</div><div class="cl-item" id="clitem-7" onclick="toggleCl(7)" role="checkbox" aria-checked="false" tabindex="0">
+  <div class="cl-box"></div>
+  <div class="cl-text">Tokens verstehen<span class="cl-link"><a href="#s-tokens" onclick="event.stopPropagation()">Was sind Tokens und wie sammle ich sie?</a></span></div>
+</div><div class="cl-item" id="clitem-8" onclick="toggleCl(8)" role="checkbox" aria-checked="false" tabindex="0">
+  <div class="cl-box"></div>
+  <div class="cl-text">App installieren<span class="cl-link"><a href="#s-webapp" onclick="event.stopPropagation()">Terptrain als App auf dem Homescreen speichern</a></span></div>
+</div><div class="cl-item" id="clitem-9" onclick="toggleCl(9)" role="checkbox" aria-checked="false" tabindex="0">
+  <div class="cl-box"></div>
+  <div class="cl-text">Support-Optionen kennen<span class="cl-link"><a href="#s-support" onclick="event.stopPropagation()">Wo bekomme ich Hilfe wenn etwas nicht klappt?</a></span></div>
+</div>
+</div>
 
 <div class="daily-tip" id="daily-tip-box">
   <div class="tip-head">💡 Tipp des Tages</div>
@@ -866,6 +1064,8 @@ body.sb-col .sticky-title{left:14px}
   <button class="ca-btn" onclick="printChapter('s-feed')" title="Kapitel drucken">🖨️ Drucken</button>
 </div>
 
+
+<div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-gruppen" class="rec-link">→ Gruppen entdecken</a></div>
 <div class="done-check" id="done-s-feed" onclick="toggleDone('s-feed')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
 <div class="feedback-bar" data-sec="s-feed">
   <span class="fb-lbl">War das hilfreich?</span>
@@ -955,6 +1155,8 @@ body.sb-col .sticky-title{left:14px}
   <button class="ca-btn" onclick="printChapter('s-gruppen')" title="Kapitel drucken">🖨️ Drucken</button>
 </div>
 
+
+<div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-nachrichten" class="rec-link">→ Nachrichten & Chat</a></div>
 <div class="done-check" id="done-s-gruppen" onclick="toggleDone('s-gruppen')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
 <div class="feedback-bar" data-sec="s-gruppen">
   <span class="fb-lbl">War das hilfreich?</span>
@@ -1150,6 +1352,8 @@ body.sb-col .sticky-title{left:14px}
   <button class="ca-btn" onclick="printChapter('s-standorte')" title="Kapitel drucken">🖨️ Drucken</button>
 </div>
 
+
+<div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-lizenz" class="rec-link">→ Was passiert nach der Anbaulizenz?</a></div>
 <div class="done-check" id="done-s-standorte" onclick="toggleDone('s-standorte')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
 <div class="feedback-bar" data-sec="s-standorte">
   <span class="fb-lbl">War das hilfreich?</span>
@@ -1256,6 +1460,8 @@ body.sb-col .sticky-title{left:14px}
   <button class="ca-btn" onclick="printChapter('s-cannabis')" title="Kapitel drucken">🖨️ Drucken</button>
 </div>
 
+
+<div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-abholung" class="rec-link">→ Abholung Schritt für Schritt</a></div>
 <div class="done-check" id="done-s-cannabis" onclick="toggleDone('s-cannabis')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
 <div class="feedback-bar" data-sec="s-cannabis">
   <span class="fb-lbl">War das hilfreich?</span>
@@ -1300,6 +1506,8 @@ body.sb-col .sticky-title{left:14px}
   <button class="ca-btn" onclick="printChapter('s-profil')" title="Kapitel drucken">🖨️ Drucken</button>
 </div>
 
+
+<div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-passwort" class="rec-link">→ Passwort ändern</a></div>
 <div class="done-check" id="done-s-profil" onclick="toggleDone('s-profil')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
 <div class="feedback-bar" data-sec="s-profil">
   <span class="fb-lbl">War das hilfreich?</span>
@@ -1344,6 +1552,8 @@ body.sb-col .sticky-title{left:14px}
   <button class="ca-btn" onclick="printChapter('s-passwort')" title="Kapitel drucken">🖨️ Drucken</button>
 </div>
 
+
+<div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-privatsphaere" class="rec-link">→ Privatsphäre-Einstellungen</a></div>
 <div class="done-check" id="done-s-passwort" onclick="toggleDone('s-passwort')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
 <div class="feedback-bar" data-sec="s-passwort">
   <span class="fb-lbl">War das hilfreich?</span>
@@ -1492,7 +1702,8 @@ body.sb-col .sticky-title{left:14px}
 <h2 class="sec-h"><div class="sec-icon">🪙</div>Tokens – Das interne Punktesystem</h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Mitgliedschaft</span><span>›</span><span>Tokens</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
-<p class="sec-intro">Tokens entstehen aus Vereinsbeiträgen und bilden die Grundlage für den zukünftigen Ernteanteil.</p>
+<div class="sec-toc" role="navigation" aria-label="Abschnitte in diesem Kapitel"><div class="sec-toc-title">📑 In diesem Kapitel</div><a href="#" onclick="scrollToSsh(this,event)">❓ Token-FAQ</a></div>
+<p class="sec-intro"><span class="term" data-tip="Internes Punktesystem – aus Beitrag und Aufnahmegebühr, Basis für den Ernteanteil. Kein Geld!" tabindex="0" role="tooltip" aria-label="Tokens: Internes Punktesystem – aus Beitrag und Aufnahmegebühr, Basis für den Ernteanteil. Kein Geld!">Tokens</span> entstehen aus Vereinsbeiträgen und bilden die Grundlage für den zukünftigen Ernteanteil.</p>
 <figure class="sc-fig">
   <div class="sc-iw" onclick="openLb(this.querySelector('img'),'Tokens verwalten: verfügbare + vorgemerkte Tokens, 6 FAQ-Fragen')">
     <img src="data:image/jpeg;base64,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f8Z9R/aChERFEREBERAREQEREFsPB+ysVcPB+ysRKIiICIiAiIgIiICIiAiIgIiICIiAiIgKRyPVQpHI9UGs75j6lQpd8x9SoRRERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERBbBw77f2rFXBw77f2rERu9NxGZZnY8kObETGQdi+wAD68epC3P+JhAhY97mvMbTKdyWuLwCAO4Bog+YK5DJHxkmN7mE1dEi6Nj9wCszkTuJJmkJO5t533v+d/XdPsdAdJi8VwGUSAS4NMZBcwPDLu6B34ryVkvRQXuLJmRRgAAuI3JLqskitm+V+i1B1XKGK+AvJ1kl0he4uJJB71dgb1f1VDc3LaSW5UwLhRIedxua/c+5U6N7/i4RDpdkgTCRjHktprLbqq738t9v7UxdKjEhE8xNh/htDN36WA3YJAG4733Wj+NywyNn4qbTGQWDWabWwrtsgzssB4GVMPE+f85/NtW+++2ydOcbo6QxjNc2SQPCe8hrASHNANEWe/0P0Uu6L4bdUuXG3SwukAAcW0L2ANn1NLRObluLScqYloIaS82ARRA37bLF2XkujEbsiUsALQ0vNAEURXalRGVCcfJkhLw/QQNQFWCAQa8tiqlm+aWQASSPeASQHEmidif2HssEBERAREQEREBERAREQEREBYy/4z6j+1ksZf8Z9R/aChERFEREBERAREQEREFsPB+ysVcPB+ysRKIiICIiAiIgIiICIiAiIgIiICIiAiIgKRyPVQpHI9UGs75j6lQpd8x9SoRRERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERBbBw77f2rFXBw77f2rERfhYzsvJbC17WarJc40GgCyT9FmMDKMUkgiJbGXBx1AGxV0Ls1Y4HmsMbLmxDIYHBj3t06hyBdmj5XQVz+qTyO1kR6iXkkA2S8AE887A+pKE/Uv6VlsjY4saHPcRpL2igACSTdDkckLD/jsugTDQ1Fu72jcc8ngeZ4+qvb1mdjrZDCyy4v06wXlwAJJBscA7UsR1fKE7ZqaXAv5LrIfVi7vyFG7+qCqDp802TLjkBkkUbnkHe6ANCu97LNnS5nQQyAi5mF7W1RABA3JIoGwbWH/ACE/4uTKBAke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x1JOqGQZLXGYNliZG0CTZukDy4o1wEg6oYoIYSx72RsA0F/5CRJruvTbuuX4rOzvYf7TxWdnew/2mmu5J1z/ANxfE2Vtlm4cASA/UQSOQRsq2dZDXRXE98cYZUbn22w4kkDgWDS4/is7O9h/tPFZ2d7D/aFuu2/rdkBjZQ0EE/mALwGkUa53N79lrYHUjh45iAk3eXEtfQNsLQD6E39lzfFZ2d7D/aeKzs72H+1Mi7XYPWGOa4lk2oiiBINMhLA06/M7ix6qJOrAmR0Jyg57CBcgqMktP5a3A/KfdcjxWdnew/2nis7O9h/tVNrtjrTDKHmKWg+UgawQA8DcDuCDv9SsJesNkjmGiTU6QPZRDQCCDZrz2/tcfxWdnew/2nis7O9h/tDdbedPHk5Uk8YlBke5xEjgas2ACO3HstZY+Kzs72H+08VnZ3sP9pODJFj4rOzvYf7TxWdnew/2gyRY+Kzs72H+08VnZ3sP9oMljL/jPqP7TxWdnew/2q3yF1ACgOAgwRERRERAREQEREBERBbDwfsrFXDwfsrESiIiAiIgIiICIiAiIgIiICIiAiIgIiICkcj1UKRyPVBrO+Y+pUKXfMfUqEUREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQWw8H7KxVw8H7KxEoiIgIiICIiAiIgIiICIiAiIgIiICIiApHI9VCkcj1QazvmPqVCl3zH1KhFEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREFsPB+ysVcPB+ysRKIiICIiAiIgIiICIiAiIgIiICIiAiIgKRyPVQpHI9UGs75j6lQpd8x9SoRRERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREH//2Q==" alt="Tokens verwalten: verfügbare + vorgemerkte Tokens, 6 FAQ-Fragen" loading="lazy">
@@ -1556,6 +1767,8 @@ body.sb-col .sticky-title{left:14px}
   <button class="ca-btn" onclick="printChapter('s-tokens')" title="Kapitel drucken">🖨️ Drucken</button>
 </div>
 
+
+<div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-zahlungen" class="rec-link">→ Zahlungen & Rechnungen</a></div>
 <div class="done-check" id="done-s-tokens" onclick="toggleDone('s-tokens')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
 <div class="feedback-bar" data-sec="s-tokens">
   <span class="fb-lbl">War das hilfreich?</span>
@@ -1604,6 +1817,8 @@ body.sb-col .sticky-title{left:14px}
   <button class="ca-btn" onclick="printChapter('s-zahlungen')" title="Kapitel drucken">🖨️ Drucken</button>
 </div>
 
+
+<div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-beitrag" class="rec-link">→ Beitrag anpassen</a></div>
 <div class="done-check" id="done-s-zahlungen" onclick="toggleDone('s-zahlungen')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
 <div class="feedback-bar" data-sec="s-zahlungen">
   <span class="fb-lbl">War das hilfreich?</span>
@@ -1668,6 +1883,7 @@ body.sb-col .sticky-title{left:14px}
 <h2 class="sec-h"><div class="sec-icon">📋</div>Mitgliedschaft verwalten</h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Mitgliedschaft</span><span>›</span><span>Mitgliedschaft verwalten</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
+<div class="sec-toc" role="navigation" aria-label="Abschnitte in diesem Kapitel"><div class="sec-toc-title">📑 In diesem Kapitel</div><a href="#" onclick="scrollToSsh(this,event)">3 Mitgliedschafts-Typen</a></div>
 <p class="sec-intro">Alle Mitgliedschaftskomponenten unter Profil → Mitgliederdaten → Mitgliedschaft.</p>
 <figure class="sc-fig">
   <div class="sc-iw" onclick="openLb(this.querySelector('img'),'Mitgliedschaft: 3 Typen (Gesamtverein/Community/Verein), Optionen')">
@@ -1731,6 +1947,8 @@ body.sb-col .sticky-title{left:14px}
   <button class="ca-btn" onclick="printChapter('s-mitgliedschaft')" title="Kapitel drucken">🖨️ Drucken</button>
 </div>
 
+
+<div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-kuendigung" class="rec-link">→ Mitgliedschaft kündigen</a></div>
 <div class="done-check" id="done-s-mitgliedschaft" onclick="toggleDone('s-mitgliedschaft')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
 <div class="feedback-bar" data-sec="s-mitgliedschaft">
   <span class="fb-lbl">War das hilfreich?</span>
@@ -1768,6 +1986,8 @@ body.sb-col .sticky-title{left:14px}
   <button class="ca-btn" onclick="printChapter('s-kuendigung')" title="Kapitel drucken">🖨️ Drucken</button>
 </div>
 
+
+<div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-vereinswechsel" class="rec-link">→ Vereinswechsel</a></div>
 <div class="done-check" id="done-s-kuendigung" onclick="toggleDone('s-kuendigung')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
 <div class="feedback-bar" data-sec="s-kuendigung">
   <span class="fb-lbl">War das hilfreich?</span>
@@ -1789,7 +2009,7 @@ body.sb-col .sticky-title{left:14px}
 <h2 class="sec-h"><div class="sec-icon">🔄</div>Vereinswechsel</h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Mitgliedschaft</span><span>›</span><span>Vereinswechsel</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
-<p class="sec-intro">Zu einem anderen Mariana CSC wechseln. Immer nur in <strong>einem CSC gleichzeitig</strong> möglich (KCanG).</p>
+<p class="sec-intro">Zu einem anderen Mariana <span class="term" data-tip="Cannabis Social Club – gemeinnütziger Verein für nicht-kommerziellen Cannabis-Eigenanbau." tabindex="0" role="tooltip" aria-label="CSC: Cannabis Social Club – gemeinnütziger Verein für nicht-kommerziellen Cannabis-Eigenanbau.">CSC</span> wechseln. Immer nur in <strong>einem <span class="term" data-tip="Cannabis Social Club – gemeinnütziger Verein für nicht-kommerziellen Cannabis-Eigenanbau." tabindex="0" role="tooltip" aria-label="CSC: Cannabis Social Club – gemeinnütziger Verein für nicht-kommerziellen Cannabis-Eigenanbau.">CSC</span> gleichzeitig</strong> möglich (<span class="term" data-tip="Das Konsumcannabisgesetz (April 2024) regelt den Eigenanbau und die CSC-Tätigkeit in Deutschland." tabindex="0" role="tooltip" aria-label="KCanG: Das Konsumcannabisgesetz (April 2024) regelt den Eigenanbau und die CSC-Tätigkeit in Deutschland.">KCanG</span>).</p>
 <div class="steps">
   <div class="st"><div class="st-l"><div class="st-n">1</div><div class="st-line"></div></div><div class="st-b"><div class="st-t">Neuen Verein finden</div><div class="st-d"><a href="#s-standorte">Standorte → Alle Vereine</a> → Blase klicken für Details</div></div></div>
   <div class="st"><div class="st-l"><div class="st-n">2</div><div class="st-line"></div></div><div class="st-b"><div class="st-t">Vereinswechsel beantragen im Detail-Popup</div></div></div>
@@ -1869,6 +2089,7 @@ body.sb-col .sticky-title{left:14px}
 <h2 class="sec-h"><div class="sec-icon">🆘</div>Support – Hilfe &amp; Kontakt</h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Hilfe</span><span>›</span><span>Support</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 2 Min.</div>
+<div class="sec-toc" role="navigation" aria-label="Abschnitte in diesem Kapitel"><div class="sec-toc-title">📑 In diesem Kapitel</div><a href="#" onclick="scrollToSsh(this,event)">Die 4 Support-Optionen</a><a href="#" onclick="scrollToSsh(this,event)">Entscheidungshilfe</a></div>
 <p class="sec-intro">Häufige Fragen lesen, öffentliche Fragen stellen oder persönliches Ticket erstellen.</p>
 <div class="sc-grid">
 <figure class="sc-fig">
@@ -1903,7 +2124,9 @@ body.sb-col .sticky-title{left:14px}
 </figure>
 </div>
 
-<div class="ssh">🤔 Was brauchst du? – Entscheidungshilfe</div>
+<div 
+<div class="acc-controls" data-ctrl="s-kuendigung"><button class="acc-ctrl-btn" onclick="expandAll('s-kuendigung')">▼ Alle aufklappen</button><button class="acc-ctrl-btn" onclick="collapseAll('s-kuendigung')">▲ Alle zuklappen</button></div>
+class="ssh">🤔 Was brauchst du? – Entscheidungshilfe</div>
 <div class="dtree">
   <div class="dt-q" id="dt-start">
     <p>Was möchtest du tun?</p>
@@ -1964,6 +2187,8 @@ body.sb-col .sticky-title{left:14px}
   <button class="ca-btn" onclick="printChapter('s-support')" title="Kapitel drucken">🖨️ Drucken</button>
 </div>
 
+
+<div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-ticket" class="rec-link">→ Support-Ticket erstellen</a></div>
 <div class="done-check" id="done-s-support" onclick="toggleDone('s-support')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
 <div class="feedback-bar" data-sec="s-support">
   <span class="fb-lbl">War das hilfreich?</span>
@@ -2154,9 +2379,12 @@ body.sb-col .sticky-title{left:14px}
 <h2 class="sec-h"><div class="sec-icon">❓</div>Häufige Fragen &amp; Antworten</h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Hilfe</span><span>›</span><span>Häufige Fragen</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 3 Min.</div>
+<div class="sec-toc" role="navigation" aria-label="Abschnitte in diesem Kapitel"><div class="sec-toc-title">📑 In diesem Kapitel</div><a href="#" onclick="scrollToSsh(this,event)">👤 Profil & Konto</a><a href="#" onclick="scrollToSsh(this,event)">📋 Mitgliedschaft & Zahlung</a><a href="#" onclick="scrollToSsh(this,event)">🌿 Cannabis</a><a href="#" onclick="scrollToSsh(this,event)">⚙️ Technisches</a></div>
 <p class="sec-intro">Klicke auf eine Frage um die Antwort zu sehen.</p>
 
-<div class="ssh">👤 Profil &amp; Konto</div>
+<div 
+<div class="acc-controls" data-ctrl="s-faq"><button class="acc-ctrl-btn" onclick="expandAll('s-faq')">▼ Alle aufklappen</button><button class="acc-ctrl-btn" onclick="collapseAll('s-faq')">▲ Alle zuklappen</button></div>
+class="ssh">👤 Profil &amp; Konto</div>
 <div class="faq-item"><div class="faq-h" onclick="tFaq(this)"><span class="faq-cat">Profil</span><span class="faq-q-t">Wie ändere ich meinen Anzeigenamen?</span><span class="fa">+</span></div><div class="faq-body"><p><a href="#s-profil">Profil → Profil bearbeiten</a> → Anzeigename ändern (3–25 Zeichen) → Speichern.</p></div></div>
 <div class="faq-item"><div class="faq-h" onclick="tFaq(this)"><span class="faq-cat">Datenschutz</span><span class="faq-q-t">Warum sieht niemand meinen echten Namen?</span><span class="fa">+</span></div><div class="faq-body"><p>Das ist Absicht! Terptrain trennt Social-Media und CSC-Mitgliedsdaten komplett. Nur dein Anzeigename ist sichtbar.</p></div></div>
 <div class="faq-item"><div class="faq-h" onclick="tFaq(this)"><span class="faq-cat">Mitgliedschaft</span><span class="faq-q-t">Wo finde ich meine Mitgliedsnummer?</span><span class="fa">+</span></div><div class="faq-body"><p><a href="#s-mitgliedschaft">Profil → Mitgliederdaten → Mitgliedschaft</a>. Beginnt mit dem Buchstaben A.</p></div></div>
@@ -2199,6 +2427,19 @@ body.sb-col .sticky-title{left:14px}
   <button class="ca-btn" onclick="printChapter('s-faq')" title="Kapitel drucken">🖨️ Drucken</button>
 </div>
 
+
+<div class="ssh">📊 Deine Meinung – Was fehlt noch in der Anleitung?</div>
+<div class="poll-wrap" id="poll-box">
+  <p class="poll-q">Zu welchem Thema wünschst du dir mehr Informationen?</p>
+  <div id="poll-opts">
+    <div class="poll-opt" onclick="pollVote(0)"><div class="poll-fill" style="width:0%"></div><span class="poll-text">🌿 Cannabis-Sorten und Terpene</span><span class="poll-pct" style="display:none">0%</span></div>
+    <div class="poll-opt" onclick="pollVote(1)"><div class="poll-fill" style="width:0%"></div><span class="poll-text">💰 Beiträge, Tokens und Zahlungen</span><span class="poll-pct" style="display:none">0%</span></div>
+    <div class="poll-opt" onclick="pollVote(2)"><div class="poll-fill" style="width:0%"></div><span class="poll-text">📋 Vereinsstruktur und Rollen</span><span class="poll-pct" style="display:none">0%</span></div>
+    <div class="poll-opt" onclick="pollVote(3)"><div class="poll-fill" style="width:0%"></div><span class="poll-text">🚀 Anbau und Abholung</span><span class="poll-pct" style="display:none">0%</span></div>
+  </div>
+  <p class="poll-note" id="poll-note">Deine Stimme wird nur lokal gespeichert und nicht übertragen.</p>
+</div>
+
 <div class="done-check" id="done-s-faq" onclick="toggleDone('s-faq')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
 <div class="feedback-bar" data-sec="s-faq">
   <span class="fb-lbl">War das hilfreich?</span>
@@ -2223,7 +2464,9 @@ body.sb-col .sticky-title{left:14px}
 <div class="read-time">⏱️ Lesezeit: ca. 2 Min.</div>
 <p class="sec-intro">Erklärungen zu den wichtigsten Begriffen rund um Terptrain, Mariana Community und Cannabis Social Clubs.</p>
 
-<div class="ssh">🌿 Cannabis &amp; Recht</div>
+<div 
+<div class="acc-controls" data-ctrl="s-glossar"><button class="acc-ctrl-btn" onclick="expandAll('s-glossar')">▼ Alle aufklappen</button><button class="acc-ctrl-btn" onclick="collapseAll('s-glossar')">▲ Alle zuklappen</button></div>
+class="ssh">🌿 Cannabis &amp; Recht</div>
 <div class="acc open"><div class="acc-h" onclick="tAcc(this)"><span>🏛️ CSC – Cannabis Social Club</span><span class="arr">▶</span></div>
 <div class="acc-b"><p style="color:var(--tx2);font-size:.82rem;line-height:1.7">Ein <strong>Cannabis Social Club (CSC)</strong> ist ein gemeinnütziger Verein, der seinen Mitgliedern nach dem deutschen Konsumcannabisgesetz (KCanG) Cannabis für den Eigenkonsum anbaut und nicht-kommerziell abgibt. Mitglieder müssen volljährig sein und am Wohnort in Deutschland gemeldet sein. Jede Person darf nur in einem CSC gleichzeitig Mitglied sein.</p></div></div>
 
@@ -2329,9 +2572,12 @@ body.sb-col .sticky-title{left:14px}
 <h2 class="sec-h"><div class="sec-icon">🔧</div>Häufige Fehler &amp; Lösungen<span class="ch-updated ch-new-badge" data-badge="NEU">NEU</span><span style="font-size:.56rem;color:var(--mu);margin-left:4px">Apr 2026</span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Hilfe</span><span>›</span><span>Häufige Fehler & Lösungen</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 3 Min.</div>
+<div class="sec-toc" role="navigation" aria-label="Abschnitte in diesem Kapitel"><div class="sec-toc-title">📑 In diesem Kapitel</div><a href="#" onclick="scrollToSsh(this,event)">Profil & Konto</a><a href="#" onclick="scrollToSsh(this,event)">Zahlung & Mitgliedschaft</a><a href="#" onclick="scrollToSsh(this,event)">Technische Probleme</a><a href="#" onclick="scrollToSsh(this,event)">Gruppen & Nachrichten</a></div>
 <p class="sec-intro">Hier findest du Lösungen zu den häufigsten Problemen. Klicke auf ein Problem für die Lösung.</p>
 
-<div class="ssh">👤 Profil &amp; Konto</div>
+<div 
+<div class="acc-controls" data-ctrl="s-fehler"><button class="acc-ctrl-btn" onclick="expandAll('s-fehler')">▼ Alle aufklappen</button><button class="acc-ctrl-btn" onclick="collapseAll('s-fehler')">▲ Alle zuklappen</button></div>
+class="ssh">👤 Profil &amp; Konto</div>
 <div class="err-item"><div class="err-h" onclick="this.closest('.err-item').classList.toggle('open')">
   <span class="err-tag">Profil</span><span class="err-q">Ich werde nicht als Admin meiner Gruppe angezeigt</span><span class="err-arr">+</span>
 </div><div class="err-body">Das passiert wenn du die Gruppe erstellt hast aber deine Ansicht noch nicht aktualisiert wurde. Seite neu laden (F5 / Pull-to-Refresh). Falls das Problem bleibt → Support-Ticket.<br><strong>Pfad:</strong> Gruppen → Meine → Gruppe öffnen → ⋯ → Einstellungen</div></div><div class="err-item"><div class="err-h" onclick="this.closest('.err-item').classList.toggle('open')">
@@ -2399,7 +2645,7 @@ body.sb-col .sticky-title{left:14px}
 <h2 class="sec-h"><div class="sec-icon">🚀</div>Was passiert nach der Anbaulizenz?<span class="ch-updated ch-new-badge" data-badge="NEU">NEU</span><span style="font-size:.56rem;color:var(--mu);margin-left:4px">Apr 2026</span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Cannabis</span><span>›</span><span>Nach der Anbaulizenz</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 8 Min.</div>
-<p class="sec-intro">Euer Verein hat die Anbaulizenz erhalten – herzlichen Glückwunsch! 🎉 Hier erfährst du was als nächstes passiert und was du als Mitglied tun kannst.</p>
+<p class="sec-intro">Euer Verein hat die <span class="term" data-tip="Behördliche Genehmigung zum Cannabis-Anbau. Ohne diese darf kein Verein abgeben." tabindex="0" role="tooltip" aria-label="Anbaulizenz: Behördliche Genehmigung zum Cannabis-Anbau. Ohne diese darf kein Verein abgeben.">Anbaulizenz</span> erhalten – herzlichen Glückwunsch! 🎉 Hier erfährst du was als nächstes passiert und was du als Mitglied tun kannst.</p>
 
 <div class="call tip"><span class="ci">🎉</span><div><strong>Die Anbaulizenz ist ein Meilenstein!</strong> Ab jetzt darf euer Verein offiziell Cannabis anbauen und an Mitglieder abgeben. Bis zur ersten Abgabe dauert es aber noch etwas.</div></div>
 
@@ -2454,6 +2700,8 @@ body.sb-col .sticky-title{left:14px}
   <button class="ca-btn" onclick="printChapter('s-lizenz')" title="Kapitel drucken">🖨️ Drucken</button>
 </div>
 
+
+<div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-abholung" class="rec-link">→ Abholung Schritt für Schritt</a></div>
 <div class="done-check" id="done-s-lizenz" onclick="toggleDone('s-lizenz')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
 <div class="feedback-bar" data-sec="s-lizenz">
   <span class="fb-lbl">War das hilfreich?</span>
@@ -2510,6 +2758,204 @@ body.sb-col .sticky-title{left:14px}
 <div class="notes-area">
   <textarea placeholder="Deine Notizen…"></textarea>
   <button class="note-save" onclick="saveNote(this,'s-quiz')">Speichern</button>
+  <span class="note-saved">✓ Gespeichert</span>
+</div>
+</section>
+
+<section class="sec" id="s-toc" aria-labelledby="h2-toc" style="display:none">
+<div class="sec-tag">Inhaltsverzeichnis</div>
+<h2 class="sec-h" id="h2-toc"><div class="sec-icon">📋</div>Inhaltsverzeichnis</h2>
+<p class="sec-intro">Vollständiges Inhaltsverzeichnis der Terptrain-Anleitung.</p>
+<table class="tbl" role="table">
+  <tr><th scope="col">Nr.</th><th scope="col">Kapitel</th></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 01</td><td><a href="#s-was">Was ist Terptrain</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 02</td><td><a href="#s-aufbau">Aufbau der Plattform</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 03</td><td><a href="#s-login">Login &amp Registrierung</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 04</td><td><a href="#s-mobil">Bedienung  Smartphone &amp Tablet</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 05</td><td><a href="#s-desktop">Bedienung  Computer &amp Laptop</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 06</td><td><a href="#s-feed">Feed  Die Community-Zentrale</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 07</td><td><a href="#s-gruppen">Gruppen</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 08</td><td><a href="#s-nachrichten">Nachrichten  Privater Chat</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 09</td><td><a href="#s-mitteilungen">Mitteilungen  Benachrichtigungen</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 10</td><td><a href="#s-kalender">Kalender &amp Events</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 11</td><td><a href="#s-standorte">Standorte  Mein Verein &amp Alle VereineAKTUALISIERTApr</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 12</td><td><a href="#s-entwicklung">Entwicklung  News Roadmap &amp Requests</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 13</td><td><a href="#s-cannabis">Cannabis  Freizeit Wissen &amp MedizinalAKTUALISIERTApr</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 14</td><td><a href="#s-profil">Profil bearbeiten &amp einrichten</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 15</td><td><a href="#s-passwort">Passwort ändern</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 16</td><td><a href="#s-privatsphaere">Privatsphäre  Einstellungen</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 17</td><td><a href="#s-benachrichtigungen">Browser-Benachrichtigungen aktivieren</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 18</td><td><a href="#s-auszeichnungen">Auszeichnungen &amp Badges</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 19</td><td><a href="#s-tokens">Tokens  Das interne Punktesystem</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 20</td><td><a href="#s-zahlungen">Zahlungen &amp Rechnungen</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 21</td><td><a href="#s-beitrag">Beitrag anpassen</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 22</td><td><a href="#s-mitgliedschaft">Mitgliedschaft verwalten</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 23</td><td><a href="#s-kuendigung">Mitgliedschaft kündigen</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 24</td><td><a href="#s-vereinswechsel">Vereinswechsel</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 25</td><td><a href="#s-datenschutz">Datenschutz Impressum &amp AGB</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 26</td><td><a href="#s-support">Support  Hilfe &amp Kontakt</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 27</td><td><a href="#s-ticket">Support-Ticket erstellen</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 28 – NEU</td><td><a href="#s-webapp">Terptrain als App installierenNEUApr 2026</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 29</td><td><a href="#s-regelwerk">Regelwerk  Die Streckenregeln</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 30</td><td><a href="#s-faq">Häufige Fragen &amp Antworten</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 31</td><td><a href="#s-glossar">Glossar  Wichtige BegriffeNEUApr 2026</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 32</td><td><a href="#s-changelog">Changelog  Was hat sich wann geändertNEUApr 2026</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 33</td><td><a href="#s-fehler">Häufige Fehler &amp LösungenNEUApr 2026</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 34</td><td><a href="#s-lizenz">Was passiert nach der AnbaulizenzNEUApr 2026</a></td></tr>
+  <tr><td style="white-space:nowrap;color:var(--mu)">Kapitel 35</td><td><a href="#s-quiz">Quiz  Wie gut kennst du Terptrain</a></td></tr>
+</table></section>
+
+<section class="sec" id="s-vereinsstruktur" aria-labelledby="h2-vereinsstruktur">
+<div class="sec-tag">Kapitel 36</div>
+<h2 class="sec-h" id="h2-vereinsstruktur"><div class="sec-icon">🏛️</div>Vereinsstruktur erklärt</h2>
+<p class="sec-intro">Jeder Cannabis Social Club hat eine festgelegte Vereinsstruktur. Hier erfährst du wer welche Rolle hat, was die Personen tun und wie du sie über Terptrain erreichst.</p>
+
+<div class="ssh">👥 Die Vereinsrollen</div>
+<div class="role-grid">
+  <div class="role-card"><div class="rc-icon">👔</div><div class="rc-title">Vorstand</div>
+  <span class="rc-badge">Pflichtrolle</span>
+  <p class="rc-desc">Leitet den Verein, vertritt ihn nach außen und ist verantwortlich für alle wichtigen Entscheidungen. Der Vorstand unterschreibt alle offiziellen Dokumente und kommuniziert mit Behörden.</p>
+  <p class="rc-contact">📍 Sichtbar unter Standorte → Mein Verein → Wichtige Positionen</p></div>
+
+  <div class="role-card"><div class="rc-icon">🤝</div><div class="rc-title">Stellvertretung des Vorstands</div>
+  <span class="rc-badge">Optional</span>
+  <p class="rc-desc">Übernimmt die Aufgaben des Vorstands wenn dieser verhindert ist. Wichtig für die Kontinuität des Vereins – besonders wenn der Vorstand längere Zeit nicht erreichbar ist.</p>
+  <p class="rc-contact">📍 Standorte → Mein Verein → Wichtige Positionen</p></div>
+
+  <div class="role-card"><div class="rc-icon">💬</div><div class="rc-title">Ansprechperson</div>
+  <span class="rc-badge">Empfohlen</span>
+  <p class="rc-desc">Erste Kontaktstelle für Mitglieder bei allgemeinen Fragen. Die Ansprechperson hilft bei der Orientierung und leitet komplexere Anliegen an den richtigen Ansprechpartner weiter.</p>
+  <p class="rc-contact">📍 Support → Support-Ticket oder Neuigkeiten</p></div>
+
+  <div class="role-card"><div class="rc-icon">🌿</div><div class="rc-title">Grower 1 &amp; 2</div>
+  <span class="rc-badge">Nach Anbaulizenz</span>
+  <p class="rc-desc">Verantwortlich für den Cannabis-Anbau. Grower kümmern sich um Pflanzen, Ernte und Qualitätskontrolle. Die Rolle wird erst nach Erhalt der Anbaulizenz aktiv besetzt.</p>
+  <p class="rc-contact">📍 Standorte → Mein Verein → Wichtige Positionen</p></div>
+
+  <div class="role-card"><div class="rc-icon">🛡️</div><div class="rc-title">Präventionsbeauftragte/r</div>
+  <span class="rc-badge">Pflichtrolle (KCanG)</span>
+  <p class="rc-desc">Gesetzlich vorgeschriebene Rolle nach dem KCanG. Zuständig für Aufklärung, Prävention und Jugendschutz. Bietet Beratung bei Fragen zu verantwortungsvollem Konsum.</p>
+  <p class="rc-contact">📍 Bei Bedarf über Support-Ticket erreichbar</p></div>
+
+  <div class="role-card"><div class="rc-icon">👤</div><div class="rc-title">Mitglied</div>
+  <span class="rc-badge">Alle</span>
+  <p class="rc-desc">Das bist du! Mitglieder können die Community-Plattform nutzen, an Abstimmungen teilnehmen, Requests einreichen und – sobald verfügbar – Cannabis bestellen und abholen.</p>
+  <p class="rc-contact">📍 Alles über dich: Profil → Mitgliederdaten</p></div>
+</div>
+
+<div class="ssh">📋 Vereinsorgane im Überblick</div>
+<table class="tbl" role="table">
+  <tr><th scope="col">Organ</th><th scope="col">Mitglieder</th><th scope="col">Aufgabe</th></tr>
+  <tr><td>Vorstand</td><td>Vorstand + Stellvertretung</td><td>Geschäftsführung, Behördenkontakt, Entscheidungen</td></tr>
+  <tr><td>Mitgliederversammlung</td><td>Alle Mitglieder</td><td>Wichtigste Entscheidungen, Vorstandswahl, Satzungsänderungen</td></tr>
+  <tr><td>Anbauteam</td><td>Grower 1 + 2</td><td>Anbau, Ernte, Qualitätssicherung (nach Lizenz)</td></tr>
+  <tr><td>Prävention</td><td>Präventionsbeauftragte/r</td><td>Aufklärung, Jugendschutz, Beratung (gesetzlich vorgeschrieben)</td></tr>
+</table>
+
+<div class="call info"><span class="ci">💡</span><div>Du möchtest selbst eine Rolle übernehmen? Sprich die Ansprechperson oder den Vorstand an – viele Vereine suchen engagierte Mitglieder!</div></div>
+<div class="call warn"><span class="ci">⚠️</span><div>Die aktuellen Rolleninhaber deines Vereins siehst du unter <a href="#s-standorte">Standorte → Mein Verein → Wichtige Positionen</a>.</div></div>
+
+<div class="done-check" id="done-s-vereinsstruktur" onclick="toggleDone('s-vereinsstruktur')" role="checkbox" aria-checked="false" tabindex="0"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="chap-actions" data-sec-actions="s-vereinsstruktur">
+  <button class="ca-btn" id="bm-btn-s-vereinsstruktur" onclick="toggleBookmark('s-vereinsstruktur','Kap. s-vereinsstruktur')" title="Lesezeichen">🔖 Merken</button>
+  <button class="ca-btn" onclick="shareChapter('s-vereinsstruktur',this)">🔗 Teilen</button>
+  <button class="ca-btn" onclick="printChapter('s-vereinsstruktur')">🖨️ Drucken</button>
+</div>
+<div class="feedback-bar" data-sec="s-vereinsstruktur">
+  <span class="fb-lbl">War das hilfreich?</span>
+  <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-vereinsstruktur','yes')">👍 Ja</button>
+  <button class="fb-btn" data-v="no" onclick="fbClick(this,'s-vereinsstruktur','no')">👎 Nein</button>
+  <span class="fb-thanks">Danke! 🙏</span>
+  <button class="note-btn" onclick="toggleNotes(this,'s-vereinsstruktur')">📝 Notiz</button>
+  <span class="note-dot" data-ni="s-vereinsstruktur"></span>
+</div>
+<div class="notes-area">
+  <textarea placeholder="Deine Notizen…"></textarea>
+  <button class="note-save" onclick="saveNote(this,'s-vereinsstruktur')">Speichern</button>
+  <span class="note-saved">✓ Gespeichert</span>
+</div>
+</section>
+
+
+<section class="sec" id="s-abholung" aria-labelledby="h2-abholung">
+<div class="sec-tag">Kapitel 37</div>
+<h2 class="sec-h" id="h2-abholung"><div class="sec-icon">📦</div>Abholung – Von der Bestellung bis zur Übergabe</h2>
+<p class="sec-intro">Sobald dein Verein die Anbaulizenz erhalten und die erste Ernte eingeholt hat, kannst du Cannabis bestellen und abholen. Hier ist der komplette Ablauf.</p>
+
+<div class="call warn"><span class="ci">⏳</span><div>Diese Funktion ist noch nicht aktiv. Sie wird freigeschaltet wenn dein Verein <strong>„Abgabe gestartet"</strong> als Meilenstein erreicht hat → <a href="#s-standorte">Standorte → Mein Verein</a></div></div>
+
+<div class="ssh">📋 Schritt-für-Schritt Ablauf</div>
+<div class="pickup-checklist" id="pickup-cl">
+  <div class="pc-item" id="pc-0" onclick="togglePc(0)">
+    <div class="pc-num">1</div>
+    <div class="pc-body"><h4>Bestellfunktion prüfen</h4>
+    <p>Unter <a href="#s-cannabis">Cannabis → Freizeit</a> nachschauen ob die Bestellfunktion für deinen Verein freigeschaltet ist. Dort erscheinen verfügbare Sorten.</p></div>
+  </div>
+  <div class="pc-item" id="pc-1" onclick="togglePc(1)">
+    <div class="pc-num">2</div>
+    <div class="pc-body"><h4>Sorte &amp; Menge wählen</h4>
+    <p>Verfügbare Sorten mit THC/CBD-Gehalt auswählen. Menge festlegen – gesetzliches Limit: max. 25g/Tag, 50g/Monat (KCanG).</p></div>
+  </div>
+  <div class="pc-item" id="pc-2" onclick="togglePc(2)">
+    <div class="pc-num">3</div>
+    <div class="pc-body"><h4>Abholtermin buchen</h4>
+    <p>Verfügbare Termine auswählen. Der Termin erscheint dann automatisch in deinem <a href="#s-kalender">Kalender</a>.</p></div>
+  </div>
+  <div class="pc-item" id="pc-3" onclick="togglePc(3)">
+    <div class="pc-num">4</div>
+    <div class="pc-body"><h4>Bestätigung erhalten</h4>
+    <p>Du bekommst eine Bestätigung per Mitteilung. Lies die Hinweise zu Übergabebedingungen und Verhaltensregeln.</p></div>
+  </div>
+  <div class="pc-item" id="pc-4" onclick="togglePc(4)">
+    <div class="pc-num">5</div>
+    <div class="pc-body"><h4>Mitgliedsnummer bereithalten</h4>
+    <p>Deine Mitgliedsnummer (beginnt mit A) findest du unter <a href="#s-mitgliedschaft">Profil → Mitgliederdaten → Mitgliedschaft</a>. Screenshot machen oder aufschreiben.</p></div>
+  </div>
+  <div class="pc-item" id="pc-5" onclick="togglePc(5)">
+    <div class="pc-num">6</div>
+    <div class="pc-body"><h4>Pünktlich zur Abgabestelle</h4>
+    <p>Zum vereinbarten Termin zur Abgabestelle gehen. Adresse steht unter <a href="#s-standorte">Standorte → Mein Verein → Standorte</a>.</p></div>
+  </div>
+  <div class="pc-item" id="pc-6" onclick="togglePc(6)">
+    <div class="pc-num">7</div>
+    <div class="pc-body"><h4>Übergabe &amp; Unterschrift</h4>
+    <p>Mitgliedsnummer vorzeigen, Cannabis entgegennehmen, Übergabe bestätigen. Kein Geld – Cannabis wird nicht kommerziell abgegeben.</p></div>
+  </div>
+  <div class="pc-item" id="pc-7" onclick="togglePc(7)">
+    <div class="pc-num">8</div>
+    <div class="pc-body"><h4>Transportregeln beachten</h4>
+    <p>Max. 25g in nicht-einsehbarer Verpackung in der Öffentlichkeit erlaubt. Nicht in der Nähe von Schulen, Spielplätzen oder Kinder (100m Abstand, KCanG §5).</p></div>
+  </div>
+</div>
+
+<div class="ssh">✅ Checkliste für den Abholtag</div>
+<div class="checklist" id="pickup-day-cl">
+  <div class="cl-item" id="pdc-0" onclick="togglePdc(0)"><div class="cl-box"></div><div class="cl-text">Mitgliedsnummer parat (Screenshot oder aufgeschrieben)</div></div>
+  <div class="cl-item" id="pdc-1" onclick="togglePdc(1)"><div class="cl-box"></div><div class="cl-text">Abholtermin im Kalender geprüft</div></div>
+  <div class="cl-item" id="pdc-2" onclick="togglePdc(2)"><div class="cl-box"></div><div class="cl-text">Adresse der Abgabestelle bekannt</div></div>
+  <div class="cl-item" id="pdc-3" onclick="togglePdc(3)"><div class="cl-box"></div><div class="cl-text">Nicht-einsehbare Verpackung für Transport dabei</div></div>
+  <div class="cl-item" id="pdc-4" onclick="togglePdc(4)"><div class="cl-box"></div><div class="cl-text">Mengengrenze geprüft (max. 25g/Tag, 50g/Monat)</div></div>
+</div>
+
+<div class="call info"><span class="ci">ℹ️</span><div>Du kannst Bestellungen stornieren solange der Termin noch nicht bestätigt wurde. Nach Bestätigung → <a href="#s-ticket">Support-Ticket</a>.</div></div>
+
+<div class="done-check" id="done-s-abholung" onclick="toggleDone('s-abholung')" role="checkbox" aria-checked="false" tabindex="0"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="chap-actions" data-sec-actions="s-abholung">
+  <button class="ca-btn" id="bm-btn-s-abholung" onclick="toggleBookmark('s-abholung','Kap. s-abholung')" title="Lesezeichen">🔖 Merken</button>
+  <button class="ca-btn" onclick="shareChapter('s-abholung',this)">🔗 Teilen</button>
+  <button class="ca-btn" onclick="printChapter('s-abholung')">🖨️ Drucken</button>
+</div>
+<div class="feedback-bar" data-sec="s-abholung">
+  <span class="fb-lbl">War das hilfreich?</span>
+  <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-abholung','yes')">👍 Ja</button>
+  <button class="fb-btn" data-v="no" onclick="fbClick(this,'s-abholung','no')">👎 Nein</button>
+  <span class="fb-thanks">Danke! 🙏</span>
+  <button class="note-btn" onclick="toggleNotes(this,'s-abholung')">📝 Notiz</button>
+  <span class="note-dot" data-ni="s-abholung"></span>
+</div>
+<div class="notes-area">
+  <textarea placeholder="Deine Notizen…"></textarea>
+  <button class="note-save" onclick="saveNote(this,'s-abholung')">Speichern</button>
   <span class="note-saved">✓ Gespeichert</span>
 </div>
 </section>
@@ -3641,8 +4087,331 @@ document.querySelectorAll('.chap-nav-btn').forEach(function(btn){
   });
 });
 
+
+// ═══════════════════════════════════════════════════════
+// TERM TOOLTIPS
+// ═══════════════════════════════════════════════════════
+(function(){
+  var tip = document.getElementById('term-tip');
+  if(!tip) return;
+  document.querySelectorAll('.term').forEach(function(el){
+    function show(e){
+      tip.innerHTML = '<strong>'+el.textContent+'</strong>'+el.dataset.tip;
+      tip.style.display = 'block';
+      var x = Math.min(e.clientX + 10, window.innerWidth - 280);
+      var y = e.clientY + 18;
+      if(y + 80 > window.innerHeight) y = e.clientY - 90;
+      tip.style.left = x+'px';
+      tip.style.top = y+'px';
+    }
+    el.addEventListener('mouseenter', show);
+    el.addEventListener('mousemove', show);
+    el.addEventListener('mouseleave', function(){ tip.style.display='none'; });
+    el.addEventListener('focus', function(e){ show({clientX:el.getBoundingClientRect().left, clientY:el.getBoundingClientRect().bottom}); });
+    el.addEventListener('blur', function(){ tip.style.display='none'; });
+  });
+})();
+
+// ═══════════════════════════════════════════════════════
+// NEW MEMBER CHECKLIST
+// ═══════════════════════════════════════════════════════
+(function(){
+  var KEY = 'tt-cl-new';
+  var total = 10;
+  function getDone(){ return JSON.parse(localStorage.getItem(KEY)||'[]'); }
+  function save(d){ localStorage.setItem(KEY,JSON.stringify(d)); }
+  function update(){
+    var done = getDone();
+    var pct = Math.round(done.length/total*100);
+    var fill = document.getElementById('cl-fill');
+    var lbl = document.getElementById('cl-pct');
+    if(fill) fill.style.width = pct+'%';
+    if(lbl) lbl.textContent = done.length+' / '+total+' erledigt'+(pct===100?' 🎉':'');
+    for(var i=0;i<total;i++){
+      var el = document.getElementById('clitem-'+i);
+      if(!el) continue;
+      var checked = done.indexOf(i)>=0;
+      el.classList.toggle('done', checked);
+      el.setAttribute('aria-checked', checked?'true':'false');
+    }
+  }
+  window.toggleCl = function(i){
+    var done = getDone();
+    var idx = done.indexOf(i);
+    if(idx>=0) done.splice(idx,1); else done.push(i);
+    save(done); update();
+  };
+  update();
+})();
+
+// ═══════════════════════════════════════════════════════
+// PICKUP CHECKLISTS (Kap 37)
+// ═══════════════════════════════════════════════════════
+(function(){
+  var pcDone = JSON.parse(localStorage.getItem('tt-pc')||'[]');
+  var pdcDone = JSON.parse(localStorage.getItem('tt-pdc')||'[]');
+  function applyPc(){ pcDone.forEach(function(i){ var el=document.getElementById('pc-'+i); if(el){el.classList.add('done'); el.querySelector('.pc-num').style.background='var(--g1)'; el.querySelector('.pc-num').style.color='#000';} }); }
+  function applyPdc(){ pdcDone.forEach(function(i){ var el=document.getElementById('pdc-'+i); if(el) el.classList.add('done'); }); }
+  window.togglePc = function(i){
+    var idx=pcDone.indexOf(i);
+    if(idx>=0) pcDone.splice(idx,1); else pcDone.push(i);
+    localStorage.setItem('tt-pc',JSON.stringify(pcDone)); applyPc();
+  };
+  window.togglePdc = function(i){
+    var idx=pdcDone.indexOf(i);
+    if(idx>=0) pdcDone.splice(idx,1); else pdcDone.push(i);
+    localStorage.setItem('tt-pdc',JSON.stringify(pdcDone)); applyPdc();
+  };
+  applyPc(); applyPdc();
+})();
+
+// ═══════════════════════════════════════════════════════
+// ACCENT COLOR PICKER
+// ═══════════════════════════════════════════════════════
+(function(){
+  var saved = localStorage.getItem('tt-accent');
+  if(saved){
+    try{ var c=JSON.parse(saved); applyAccent(c[0],c[1]); } catch(e){}
+  }
+  function applyAccent(c1,c2){
+    var r = document.documentElement.style;
+    r.setProperty('--g1',c1); r.setProperty('--g2',c2);
+    // Update active swatch
+    document.querySelectorAll('.cs').forEach(function(s){
+      s.classList.toggle('active', s.dataset.c1===c1);
+    });
+  }
+  window.setAccent = function(c1,c2){
+    applyAccent(c1,c2);
+    localStorage.setItem('tt-accent',JSON.stringify([c1,c2]));
+  };
+})();
+
+// ═══════════════════════════════════════════════════════
+// COMPACT MODE
+// ═══════════════════════════════════════════════════════
+(function(){
+  if(localStorage.getItem('tt-compact')==='1') document.body.classList.add('compact');
+  function updateBtn(){
+    var btn=document.getElementById('compact-btn');
+    if(btn) btn.textContent = document.body.classList.contains('compact') ? '⊟ Normal' : '⊞ Kompakt';
+  }
+  window.toggleCompact = function(){
+    document.body.classList.toggle('compact');
+    localStorage.setItem('tt-compact', document.body.classList.contains('compact')?'1':'0');
+    updateBtn();
+  };
+  updateBtn();
+})();
+
+// ═══════════════════════════════════════════════════════
+// SEARCH HISTORY
+// ═══════════════════════════════════════════════════════
+(function(){
+  var HIST_KEY = 'tt-search-hist';
+  function getHist(){ return JSON.parse(localStorage.getItem(HIST_KEY)||'[]'); }
+  function addHist(term){
+    var h = getHist().filter(function(t){ return t!==term; });
+    h.unshift(term);
+    if(h.length>5) h.pop();
+    localStorage.setItem(HIST_KEY,JSON.stringify(h));
+  }
+  var mi = document.getElementById('ms-i');
+  var ss = document.getElementById('ss');
+  if(!mi||!ss) return;
+  
+  // Add history div inside suggestions
+  var histDiv = document.createElement('div');
+  histDiv.id = 'search-hist';
+  histDiv.style.cssText = 'padding:5px 11px 3px;border-top:1px solid var(--bd)';
+  ss.appendChild(histDiv);
+  
+  function renderHist(){
+    var h = getHist();
+    if(!h.length){ histDiv.style.display='none'; return; }
+    histDiv.style.display='block';
+    histDiv.innerHTML = '<p style="font-size:.59rem;color:var(--mu);font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px">Letzte Suchen</p>'
+      + h.map(function(t){ return '<span class="ss-tag" onclick="ssClick(\''+t+'\')">🕐 '+t+'</span>'; }).join('');
+  }
+  
+  // Save search on navigation
+  document.querySelectorAll('#sr a').forEach(function(a){
+    a.addEventListener('click', function(){
+      if(mi.value.trim()) addHist(mi.value.trim());
+    });
+  });
+  // Intercept ssClick to also save history
+  var origSsClick = window.ssClick;
+  window.ssClick = function(term){ addHist(term); if(origSsClick) origSsClick(term); };
+  
+  mi.addEventListener('focus', renderHist);
+})();
+
+// ═══════════════════════════════════════════════════════
+// EXPAND / COLLAPSE ALL ACCORDIONS
+// ═══════════════════════════════════════════════════════
+window.expandAll = function(sid){
+  var sec = document.getElementById(sid);
+  if(!sec) return;
+  sec.querySelectorAll('.acc').forEach(function(a){ a.classList.add('open'); });
+  sec.querySelectorAll('.faq-item').forEach(function(a){ a.classList.add('open'); });
+};
+window.collapseAll = function(sid){
+  var sec = document.getElementById(sid);
+  if(!sec) return;
+  sec.querySelectorAll('.acc').forEach(function(a){ a.classList.remove('open'); });
+  sec.querySelectorAll('.faq-item').forEach(function(a){ a.classList.remove('open'); });
+};
+
+// ═══════════════════════════════════════════════════════
+// SCROLL TO SSH (section subheadings for TOC)
+// ═══════════════════════════════════════════════════════
+window.scrollToSsh = function(link, e){
+  if(e) e.preventDefault();
+  var text = link.textContent.trim();
+  var allSsh = document.querySelectorAll('.ssh');
+  for(var i=0;i<allSsh.length;i++){
+    if(allSsh[i].textContent.trim().indexOf(text.replace(/[^a-zA-ZäöüÄÖÜß]/g,'').substring(0,10)) >= 0){
+      allSsh[i].scrollIntoView({behavior:'smooth',block:'start'});
+      return;
+    }
+  }
+};
+
+// ═══════════════════════════════════════════════════════
+// POLL
+// ═══════════════════════════════════════════════════════
+(function(){
+  var KEY = 'tt-poll-v1';
+  var votes = JSON.parse(localStorage.getItem(KEY)||'[0,0,0,0]');
+  var voted = localStorage.getItem('tt-poll-voted')==='1';
+  
+  function renderPoll(){
+    var total = votes.reduce(function(a,b){ return a+b; },0);
+    var opts = document.querySelectorAll('#poll-opts .poll-opt');
+    opts.forEach(function(opt,i){
+      var pct = total>0 ? Math.round(votes[i]/total*100) : 0;
+      var fill = opt.querySelector('.poll-fill');
+      var pctEl = opt.querySelector('.poll-pct');
+      if(fill) fill.style.width = (voted?pct:0)+'%';
+      if(pctEl){ pctEl.textContent=pct+'%'; pctEl.style.display=voted?'':'none'; }
+      if(voted) opt.classList.add('voted');
+    });
+    var note = document.getElementById('poll-note');
+    if(note&&voted) note.textContent = 'Du hast bereits abgestimmt. Vielen Dank! ('+total+' Stimmen gesamt)';
+  }
+  
+  window.pollVote = function(i){
+    if(voted) return;
+    votes[i]++;
+    voted = true;
+    localStorage.setItem(KEY,JSON.stringify(votes));
+    localStorage.setItem('tt-poll-voted','1');
+    renderPoll();
+  };
+  
+  renderPoll();
+})();
+
+// ═══════════════════════════════════════════════════════
+// ANALYTICS (local only)
+// ═══════════════════════════════════════════════════════
+(function(){
+  var ANA_KEY = 'tt-analytics';
+  function getAna(){ return JSON.parse(localStorage.getItem(ANA_KEY)||'{"views":{},"searches":[]}'); }
+  function saveAna(a){ localStorage.setItem(ANA_KEY,JSON.stringify(a)); }
+  
+  // Track section views
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(!e.isIntersecting) return;
+        var a = getAna();
+        var id = e.target.id;
+        a.views[id] = (a.views[id]||0)+1;
+        saveAna(a);
+      });
+    },{threshold:0.3});
+    document.querySelectorAll('section[id]').forEach(function(s){ obs.observe(s); });
+  }
+  
+  // Track searches
+  var mi = document.getElementById('ms-i');
+  if(mi){
+    var st;
+    mi.addEventListener('input',function(){
+      clearTimeout(st);
+      if(!mi.value.trim()) return;
+      st = setTimeout(function(){
+        var a = getAna();
+        a.searches.push(mi.value.trim().toLowerCase());
+        if(a.searches.length>50) a.searches.shift();
+        saveAna(a);
+      }, 1000);
+    });
+  }
+  
+  function renderAnalytics(){
+    var a = getAna();
+    var el = document.getElementById('ana-top-chapters');
+    if(!el) return;
+    var views = a.views;
+    var sorted = Object.keys(views).sort(function(x,y){ return views[y]-views[x]; }).slice(0,4);
+    if(!sorted.length){ el.textContent='Noch keine Daten'; return; }
+    var maxV = views[sorted[0]];
+    el.innerHTML = '<p style="font-size:.6rem;color:var(--mu);margin-bottom:4px;font-weight:700;text-transform:uppercase;letter-spacing:.07em">Top-Kapitel</p>'
+      + sorted.map(function(id){
+          var sec=document.getElementById(id);
+          var h2=sec&&sec.querySelector('h2');
+          var title=h2?(h2.textContent||'').replace(/[^\w\s&äöüÄÖÜß\-]/g,'').trim().slice(0,22):id;
+          var w=Math.round(views[id]/maxV*60);
+          return '<div style="display:flex;align-items:center;gap:5px;margin-bottom:3px">'
+            +'<span style="font-size:.65rem;color:var(--tx2);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+title+'</span>'
+            +'<div style="height:3px;width:'+w+'px;background:var(--g1);border-radius:2px;flex-shrink:0"></div>'
+            +'</div>';
+        }).join('');
+  }
+  
+  window.resetAnalytics = function(){
+    localStorage.removeItem(ANA_KEY);
+    var el=document.getElementById('ana-top-chapters');
+    if(el) el.textContent='Zurückgesetzt';
+  };
+  
+  // Render on sidebar focus
+  setInterval(renderAnalytics, 5000);
+  renderAnalytics();
+})();
+
+// ═══════════════════════════════════════════════════════
+// PRINT TOC
+// ═══════════════════════════════════════════════════════
+window.printToc = function(){
+  var toc = document.getElementById('s-toc');
+  if(toc) toc.style.display = 'block';
+  document.body.classList.add('print-toc');
+  window.print();
+  setTimeout(function(){
+    document.body.classList.remove('print-toc');
+    if(toc) toc.style.display = 'none';
+  }, 500);
+};
+
+// ═══════════════════════════════════════════════════════
+// ACCESSIBILITY: KEYBOARD NAVIGATION FOR CHECKLISTS
+// ═══════════════════════════════════════════════════════
+document.querySelectorAll('.cl-item, .pc-item').forEach(function(el){
+  el.addEventListener('keydown',function(e){
+    if(e.key===' '||e.key==='Enter'){
+      e.preventDefault();
+      el.click();
+    }
+  });
+});
+
 </script>
 
+<div id="term-tip" class="term-tip"></div>
 <div id="hl-tooltip" onclick="saveHighlight()">📝 Als Notiz speichern</div>
 <!-- CERTIFICATE OVERLAY -->
 <div id="cert-overlay" class="cert-overlay">
