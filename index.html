@@ -31,7 +31,7 @@ a{color:var(--g2)}a:hover{text-decoration:underline}
 ::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-thumb{background:var(--bd2);border-radius:2px}
 
 /* ── SIDEBAR ── */
-#sb{width:var(--sw);background:var(--s1);border-right:1px solid var(--bd);position:fixed;top:0;left:0;bottom:0;overflow-y:auto;z-index:200;transition:transform .3s;display:flex;flex-direction:column}
+#sb{width:var(--sw);background:var(--s1);border-right:1px solid var(--bd);position:fixed;top:0;left:0;bottom:0;overflow:hidden;z-index:200;transition:transform .3s;display:flex;flex-direction:column}
 .sb-hd{padding:13px 14px;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:9px;position:sticky;top:0;background:var(--s1);z-index:5;flex-shrink:0}
 .sb-logo{height:26px}.sb-brand{font-family:'Syne',sans-serif;font-weight:800;font-size:.85rem;letter-spacing:-.02em}.sb-brand em{color:var(--g2);font-style:normal}
 .sb-sw{padding:7px 10px}.sb-si{width:100%;background:var(--s2);border:1px solid var(--bd);border-radius:8px;padding:5px 9px;color:var(--tx);font-size:.74rem;font-family:inherit;outline:none;transition:border var(--tr)}.sb-si:focus{border-color:var(--g1)}.sb-si::placeholder{color:var(--mu)}
@@ -691,7 +691,7 @@ body.serif .sec-h,body.serif .ssh,body.serif .rc-title,body.serif .cert-h{
   cursor:pointer;font-size:.95rem;transition:all .15s;border-bottom:2px solid transparent}
 .sb-tab:hover{color:var(--tx2);background:var(--s2)}
 .sb-tab.act{color:var(--g1);border-bottom-color:var(--g1);background:none}
-.sb-panel{display:none;flex-direction:column;overflow-y:auto;overflow-x:hidden;flex:1;min-height:0}
+.sb-panel{display:none;position:absolute;top:0;left:0;right:0;bottom:0;overflow-y:auto;overflow-x:hidden;background:var(--s1);flex-direction:column}
 
 /* ── CONFIG PANEL ── */
 .cfg-label{font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
@@ -856,6 +856,11 @@ body.card-view .view-hint{display:block}
   display:none;animation:fadeIn .3s ease;box-shadow:0 4px 16px rgba(0,0,0,.4)}
 .translating-msg.show{display:block}
 
+
+.lsi{padding:7px 12px;cursor:pointer;font-size:.8rem;color:var(--tx2);transition:background .12s}
+.lsi:hover,.lsi.active{background:var(--s2);color:var(--g2)}
+.lsi.active{font-weight:600}
+
 </style>
 
   <!-- Google Translate -->
@@ -923,7 +928,8 @@ body.card-view .view-hint{display:block}
     <button class="sb-tab"     data-tab="stats"  onclick="sbTab('stats')"  role="tab" aria-selected="false" title="Statistik">📊</button>
   </div>
 
-  <!-- TAB: NAVIGATION -->
+  <div id="sb-panel-wrap" style="position:relative;flex:1;overflow:hidden;min-height:0">
+<!-- TAB: NAVIGATION -->
   <div class="sb-panel" id="sbp-nav" role="tabpanel">
     <div class="sb-search-row">
       <input type="search" class="sb-si" id="ms-i" placeholder="🔍 Suchen…"
@@ -1105,6 +1111,8 @@ body.card-view .view-hint{display:block}
     <div id="ana-top-chapters" style="padding:4px 10px;font-size:.68rem;color:var(--mu)">Wird geladen…</div>
     <button class="ana-reset" onclick="resetAnalytics()" style="margin:4px 10px;font-size:.62rem">🗑️ Zurücksetzen</button>
   </div>
+</div>
+
 
 </nav>
 
@@ -1147,26 +1155,43 @@ body.card-view .view-hint{display:block}
 </div>
   </div>
   <span class="sh" id="sh-hint">↑ Direkt zum richtigen Kapitel springen</span>
-<div class="lang-bar" id="lang-bar" role="navigation" aria-label="Sprachauswahl">
-  <span class="lang-bar-label">🌍</span>
-  <button class="lng de-btn active" onclick="setPageLang('de')" data-lang="de" title="Deutsch (Original)">🇩🇪 DE</button>
-  <button class="lng" onclick="setPageLang('en')" data-lang="en" title="English">🇬🇧 EN</button>
-  <button class="lng" onclick="setPageLang('tr')" data-lang="tr" title="Türkçe">🇹🇷 TR</button>
-  <button class="lng" onclick="setPageLang('ar')" data-lang="ar" title="العربية">🇸🇦 AR</button>
-  <button class="lng" onclick="setPageLang('ru')" data-lang="ru" title="Русский">🇷🇺 RU</button>
-  <button class="lng" onclick="setPageLang('ro')" data-lang="ro" title="Română">🇷🇴 RO</button>
-  <button class="lng" onclick="setPageLang('pl')" data-lang="pl" title="Polski">🇵🇱 PL</button>
-  <button class="lng" onclick="setPageLang('uk')" data-lang="uk" title="Українська">🇺🇦 UK</button>
-  <button class="lng" onclick="setPageLang('fr')" data-lang="fr" title="Français">🇫🇷 FR</button>
-  <button class="lng" onclick="setPageLang('es')" data-lang="es" title="Español">🇪🇸 ES</button>
-  <button class="lng" onclick="setPageLang('it')" data-lang="it" title="Italiano">🇮🇹 IT</button>
-  <button class="lng" onclick="setPageLang('nl')" data-lang="nl" title="Nederlands">🇳🇱 NL</button>
-  <button class="lng" onclick="setPageLang('pt')" data-lang="pt" title="Português">🇵🇹 PT</button>
-  <button class="lng" onclick="setPageLang('el')" data-lang="el" title="Ελληνικά">🇬🇷 EL</button>
-  <button class="lng" onclick="setPageLang('sr')" data-lang="sr" title="Srpski">🇷🇸 SR</button>
-  <button class="lng" onclick="setPageLang('hr')" data-lang="hr" title="Hrvatski">🇭🇷 HR</button>
-  <button class="lng" onclick="setPageLang('bg')" data-lang="bg" title="Български">🇧🇬 BG</button>
+<div class="lang-bar" id="lang-bar" role="navigation" aria-label="Sprachauswahl" style="flex-wrap:nowrap">
+  <span class="lang-bar-label">🌍 Sprache:</span>
+  <div style="position:relative;flex:1;max-width:220px">
+    <button id="lang-sel-btn" onclick="toggleLangSel()" 
+      style="width:100%;background:var(--s2);border:1px solid var(--bd);color:var(--tx2);
+             padding:5px 10px;border-radius:8px;cursor:pointer;font-size:.78rem;font-family:inherit;
+             display:flex;align-items:center;justify-content:space-between;gap:6px">
+      <span id="lang-sel-label">🇩🇪 Deutsch (Original)</span>
+      <span>▾</span>
+    </button>
+    <div id="lang-sel-dd" style="display:none;position:absolute;top:calc(100%+3px);left:0;right:0;
+      background:var(--s1);border:1px solid var(--bd);border-radius:9px;z-index:600;
+      box-shadow:0 6px 24px rgba(0,0,0,.5);max-height:320px;overflow-y:auto">
+      <div class="lsi active" data-lang="de" data-label="🇩🇪 Deutsch (Original)" onclick="pickLang(this)">🇩🇪 Deutsch (Original)</div>
+      <div style="height:1px;background:var(--bd);margin:2px 0"></div>
+      <div class="lsi" data-lang="en" data-label="🇬🇧 English" onclick="pickLang(this)">🇬🇧 English</div>
+      <div class="lsi" data-lang="tr" data-label="🇹🇷 Türkçe" onclick="pickLang(this)">🇹🇷 Türkçe</div>
+      <div class="lsi" data-lang="ar" data-label="🇸🇦 العربية" onclick="pickLang(this)">🇸🇦 العربية</div>
+      <div style="height:1px;background:var(--bd);margin:2px 0"></div>
+      <div class="lsi" data-lang="ru" data-label="🇷🇺 Русский" onclick="pickLang(this)">🇷🇺 Русский</div>
+      <div class="lsi" data-lang="ro" data-label="🇷🇴 Română" onclick="pickLang(this)">🇷🇴 Română</div>
+      <div class="lsi" data-lang="pl" data-label="🇵🇱 Polski" onclick="pickLang(this)">🇵🇱 Polski</div>
+      <div class="lsi" data-lang="uk" data-label="🇺🇦 Українська" onclick="pickLang(this)">🇺🇦 Українська</div>
+      <div style="height:1px;background:var(--bd);margin:2px 0"></div>
+      <div class="lsi" data-lang="fr" data-label="🇫🇷 Français" onclick="pickLang(this)">🇫🇷 Français</div>
+      <div class="lsi" data-lang="es" data-label="🇪🇸 Español" onclick="pickLang(this)">🇪🇸 Español</div>
+      <div class="lsi" data-lang="it" data-label="🇮🇹 Italiano" onclick="pickLang(this)">🇮🇹 Italiano</div>
+      <div class="lsi" data-lang="nl" data-label="🇳🇱 Nederlands" onclick="pickLang(this)">🇳🇱 Nederlands</div>
+      <div class="lsi" data-lang="pt" data-label="🇵🇹 Português" onclick="pickLang(this)">🇵🇹 Português</div>
+      <div class="lsi" data-lang="el" data-label="🇬🇷 Ελληνικά" onclick="pickLang(this)">🇬🇷 Ελληνικά</div>
+      <div class="lsi" data-lang="sr" data-label="🇷🇸 Srpski" onclick="pickLang(this)">🇷🇸 Srpski</div>
+      <div class="lsi" data-lang="hr" data-label="🇭🇷 Hrvatski" onclick="pickLang(this)">🇭🇷 Hrvatski</div>
+      <div class="lsi" data-lang="bg" data-label="🇧🇬 Български" onclick="pickLang(this)">🇧🇬 Български</div>
+    </div>
+  </div>
 </div>
+
 <div class="ql-bar">
   <a href="#s-aufbau" class="ql">🏗️ Aufbau</a>
   <a href="#s-login" class="ql">🔐 Login</a>
@@ -1191,7 +1216,7 @@ body.card-view .view-hint{display:block}
 
 <div 
 <div class="acc-controls" data-ctrl="s-was"><button class="acc-ctrl-btn" onclick="expandAll('s-was')">▼ Alle aufklappen</button><button class="acc-ctrl-btn" onclick="collapseAll('s-was')">▲ Alle zuklappen</button></div>
-class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
+<div class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 <div class="cl-progress-label" id="cl-pct">0 / 10 erledigt</div>
 <div class="cl-progress"><div class="cl-progress-fill" id="cl-fill" style="width:0%"></div></div>
 <div class="checklist" id="new-member-checklist">
@@ -5488,9 +5513,8 @@ window.sbTab = function(tab){
   // Show selected panel
   var panel = document.getElementById('sbp-'+tab);
   if(panel){
-    panel.style.display = 'block';
-    panel.style.overflowY = 'auto';
-    panel.style.flex = '1';
+    panel.style.display = 'flex';
+    panel.style.flexDirection = 'column';
   }
   localStorage.setItem('tt-sb-tab', tab);
 };
@@ -5877,6 +5901,46 @@ window.setPageLang = function(lang){
         clearInterval(interval);
       }
     }, 500);
+  }
+})();
+
+
+// Language dropdown
+window.toggleLangSel = function(){
+  var dd = document.getElementById('lang-sel-dd');
+  if(dd) dd.style.display = dd.style.display==='none'?'block':'none';
+};
+window.pickLang = function(el){
+  var lang = el.dataset.lang;
+  var label = el.dataset.label;
+  // Update button label
+  var lbl = document.getElementById('lang-sel-label');
+  if(lbl) lbl.textContent = label;
+  // Update active state
+  document.querySelectorAll('.lsi').forEach(function(i){ i.classList.toggle('active', i.dataset.lang===lang); });
+  // Close dropdown
+  var dd = document.getElementById('lang-sel-dd');
+  if(dd) dd.style.display = 'none';
+  // Trigger translation
+  if(typeof window.setPageLang==='function') window.setPageLang(lang);
+};
+// Close on outside click
+document.addEventListener('click', function(e){
+  var t = e.target&&e.target.nodeType===1?e.target:e.target&&e.target.parentElement;
+  if(!t||!t.closest||!t.closest('#lang-sel-btn')&&!t.closest('#lang-sel-dd')){
+    var dd=document.getElementById('lang-sel-dd');
+    if(dd) dd.style.display='none';
+  }
+});
+// Restore saved language label on load
+(function(){
+  var saved = localStorage.getItem('tt-page-lang') || 'de';
+  var savedItem = document.querySelector('.lsi[data-lang="'+saved+'"]');
+  if(savedItem){
+    var lbl = document.getElementById('lang-sel-label');
+    if(lbl) lbl.textContent = savedItem.dataset.label;
+    savedItem.classList.add('active');
+    document.querySelector('.lsi[data-lang="de"]').classList.toggle('active', saved==='de');
   }
 })();
 
