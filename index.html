@@ -691,7 +691,7 @@ body.serif .sec-h,body.serif .ssh,body.serif .rc-title,body.serif .cert-h{
   cursor:pointer;font-size:.95rem;transition:all .15s;border-bottom:2px solid transparent}
 .sb-tab:hover{color:var(--tx2);background:var(--s2)}
 .sb-tab.act{color:var(--g1);border-bottom-color:var(--g1);background:none}
-.sb-panel{flex:1;overflow-y:auto;display:flex;flex-direction:column;min-height:0}
+.sb-panel{display:none;flex-direction:column;overflow-y:auto;overflow-x:hidden;flex:1;min-height:0}
 
 /* ── CONFIG PANEL ── */
 .cfg-label{font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
@@ -726,7 +726,7 @@ body.focus-mode .sec.focused{opacity:1;pointer-events:auto;
   box-shadow:0 0 0 2px rgba(76,175,80,.15);border-radius:12px}
 
 /* ── SIDEBAR compact adjustments ── */
-#sb{display:flex;flex-direction:column;min-height:0}
+
 #sb .sb-hd{flex-shrink:0}
 
 
@@ -5432,22 +5432,35 @@ window.exitFocus = function(){
 
 // ── SIDEBAR TABS ──
 window.sbTab = function(tab){
+  // Update tab buttons
   document.querySelectorAll('.sb-tab').forEach(function(b){
-    b.classList.toggle('act', b.dataset.tab === tab);
-    b.setAttribute('aria-selected', b.dataset.tab === tab ? 'true' : 'false');
+    b.classList.toggle('act', b.dataset.tab===tab);
+    b.setAttribute('aria-selected', b.dataset.tab===tab?'true':'false');
   });
+  // Hide all panels
   document.querySelectorAll('.sb-panel').forEach(function(p){
     p.style.display = 'none';
   });
+  // Show selected panel
   var panel = document.getElementById('sbp-'+tab);
-  if(panel) panel.style.display = 'flex';
+  if(panel){
+    panel.style.display = 'block';
+    panel.style.overflowY = 'auto';
+    panel.style.flex = '1';
+  }
   localStorage.setItem('tt-sb-tab', tab);
 };
-
-// Restore last tab
+// Initialize tabs
 (function(){
-  var t = localStorage.getItem('tt-sb-tab') || 'nav';
-  sbTab(t);
+  function initTabs(){
+    var t = localStorage.getItem('tt-sb-tab') || 'nav';
+    if(typeof window.sbTab === 'function') window.sbTab(t);
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initTabs);
+  } else {
+    setTimeout(initTabs, 0);
+  }
 })();
 
 // ── ACCESSIBILITY / SCREEN READER MODE ──

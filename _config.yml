@@ -1,0 +1,4 @@
+# Disable Jekyll processing
+exclude:
+  - "*.yml"
+  - "node_modules"
