@@ -838,7 +838,47 @@ body.card-view .view-hint{display:block}
   border-radius:7px;cursor:pointer;font-size:.74rem;font-weight:700;font-family:inherit}
 .comment-note{font-size:.68rem;color:var(--mu);margin-top:4px}
 
+
+/* ── LANGUAGE SWITCHER (new) ── */
+.lang-bar{display:flex;align-items:center;gap:6px;padding:6px 14px;
+  background:var(--s2);border-bottom:1px solid var(--bd);flex-wrap:wrap;flex-shrink:0}
+.lang-bar-label{font-size:.62rem;color:var(--mu);white-space:nowrap}
+.lng{background:none;border:1px solid var(--bd);color:var(--tx2);padding:3px 9px;
+  border-radius:14px;cursor:pointer;font-size:.72rem;font-family:inherit;
+  transition:all .15s;white-space:nowrap;display:flex;align-items:center;gap:3px}
+.lng:hover{border-color:var(--bd2);color:var(--tx)}
+.lng.active{background:rgba(76,175,80,.15);border-color:var(--g1);color:var(--g2);font-weight:600}
+.lng.de-btn{border-color:rgba(76,175,80,.3)}
+/* Translating indicator */
+.translating-msg{position:fixed;bottom:70px;left:50%;transform:translateX(-50%);
+  background:var(--s1);border:1px solid var(--g1);border-radius:20px;
+  padding:6px 16px;font-size:.74rem;color:var(--g2);z-index:5000;
+  display:none;animation:fadeIn .3s ease;box-shadow:0 4px 16px rgba(0,0,0,.4)}
+.translating-msg.show{display:block}
+
 </style>
+
+  <!-- Google Translate -->
+  <div id="google_translate_element" style="display:none" aria-hidden="true"></div>
+  <style>
+    /* Hide Google Translate banner and toolbar */
+    .goog-te-banner-frame,.goog-te-spinner-pos,.skiptranslate{display:none!important}
+    body{top:0!important}
+    .goog-te-menu-value span{display:none}
+    /* Google Translate dropdown hidden - we trigger it programmatically */
+    #google_translate_element .goog-te-gadget{opacity:0;pointer-events:none;height:0}
+  </style>
+  <script type="text/javascript">
+    function googleTranslateElementInit(){
+      new google.translate.TranslateElement({
+        pageLanguage:'de',
+        includedLanguages:'en,tr,fr,es,nl,pl,ru,ro,uk,it,pt,el,sr,hr,bg,ar',
+        autoDisplay:false,
+        gaTrack:false
+      },'google_translate_element');
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
 </head>
 <body>
 <a href="#main" class="skip-link">Zum Hauptinhalt springen</a>
@@ -977,25 +1017,25 @@ body.card-view .view-hint{display:block}
       <div class="lang-wrap" style="flex:1;position:relative">
         <button class="cfg-btn lang-btn" id="lang-btn" onclick="toggleLangDD()" style="width:100%">🌐 Deutsch</button>
         <div class="lang-dd" id="lang-dd">
-          <div class="lang-opt active" data-lang="de" onclick="setLang('de')">🇩🇪 Deutsch</div>
-          <div class="lang-opt" data-lang="en" onclick="setLang('en')">🇬🇧 English</div>
-          <div class="lang-opt" data-lang="tr" onclick="setLang('tr')">🇹🇷 Türkçe</div>
-          <div class="lang-opt" data-lang="ar" onclick="setLang('ar')">🇸🇦 العربية</div>
+          <div class="lang-opt active" data-lang="de" onclick="setPageLang('de')">🇩🇪 Deutsch</div>
+          <div class="lang-opt" data-lang="en" onclick="setPageLang('en')">🇬🇧 English</div>
+          <div class="lang-opt" data-lang="tr" onclick="setPageLang('tr')">🇹🇷 Türkçe</div>
+          <div class="lang-opt" data-lang="ar" onclick="setPageLang('ar')">🇸🇦 العربية</div>
           <hr style="border:none;border-top:1px solid var(--bd);margin:3px 0">
-          <div class="lang-opt" data-lang="ru" onclick="setLang('ru')">🇷🇺 Русский</div>
-          <div class="lang-opt" data-lang="ro" onclick="setLang('ro')">🇷🇴 Română</div>
-          <div class="lang-opt" data-lang="pl" onclick="setLang('pl')">🇵🇱 Polski</div>
-          <div class="lang-opt" data-lang="uk" onclick="setLang('uk')">🇺🇦 Українська</div>
+          <div class="lang-opt" data-lang="ru" onclick="setPageLang('ru')">🇷🇺 Русский</div>
+          <div class="lang-opt" data-lang="ro" onclick="setPageLang('ro')">🇷🇴 Română</div>
+          <div class="lang-opt" data-lang="pl" onclick="setPageLang('pl')">🇵🇱 Polski</div>
+          <div class="lang-opt" data-lang="uk" onclick="setPageLang('uk')">🇺🇦 Українська</div>
           <hr style="border:none;border-top:1px solid var(--bd);margin:3px 0">
-          <div class="lang-opt" data-lang="fr" onclick="setLang('fr')">🇫🇷 Français</div>
-          <div class="lang-opt" data-lang="es" onclick="setLang('es')">🇪🇸 Español</div>
-          <div class="lang-opt" data-lang="it" onclick="setLang('it')">🇮🇹 Italiano</div>
-          <div class="lang-opt" data-lang="nl" onclick="setLang('nl')">🇳🇱 Nederlands</div>
-          <div class="lang-opt" data-lang="pt" onclick="setLang('pt')">🇵🇹 Português</div>
-          <div class="lang-opt" data-lang="el" onclick="setLang('el')">🇬🇷 Ελληνικά</div>
-          <div class="lang-opt" data-lang="sr" onclick="setLang('sr')">🇷🇸 Srpski</div>
-          <div class="lang-opt" data-lang="hr" onclick="setLang('hr')">🇭🇷 Hrvatski</div>
-          <div class="lang-opt" data-lang="bg" onclick="setLang('bg')">🇧🇬 Български</div>
+          <div class="lang-opt" data-lang="fr" onclick="setPageLang('fr')">🇫🇷 Français</div>
+          <div class="lang-opt" data-lang="es" onclick="setPageLang('es')">🇪🇸 Español</div>
+          <div class="lang-opt" data-lang="it" onclick="setPageLang('it')">🇮🇹 Italiano</div>
+          <div class="lang-opt" data-lang="nl" onclick="setPageLang('nl')">🇳🇱 Nederlands</div>
+          <div class="lang-opt" data-lang="pt" onclick="setPageLang('pt')">🇵🇹 Português</div>
+          <div class="lang-opt" data-lang="el" onclick="setPageLang('el')">🇬🇷 Ελληνικά</div>
+          <div class="lang-opt" data-lang="sr" onclick="setPageLang('sr')">🇷🇸 Srpski</div>
+          <div class="lang-opt" data-lang="hr" onclick="setPageLang('hr')">🇭🇷 Hrvatski</div>
+          <div class="lang-opt" data-lang="bg" onclick="setPageLang('bg')">🇧🇬 Български</div>
         </div>
       </div>
     </div>
@@ -1107,22 +1147,26 @@ body.card-view .view-hint{display:block}
 </div>
   </div>
   <span class="sh" id="sh-hint">↑ Direkt zum richtigen Kapitel springen</span>
-    <div class="lang-opt" data-lang="en" onclick="setLang('en')">🇬🇧 English</div>
-    <div class="lang-opt" data-lang="tr" onclick="setLang('tr')">🇹🇷 Türkçe</div>
-    <hr style="border:none;border-top:1px solid var(--bd);margin:3px 0">
-    <div class="lang-opt" data-lang="fr" onclick="setLang('fr')">🇫🇷 Français</div>
-    <div class="lang-opt" data-lang="es" onclick="setLang('es')">🇪🇸 Español</div>
-    <div class="lang-opt" data-lang="nl" onclick="setLang('nl')">🇳🇱 Nederlands</div>
-    <div class="lang-opt" data-lang="pl" onclick="setLang('pl')">🇵🇱 Polski</div>
-    <div class="lang-opt" data-lang="ar" onclick="setLang('ar')">🇸🇦 عربي</div>
-  </div>
+<div class="lang-bar" id="lang-bar" role="navigation" aria-label="Sprachauswahl">
+  <span class="lang-bar-label">🌍</span>
+  <button class="lng de-btn active" onclick="setPageLang('de')" data-lang="de" title="Deutsch (Original)">🇩🇪 DE</button>
+  <button class="lng" onclick="setPageLang('en')" data-lang="en" title="English">🇬🇧 EN</button>
+  <button class="lng" onclick="setPageLang('tr')" data-lang="tr" title="Türkçe">🇹🇷 TR</button>
+  <button class="lng" onclick="setPageLang('ar')" data-lang="ar" title="العربية">🇸🇦 AR</button>
+  <button class="lng" onclick="setPageLang('ru')" data-lang="ru" title="Русский">🇷🇺 RU</button>
+  <button class="lng" onclick="setPageLang('ro')" data-lang="ro" title="Română">🇷🇴 RO</button>
+  <button class="lng" onclick="setPageLang('pl')" data-lang="pl" title="Polski">🇵🇱 PL</button>
+  <button class="lng" onclick="setPageLang('uk')" data-lang="uk" title="Українська">🇺🇦 UK</button>
+  <button class="lng" onclick="setPageLang('fr')" data-lang="fr" title="Français">🇫🇷 FR</button>
+  <button class="lng" onclick="setPageLang('es')" data-lang="es" title="Español">🇪🇸 ES</button>
+  <button class="lng" onclick="setPageLang('it')" data-lang="it" title="Italiano">🇮🇹 IT</button>
+  <button class="lng" onclick="setPageLang('nl')" data-lang="nl" title="Nederlands">🇳🇱 NL</button>
+  <button class="lng" onclick="setPageLang('pt')" data-lang="pt" title="Português">🇵🇹 PT</button>
+  <button class="lng" onclick="setPageLang('el')" data-lang="el" title="Ελληνικά">🇬🇷 EL</button>
+  <button class="lng" onclick="setPageLang('sr')" data-lang="sr" title="Srpski">🇷🇸 SR</button>
+  <button class="lng" onclick="setPageLang('hr')" data-lang="hr" title="Hrvatski">🇭🇷 HR</button>
+  <button class="lng" onclick="setPageLang('bg')" data-lang="bg" title="Български">🇧🇬 BG</button>
 </div>
-</div>
-
-<!-- QUICK LINKS -->
-<div class="minimap" id="minimap"><div class="minimap-fill" id="mm-fill"></div></div>
-<div class="sticky-title" id="sticky-title"></div>
-<div id="season-banner" class="season-banner"></div>
 <div class="ql-bar">
   <a href="#s-aufbau" class="ql">🏗️ Aufbau</a>
   <a href="#s-login" class="ql">🔐 Login</a>
@@ -5741,6 +5785,101 @@ window.mascotClick = function(){
 // ═══════════════════════════════════════════════════
 // (handled by the richIdx in improved search)
 
+
+// ═══════════════════════════════════════════════════════
+// FULL PAGE TRANSLATION via Google Translate + UI labels
+// ═══════════════════════════════════════════════════════
+window.setPageLang = function(lang){
+  // Update active button state
+  document.querySelectorAll('.lng, .lang-opt').forEach(function(b){
+    b.classList.toggle('active', b.dataset.lang === lang || b.getAttribute('data-lang') === lang);
+  });
+  
+  // Store preference
+  localStorage.setItem('tt-lang', lang);
+  
+  // Update UI labels (existing system)
+  if(typeof window.setLang === 'function') window.setLang(lang);
+  
+  if(lang === 'de'){
+    // Switch back to German original
+    var combo = document.querySelector('.goog-te-combo');
+    if(combo){
+      combo.value = '';
+      combo.dispatchEvent(new Event('change'));
+    } else {
+      // Reload without hash to reset translation
+      var hash = window.location.hash;
+      window.location.reload();
+      if(hash) setTimeout(function(){ window.location.hash = hash; }, 500);
+    }
+    localStorage.removeItem('tt-page-lang');
+    document.documentElement.setAttribute('lang','de');
+    // Hide notice
+    var nb = document.getElementById('lang-notice-bar');
+    if(nb) nb.style.display = 'none';
+    return;
+  }
+  
+  // Show translating indicator
+  var msg = document.getElementById('translating-msg');
+  if(msg){ msg.classList.add('show'); setTimeout(function(){ msg.classList.remove('show'); }, 3000); }
+  
+  localStorage.setItem('tt-page-lang', lang);
+  document.documentElement.setAttribute('lang', lang);
+  
+  // Trigger Google Translate
+  function doTranslate(){
+    var combo = document.querySelector('.goog-te-combo');
+    if(combo){
+      combo.value = lang;
+      combo.dispatchEvent(new Event('change'));
+      return true;
+    }
+    return false;
+  }
+  
+  if(!doTranslate()){
+    // Google Translate not ready yet, wait and retry
+    var attempts = 0;
+    var interval = setInterval(function(){
+      attempts++;
+      if(doTranslate() || attempts > 20){ clearInterval(interval); }
+    }, 300);
+  }
+};
+
+// Restore language on page load
+(function(){
+  var saved = localStorage.getItem('tt-page-lang');
+  var savedUi = localStorage.getItem('tt-lang') || 'de';
+  
+  // Always apply UI translations
+  if(typeof window.setLang === 'function') window.setLang(savedUi);
+  
+  // Restore active button
+  document.querySelectorAll('.lng').forEach(function(b){
+    b.classList.toggle('active', b.dataset.lang === (saved || 'de'));
+  });
+  
+  // Restore full page translation
+  if(saved && saved !== 'de'){
+    // Wait for Google Translate to load
+    var attempts = 0;
+    var interval = setInterval(function(){
+      attempts++;
+      var combo = document.querySelector('.goog-te-combo');
+      if(combo){
+        clearInterval(interval);
+        combo.value = saved;
+        combo.dispatchEvent(new Event('change'));
+      } else if(attempts > 30){
+        clearInterval(interval);
+      }
+    }, 500);
+  }
+})();
+
 </script>
 
 <div id="term-tip" class="term-tip"></div>
@@ -5790,6 +5929,7 @@ window.mascotClick = function(){
 </div>
 
 <div id="hl-tooltip" onclick="saveHighlight()">📝 Als Notiz speichern</div>
+<div class="translating-msg" id="translating-msg">🌍 Wird übersetzt…</div>
 <!-- CERTIFICATE OVERLAY -->
 <div id="cert-overlay" class="cert-overlay">
   <div class="cert-box">
