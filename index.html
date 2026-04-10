@@ -729,6 +729,115 @@ body.focus-mode .sec.focused{opacity:1;pointer-events:auto;
 #sb{display:flex;flex-direction:column;min-height:0}
 #sb .sb-hd{flex-shrink:0}
 
+
+/* ── SEASONAL BANNER ── */
+.season-banner{display:none;padding:8px 16px;font-size:.8rem;text-align:center;
+  font-weight:600;flex-shrink:0;animation:fadeIn .8s ease}
+.season-banner.spring{background:linear-gradient(90deg,rgba(76,175,80,.15),rgba(139,195,74,.1));
+  color:#81c784;border-bottom:1px solid rgba(76,175,80,.2);display:block}
+.season-banner.summer{background:linear-gradient(90deg,rgba(255,179,0,.12),rgba(255,152,0,.08));
+  color:#ffb300;border-bottom:1px solid rgba(255,179,0,.2);display:block}
+.season-banner.autumn{background:linear-gradient(90deg,rgba(230,81,0,.12),rgba(255,111,0,.08));
+  color:#ff8f00;border-bottom:1px solid rgba(230,81,0,.2);display:block}
+.season-banner.winter{background:linear-gradient(90deg,rgba(100,181,246,.1),rgba(144,202,249,.06));
+  color:#90caf9;border-bottom:1px solid rgba(100,181,246,.2);display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+
+/* ── PURE BLACK DARK MODE ── */
+body.pure-black{--bg:#000000;--s1:#0a0a0a;--s2:#111111;--s3:#1a1a1a;
+  --bd:#2a2a2a;--bd2:#3a3a3a}
+body.pure-black #sb{background:#000;border-color:#1a1a1a}
+body.pure-black .sec{border-color:#1a1a1a}
+
+/* ── CARD VIEW ── */
+body.card-view #main{padding:16px}
+body.card-view section.sec{
+  display:inline-flex;flex-direction:column;vertical-align:top;
+  width:calc(50% - 12px);margin:6px;padding:16px;
+  border-radius:14px;cursor:pointer;transition:all .2s;min-height:120px}
+body.card-view section.sec:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,.4)}
+body.card-view section.sec .sec-intro{display:-webkit-box;-webkit-line-clamp:3;
+  -webkit-box-orient:vertical;overflow:hidden;font-size:.78rem}
+body.card-view section.sec > *:not(.sec-tag):not(.sec-h):not(.sec-intro){display:none}
+body.card-view section.sec.expanded > *{display:block}
+body.card-view section.sec .sec-h{font-size:1rem;margin-bottom:6px}
+body.card-view section.sec .breadcrumb{display:none}
+body.card-view .view-hint{display:block}
+.view-hint{display:none;text-align:center;color:var(--mu);font-size:.72rem;
+  padding:8px;margin-bottom:10px}
+@media(max-width:700px){
+  body.card-view section.sec{width:calc(100% - 12px)}
+}
+
+/* ── ANIMATED MASCOT ── */
+.sb-mascot{display:flex;justify-content:center;padding:8px 0 4px;flex-shrink:0;
+  border-bottom:1px solid var(--bd);cursor:pointer}
+.mascot-train{font-size:1.6rem;display:inline-block;animation:trainRide 4s ease-in-out infinite;
+  position:relative}
+.mascot-train:hover{animation:trainPuff .3s ease infinite alternate}
+@keyframes trainRide{
+  0%,100%{transform:translateX(0) rotate(0deg)}
+  25%{transform:translateX(3px) rotate(1deg)}
+  75%{transform:translateX(-3px) rotate(-1deg)}
+}
+@keyframes trainPuff{
+  from{transform:scale(1)}to{transform:scale(1.15)}
+}
+.mascot-smoke{position:absolute;top:-8px;left:50%;
+  animation:smoke 1.5s ease-out infinite}
+@keyframes smoke{
+  0%{opacity:.8;transform:translate(-50%,0) scale(.5)}
+  100%{opacity:0;transform:translate(-60%,-20px) scale(1.5)}
+}
+
+/* ── GITHUB INTEGRATION ── */
+.gh-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.gh-btn{display:inline-flex;align-items:center;gap:5px;background:none;
+  border:1px solid var(--bd);color:var(--mu);padding:4px 9px;border-radius:7px;
+  cursor:pointer;font-size:.69rem;font-family:inherit;transition:all .15s;text-decoration:none}
+.gh-btn:hover{border-color:var(--bd2);color:var(--tx2)}
+.gh-btn.outdated{border-color:rgba(255,179,0,.4);color:var(--go)}
+.gh-btn.outdated:hover{background:rgba(255,179,0,.08)}
+
+/* ── LEARNING PLAN ── */
+.lp-personal{background:var(--s2);border:1px solid var(--bd);border-radius:11px;
+  padding:14px;margin:10px 0}
+.lp-personal h3{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;
+  color:var(--g2);margin-bottom:6px}
+.lpp-item{display:flex;align-items:center;gap:8px;padding:5px 0;
+  border-bottom:1px solid var(--bd);font-size:.79rem;color:var(--tx2)}
+.lpp-item:last-child{border-bottom:none}
+.lpp-item a{color:var(--tx2);text-decoration:none;flex:1;transition:color .15s}
+.lpp-item a:hover{color:var(--g2)}
+.lpp-status{font-size:.62rem;padding:2px 6px;border-radius:5px;flex-shrink:0;white-space:nowrap}
+.lpp-unread{background:rgba(229,57,53,.12);color:#ef9a9a}
+.lpp-partial{background:rgba(255,179,0,.12);color:var(--go)}
+.lpp-done{background:rgba(76,175,80,.12);color:var(--g2)}
+
+/* ── REPORT OUTDATED ── */
+.outdated-wrap{display:none;background:rgba(255,179,0,.08);border:1px solid rgba(255,179,0,.25);
+  border-radius:8px;padding:10px 12px;margin-top:8px}
+.outdated-wrap.open{display:block}
+.outdated-form textarea{width:100%;background:var(--s2);border:1px solid var(--bd);
+  border-radius:7px;padding:7px 9px;color:var(--tx);font-family:inherit;font-size:.77rem;
+  resize:vertical;min-height:60px;outline:none;line-height:1.5;margin-top:6px}
+.outdated-form textarea:focus{border-color:var(--g1)}
+.outdated-submit{background:var(--go);color:#000;border:none;padding:5px 12px;
+  border-radius:7px;cursor:pointer;font-size:.72rem;font-weight:700;margin-top:5px;
+  font-family:inherit}
+
+/* ── COMMENT BOX ── */
+.comment-box{background:var(--s2);border:1px solid var(--bd);border-radius:10px;
+  padding:12px;margin-top:8px;display:none}
+.comment-box.open{display:block}
+.comment-box textarea{width:100%;background:var(--s1);border:1px solid var(--bd);
+  border-radius:7px;padding:7px 9px;color:var(--tx);font-family:inherit;font-size:.78rem;
+  resize:vertical;min-height:70px;outline:none;line-height:1.5}
+.comment-box textarea:focus{border-color:var(--g1)}
+.comment-submit{background:var(--g1);color:#000;border:none;padding:6px 14px;
+  border-radius:7px;cursor:pointer;font-size:.74rem;font-weight:700;font-family:inherit}
+.comment-note{font-size:.68rem;color:var(--mu);margin-top:4px}
+
 </style>
 </head>
 <body>
@@ -753,42 +862,36 @@ body.focus-mode .sec.focused{opacity:1;pointer-events:auto;
 
 <!-- SIDEBAR -->
 <nav id="sb" role="navigation" aria-label="Kapitel-Navigation">
+
+  <!-- HEADER -->
   <div class="sb-hd">
     <button class="sb-collapse-btn" id="sb-collapse" onclick="toggleSidebar()" title="Sidebar ein-/ausklappen" aria-label="Sidebar ein-/ausklappen">‹</button>
-    
-  <button class="sb-collapse-btn" id="sb-collapse" onclick="toggleSidebar()" title="Sidebar ein-/ausklappen">‹</button>
     <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAA4AHADASIAAhEBAxEB/8QAGgABAAMBAQEAAAAAAAAAAAAAAAQFBgIDB//EAC0QAAEEAQMCBAYCAwAAAAAAAAEAAgMRBAUSITFBE3GBkSIyUWGhsQYVwdHw/8QAGQEBAQADAQAAAAAAAAAAAAAAAAECAwQF/8QAHREBAAMBAAIDAAAAAAAAAAAAAAECEQMEMRIhQf/aAAwDAQACEQMRAD8A+YLSv0rFl0xohYHSCO2PHwlxq+b+v36LNLY6aW/12PsdY8Md75rlSXL5VprETEs7g4eQ3VYYnxuY5jw87h2B6/hXOvxul0/4OTG4PI710P7VjtG4uobiALrsEc0OaWuAIIogjqjkt3m14tnpmtK0t2TJ4mTG9sNWDdbjx61S61/GggnidC1rHPB3MbwBVUa7d/ZaIRsAaA1oDflodO3Hos5/IyDqLQCCWxgGjdGyjfy626dd/FUiIq7hERAREQEREGsZg6fk4zDHDG6Mi2ubwfUjn3UnGxo8WIxw7g3dYaTYb5KHpGBNhREyyk7wCYx0af8Af/cqd4sdgeIyzdDcOa6qPH6TOzWJ2HaLl0kbI/Ee9rWddxNBcMyseR4ZHkROcega8EqNeS9VEl0vBme6WWIukceSXu5/Plwpa5kYJI3MPRwIPAP7VWtprP1OM7r7MaOaJkDGMkAO8MFV0r/KqVP1HTcjFc6VxMsZNmT7n6qAq9bjnwjJ0RERtEREBERBc6lrLpHeHhPc1nd9UT5dwql8sj9u+RztoIbZugSTQ9SfdcIjCnOtIyBERGbuOWSJ26KR7HEVbTRU/H1rMgj2Etk5+aQEn3tVqIxtStvcLfL1s5GM6EY7RvFO3G68vwqhERKc60jKiIiMxERAREQEREBERAREQEREBERAREQEREH/2Q==" alt="Mariana" loading="lazy" class="sb-logo">
-    <div class="sb-brand">Terp<em>train</em>
+    <div class="sb-brand">Terp<em>train</em></div>
   </div>
 
-  <!-- SIDEBAR TABS -->
+  <!-- MASCOT -->
+  <div class="sb-mascot" onclick="mascotClick()" title="🚂 Terptrain fährt!">
+    <span class="mascot-train" id="mascot">🚂</span>
+  </div>
+
+  <!-- TABS -->
   <div class="sb-tabs" role="tablist" aria-label="Sidebar Bereiche">
-    <button class="sb-tab act" data-tab="nav"    onclick="sbTab('nav')"   role="tab" aria-selected="true"  title="Navigation">📖</button>
+    <button class="sb-tab act" data-tab="nav"    onclick="sbTab('nav')"    role="tab" aria-selected="true"  title="Navigation">📖</button>
     <button class="sb-tab"     data-tab="config" onclick="sbTab('config')" role="tab" aria-selected="false" title="Einstellungen">⚙️</button>
-    <button class="sb-tab"     data-tab="bm"     onclick="sbTab('bm')"    role="tab" aria-selected="false" title="Lesezeichen">🔖</button>
-    <button class="sb-tab"     data-tab="stats"  onclick="sbTab('stats')" role="tab" aria-selected="false" title="Statistik">📊</button>
+    <button class="sb-tab"     data-tab="bm"     onclick="sbTab('bm')"     role="tab" aria-selected="false" title="Lesezeichen">🔖</button>
+    <button class="sb-tab"     data-tab="stats"  onclick="sbTab('stats')"  role="tab" aria-selected="false" title="Statistik">📊</button>
   </div>
 
   <!-- TAB: NAVIGATION -->
   <div class="sb-panel" id="sbp-nav" role="tabpanel">
     <div class="sb-search-row">
-      <div class="sb-sw"><input type="search" class="sb-si" id="ms-i" placeholder="🔍 Kapitel suchen…" 
-        oninput="sbSearch(this.value);doSearch(this.value)" 
-        aria-label="Kapitel suchen" autocomplete="off"></div>
-    </div>
-    <a id="last-sec-btn" class="nl sb-last" style="display:none;color:var(--go2);border-left-color:var(--go)">
-      <span class="ic">↩</span><span id="last-sec-txt">Zuletzt gelesen</span>
-    </a>
-    <div class="sb-pr">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
-        <span class="sb-pl" id="pl">0% gelesen</span>
-        <button id="cert-btn" onclick="openCert()" style="display:none;background:var(--g1);color:#000;border:none;padding:2px 8px;border-radius:6px;cursor:pointer;font-weight:700;font-size:.62rem;font-family:inherit">🏆</button>
-      </div>
-      <div class="sb-pb"><div class="sb-pf" id="pf"></div></div>
+      <input type="search" class="sb-si" id="ms-i" placeholder="🔍 Suchen…"
+        oninput="doSearch(this.value)" aria-label="Kapitel suchen" autocomplete="off">
     </div>
     <div id="sr" role="listbox">
       <div class="search-suggestions" id="ss">
-        <p>Häufige Suchanfragen</p>
+        <p>Häufige Suchen</p>
         <span class="ss-tag" onclick="ssClick('kündigen')">kündigen</span>
         <span class="ss-tag" onclick="ssClick('tokens')">tokens</span>
         <span class="ss-tag" onclick="ssClick('passwort')">passwort</span>
@@ -796,9 +899,18 @@ body.focus-mode .sec.focused{opacity:1;pointer-events:auto;
         <span class="ss-tag" onclick="ssClick('app')">app</span>
         <span class="ss-tag" onclick="ssClick('zahlung')">zahlung</span>
         <span class="ss-tag" onclick="ssClick('ticket')">ticket</span>
-        <span class="ss-tag" onclick="ssClick('vereinswechsel')">vereinswechsel</span>
         <div id="search-hist"></div>
       </div>
+    </div>
+    <a id="last-sec-btn" class="nl sb-last" style="display:none;color:var(--go2);border-left-color:var(--go)">
+      <span class="ic">↩</span><span id="last-sec-txt">Zuletzt gelesen</span>
+    </a>
+    <div class="sb-pr">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:3px">
+        <span class="sb-pl" id="pl">0% gelesen</span>
+        <button id="cert-btn" onclick="openCert()" style="display:none;background:var(--g1);color:#000;border:none;padding:2px 8px;border-radius:6px;cursor:pointer;font-weight:700;font-size:.62rem;font-family:inherit">🏆</button>
+      </div>
+      <div class="sb-pb"><div class="sb-pf" id="pf"></div></div>
     </div>
     <div class="sb-sec">👋 Willkommen</div>
   <a href="#s-was" class="nl"><span class="ic">🌿</span>Was ist Terptrain?</a>
@@ -844,6 +956,8 @@ body.focus-mode .sec.focused{opacity:1;pointer-events:auto;
   <a href="#s-quiz" class="nl"><span class="ic">🧠</span>Quiz</a>
   <a href="#s-vereinsstruktur" class="nl"><span class="ic">🏛️</span>Vereinsstruktur</a>
   <a href="#s-abholung" class="nl"><span class="ic">📦</span>Abholung</a>
+  <a href="#s-sicherheit" class="nl"><span class="ic">🔐</span>Sicherheit &amp; Datenschutz</a>
+  <a href="#s-knigge" class="nl"><span class="ic">🤝</span>Community-Knigge</a>
 <div class="sb-sec">📊 Statistik</div>
 <div style="padding:5px 10px 8px;flex-shrink:0">
   <div id="ana-top-chapters" style="font-size:.68rem;color:var(--mu)">Wird geladen…</div>
@@ -913,6 +1027,10 @@ body.focus-mode .sec.focused{opacity:1;pointer-events:auto;
       <button class="cfg-btn" onclick="openLearningPaths()" id="paths-btn">🗺️ Pfade</button>
     </div>
     <div class="cfg-row">
+      <button class="cfg-btn" id="pureblack-btn" onclick="togglePureBlack()">⬛ Tiefes Schwarz</button>
+      <button class="cfg-btn" id="cardview-btn" onclick="toggleCardView()">⊞ Karten-Ansicht</button>
+    </div>
+    <div class="cfg-row">
       <button class="cfg-btn" id="compact-btn" onclick="toggleCompact()">⊞ Kompakt</button>
       <button class="cfg-btn" onclick="printGuide()">🖨️ Drucken</button>
     </div>
@@ -932,7 +1050,109 @@ body.focus-mode .sec.focused{opacity:1;pointer-events:auto;
     <div style="padding:8px 10px 4px;font-size:.66rem;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.08em">📊 Meine Statistik</div>
     <div id="ana-top-chapters" style="padding:4px 10px;font-size:.68rem;color:var(--mu)">Wird geladen…</div>
     <button class="ana-reset" onclick="resetAnalytics()" style="margin:4px 10px;font-size:.62rem">🗑️ Zurücksetzen</button>
+  
+    <div style="padding:4px 10px 8px">
+      <button class="export-notes-btn" onclick="exportNotes()" style="width:100%;justify-content:center;font-size:.67rem">📥 Notizen exportieren</button>
+    </div>
   </div>
+
+  <!-- TAB: CONFIG -->
+  <div class="sb-panel" id="sbp-config" style="display:none" role="tabpanel">
+
+    <div class="cfg-label">🌍 Sprache</div>
+    <div class="cfg-row">
+      <div class="lang-wrap" style="flex:1;position:relative">
+        <button class="cfg-btn lang-btn" id="lang-btn" onclick="toggleLangDD()" style="width:100%">🌐 Deutsch</button>
+        <div class="lang-dd" id="lang-dd">
+          <div class="lang-opt active" data-lang="de" onclick="setLang('de')">🇩🇪 Deutsch</div>
+          <div class="lang-opt" data-lang="en" onclick="setLang('en')">🇬🇧 English</div>
+          <div class="lang-opt" data-lang="tr" onclick="setLang('tr')">🇹🇷 Türkçe</div>
+          <div class="lang-opt" data-lang="ar" onclick="setLang('ar')">🇸🇦 العربية</div>
+          <hr style="border:none;border-top:1px solid var(--bd);margin:3px 0">
+          <div class="lang-opt" data-lang="ru" onclick="setLang('ru')">🇷🇺 Русский</div>
+          <div class="lang-opt" data-lang="ro" onclick="setLang('ro')">🇷🇴 Română</div>
+          <div class="lang-opt" data-lang="pl" onclick="setLang('pl')">🇵🇱 Polski</div>
+          <div class="lang-opt" data-lang="uk" onclick="setLang('uk')">🇺🇦 Українська</div>
+          <hr style="border:none;border-top:1px solid var(--bd);margin:3px 0">
+          <div class="lang-opt" data-lang="fr" onclick="setLang('fr')">🇫🇷 Français</div>
+          <div class="lang-opt" data-lang="es" onclick="setLang('es')">🇪🇸 Español</div>
+          <div class="lang-opt" data-lang="it" onclick="setLang('it')">🇮🇹 Italiano</div>
+          <div class="lang-opt" data-lang="nl" onclick="setLang('nl')">🇳🇱 Nederlands</div>
+          <div class="lang-opt" data-lang="pt" onclick="setLang('pt')">🇵🇹 Português</div>
+          <div class="lang-opt" data-lang="el" onclick="setLang('el')">🇬🇷 Ελληνικά</div>
+          <div class="lang-opt" data-lang="sr" onclick="setLang('sr')">🇷🇸 Srpski</div>
+          <div class="lang-opt" data-lang="hr" onclick="setLang('hr')">🇭🇷 Hrvatski</div>
+          <div class="lang-opt" data-lang="bg" onclick="setLang('bg')">🇧🇬 Български</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cfg-label">🎨 Design</div>
+    <div class="cfg-row">
+      <button id="theme-btn" class="cfg-btn" onclick="toggleTheme()">☀️ Hell</button>
+      <button id="pureblack-btn" class="cfg-btn" onclick="togglePureBlack()">⬛ Tief-Schwarz</button>
+    </div>
+    <div class="color-swatches" id="color-swatches" style="padding:4px 10px 6px;gap:7px;display:flex">
+      <div class="cs active" style="background:#4caf50" data-c1="#4caf50" data-c2="#66bb6a" onclick="setAccent('#4caf50','#66bb6a')" aria-label="Grün" title="Grün"></div>
+      <div class="cs" style="background:#1976d2" data-c1="#1976d2" data-c2="#42a5f5" onclick="setAccent('#1976d2','#42a5f5')" aria-label="Blau" title="Blau"></div>
+      <div class="cs" style="background:#e65100" data-c1="#e65100" data-c2="#ff9800" onclick="setAccent('#e65100','#ff9800')" aria-label="Orange" title="Orange"></div>
+      <div class="cs" style="background:#7b1fa2" data-c1="#7b1fa2" data-c2="#ab47bc" onclick="setAccent('#7b1fa2','#ab47bc')" aria-label="Lila" title="Lila"></div>
+      <div class="cs" style="background:#c62828" data-c1="#c62828" data-c2="#ef5350" onclick="setAccent('#c62828','#ef5350')" aria-label="Rot" title="Rot"></div>
+      <div class="cs" style="background:#00838f" data-c1="#00838f" data-c2="#26c6da" onclick="setAccent('#00838f','#26c6da')" aria-label="Türkis" title="Türkis"></div>
+    </div>
+
+    <div class="cfg-label">🔤 Text</div>
+    <div class="cfg-row cfg-row-compact">
+      <span class="cfg-mini-lbl">Größe</span>
+      <button class="fs-btn" onclick="fsChange(-1)" aria-label="Kleiner">−</button>
+      <span class="fs-val" id="fs-val">15px</span>
+      <button class="fs-btn" onclick="fsChange(1)" aria-label="Größer">+</button>
+      <button class="fs-btn" onclick="toggleSerif()" id="serif-btn" style="width:auto;padding:0 6px;font-size:.6rem" title="Serif/Sans">Aa</button>
+    </div>
+    <div class="cfg-row cfg-row-compact">
+      <span class="cfg-mini-lbl">Zeilen</span>
+      <button class="fs-btn" onclick="lhChange(-1)" aria-label="Enger">−</button>
+      <span class="fs-val" id="lh-val">1.7</span>
+      <button class="fs-btn" onclick="lhChange(1)" aria-label="Weiter">+</button>
+      <button class="fs-btn" onclick="toggleRuler()" id="ruler-btn" style="width:auto;padding:0 5px;font-size:.58rem" title="Leselineal">📏</button>
+    </div>
+
+    <div class="cfg-label">⚙️ Ansicht</div>
+    <div class="cfg-row">
+      <button class="cfg-btn" id="compact-btn" onclick="toggleCompact()">⊞ Kompakt</button>
+      <button class="cfg-btn" id="cardview-btn" onclick="toggleCardView()">🃏 Karten</button>
+    </div>
+    <div class="cfg-row">
+      <button class="cfg-btn" id="focus-btn" onclick="enterFocus()">🎯 Fokus</button>
+      <button class="cfg-btn" id="paths-btn" onclick="openLearningPaths()">🗺️ Lernpfade</button>
+    </div>
+
+    <div class="cfg-label">♿ Barrierefreiheit</div>
+    <div class="cfg-row">
+      <button class="cfg-btn" id="a11y-btn" onclick="toggleA11y()">⬜ Screenreader</button>
+      <button class="cfg-btn" id="hc-btn" onclick="toggleHighContrast()">🔆 Kontrast</button>
+    </div>
+
+    <div class="cfg-label">🛠️ Aktionen</div>
+    <div class="cfg-row">
+      <button class="cfg-btn" onclick="printGuide()">🖨️ Drucken</button>
+      <button class="cfg-btn" onclick="printToc()">📋 Inhaltsverz.</button>
+    </div>
+  </div>
+
+  <!-- TAB: BOOKMARKS -->
+  <div class="sb-panel" id="sbp-bm" style="display:none" role="tabpanel">
+    <div style="padding:8px 10px 4px;font-size:.66rem;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.08em" id="bm-panel-title">🔖 Lesezeichen</div>
+    <div id="sb-bm-list" style="padding:0 6px 8px"><div class="sb-bm-empty">Noch keine Lesezeichen</div></div>
+  </div>
+
+  <!-- TAB: STATS -->
+  <div class="sb-panel" id="sbp-stats" style="display:none" role="tabpanel">
+    <div style="padding:8px 10px 4px;font-size:.66rem;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.08em">📊 Statistik</div>
+    <div id="ana-top-chapters" style="padding:4px 10px;font-size:.68rem;color:var(--mu)">Wird geladen…</div>
+    <button class="ana-reset" onclick="resetAnalytics()" style="margin:4px 10px;font-size:.62rem">🗑️ Zurücksetzen</button>
+  </div>
+
 </nav>
 
 <!-- MAIN -->
@@ -989,6 +1209,7 @@ body.focus-mode .sec.focused{opacity:1;pointer-events:auto;
 <!-- QUICK LINKS -->
 <div class="minimap" id="minimap"><div class="minimap-fill" id="mm-fill"></div></div>
 <div class="sticky-title" id="sticky-title"></div>
+<div id="season-banner" class="season-banner"></div>
 <div class="ql-bar">
   <a href="#s-aufbau" class="ql">🏗️ Aufbau</a>
   <a href="#s-login" class="ql">🔐 Login</a>
@@ -1050,6 +1271,13 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 </div>
 
+
+<div class="ssh">📚 Dein persönlicher Lernplan</div>
+<div class="lp-personal" id="personal-lp">
+  <h3>🎯 Was du noch lesen solltest</h3>
+  <div id="lp-personal-list"><p style="color:var(--mu);font-size:.79rem">Wird berechnet…</p></div>
+</div>
+
 <div class="daily-tip" id="daily-tip-box">
   <div class="tip-head">💡 Tipp des Tages</div>
   <div class="tip-body" id="tip-text">Wird geladen…</div>
@@ -1079,6 +1307,10 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-was" onclick="toggleDone('s-was')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Was&body=**Kapitel%3A**+Kap. Was%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Was&body=**Kapitel%3A**+Kap. Was%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-was">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-was','yes')">👍 Ja</button>
@@ -1122,6 +1354,10 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-aufbau" onclick="toggleDone('s-aufbau')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Aufbau&body=**Kapitel%3A**+Kap. Aufbau%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Aufbau&body=**Kapitel%3A**+Kap. Aufbau%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-aufbau">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-aufbau','yes')">👍 Ja</button>
@@ -1159,6 +1395,10 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-login" onclick="toggleDone('s-login')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Login&body=**Kapitel%3A**+Kap. Login%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Login&body=**Kapitel%3A**+Kap. Login%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-login">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-login','yes')">👍 Ja</button>
@@ -1204,6 +1444,10 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-mobil" onclick="toggleDone('s-mobil')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Mobil&body=**Kapitel%3A**+Kap. Mobil%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Mobil&body=**Kapitel%3A**+Kap. Mobil%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-mobil">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-mobil','yes')">👍 Ja</button>
@@ -1243,6 +1487,10 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-desktop" onclick="toggleDone('s-desktop')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Desktop&body=**Kapitel%3A**+Kap. Desktop%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Desktop&body=**Kapitel%3A**+Kap. Desktop%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-desktop">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-desktop','yes')">👍 Ja</button>
@@ -1289,6 +1537,10 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-gruppen" class="rec-link">→ Gruppen entdecken</a></div>
 <div class="done-check" id="done-s-feed" onclick="toggleDone('s-feed')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Feed&body=**Kapitel%3A**+Kap. Feed%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Feed&body=**Kapitel%3A**+Kap. Feed%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-feed">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-feed','yes')">👍 Ja</button>
@@ -1380,6 +1632,10 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-nachrichten" class="rec-link">→ Nachrichten & Chat</a></div>
 <div class="done-check" id="done-s-gruppen" onclick="toggleDone('s-gruppen')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Gruppen&body=**Kapitel%3A**+Kap. Gruppen%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Gruppen&body=**Kapitel%3A**+Kap. Gruppen%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-gruppen">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-gruppen','yes')">👍 Ja</button>
@@ -1428,6 +1684,10 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-nachrichten" onclick="toggleDone('s-nachrichten')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Nachrichten&body=**Kapitel%3A**+Kap. Nachrichten%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Nachrichten&body=**Kapitel%3A**+Kap. Nachrichten%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-nachrichten">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-nachrichten','yes')">👍 Ja</button>
@@ -1466,6 +1726,10 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-mitteilungen" onclick="toggleDone('s-mitteilungen')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Mitteilungen&body=**Kapitel%3A**+Kap. Mitteilungen%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Mitteilungen&body=**Kapitel%3A**+Kap. Mitteilungen%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-mitteilungen">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-mitteilungen','yes')">👍 Ja</button>
@@ -1504,6 +1768,10 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-kalender" onclick="toggleDone('s-kalender')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Kalender&body=**Kapitel%3A**+Kap. Kalender%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Kalender&body=**Kapitel%3A**+Kap. Kalender%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-kalender">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-kalender','yes')">👍 Ja</button>
@@ -1577,6 +1845,10 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-lizenz" class="rec-link">→ Was passiert nach der Anbaulizenz?</a></div>
 <div class="done-check" id="done-s-standorte" onclick="toggleDone('s-standorte')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Standorte&body=**Kapitel%3A**+Kap. Standorte%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Standorte&body=**Kapitel%3A**+Kap. Standorte%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-standorte">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-standorte','yes')">👍 Ja</button>
@@ -1634,6 +1906,10 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-entwicklung" onclick="toggleDone('s-entwicklung')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Entwicklung&body=**Kapitel%3A**+Kap. Entwicklung%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Entwicklung&body=**Kapitel%3A**+Kap. Entwicklung%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-entwicklung">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-entwicklung','yes')">👍 Ja</button>
@@ -1685,6 +1961,10 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-abholung" class="rec-link">→ Abholung Schritt für Schritt</a></div>
 <div class="done-check" id="done-s-cannabis" onclick="toggleDone('s-cannabis')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Cannabis&body=**Kapitel%3A**+Kap. Cannabis%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Cannabis&body=**Kapitel%3A**+Kap. Cannabis%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-cannabis">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-cannabis','yes')">👍 Ja</button>
@@ -1731,6 +2011,10 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-passwort" class="rec-link">→ Passwort ändern</a></div>
 <div class="done-check" id="done-s-profil" onclick="toggleDone('s-profil')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Profil&body=**Kapitel%3A**+Kap. Profil%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Profil&body=**Kapitel%3A**+Kap. Profil%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-profil">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-profil','yes')">👍 Ja</button>
@@ -1777,6 +2061,10 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-privatsphaere" class="rec-link">→ Privatsphäre-Einstellungen</a></div>
 <div class="done-check" id="done-s-passwort" onclick="toggleDone('s-passwort')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Passwort&body=**Kapitel%3A**+Kap. Passwort%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Passwort&body=**Kapitel%3A**+Kap. Passwort%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-passwort">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-passwort','yes')">👍 Ja</button>
@@ -1822,6 +2110,10 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-privatsphaere" onclick="toggleDone('s-privatsphaere')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Privatsphaere&body=**Kapitel%3A**+Kap. Privatsphaere%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Privatsphaere&body=**Kapitel%3A**+Kap. Privatsphaere%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-privatsphaere">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-privatsphaere','yes')">👍 Ja</button>
@@ -1865,6 +2157,10 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-benachrichtigungen" onclick="toggleDone('s-benachrichtigungen')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Benachrichtigungen&body=**Kapitel%3A**+Kap. Benachrichtigungen%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Benachrichtigungen&body=**Kapitel%3A**+Kap. Benachrichtigungen%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-benachrichtigungen">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-benachrichtigungen','yes')">👍 Ja</button>
@@ -1904,6 +2200,10 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-auszeichnungen" onclick="toggleDone('s-auszeichnungen')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Auszeichnungen&body=**Kapitel%3A**+Kap. Auszeichnungen%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Auszeichnungen&body=**Kapitel%3A**+Kap. Auszeichnungen%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-auszeichnungen">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-auszeichnungen','yes')">👍 Ja</button>
@@ -1992,6 +2292,10 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-zahlungen" class="rec-link">→ Zahlungen & Rechnungen</a></div>
 <div class="done-check" id="done-s-tokens" onclick="toggleDone('s-tokens')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Tokens&body=**Kapitel%3A**+Kap. Tokens%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Tokens&body=**Kapitel%3A**+Kap. Tokens%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-tokens">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-tokens','yes')">👍 Ja</button>
@@ -2042,6 +2346,10 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-beitrag" class="rec-link">→ Beitrag anpassen</a></div>
 <div class="done-check" id="done-s-zahlungen" onclick="toggleDone('s-zahlungen')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Zahlungen&body=**Kapitel%3A**+Kap. Zahlungen%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Zahlungen&body=**Kapitel%3A**+Kap. Zahlungen%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-zahlungen">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-zahlungen','yes')">👍 Ja</button>
@@ -2085,6 +2393,10 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-beitrag" onclick="toggleDone('s-beitrag')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Beitrag&body=**Kapitel%3A**+Kap. Beitrag%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Beitrag&body=**Kapitel%3A**+Kap. Beitrag%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-beitrag">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-beitrag','yes')">👍 Ja</button>
@@ -2172,6 +2484,10 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-kuendigung" class="rec-link">→ Mitgliedschaft kündigen</a></div>
 <div class="done-check" id="done-s-mitgliedschaft" onclick="toggleDone('s-mitgliedschaft')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Mitgliedschaft&body=**Kapitel%3A**+Kap. Mitgliedschaft%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Mitgliedschaft&body=**Kapitel%3A**+Kap. Mitgliedschaft%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-mitgliedschaft">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-mitgliedschaft','yes')">👍 Ja</button>
@@ -2211,6 +2527,10 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-vereinswechsel" class="rec-link">→ Vereinswechsel</a></div>
 <div class="done-check" id="done-s-kuendigung" onclick="toggleDone('s-kuendigung')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Kuendigung&body=**Kapitel%3A**+Kap. Kuendigung%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Kuendigung&body=**Kapitel%3A**+Kap. Kuendigung%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-kuendigung">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-kuendigung','yes')">👍 Ja</button>
@@ -2247,6 +2567,10 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-vereinswechsel" onclick="toggleDone('s-vereinswechsel')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Vereinswechsel&body=**Kapitel%3A**+Kap. Vereinswechsel%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Vereinswechsel&body=**Kapitel%3A**+Kap. Vereinswechsel%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-vereinswechsel">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-vereinswechsel','yes')">👍 Ja</button>
@@ -2291,6 +2615,10 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-datenschutz" onclick="toggleDone('s-datenschutz')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Datenschutz&body=**Kapitel%3A**+Kap. Datenschutz%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Datenschutz&body=**Kapitel%3A**+Kap. Datenschutz%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-datenschutz">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-datenschutz','yes')">👍 Ja</button>
@@ -2412,6 +2740,10 @@ class="ssh">🤔 Was brauchst du? – Entscheidungshilfe</div>
 
 <div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-ticket" class="rec-link">→ Support-Ticket erstellen</a></div>
 <div class="done-check" id="done-s-support" onclick="toggleDone('s-support')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Support&body=**Kapitel%3A**+Kap. Support%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Support&body=**Kapitel%3A**+Kap. Support%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-support">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-support','yes')">👍 Ja</button>
@@ -2465,6 +2797,10 @@ class="ssh">🤔 Was brauchst du? – Entscheidungshilfe</div>
 </div>
 
 <div class="done-check" id="done-s-ticket" onclick="toggleDone('s-ticket')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Ticket&body=**Kapitel%3A**+Kap. Ticket%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Ticket&body=**Kapitel%3A**+Kap. Ticket%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-ticket">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-ticket','yes')">👍 Ja</button>
@@ -2527,6 +2863,10 @@ class="ssh">🤔 Was brauchst du? – Entscheidungshilfe</div>
 </div>
 
 <div class="done-check" id="done-s-webapp" onclick="toggleDone('s-webapp')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Webapp&body=**Kapitel%3A**+Kap. Webapp%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Webapp&body=**Kapitel%3A**+Kap. Webapp%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-webapp">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-webapp','yes')">👍 Ja</button>
@@ -2581,6 +2921,10 @@ class="ssh">🤔 Was brauchst du? – Entscheidungshilfe</div>
 </div>
 
 <div class="done-check" id="done-s-regelwerk" onclick="toggleDone('s-regelwerk')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Regelwerk&body=**Kapitel%3A**+Kap. Regelwerk%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Regelwerk&body=**Kapitel%3A**+Kap. Regelwerk%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-regelwerk">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-regelwerk','yes')">👍 Ja</button>
@@ -2663,6 +3007,10 @@ class="ssh">👤 Profil &amp; Konto</div>
 </div>
 
 <div class="done-check" id="done-s-faq" onclick="toggleDone('s-faq')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Faq&body=**Kapitel%3A**+Kap. Faq%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Faq&body=**Kapitel%3A**+Kap. Faq%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-faq">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-faq','yes')">👍 Ja</button>
@@ -2727,6 +3075,10 @@ class="ssh">🌿 Cannabis &amp; Recht</div>
 </div>
 
 <div class="done-check" id="done-s-glossar" onclick="toggleDone('s-glossar')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Glossar&body=**Kapitel%3A**+Kap. Glossar%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Glossar&body=**Kapitel%3A**+Kap. Glossar%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-glossar">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-glossar','yes')">👍 Ja</button>
@@ -2773,6 +3125,10 @@ class="ssh">🌿 Cannabis &amp; Recht</div>
 </div>
 
 <div class="done-check" id="done-s-changelog" onclick="toggleDone('s-changelog')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Changelog&body=**Kapitel%3A**+Kap. Changelog%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Changelog&body=**Kapitel%3A**+Kap. Changelog%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-changelog">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-changelog','yes')">👍 Ja</button>
@@ -2847,6 +3203,10 @@ class="ssh">👤 Profil &amp; Konto</div>
 </div>
 
 <div class="done-check" id="done-s-fehler" onclick="toggleDone('s-fehler')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Fehler&body=**Kapitel%3A**+Kap. Fehler%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Fehler&body=**Kapitel%3A**+Kap. Fehler%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-fehler">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-fehler','yes')">👍 Ja</button>
@@ -2925,6 +3285,10 @@ class="ssh">👤 Profil &amp; Konto</div>
 
 <div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-abholung" class="rec-link">→ Abholung Schritt für Schritt</a></div>
 <div class="done-check" id="done-s-lizenz" onclick="toggleDone('s-lizenz')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Lizenz&body=**Kapitel%3A**+Kap. Lizenz%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Lizenz&body=**Kapitel%3A**+Kap. Lizenz%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-lizenz">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-lizenz','yes')">👍 Ja</button>
@@ -2968,6 +3332,10 @@ class="ssh">👤 Profil &amp; Konto</div>
   <button class="ca-btn" id="bm-btn-s-quiz" onclick="toggleBookmark('s-quiz','Quiz')" title="Lesezeichen">🔖 Merken</button>
   <button class="ca-btn" onclick="shareChapter('s-quiz',this)">🔗 Teilen</button>
   <button class="ca-btn" onclick="printChapter('s-quiz')">🖨️ Drucken</button>
+</div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Quiz&body=**Kapitel%3A**+Kap. Quiz%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Quiz&body=**Kapitel%3A**+Kap. Quiz%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
 </div>
 <div class="feedback-bar" data-sec="s-quiz">
   <span class="fb-lbl">War das hilfreich?</span>
@@ -3083,6 +3451,10 @@ class="ssh">👤 Profil &amp; Konto</div>
   <button class="ca-btn" onclick="shareChapter('s-vereinsstruktur',this)">🔗 Teilen</button>
   <button class="ca-btn" onclick="printChapter('s-vereinsstruktur')">🖨️ Drucken</button>
 </div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Vereinsstruktur&body=**Kapitel%3A**+Kap. Vereinsstruktur%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Vereinsstruktur&body=**Kapitel%3A**+Kap. Vereinsstruktur%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-vereinsstruktur">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-vereinsstruktur','yes')">👍 Ja</button>
@@ -3167,6 +3539,10 @@ class="ssh">👤 Profil &amp; Konto</div>
   <button class="ca-btn" onclick="shareChapter('s-abholung',this)">🔗 Teilen</button>
   <button class="ca-btn" onclick="printChapter('s-abholung')">🖨️ Drucken</button>
 </div>
+<div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Abholung&body=**Kapitel%3A**+Kap. Abholung%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Abholung&body=**Kapitel%3A**+Kap. Abholung%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
 <div class="feedback-bar" data-sec="s-abholung">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-abholung','yes')">👍 Ja</button>
@@ -3182,6 +3558,123 @@ class="ssh">👤 Profil &amp; Konto</div>
 </div>
 </section>
 
+<section class="sec" id="s-sicherheit" aria-labelledby="h2-sicherheit">
+<div class="sec-tag">Kapitel 38</div>
+<h2 class="sec-h" id="h2-sicherheit"><div class="sec-icon">🔐</div>Sicherheit &amp; Datenschutz im Detail</h2>
+<div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Rechtliches</span><span>›</span><span>Sicherheit &amp; Datenschutz</span></div>
+<p class="sec-intro">Transparenz ist uns wichtig. Hier erfährst du genau was Terptrain speichert, wer was sehen kann und wie du alle deine Daten löschen kannst.</p>
+
+<div class="ssh">📦 Was wird wo gespeichert?</div>
+<table class="tbl">
+  <tr><th>Datentyp</th><th>Wo gespeichert?</th><th>Wer kann es sehen?</th></tr>
+  <tr><td>👤 CSC-Mitgliedsdaten<br><small style="color:var(--mu)">(Name, Adresse, IBAN, Mitgliedsnummer)</small></td><td>Server der Mariana Services GmbH</td><td>Nur du + Vorstand deines Vereins</td></tr>
+  <tr><td>📱 Social-Media-Profil<br><small style="color:var(--mu)">(Anzeigename, Handle, Biografie, Bild)</small></td><td>Server (getrennt von CSC-Daten)</td><td>Alle Terptrain-Mitglieder</td></tr>
+  <tr><td>💬 Private Nachrichten</td><td>Server (verschlüsselt)</td><td>Nur Gesprächspartner</td></tr>
+  <tr><td>📊 Nutzungsverhalten</td><td>Intern, keine Weitergabe</td><td>Nur Betreiber (anonym)</td></tr>
+  <tr><td>🍪 Sitzungs-Cookies</td><td>Dein Browser</td><td>Nur du</td></tr>
+  <tr><td>📝 Zahlungsdaten</td><td>Mollie (zertifizierter Zahlungsdienstleister)</td><td>Mollie + Betreiber (anonymisiert)</td></tr>
+</table>
+
+<div class="ssh">👁️ Wer sieht was von mir?</div>
+<div class="cards">
+  <div class="card"><div class="ci">👥</div><h4>Andere Mitglieder</h4><p>Sehen nur deinen <strong>Anzeigenamen</strong>, Handle, Biografie und Beiträge. Niemals Klarnamen, Adresse oder Zahlungsdaten.</p></div>
+  <div class="card"><div class="ci">🏛️</div><h4>Dein Vorstand</h4><p>Sieht CSC-relevante Mitgliedsdaten (für Vereinsverwaltung, Abholung, Kündigung). Kein Zugriff auf private Nachrichten.</p></div>
+  <div class="card"><div class="ci">🏢</div><h4>Betreiber (Mariana Services GmbH)</h4><p>Hat technischen Zugriff für Support und Sicherheit. Streng an Datenschutzerklärung und DSGVO gebunden.</p></div>
+  <div class="card"><div class="ci">🌐</div><h4>Externe Dienste</h4><p>Mollie (Zahlung) und Clubdoktor (Medizinal) erhalten nur die für ihre Funktion nötigen Daten.</p></div>
+</div>
+
+<div class="ssh">🗑️ Wie lösche ich meine Daten?</div>
+<div class="steps">
+  <div class="st"><div class="st-l"><div class="st-n">1</div><div class="st-line"></div></div><div class="st-b"><div class="st-t">Social-Media-Profil löschen</div><div class="st-d">Profil → Einstellungen → „Profil löschen". Alle deine Beiträge, Likes und Follower-Beziehungen werden entfernt.</div></div></div>
+  <div class="st"><div class="st-l"><div class="st-n">2</div><div class="st-line"></div></div><div class="st-b"><div class="st-t">CSC-Mitgliedschaft kündigen</div><div class="st-d">Danach werden CSC-Mitgliedsdaten nach gesetzlicher Aufbewahrungsfrist (10 Jahre für Buchungsbelege) gelöscht. → <a href="#s-kuendigung">Kap. 23</a></div></div></div>
+  <div class="st"><div class="st-l"><div class="st-n">3</div><div class="st-line"></div></div><div class="st-b"><div class="st-t">Vollständige Datenlöschung beantragen</div><div class="st-d">Support-Ticket mit Betreff „Datenlöschung (DSGVO Art. 17)" – du erhältst eine Bestätigung innerhalb von 30 Tagen.</div></div></div>
+</div>
+
+<div class="ssh">🔒 Sicherheitstipps</div>
+<div class="call tip"><span class="ci">✅</span><div><strong>Starkes Passwort</strong> nutzen (min. 12 Zeichen, Sonderzeichen). Nicht dasselbe Passwort wie für andere Dienste! → <a href="#s-passwort">Passwort ändern</a></div></div>
+<div class="call info"><span class="ci">ℹ️</span><div>Terptrain fragt <strong>nie</strong> per E-Mail oder Chat nach deinem Passwort! Bei verdächtigen Nachrichten → sofort melden.</div></div>
+<div class="call warn"><span class="ci">⚠️</span><div>Screenshots von privaten Nachrichten dürfen <strong>nie ohne Zustimmung</strong> geteilt werden – weder innerhalb noch außerhalb von Terptrain.</div></div>
+
+<div class="call info"><span class="ci">📋</span><div>Vollständige Datenschutzerklärung: <a href="#s-datenschutz">Kapitel 25 – Datenschutz, Impressum &amp; AGB</a></div></div>
+<div class="done-check" id="done-s-sicherheit" onclick="toggleDone('s-sicherheit')" role="checkbox" aria-checked="false" tabindex="0"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="chap-actions" data-sec-actions="s-sicherheit">
+  <button class="ca-btn" id="bm-btn-s-sicherheit" onclick="toggleBookmark('s-sicherheit','Kap. s-sicherheit')" title="Lesezeichen">🔖 Merken</button>
+  <button class="ca-btn" onclick="shareChapter('s-sicherheit',this)">🔗 Teilen</button>
+  <button class="ca-btn" onclick="printChapter('s-sicherheit')">🖨️ Drucken</button>
+</div><div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Sicherheit&body=**Kapitel%3A**+Kap. Sicherheit%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Sicherheit&body=**Kapitel%3A**+Kap. Sicherheit%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
+<div class="feedback-bar" data-sec="s-sicherheit">
+  <span class="fb-lbl">War das hilfreich?</span>
+  <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-sicherheit','yes')">👍 Ja</button>
+  <button class="fb-btn" data-v="no" onclick="fbClick(this,'s-sicherheit','no')">👎 Nein</button>
+  <span class="fb-thanks">Danke! 🙏</span>
+  <button class="note-btn" onclick="toggleNotes(this,'s-sicherheit')">📝 Notiz</button>
+  <span class="note-dot" data-ni="s-sicherheit"></span>
+</div>
+<div class="notes-area">
+  <textarea placeholder="Deine Notizen…"></textarea>
+  <button class="note-save" onclick="saveNote(this,'s-sicherheit')">Speichern</button>
+  <span class="note-saved">✓ Gespeichert</span>
+</div>
+</section>
+<section class="sec" id="s-knigge" aria-labelledby="h2-knigge">
+<div class="sec-tag">Kapitel 39</div>
+<h2 class="sec-h" id="h2-knigge"><div class="sec-icon">🤝</div>Community-Knigge – Ungeschriebene Regeln</h2>
+<div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Hilfe</span><span>›</span><span>Community-Knigge</span></div>
+<p class="sec-intro">Neben dem offiziellen Regelwerk gibt es ungeschriebene Regeln die den Umgang in der Community angenehm machen. Hier findest du Tipps für gute Beiträge und respektvolle Kommunikation.</p>
+
+<div class="ssh">✍️ Wie schreibt man gute Beiträge?</div>
+<div class="cards">
+  <div class="card"><div class="ci">📝</div><h4>Klare Überschrift</h4><p>Fasse deinen Beitrag in einem Satz zusammen. „Meine erste Ernte!" ist besser als „Hi".</p></div>
+  <div class="card"><div class="ci">🖼️</div><h4>Bilder sagen mehr</h4><p>Pflanzenbeiträge mit Fotos bekommen deutlich mehr Reaktionen. Max. 5 MB, JPG oder PNG.</p></div>
+  <div class="card"><div class="ci">🏷️</div><h4>Richtige Gruppe wählen</h4><p>Anbau-Tipps gehören in Anbau-Gruppen, nicht in den allgemeinen Feed. So findet jeder was sucht.</p></div>
+  <div class="card"><div class="ci">❓</div><h4>Eine Frage pro Post</h4><p>Stelle immer nur eine Frage pro Beitrag. So bekommst du fokussiertere Antworten.</p></div>
+  <div class="card"><div class="ci">🔍</div><h4>Erst suchen, dann fragen</h4><p>Schau ob die Frage schon gestellt wurde – vermeidet Doppelungen und spart allen Zeit.</p></div>
+  <div class="card"><div class="ci">💚</div><h4>Positiv formulieren</h4><p>„Wie könnte man X verbessern?" kommt besser an als „X ist schlecht". Konstruktiv ist immer besser.</p></div>
+</div>
+
+<div class="ssh">💬 Tonalität &amp; Umgang</div>
+<div class="acc open"><div class="acc-h" onclick="tAcc(this)"><span>🤝 Du vs. Sie – was ist üblich?</span><span class="arr">▶</span></div>
+<div class="acc-b"><p style="color:var(--tx2);font-size:.82rem;line-height:1.7">In der Terptrain-Community hat sich ein lockeres „Du" etabliert. Das macht den Austausch persönlicher und niederschwelliger. Neulinge werden herzlich willkommen geheißen – vergiss nicht selbst mal jemanden zu begrüßen!</p></div></div>
+
+<div class="acc"><div class="acc-h" onclick="tAcc(this)"><span>🌡️ Wie gehe ich mit Kritik um?</span><span class="arr">▶</span></div>
+<div class="acc-b"><p style="color:var(--tx2);font-size:.82rem;line-height:1.7">Kritik sachlich und konstruktiv formulieren. Persönliche Angriffe haben in der Community keinen Platz. Bei Meinungsverschiedenheiten: erst Luft holen, dann antworten. Im Zweifelsfall gilt: weiterscrollen statt antworten.</p></div></div>
+
+<div class="acc"><div class="acc-h" onclick="tAcc(this)"><span>🏆 Wie werde ich ein wertvolles Community-Mitglied?</span><span class="arr">▶</span></div>
+<div class="acc-b"><p style="color:var(--tx2);font-size:.82rem;line-height:1.7">Aktiv sein, helfen, teilen und konstruktiv beitragen. Wer regelmäßig hilfreiche Inhalte postet und anderen antwortet, wird schnell zu einem geschätzten Mitglied. Auch das Melden von Regelbrüchen ist ein wertvoller Beitrag zur Community.</p></div></div>
+
+<div class="acc"><div class="acc-h" onclick="tAcc(this)"><span>🌐 Was gilt für mehrsprachige Mitglieder?</span><span class="arr">▶</span></div>
+<div class="acc-b"><p style="color:var(--tx2);font-size:.82rem;line-height:1.7">Beiträge auf Deutsch sind der Standard, aber andere Sprachen sind willkommen – besonders in dedizierten Sprachgruppen. Eine kurze englische Zusammenfassung hilft internationalen Mitgliedern.</p></div></div>
+
+<div class="ssh">🚫 Die goldenen Regeln</div>
+<div class="call tip"><span class="ci">✅</span><div><strong>Tue es:</strong> Herzlich sein · Fragen ehrlich beantworten · Neue Mitglieder begrüßen · Gute Inhalte liken/kommentieren · Fehler sachlich korrigieren</div></div>
+<div class="call danger"><span class="ci">🚫</span><div><strong>Lass es:</strong> Spam und Kettenbriefe · Off-Topic-Posts in spezifischen Gruppen · Übermäßiges Selbstmarketing · Beleidigungen, auch als „Spaß" · Preise für Cannabis nennen</div></div>
+<div class="call warn"><span class="ci">💡</span><div><strong>Merke:</strong> Das Regelwerk (<a href="#s-regelwerk">Kap. 29</a>) ist die verbindliche Grundlage – der Knigge ergänzt ihn. Bei Konflikten gilt immer das Regelwerk.</div></div>
+<div class="done-check" id="done-s-knigge" onclick="toggleDone('s-knigge')" role="checkbox" aria-checked="false" tabindex="0"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="chap-actions" data-sec-actions="s-knigge">
+  <button class="ca-btn" id="bm-btn-s-knigge" onclick="toggleBookmark('s-knigge','Kap. s-knigge')" title="Lesezeichen">🔖 Merken</button>
+  <button class="ca-btn" onclick="shareChapter('s-knigge',this)">🔗 Teilen</button>
+  <button class="ca-btn" onclick="printChapter('s-knigge')">🖨️ Drucken</button>
+</div><div class="gh-actions">
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=outdated.md&labels=outdated&title=Veraltet%3A+Kap. Knigge&body=**Kapitel%3A**+Kap. Knigge%0A%0A**Was+stimmt+nicht+mehr%3F**%0A" target="_blank" rel="noopener" class="gh-btn outdated" title="Veraltete Info melden">⚠️ Stimmt das noch?</a>
+  <a href="https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?template=question.md&labels=question&title=Frage+zu%3A+Kap. Knigge&body=**Kapitel%3A**+Kap. Knigge%0A%0A**Meine+Frage%3A**%0A" target="_blank" rel="noopener" class="gh-btn" title="Frage stellen">💬 Frage stellen</a>
+</div>
+<div class="feedback-bar" data-sec="s-knigge">
+  <span class="fb-lbl">War das hilfreich?</span>
+  <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-knigge','yes')">👍 Ja</button>
+  <button class="fb-btn" data-v="no" onclick="fbClick(this,'s-knigge','no')">👎 Nein</button>
+  <span class="fb-thanks">Danke! 🙏</span>
+  <button class="note-btn" onclick="toggleNotes(this,'s-knigge')">📝 Notiz</button>
+  <span class="note-dot" data-ni="s-knigge"></span>
+</div>
+<div class="notes-area">
+  <textarea placeholder="Deine Notizen…"></textarea>
+  <button class="note-save" onclick="saveNote(this,'s-knigge')">Speichern</button>
+  <span class="note-saved">✓ Gespeichert</span>
+</div>
+</section>
 <div class="footer">
   <div>
     <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAA4AHADASIAAhEBAxEB/8QAGgABAAMBAQEAAAAAAAAAAAAAAAQFBgIDB//EAC0QAAEEAQMCBAYCAwAAAAAAAAEAAgMRBAUSITFBE3GBkSIyUWGhsQYVwdHw/8QAGQEBAQADAQAAAAAAAAAAAAAAAAECAwQF/8QAHREBAAMBAAIDAAAAAAAAAAAAAAECEQMEMRIhQf/aAAwDAQACEQMRAD8A+YLSv0rFl0xohYHSCO2PHwlxq+b+v36LNLY6aW/12PsdY8Md75rlSXL5VprETEs7g4eQ3VYYnxuY5jw87h2B6/hXOvxul0/4OTG4PI710P7VjtG4uobiALrsEc0OaWuAIIogjqjkt3m14tnpmtK0t2TJ4mTG9sNWDdbjx61S61/GggnidC1rHPB3MbwBVUa7d/ZaIRsAaA1oDflodO3Hos5/IyDqLQCCWxgGjdGyjfy626dd/FUiIq7hERAREQEREGsZg6fk4zDHDG6Mi2ubwfUjn3UnGxo8WIxw7g3dYaTYb5KHpGBNhREyyk7wCYx0af8Af/cqd4sdgeIyzdDcOa6qPH6TOzWJ2HaLl0kbI/Ee9rWddxNBcMyseR4ZHkROcega8EqNeS9VEl0vBme6WWIukceSXu5/Plwpa5kYJI3MPRwIPAP7VWtprP1OM7r7MaOaJkDGMkAO8MFV0r/KqVP1HTcjFc6VxMsZNmT7n6qAq9bjnwjJ0RERtEREBERBc6lrLpHeHhPc1nd9UT5dwql8sj9u+RztoIbZugSTQ9SfdcIjCnOtIyBERGbuOWSJ26KR7HEVbTRU/H1rMgj2Etk5+aQEn3tVqIxtStvcLfL1s5GM6EY7RvFO3G68vwqhERKc60jKiIiMxERAREQEREBERAREQEREBERAREQEREH/2Q==" alt="Mariana Community" loading="lazy">
@@ -3675,64 +4168,54 @@ if('serviceWorker' in navigator){
 
 // ════════════════════════════════════════════════
 // HIGHLIGHT → NOTE
-// ════════════════════════════════════════════════
 (function(){
-  var tooltip = document.getElementById('hl-tooltip');
-  var currentSec = '';
-  var currentText = '';
+  var currentSec = '', currentText = '';
+
+  function gt(){ return document.getElementById('hl-tooltip'); }
+  function hide(){ var t=gt(); if(t) t.style.display='none'; }
 
   document.addEventListener('mouseup', function(e){
-    if(e.target.closest('#hl-tooltip')) return;
+    var el = e.target && e.target.nodeType===1 ? e.target : (e.target && e.target.parentElement);
+    if(el && el.closest && el.closest('#hl-tooltip')) return;
     var sel = window.getSelection();
-    if(!sel || sel.rangeCount===0 || sel.toString().trim().length<5){
-      tooltip.style.display='none';
-      return;
-    }
+    if(!sel || !sel.rangeCount || sel.toString().trim().length < 5){ hide(); return; }
     var text = sel.toString().trim();
-    // Find which section we're in
     var node = sel.anchorNode;
     var sec = null;
     while(node && node !== document.body){
       if(node.nodeType===1 && node.id && node.id.startsWith('s-')){ sec=node; break; }
       node = node.parentElement;
     }
-    if(!sec){ tooltip.style.display='none'; return; }
-    currentSec = sec.id;
-    currentText = text;
+    if(!sec){ hide(); return; }
+    currentSec = sec.id; currentText = text;
+    var t = gt(); if(!t) return;
     var r = sel.getRangeAt(0).getBoundingClientRect();
-    tooltip.style.display = 'block';
-    tooltip.style.left = Math.max(5, Math.min(window.innerWidth-160, r.left + window.scrollX)) + 'px';
-    tooltip.style.top = (r.bottom + window.scrollY + 6) + 'px';
+    t.style.display = 'block';
+    t.style.left = Math.max(5, Math.min(window.innerWidth-160, r.left+window.scrollX))+'px';
+    t.style.top = (r.bottom+window.scrollY+6)+'px';
   });
 
   document.addEventListener('mousedown', function(e){
-    if(!e.target.closest('#hl-tooltip')) tooltip.style.display='none';
+    var el = e.target && e.target.nodeType===1 ? e.target : (e.target && e.target.parentElement);
+    if(!el || !el.closest || !el.closest('#hl-tooltip')) hide();
   });
 
   window.saveHighlight = function(){
     if(!currentSec || !currentText) return;
     var key = 'tt-note-'+currentSec;
     var existing = localStorage.getItem(key) || '';
-    var newNote = existing ? existing+'\n\n\u2022 '+currentText : '\u2022 '+currentText;
-    localStorage.setItem(key, newNote);
-    // Update dot indicator
+    localStorage.setItem(key, existing ? existing+'\n\n\u2022 '+currentText : '\u2022 '+currentText);
     var dot = document.querySelector('.note-dot[data-ni="'+currentSec+'"]');
     if(dot) dot.style.display='block';
-    tooltip.style.display='none';
     window.getSelection().removeAllRanges();
-    // Brief flash confirmation
-    tooltip.textContent = '✓ Notiz gespeichert!';
-    tooltip.style.background = 'var(--g1)';
-    tooltip.style.color = '#000';
-    tooltip.style.display = 'block';
-    setTimeout(function(){
-      tooltip.style.display='none';
-      tooltip.textContent='📝 Als Notiz speichern';
-      tooltip.style.background='';
-      tooltip.style.color='';
-    }, 1200);
+    var t = gt(); if(!t) return;
+    t.style.display='none';
+    t.textContent='\u2713 Gespeichert!';
+    t.style.cssText += ';background:var(--g1);color:#000;display:block';
+    setTimeout(function(){ t.style.display='none'; t.textContent='\ud83d\udcdd Als Notiz speichern'; t.style.background=''; t.style.color=''; }, 1200);
   };
 })();
+
 
 // ════════════════════════════════════════════════
 // SHARE CHAPTER
@@ -4698,194 +5181,338 @@ window.exitFocus = function(){
 // FULL LANGUAGE SYSTEM (fixed + expanded)
 // ═══════════════════════════════════════════════════════
 (function(){
-  // Remove old language system if it exists
-  var FULL_LANGS = {
-    de:{ name:'DE', flag:'🇩🇪', dir:'ltr',
-      search_ph:'Suchen… z.B. "kündigen", "Token"',
-      helpful:'War das hilfreich?', yes:'👍 Ja', no:'👎 Nein', thanks:'Danke! 🙏',
-      note:'📝 Notiz', bm_add:'🔖 Merken', bm_done:'🔖 Gemerkt',
-      share:'🔗 Teilen', print:'🖨️ Drucken', cert:'🏆 Zertifikat ansehen',
-      bm_title:'🔖 Lesezeichen', bm_empty:'Noch keine Lesezeichen',
-      hl_tip:'📝 Als Notiz speichern', new_badge:'NEU', upd_badge:'AKTUALISIERT',
-      lp_title:'🗺️ Lernpfade', lp_sub:'Wähle deinen Lernpfad',
-      focus:'🎯 Fokus', paths:'🗺️ Pfade', compact:'⊞ Kompakt', normal:'⊟ Normal',
-      read_ruler:'📏', serif_on:'Zu Serif', serif_off:'Zu Sans',
-    },
-    en:{ name:'EN', flag:'🇬🇧', dir:'ltr',
-      search_ph:'Search… e.g. "cancel", "tokens"',
-      helpful:'Was this helpful?', yes:'👍 Yes', no:'👎 No', thanks:'Thank you! 🙏',
-      note:'📝 Note', bm_add:'🔖 Bookmark', bm_done:'🔖 Saved',
-      share:'🔗 Share', print:'🖨️ Print', cert:'🏆 View Certificate',
-      bm_title:'🔖 Bookmarks', bm_empty:'No bookmarks yet',
-      hl_tip:'📝 Save as note', new_badge:'NEW', upd_badge:'UPDATED',
-      lp_title:'🗺️ Learning Paths', lp_sub:'Choose your learning path',
-      focus:'🎯 Focus', paths:'🗺️ Paths', compact:'⊞ Compact', normal:'⊟ Normal',
-      read_ruler:'📏', serif_on:'Switch Serif', serif_off:'Switch Sans',
-    },
-    tr:{ name:'TR', flag:'🇹🇷', dir:'ltr',
-      search_ph:'Ara… ör. "iptal", "token"',
-      helpful:'Bu yararlı oldu mu?', yes:'👍 Evet', no:'👎 Hayır', thanks:'Teşekkürler! 🙏',
-      note:'📝 Not', bm_add:'🔖 Ekle', bm_done:'🔖 Eklendi',
-      share:'🔗 Paylaş', print:'🖨️ Yazdır', cert:'🏆 Sertifikayı Gör',
-      bm_title:'🔖 Yer İşaretleri', bm_empty:'Henüz yer işareti yok',
-      hl_tip:'📝 Not olarak kaydet', new_badge:'YENİ', upd_badge:'GÜNCELLENDİ',
-      lp_title:'🗺️ Öğrenme Yolları', lp_sub:'Öğrenme yolunu seç',
-      focus:'🎯 Odak', paths:'🗺️ Yollar', compact:'⊞ Kompakt', normal:'⊟ Normal',
-      read_ruler:'📏', serif_on:'Serif', serif_off:'Sans',
-    },
-    fr:{ name:'FR', flag:'🇫🇷', dir:'ltr',
-      search_ph:'Rechercher… ex. "résiliation", "token"',
-      helpful:'Était-ce utile?', yes:'👍 Oui', no:'👎 Non', thanks:'Merci! 🙏',
-      note:'📝 Note', bm_add:'🔖 Marquer', bm_done:'🔖 Marqué',
-      share:'🔗 Partager', print:'🖨️ Imprimer', cert:'🏆 Voir le certificat',
-      bm_title:'🔖 Signets', bm_empty:'Pas encore de signets',
-      hl_tip:'📝 Enregistrer comme note', new_badge:'NOUVEAU', upd_badge:'MIS À JOUR',
-      lp_title:'🗺️ Parcours', lp_sub:'Choisissez votre parcours',
-      focus:'🎯 Focus', paths:'🗺️ Parcours', compact:'⊞ Compact', normal:'⊟ Normal',
-      read_ruler:'📏', serif_on:'Serif', serif_off:'Sans',
-    },
-    es:{ name:'ES', flag:'🇪🇸', dir:'ltr',
-      search_ph:'Buscar… ej. "cancelar", "token"',
-      helpful:'¿Fue útil?', yes:'👍 Sí', no:'👎 No', thanks:'¡Gracias! 🙏',
-      note:'📝 Nota', bm_add:'🔖 Marcar', bm_done:'🔖 Marcado',
-      share:'🔗 Compartir', print:'🖨️ Imprimir', cert:'🏆 Ver certificado',
-      bm_title:'🔖 Marcadores', bm_empty:'Aún no hay marcadores',
-      hl_tip:'📝 Guardar como nota', new_badge:'NUEVO', upd_badge:'ACTUALIZADO',
-      lp_title:'🗺️ Rutas', lp_sub:'Elige tu ruta de aprendizaje',
-      focus:'🎯 Enfoque', paths:'🗺️ Rutas', compact:'⊞ Compacto', normal:'⊟ Normal',
-      read_ruler:'📏', serif_on:'Serif', serif_off:'Sans',
-    },
-    nl:{ name:'NL', flag:'🇳🇱', dir:'ltr',
-      search_ph:'Zoeken… bijv. "opzeggen", "token"',
-      helpful:'Was dit nuttig?', yes:'👍 Ja', no:'👎 Nee', thanks:'Bedankt! 🙏',
-      note:'📝 Notitie', bm_add:'🔖 Opslaan', bm_done:'🔖 Opgeslagen',
-      share:'🔗 Delen', print:'🖨️ Afdrukken', cert:'🏆 Certificaat bekijken',
-      bm_title:'🔖 Bladwijzers', bm_empty:'Nog geen bladwijzers',
-      hl_tip:'📝 Opslaan als notitie', new_badge:'NIEUW', upd_badge:'BIJGEWERKT',
-      lp_title:'🗺️ Leerroutes', lp_sub:'Kies je leerroute',
-      focus:'🎯 Focus', paths:'🗺️ Routes', compact:'⊞ Compact', normal:'⊟ Normaal',
-      read_ruler:'📏', serif_on:'Serif', serif_off:'Sans',
-    },
-    pl:{ name:'PL', flag:'🇵🇱', dir:'ltr',
-      search_ph:'Szukaj… np. "rezygnacja", "token"',
-      helpful:'Czy to było pomocne?', yes:'👍 Tak', no:'👎 Nie', thanks:'Dziękuję! 🙏',
-      note:'📝 Notatka', bm_add:'🔖 Dodaj', bm_done:'🔖 Dodano',
-      share:'🔗 Udostępnij', print:'🖨️ Drukuj', cert:'🏆 Pokaż certyfikat',
-      bm_title:'🔖 Zakładki', bm_empty:'Brak zakładek',
-      hl_tip:'📝 Zapisz jako notatkę', new_badge:'NOWY', upd_badge:'ZAKTUALIZOWANY',
-      lp_title:'🗺️ Ścieżki nauki', lp_sub:'Wybierz ścieżkę nauki',
-      focus:'🎯 Skupienie', paths:'🗺️ Ścieżki', compact:'⊞ Kompakt', normal:'⊟ Normalny',
-      read_ruler:'📏', serif_on:'Serif', serif_off:'Sans',
-    },
-    ar:{ name:'AR', flag:'🇸🇦', dir:'rtl',
-      search_ph:'بحث… مثل "إلغاء الاشتراك"',
-      helpful:'هل كان هذا مفيداً؟', yes:'👍 نعم', no:'👎 لا', thanks:'شكراً! 🙏',
-      note:'📝 ملاحظة', bm_add:'🔖 حفظ', bm_done:'🔖 محفوظ',
-      share:'🔗 مشاركة', print:'🖨️ طباعة', cert:'🏆 عرض الشهادة',
-      bm_title:'🔖 الإشارات', bm_empty:'لا توجد إشارات بعد',
-      hl_tip:'📝 حفظ كملاحظة', new_badge:'جديد', upd_badge:'محدّث',
-      lp_title:'🗺️ مسارات التعلم', lp_sub:'اختر مسار التعلم',
-      focus:'🎯 تركيز', paths:'🗺️ مسارات', compact:'⊞ مدمج', normal:'⊟ عادي',
-      read_ruler:'📏', serif_on:'Serif', serif_off:'Sans',
-    },
+  // ── COMPLETE TRANSLATION SYSTEM ──
+  // UI labels translated; chapter content stays in German (native language)
+  // For full content translation, use the separate index-XX.html files
+  
+  var L_ALL = {
+    de:{name:'Deutsch',flag:'🇩🇪',dir:'ltr',
+      search:'🔍 Kapitel suchen…',helpful:'War das hilfreich?',yes:'👍 Ja',no:'👎 Nein',
+      thanks:'Danke! 🙏',note:'📝 Notiz',bm_add:'🔖 Merken',bm_done:'🔖 Gemerkt',
+      share:'🔗 Teilen',print:'🖨️ Drucken',cert:'🏆 Zertifikat',
+      bm_title:'🔖 Lesezeichen',bm_empty:'Noch keine Lesezeichen',
+      hl_tip:'📝 Als Notiz speichern',new_b:'NEU',upd_b:'AKTUALISIERT',
+      focus:'🎯 Fokus',paths:'🗺️ Lernpfade',compact:'⊞ Kompakt',compact_off:'⊟ Normal',
+      a11y_on:'✅ Screenreader',a11y_off:'⬜ Screenreader',hc_on:'✅ Kontrast',hc_off:'🔆 Kontrast',
+      done_lbl:'Als erledigt markieren',outdated:'⚠️ Stimmt das noch?',question:'💬 Frage stellen',
+      read_pct:function(n){return n+'% gelesen'},
+      lang_notice:''},
+    en:{name:'English',flag:'🇬🇧',dir:'ltr',
+      search:'🔍 Search chapters…',helpful:'Was this helpful?',yes:'👍 Yes',no:'👎 No',
+      thanks:'Thank you! 🙏',note:'📝 Note',bm_add:'🔖 Bookmark',bm_done:'🔖 Saved',
+      share:'🔗 Share',print:'🖨️ Print',cert:'🏆 Certificate',
+      bm_title:'🔖 Bookmarks',bm_empty:'No bookmarks yet',
+      hl_tip:'📝 Save as note',new_b:'NEW',upd_b:'UPDATED',
+      focus:'🎯 Focus',paths:'🗺️ Paths',compact:'⊞ Compact',compact_off:'⊟ Normal',
+      a11y_on:'✅ Screen Reader',a11y_off:'⬜ Screen Reader',hc_on:'✅ Contrast',hc_off:'🔆 Contrast',
+      done_lbl:'Mark as done',outdated:'⚠️ Still accurate?',question:'💬 Ask a question',
+      read_pct:function(n){return n+'% read'},
+      lang_notice:'ℹ️ Content is in German. English version: <a href="index-en.html">index-en.html</a>'},
+    tr:{name:'Türkçe',flag:'🇹🇷',dir:'ltr',
+      search:'🔍 Bölüm ara…',helpful:'Bu yararlı oldu mu?',yes:'👍 Evet',no:'👎 Hayır',
+      thanks:'Teşekkürler! 🙏',note:'📝 Not',bm_add:'🔖 Ekle',bm_done:'🔖 Eklendi',
+      share:'🔗 Paylaş',print:'🖨️ Yazdır',cert:'🏆 Sertifika',
+      bm_title:'🔖 Yer İşaretleri',bm_empty:'Henüz yer işareti yok',
+      hl_tip:'📝 Not olarak kaydet',new_b:'YENİ',upd_b:'GÜNCELLENDİ',
+      focus:'🎯 Odak',paths:'🗺️ Öğrenme Yolları',compact:'⊞ Kompakt',compact_off:'⊟ Normal',
+      a11y_on:'✅ Ekran Okuyucu',a11y_off:'⬜ Ekran Okuyucu',hc_on:'✅ Kontrast',hc_off:'🔆 Kontrast',
+      done_lbl:'Tamamlandı olarak işaretle',outdated:'⚠️ Hâlâ doğru mu?',question:'💬 Soru sor',
+      read_pct:function(n){return '%'+n+' okundu'},
+      lang_notice:'ℹ️ İçerik Almancadır. Türkçe: <a href="index-tr.html">index-tr.html</a>'},
+    ar:{name:'العربية',flag:'🇸🇦',dir:'rtl',
+      search:'🔍 البحث في الفصول…',helpful:'هل كان هذا مفيداً؟',yes:'👍 نعم',no:'👎 لا',
+      thanks:'شكراً! 🙏',note:'📝 ملاحظة',bm_add:'🔖 حفظ',bm_done:'🔖 محفوظ',
+      share:'🔗 مشاركة',print:'🖨️ طباعة',cert:'🏆 شهادة',
+      bm_title:'🔖 الإشارات المرجعية',bm_empty:'لا توجد إشارات بعد',
+      hl_tip:'📝 حفظ كملاحظة',new_b:'جديد',upd_b:'محدّث',
+      focus:'🎯 تركيز',paths:'🗺️ مسارات',compact:'⊞ مدمج',compact_off:'⊟ عادي',
+      a11y_on:'✅ قارئ الشاشة',a11y_off:'⬜ قارئ الشاشة',hc_on:'✅ تباين',hc_off:'🔆 تباين',
+      done_lbl:'تمييز كمنجز',outdated:'⚠️ هل لا يزال صحيحاً؟',question:'💬 اطرح سؤالاً',
+      read_pct:function(n){return n+'٪ مقروء'},
+      lang_notice:'ℹ️ المحتوى بالألمانية.'},
+    ru:{name:'Русский',flag:'🇷🇺',dir:'ltr',
+      search:'🔍 Поиск по главам…',helpful:'Это было полезно?',yes:'👍 Да',no:'👎 Нет',
+      thanks:'Спасибо! 🙏',note:'📝 Заметка',bm_add:'🔖 Отметить',bm_done:'🔖 Отмечено',
+      share:'🔗 Поделиться',print:'🖨️ Печать',cert:'🏆 Сертификат',
+      bm_title:'🔖 Закладки',bm_empty:'Закладок пока нет',
+      hl_tip:'📝 Сохранить как заметку',new_b:'НОВОЕ',upd_b:'ОБНОВЛЕНО',
+      focus:'🎯 Фокус',paths:'🗺️ Пути обучения',compact:'⊞ Компактно',compact_off:'⊟ Обычно',
+      a11y_on:'✅ Экранный ридер',a11y_off:'⬜ Экранный ридер',hc_on:'✅ Контраст',hc_off:'🔆 Контраст',
+      done_lbl:'Отметить как выполненное',outdated:'⚠️ Актуально?',question:'💬 Задать вопрос',
+      read_pct:function(n){return n+'% прочитано'},
+      lang_notice:'ℹ️ Содержимое на немецком языке.'},
+    ro:{name:'Română',flag:'🇷🇴',dir:'ltr',
+      search:'🔍 Caută capitole…',helpful:'A fost util?',yes:'👍 Da',no:'👎 Nu',
+      thanks:'Mulțumesc! 🙏',note:'📝 Notă',bm_add:'🔖 Salvează',bm_done:'🔖 Salvat',
+      share:'🔗 Distribuie',print:'🖨️ Printează',cert:'🏆 Certificat',
+      bm_title:'🔖 Marcaje',bm_empty:'Niciun marcaj încă',
+      hl_tip:'📝 Salvează ca notă',new_b:'NOU',upd_b:'ACTUALIZAT',
+      focus:'🎯 Focus',paths:'🗺️ Căi de învățare',compact:'⊞ Compact',compact_off:'⊟ Normal',
+      a11y_on:'✅ Cititor ecran',a11y_off:'⬜ Cititor ecran',hc_on:'✅ Contrast',hc_off:'🔆 Contrast',
+      done_lbl:'Marchează ca finalizat',outdated:'⚠️ Încă actual?',question:'💬 Pune o întrebare',
+      read_pct:function(n){return n+'% citit'},
+      lang_notice:'ℹ️ Conținut în germană.'},
+    pl:{name:'Polski',flag:'🇵🇱',dir:'ltr',
+      search:'🔍 Szukaj rozdziałów…',helpful:'Czy to było pomocne?',yes:'👍 Tak',no:'👎 Nie',
+      thanks:'Dziękuję! 🙏',note:'📝 Notatka',bm_add:'🔖 Dodaj',bm_done:'🔖 Dodano',
+      share:'🔗 Udostępnij',print:'🖨️ Drukuj',cert:'🏆 Certyfikat',
+      bm_title:'🔖 Zakładki',bm_empty:'Brak zakładek',
+      hl_tip:'📝 Zapisz jako notatkę',new_b:'NOWE',upd_b:'ZAKTUALIZOWANE',
+      focus:'🎯 Skupienie',paths:'🗺️ Ścieżki nauki',compact:'⊞ Kompakt',compact_off:'⊟ Normalny',
+      a11y_on:'✅ Czytnik ekranu',a11y_off:'⬜ Czytnik ekranu',hc_on:'✅ Kontrast',hc_off:'🔆 Kontrast',
+      done_lbl:'Oznacz jako zrobione',outdated:'⚠️ Aktualne?',question:'💬 Zadaj pytanie',
+      read_pct:function(n){return n+'% przeczytano'},
+      lang_notice:'ℹ️ Treść w języku niemieckim.'},
+    uk:{name:'Українська',flag:'🇺🇦',dir:'ltr',
+      search:'🔍 Пошук по главах…',helpful:'Це було корисно?',yes:'👍 Так',no:'👎 Ні',
+      thanks:'Дякую! 🙏',note:'📝 Нотатка',bm_add:'🔖 Відмітити',bm_done:'🔖 Відмічено',
+      share:'🔗 Поділитися',print:'🖨️ Друк',cert:'🏆 Сертифікат',
+      bm_title:'🔖 Закладки',bm_empty:'Закладок поки немає',
+      hl_tip:'📝 Зберегти як нотатку',new_b:'НОВЕ',upd_b:'ОНОВЛЕНО',
+      focus:'🎯 Фокус',paths:'🗺️ Шляхи навчання',compact:'⊞ Компактно',compact_off:'⊟ Звичайно',
+      a11y_on:'✅ Зчитувач екрану',a11y_off:'⬜ Зчитувач екрану',hc_on:'✅ Контраст',hc_off:'🔆 Контраст',
+      done_lbl:'Позначити як виконане',outdated:'⚠️ Актуально?',question:'💬 Поставити запитання',
+      read_pct:function(n){return n+'% прочитано'},
+      lang_notice:'ℹ️ Вміст німецькою мовою.'},
+    fr:{name:'Français',flag:'🇫🇷',dir:'ltr',
+      search:'🔍 Rechercher…',helpful:'Était-ce utile?',yes:'👍 Oui',no:'👎 Non',
+      thanks:'Merci! 🙏',note:'📝 Note',bm_add:'🔖 Marquer',bm_done:'🔖 Marqué',
+      share:'🔗 Partager',print:'🖨️ Imprimer',cert:'🏆 Certificat',
+      bm_title:'🔖 Signets',bm_empty:'Pas encore de signets',
+      hl_tip:'📝 Enregistrer comme note',new_b:'NOUVEAU',upd_b:'MIS À JOUR',
+      focus:'🎯 Focus',paths:'🗺️ Parcours',compact:'⊞ Compact',compact_off:'⊟ Normal',
+      a11y_on:'✅ Lecteur écran',a11y_off:'⬜ Lecteur écran',hc_on:'✅ Contraste',hc_off:'🔆 Contraste',
+      done_lbl:'Marquer comme terminé',outdated:'⚠️ Toujours exact?',question:'💬 Poser une question',
+      read_pct:function(n){return n+'% lu'},
+      lang_notice:'ℹ️ Contenu en allemand.'},
+    es:{name:'Español',flag:'🇪🇸',dir:'ltr',
+      search:'🔍 Buscar…',helpful:'¿Fue útil?',yes:'👍 Sí',no:'👎 No',
+      thanks:'¡Gracias! 🙏',note:'📝 Nota',bm_add:'🔖 Marcar',bm_done:'🔖 Marcado',
+      share:'🔗 Compartir',print:'🖨️ Imprimir',cert:'🏆 Certificado',
+      bm_title:'🔖 Marcadores',bm_empty:'Sin marcadores aún',
+      hl_tip:'📝 Guardar como nota',new_b:'NUEVO',upd_b:'ACTUALIZADO',
+      focus:'🎯 Enfoque',paths:'🗺️ Rutas',compact:'⊞ Compacto',compact_off:'⊟ Normal',
+      a11y_on:'✅ Lector pantalla',a11y_off:'⬜ Lector pantalla',hc_on:'✅ Contraste',hc_off:'🔆 Contraste',
+      done_lbl:'Marcar como hecho',outdated:'⚠️ ¿Sigue siendo exacto?',question:'💬 Hacer pregunta',
+      read_pct:function(n){return n+'% leído'},
+      lang_notice:'ℹ️ Contenido en alemán.'},
+    it:{name:'Italiano',flag:'🇮🇹',dir:'ltr',
+      search:'🔍 Cerca capitoli…',helpful:'È stato utile?',yes:'👍 Sì',no:'👎 No',
+      thanks:'Grazie! 🙏',note:'📝 Nota',bm_add:'🔖 Segna',bm_done:'🔖 Segnato',
+      share:'🔗 Condividi',print:'🖨️ Stampa',cert:'🏆 Certificato',
+      bm_title:'🔖 Segnalibri',bm_empty:'Nessun segnalibro ancora',
+      hl_tip:'📝 Salva come nota',new_b:'NUOVO',upd_b:'AGGIORNATO',
+      focus:'🎯 Focus',paths:'🗺️ Percorsi',compact:'⊞ Compatto',compact_off:'⊟ Normale',
+      a11y_on:'✅ Screen reader',a11y_off:'⬜ Screen reader',hc_on:'✅ Contrasto',hc_off:'🔆 Contrasto',
+      done_lbl:'Segna come completato',outdated:'⚠️ Ancora attuale?',question:'💬 Fai una domanda',
+      read_pct:function(n){return n+'% letto'},
+      lang_notice:'ℹ️ Contenuto in tedesco.'},
+    nl:{name:'Nederlands',flag:'🇳🇱',dir:'ltr',
+      search:'🔍 Hoofdstukken zoeken…',helpful:'Was dit nuttig?',yes:'👍 Ja',no:'👎 Nee',
+      thanks:'Bedankt! 🙏',note:'📝 Notitie',bm_add:'🔖 Opslaan',bm_done:'🔖 Opgeslagen',
+      share:'🔗 Delen',print:'🖨️ Afdrukken',cert:'🏆 Certificaat',
+      bm_title:'🔖 Bladwijzers',bm_empty:'Nog geen bladwijzers',
+      hl_tip:'📝 Opslaan als notitie',new_b:'NIEUW',upd_b:'BIJGEWERKT',
+      focus:'🎯 Focus',paths:'🗺️ Leerroutes',compact:'⊞ Compact',compact_off:'⊟ Normaal',
+      a11y_on:'✅ Schermlezer',a11y_off:'⬜ Schermlezer',hc_on:'✅ Contrast',hc_off:'🔆 Contrast',
+      done_lbl:'Markeer als gedaan',outdated:'⚠️ Nog actueel?',question:'💬 Vraag stellen',
+      read_pct:function(n){return n+'% gelezen'},
+      lang_notice:'ℹ️ Inhoud in het Duits.'},
+    pt:{name:'Português',flag:'🇵🇹',dir:'ltr',
+      search:'🔍 Pesquisar capítulos…',helpful:'Foi útil?',yes:'👍 Sim',no:'👎 Não',
+      thanks:'Obrigado! 🙏',note:'📝 Nota',bm_add:'🔖 Marcar',bm_done:'🔖 Marcado',
+      share:'🔗 Partilhar',print:'🖨️ Imprimir',cert:'🏆 Certificado',
+      bm_title:'🔖 Marcadores',bm_empty:'Sem marcadores ainda',
+      hl_tip:'📝 Guardar como nota',new_b:'NOVO',upd_b:'ACTUALIZADO',
+      focus:'🎯 Foco',paths:'🗺️ Caminhos',compact:'⊞ Compacto',compact_off:'⊟ Normal',
+      a11y_on:'✅ Leitor de ecrã',a11y_off:'⬜ Leitor de ecrã',hc_on:'✅ Contraste',hc_off:'🔆 Contraste',
+      done_lbl:'Marcar como concluído',outdated:'⚠️ Ainda correto?',question:'💬 Fazer pergunta',
+      read_pct:function(n){return n+'% lido'},
+      lang_notice:'ℹ️ Conteúdo em alemão.'},
+    el:{name:'Ελληνικά',flag:'🇬🇷',dir:'ltr',
+      search:'🔍 Αναζήτηση κεφαλαίων…',helpful:'Ήταν χρήσιμο;',yes:'👍 Ναι',no:'👎 Όχι',
+      thanks:'Ευχαριστώ! 🙏',note:'📝 Σημείωση',bm_add:'🔖 Αποθήκευση',bm_done:'🔖 Αποθηκεύτηκε',
+      share:'🔗 Κοινοποίηση',print:'🖨️ Εκτύπωση',cert:'🏆 Πιστοποιητικό',
+      bm_title:'🔖 Σελιδοδείκτες',bm_empty:'Δεν υπάρχουν σελιδοδείκτες',
+      hl_tip:'📝 Αποθήκευση ως σημείωση',new_b:'ΝΕΟ',upd_b:'ΕΝΗΜΕΡΩΜΕΝΟ',
+      focus:'🎯 Εστίαση',paths:'🗺️ Μονοπάτια',compact:'⊞ Συμπαγής',compact_off:'⊟ Κανονικός',
+      a11y_on:'✅ Αναγνώστης οθόνης',a11y_off:'⬜ Αναγνώστης οθόνης',hc_on:'✅ Αντίθεση',hc_off:'🔆 Αντίθεση',
+      done_lbl:'Σήμανση ως ολοκληρωμένο',outdated:'⚠️ Εξακολουθεί να ισχύει;',question:'💬 Ερώτηση',
+      read_pct:function(n){return n+'% διαβάστηκε'},
+      lang_notice:'ℹ️ Περιεχόμενο στα γερμανικά.'},
+    sr:{name:'Srpski',flag:'🇷🇸',dir:'ltr',
+      search:'🔍 Pretraži poglavlja…',helpful:'Da li je ovo korisno?',yes:'👍 Da',no:'👎 Ne',
+      thanks:'Hvala! 🙏',note:'📝 Beleška',bm_add:'🔖 Sačuvaj',bm_done:'🔖 Sačuvano',
+      share:'🔗 Podeli',print:'🖨️ Štampaj',cert:'🏆 Sertifikat',
+      bm_title:'🔖 Obeleživači',bm_empty:'Nema obeleživača još',
+      hl_tip:'📝 Sačuvaj kao belešku',new_b:'NOVO',upd_b:'AŽURIRANO',
+      focus:'🎯 Fokus',paths:'🗺️ Putanje učenja',compact:'⊞ Kompaktno',compact_off:'⊟ Normalno',
+      a11y_on:'✅ Čitač ekrana',a11y_off:'⬜ Čitač ekrana',hc_on:'✅ Kontrast',hc_off:'🔆 Kontrast',
+      done_lbl:'Označi kao završeno',outdated:'⚠️ Još tačno?',question:'💬 Postavi pitanje',
+      read_pct:function(n){return n+'% pročitano'},
+      lang_notice:'ℹ️ Sadržaj na nemačkom.'},
+    hr:{name:'Hrvatski',flag:'🇭🇷',dir:'ltr',
+      search:'🔍 Pretraži poglavlja…',helpful:'Je li ovo korisno?',yes:'👍 Da',no:'👎 Ne',
+      thanks:'Hvala! 🙏',note:'📝 Bilješka',bm_add:'🔖 Spremi',bm_done:'🔖 Spremljeno',
+      share:'🔗 Podijeli',print:'🖨️ Ispiši',cert:'🏆 Certifikat',
+      bm_title:'🔖 Oznake',bm_empty:'Još nema oznaka',
+      hl_tip:'📝 Spremi kao bilješku',new_b:'NOVO',upd_b:'AŽURIRANO',
+      focus:'🎯 Fokus',paths:'🗺️ Staze učenja',compact:'⊞ Kompaktno',compact_off:'⊟ Normalno',
+      a11y_on:'✅ Čitač ekrana',a11y_off:'⬜ Čitač ekrana',hc_on:'✅ Kontrast',hc_off:'🔆 Kontrast',
+      done_lbl:'Označi kao završeno',outdated:'⚠️ Još točno?',question:'💬 Postavi pitanje',
+      read_pct:function(n){return n+'% pročitano'},
+      lang_notice:'ℹ️ Sadržaj na njemačkom.'},
+    bg:{name:'Български',flag:'🇧🇬',dir:'ltr',
+      search:'🔍 Търсене в глави…',helpful:'Беше ли полезно?',yes:'👍 Да',no:'👎 Не',
+      thanks:'Благодаря! 🙏',note:'📝 Бележка',bm_add:'🔖 Запази',bm_done:'🔖 Запазено',
+      share:'🔗 Споделяне',print:'🖨️ Печат',cert:'🏆 Сертификат',
+      bm_title:'🔖 Отметки',bm_empty:'Все още няма отметки',
+      hl_tip:'📝 Запази като бележка',new_b:'НОВО',upd_b:'АКТУАЛИЗИРАНО',
+      focus:'🎯 Фокус',paths:'🗺️ Учебни пътища',compact:'⊞ Компактно',compact_off:'⊟ Нормално',
+      a11y_on:'✅ Екранен четец',a11y_off:'⬜ Екранен четец',hc_on:'✅ Контраст',hc_off:'🔆 Контраст',
+      done_lbl:'Маркирай като завършено',outdated:'⚠️ Все още актуално?',question:'💬 Задай въпрос',
+      read_pct:function(n){return n+'% прочетено'},
+      lang_notice:'ℹ️ Съдържанието е на немски.'},
   };
-  
+
   var curLang = localStorage.getItem('tt-lang') || 'de';
-  
+  var langNoticeShown = false;
+
   function applyLang(lang){
-    var L = FULL_LANGS[lang];
+    var L = L_ALL[lang];
     if(!L) return;
     curLang = lang;
     localStorage.setItem('tt-lang', lang);
-    
-    // RTL support
+
+    // RTL
     document.documentElement.setAttribute('dir', L.dir||'ltr');
-    
-    // Update lang button
-    var btn = document.getElementById('lang-btn');
-    if(btn) btn.textContent = L.flag+' '+L.name;
-    
-    // Active dropdown state
+    document.documentElement.setAttribute('lang', lang);
+
+    // Lang button
+    var lb = document.getElementById('lang-btn');
+    if(lb) lb.textContent = L.flag+' '+L.name;
+
+    // Dropdown active
     document.querySelectorAll('.lang-opt').forEach(function(o){
       o.classList.toggle('active', o.dataset.lang===lang);
     });
-    
-    // Search placeholder
+
+    // Search
     var si = document.getElementById('ms-i');
-    if(si) si.placeholder = L.search_ph;
-    
+    if(si) si.placeholder = L.search;
+
+    // Progress
+    var pl = document.getElementById('pl');
+    if(pl){ var pct=parseInt(pl.textContent)||0; pl.textContent=L.read_pct(pct); }
+
     // Cert button
     var cb = document.getElementById('cert-btn');
     if(cb) cb.textContent = L.cert;
-    
-    // Sidebar bookmarks title
-    var bmt = document.querySelector('.sb-bm-title span');
-    if(bmt) bmt.textContent = L.bm_title;
-    
+
+    // Bookmarks
+    var bt = document.getElementById('bm-panel-title');
+    if(bt) bt.textContent = L.bm_title;
+    var be = document.querySelector('.sb-bm-empty');
+    if(be) be.textContent = L.bm_empty;
+
     // Highlight tooltip
     var ht = document.getElementById('hl-tooltip');
     if(ht) ht.textContent = L.hl_tip;
-    
-    // Feedback labels
-    document.querySelectorAll('.fb-lbl').forEach(function(el){ el.textContent = L.helpful; });
-    document.querySelectorAll('.fb-btn[data-v="yes"]').forEach(function(el){ el.textContent = L.yes; });
-    document.querySelectorAll('.fb-btn[data-v="no"]').forEach(function(el){ el.textContent = L.no; });
-    document.querySelectorAll('.fb-thanks').forEach(function(el){ el.textContent = L.thanks; });
-    
-    // Note buttons (only those not in "close" state)
+
+    // Feedback bars
+    document.querySelectorAll('.fb-lbl').forEach(function(el){ el.textContent=L.helpful; });
+    document.querySelectorAll('.fb-btn[data-v="yes"]').forEach(function(el){ el.textContent=L.yes; });
+    document.querySelectorAll('.fb-btn[data-v="no"]').forEach(function(el){ el.textContent=L.no; });
+    document.querySelectorAll('.fb-thanks').forEach(function(el){ el.textContent=L.thanks; });
+
+    // Note buttons
     document.querySelectorAll('.note-btn').forEach(function(el){
       if(el.textContent.length < 15) el.textContent = L.note;
     });
-    
+
     // Bookmark buttons
-    document.querySelectorAll('[id^="bm-btn-"]').forEach(function(btn2){
-      btn2.textContent = btn2.classList.contains('bm-active') ? L.bm_done : L.bm_add;
+    document.querySelectorAll('[id^="bm-btn-"]').forEach(function(b){
+      b.textContent = b.classList.contains('bm-active') ? L.bm_done : L.bm_add;
     });
-    
-    // Chapter action buttons (share/print)
-    document.querySelectorAll('[data-sec-actions] .ca-btn').forEach(function(btn3,i){
-      var icons = ['🔖','🔗','🖨️'];
-      var labels = [L.bm_add, L.share, L.print];
-      var ic = icons[i%3];
-      if(ic) btn3.innerHTML = ic+' '+labels[i%3].replace(/^[^ ]+ /,'');
+
+    // Chapter action buttons (share, print per section)
+    document.querySelectorAll('[data-sec-actions]').forEach(function(wrap){
+      var btns = wrap.querySelectorAll('.ca-btn');
+      if(btns[0]) btns[0].textContent = (btns[0].classList.contains('bm-active')?L.bm_done:L.bm_add);
+      if(btns[1]) btns[1].textContent = L.share;
+      if(btns[2]) btns[2].textContent = L.print;
     });
-    
+
+    // GitHub action buttons
+    document.querySelectorAll('.gh-btn.outdated').forEach(function(b){ b.textContent=L.outdated; });
+    document.querySelectorAll('.gh-btn:not(.outdated)').forEach(function(b){ b.textContent=L.question; });
+
+    // Done checkboxes
+    document.querySelectorAll('.done-check > span').forEach(function(el){ el.textContent=L.done_lbl; });
+
     // Updated badges
-    document.querySelectorAll('.ch-new-badge').forEach(function(el){ el.textContent = L.new_badge; });
-    document.querySelectorAll('.ch-upd-badge').forEach(function(el){ el.textContent = L.upd_badge; });
-    
-    // Sidebar tool buttons
-    var focusBtn = document.querySelector('[onclick="enterFocus()"]');
-    if(focusBtn) focusBtn.textContent = L.focus;
-    var pathsBtn = document.querySelector('[onclick="openLearningPaths()"]');
-    if(pathsBtn) pathsBtn.textContent = L.paths;
-    var compactBtn = document.getElementById('compact-btn');
-    if(compactBtn) compactBtn.textContent = document.body.classList.contains('compact') ? L.normal : L.compact;
-    
-    // Learning paths overlay
-    var lpTitle = document.querySelector('#lp-overlay h2');
-    if(lpTitle) lpTitle.textContent = L.lp_title;
+    document.querySelectorAll('.ch-new-badge').forEach(function(el){ el.textContent=L.new_b; });
+    document.querySelectorAll('.ch-upd-badge').forEach(function(el){ el.textContent=L.upd_b; });
+
+    // Config buttons
+    var fb = document.getElementById('focus-btn'); if(fb) fb.textContent=L.focus;
+    var pb = document.getElementById('paths-btn'); if(pb) pb.textContent=L.paths;
+    var cpb = document.getElementById('compact-btn');
+    if(cpb) cpb.textContent = document.body.classList.contains('compact') ? L.compact_off : L.compact;
+    var a11b = document.getElementById('a11y-btn');
+    if(a11b) a11b.textContent = document.body.classList.contains('a11y-mode') ? L.a11y_on : L.a11y_off;
+    var hcb = document.getElementById('hc-btn');
+    if(hcb) hcb.textContent = document.body.classList.contains('high-contrast') ? L.hc_on : L.hc_off;
+
+    // Language notice banner (non-German)
+    var nb = document.getElementById('lang-notice-bar');
+    if(!nb && L.lang_notice){
+      nb = document.createElement('div');
+      nb.id = 'lang-notice-bar';
+      nb.style.cssText = 'background:rgba(76,175,80,.08);border-bottom:1px solid rgba(76,175,80,.2);padding:6px 16px;font-size:.76rem;color:var(--tx2);text-align:center;flex-shrink:0';
+      nb.innerHTML = L.lang_notice;
+      var qlbar = document.querySelector('.ql-bar');
+      if(qlbar) qlbar.parentNode.insertBefore(nb, qlbar);
+    } else if(nb){
+      nb.innerHTML = L.lang_notice || '';
+      nb.style.display = L.lang_notice ? 'block' : 'none';
+    }
+
+    // Search suggestions update
+    var ssEl = document.getElementById('ss');
+    if(ssEl){
+      var p = ssEl.querySelector('p');
+      if(p){
+        var labels = {de:'Häufige Suchen',en:'Common searches',tr:'Sık aramalar',
+          fr:'Recherches fréquentes',es:'Búsquedas frecuentes',ru:'Частые запросы',
+          ro:'Căutări frecvente',pl:'Częste wyszukiwania',uk:'Часті запити',
+          ar:'عمليات البحث الشائعة',it:'Ricerche frequenti',nl:'Veelzochte termen',
+          pt:'Pesquisas frequentes',el:'Συχνές αναζητήσεις',sr:'Česte pretrage',
+          hr:'Česte pretrage',bg:'Чести търсения'};
+        p.textContent = labels[lang] || labels.de;
+      }
+    }
   }
-  
+
   window.setLang = function(lang){
     applyLang(lang);
     var dd = document.getElementById('lang-dd');
     if(dd) dd.classList.remove('open');
   };
-  
+
   window.toggleLangDD = function(){
     var dd = document.getElementById('lang-dd');
     if(dd) dd.classList.toggle('open');
   };
-  
+
   document.addEventListener('click', function(e){
-    if(!e.target.closest('.lang-wrap')){
+    var t = e.target && e.target.nodeType===1 ? e.target : e.target && e.target.parentElement;
+    if(!t || !t.closest || !t.closest('.lang-wrap')){
       var dd = document.getElementById('lang-dd');
       if(dd) dd.classList.remove('open');
     }
   });
-  
-  // Apply saved language
+
   applyLang(curLang);
 })();
 
@@ -5047,6 +5674,146 @@ window.sbTab = function(tab){
     if(compactBtn) compactBtn.textContent = document.body.classList.contains('compact') ? (L.compact_off||'⊟ Normal') : (L.compact_on||'⊞ Kompakt');
   };
 })();
+
+
+// ═══════════════════════════════════════════════════
+// SEASONAL BANNER
+// ═══════════════════════════════════════════════════
+(function(){
+  var banner = document.getElementById('season-banner');
+  if(!banner) return;
+  var m = new Date().getMonth(); // 0=Jan
+  var seasons = [
+    { months:[2,3,4], cls:'spring', text:'🌱 Frühjahr – Anbausaison beginnt! Jetzt in Mein Verein die Meilensteine prüfen.' },
+    { months:[5,6,7], cls:'summer', text:'☀️ Sommer – Hochsaison! Prüfe den Status deines Vereins unter Standorte.' },
+    { months:[8,9,10], cls:'autumn', text:'🍂 Herbst – Ernte-Zeit! Bestellfunktion bald verfügbar sobald dein Verein bereit ist.' },
+    { months:[11,0,1], cls:'winter', text:'❄️ Winter – Planungszeit. Tokens sammeln und auf die nächste Anbausaison vorbereiten!' },
+  ];
+  seasons.forEach(function(s){
+    if(s.months.indexOf(m) >= 0){
+      banner.className = 'season-banner ' + s.cls;
+      banner.textContent = s.text;
+    }
+  });
+})();
+
+// ═══════════════════════════════════════════════════
+// MASCOT ANIMATION
+// ═══════════════════════════════════════════════════
+var mascotClicks = 0;
+window.mascotClick = function(){
+  mascotClicks++;
+  var m = document.getElementById('mascot');
+  if(!m) return;
+  var msgs = ['🚂 Choo choo!','🌿 Volle Kraft voraus!','🎉 Terptrain fährt!','🏆 Du schaffst das!','💨 Puff puff!'];
+  m.title = msgs[mascotClicks % msgs.length];
+  m.style.animation = 'none';
+  setTimeout(function(){ m.style.animation = ''; }, 50);
+};
+
+// ═══════════════════════════════════════════════════
+// PURE BLACK MODE
+// ═══════════════════════════════════════════════════
+(function(){
+  if(localStorage.getItem('tt-pureblack')==='1') document.body.classList.add('pure-black');
+  window.togglePureBlack = function(){
+    document.body.classList.toggle('pure-black');
+    localStorage.setItem('tt-pureblack', document.body.classList.contains('pure-black')?'1':'0');
+    var btn = document.getElementById('pureblack-btn');
+    if(btn) btn.classList.toggle('active', document.body.classList.contains('pure-black'));
+  };
+})();
+
+// ═══════════════════════════════════════════════════
+// CARD VIEW
+// ═══════════════════════════════════════════════════
+(function(){
+  if(localStorage.getItem('tt-cardview')==='1') document.body.classList.add('card-view');
+  
+  // Card click expands/collapses in card view
+  document.querySelectorAll('section.sec[id]').forEach(function(sec){
+    sec.addEventListener('click', function(e){
+      if(!document.body.classList.contains('card-view')) return;
+      if(e.target.closest('a,button,input,textarea')) return;
+      sec.classList.toggle('expanded');
+    });
+  });
+  
+  window.toggleCardView = function(){
+    document.body.classList.toggle('card-view');
+    localStorage.setItem('tt-cardview', document.body.classList.contains('card-view')?'1':'0');
+    var btn = document.getElementById('cardview-btn');
+    if(btn) btn.classList.toggle('active', document.body.classList.contains('card-view'));
+    // Show hint
+    var hint = document.querySelector('.view-hint');
+    if(hint && document.body.classList.contains('card-view'))
+      hint.textContent = '🃏 Karten-Ansicht aktiv – Karte anklicken zum Aufklappen';
+    else if(hint) hint.textContent = '';
+  };
+})();
+
+// ═══════════════════════════════════════════════════
+// PERSONAL LEARNING PLAN
+// ═══════════════════════════════════════════════════
+(function(){
+  var READ_KEY = 'tt-read-v3';
+  var DONE_KEY = 'tt-done';
+  
+  var PRIORITY = [
+    { id:'s-login', title:'Login & Passwort', reason:'Basis für alles' },
+    { id:'s-profil', title:'Profil einrichten', reason:'Dein erster Eindruck' },
+    { id:'s-tokens', title:'Tokens verstehen', reason:'Wichtig für Ernteanteile' },
+    { id:'s-mitgliedschaft', title:'Mitgliedschaft verwalten', reason:'Rechte & Optionen kennen' },
+    { id:'s-standorte', title:'Mein Verein', reason:'Status & Meilensteine' },
+    { id:'s-webapp', title:'App installieren', reason:'Bessere Nutzererfahrung' },
+    { id:'s-datenschutz', title:'Datenschutz', reason:'Deine Rechte kennen' },
+    { id:'s-support', title:'Support-Optionen', reason:'Hilfe finden wenn nötig' },
+    { id:'s-fehler', title:'Häufige Fehler', reason:'Probleme selbst lösen' },
+  ];
+  
+  function renderPlan(){
+    var el = document.getElementById('lp-personal-list');
+    if(!el) return;
+    var read = new Set(JSON.parse(localStorage.getItem(READ_KEY)||'[]'));
+    var done = JSON.parse(localStorage.getItem(DONE_KEY)||'[]');
+    
+    var unread = PRIORITY.filter(function(p){
+      return !read.has(p.id) && done.indexOf(p.id) < 0;
+    }).slice(0, 5);
+    
+    if(!unread.length){
+      el.innerHTML = '<p style="color:var(--g2);font-size:.79rem">🎉 Du hast alle wichtigen Kapitel gelesen!</p>';
+      return;
+    }
+    
+    el.innerHTML = unread.map(function(p){
+      var sec = document.getElementById(p.id);
+      var h2 = sec && sec.querySelector('h2');
+      var icon = h2 ? (h2.querySelector('.sec-icon')||{}).textContent||'📖' : '📖';
+      return '<div class="lpp-item">'
+        +'<span>'+icon+'</span>'
+        +'<a href="#'+p.id+'">'+p.title+'</a>'
+        +'<span class="lpp-status lpp-unread">noch nicht gelesen</span>'
+        +'</div>';
+    }).join('');
+  }
+  
+  // Update plan every 30 seconds
+  setInterval(renderPlan, 30000);
+  renderPlan();
+  
+  // Also update when a section is read
+  var origMarkRead = window.markRead;
+  window.markRead = function(id){
+    if(origMarkRead) origMarkRead(id);
+    renderPlan();
+  };
+})();
+
+// ═══════════════════════════════════════════════════
+// UPDATE SEARCH INDEX for new sections
+// ═══════════════════════════════════════════════════
+// (handled by the richIdx in improved search)
 
 </script>
 

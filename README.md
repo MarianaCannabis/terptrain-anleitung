@@ -1,3 +1,11 @@
+
+## ⚠️ WICHTIG: GitHub Pages Einstellung
+
+Gehe zu: **Settings → Pages → Source → GitHub Actions** (NICHT "Deploy from branch"!)
+
+Wenn du "Deploy from branch" siehst → auf "GitHub Actions" umstellen.
+Dann den Workflow manuell starten: **Actions → Deploy to GitHub Pages → Run workflow**
+
 # Terptrain Mitglieder-Anleitung
 
 Interaktive Mitglieder-Anleitung für die Terptrain Community-Plattform.
