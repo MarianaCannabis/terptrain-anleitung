@@ -8,8 +8,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Terptrain Guide">
 <link rel="apple-touch-icon" href="icon-192.png">
-<meta name="description" content="Terptrain topluluk platformu için interaktif üye kılavuzu – 38 bölüm">
-<meta property="og:title" content="Terptrain Üye Kılavuzu">
+<meta name="description" content="Interaktive Mitglieder-Anleitung für die Terptrain Community-Plattform – 38 Kapitel, Dark/Light Mode, mehrsprachig">
+<meta property="og:title" content="Terptrain Mitglieder-Anleitung">
 <meta property="og:description" content="Alles was du über Terptrain wissen musst – von Login bis Cannabis">
 <meta property="og:type" content="website">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -684,6 +684,51 @@ body.serif .sec-h,body.serif .ssh,body.serif .rc-title,body.serif .cert-h{
 .sb-lh-row{display:flex;align-items:center;gap:4px}
 .sb-lh-row .fs-lbl{flex:1}
 
+
+/* ── SIDEBAR TABS ── */
+.sb-tabs{display:flex;border-bottom:1px solid var(--bd);flex-shrink:0}
+.sb-tab{flex:1;background:none;border:none;color:var(--mu);padding:7px 0;
+  cursor:pointer;font-size:.95rem;transition:all .15s;border-bottom:2px solid transparent}
+.sb-tab:hover{color:var(--tx2);background:var(--s2)}
+.sb-tab.act{color:var(--g1);border-bottom-color:var(--g1);background:none}
+.sb-panel{flex:1;overflow-y:auto;display:flex;flex-direction:column;min-height:0}
+
+/* ── CONFIG PANEL ── */
+.cfg-label{font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--mu);padding:6px 10px 3px;margin-top:2px}
+.cfg-label:first-child{margin-top:0}
+.cfg-row{display:flex;gap:5px;padding:3px 10px;align-items:center}
+.cfg-row-compact{padding:2px 10px}
+.cfg-btn{flex:1;background:var(--s2);border:1px solid var(--bd);color:var(--tx2);
+  padding:5px 6px;border-radius:7px;cursor:pointer;font-size:.67rem;font-family:inherit;
+  transition:all .15s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cfg-btn:hover{border-color:var(--bd2);color:var(--g2)}
+.cfg-btn.active{background:rgba(76,175,80,.15);border-color:var(--g1);color:var(--g2)}
+.cfg-mini-lbl{font-size:.58rem;color:var(--mu);width:36px;flex-shrink:0}
+.sb-search-row{padding:5px 8px;flex-shrink:0}
+
+/* ── ACCESSIBILITY MODE ── */
+body.a11y-mode{--bg:#000;--s1:#0a0a0a;--s2:#111;--tx:#ffffff;--tx2:#eeeeee;
+  --g1:#00ff88;--g2:#00ff88;--bd:#444;--mu:#999}
+body.a11y-mode img{filter:contrast(1.2)}
+body.a11y-mode .sec{border-color:#333}
+body.a11y-mode *:focus{outline:3px solid #00ff88!important;outline-offset:3px!important}
+body.a11y-mode .sc-fig img{border:2px solid #444;border-radius:4px}
+body.a11y-mode .card,.a11y-mode .call,.a11y-mode .acc-h,.a11y-mode .acc-b{border-color:#444!important}
+
+/* HIGH CONTRAST */
+body.high-contrast{filter:contrast(1.5) saturate(0.5)}
+
+/* FOCUS MODE FIX - use scroll position not bounding box */
+body.focus-mode .sec{transition:opacity .4s}
+body.focus-mode .sec:not(.focused){opacity:.06;pointer-events:none}
+body.focus-mode .sec.focused{opacity:1;pointer-events:auto;
+  box-shadow:0 0 0 2px rgba(76,175,80,.15);border-radius:12px}
+
+/* ── SIDEBAR compact adjustments ── */
+#sb{display:flex;flex-direction:column;min-height:0}
+#sb .sb-hd{flex-shrink:0}
+
 </style>
 
 <script>localStorage.setItem("tt-lang","tr");</script>
@@ -711,55 +756,53 @@ body.serif .sec-h,body.serif .ssh,body.serif .rc-title,body.serif .cert-h{
 <!-- SIDEBAR -->
 <nav id="sb" role="navigation" aria-label="Kapitel-Navigation">
   <div class="sb-hd">
+    <button class="sb-collapse-btn" id="sb-collapse" onclick="toggleSidebar()" title="Sidebar ein-/ausklappen" aria-label="Sidebar ein-/ausklappen">‹</button>
+    
   <button class="sb-collapse-btn" id="sb-collapse" onclick="toggleSidebar()" title="Sidebar ein-/ausklappen">‹</button>
     <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAA4AHADASIAAhEBAxEB/8QAGgABAAMBAQEAAAAAAAAAAAAAAAQFBgIDB//EAC0QAAEEAQMCBAYCAwAAAAAAAAEAAgMRBAUSITFBE3GBkSIyUWGhsQYVwdHw/8QAGQEBAQADAQAAAAAAAAAAAAAAAAECAwQF/8QAHREBAAMBAAIDAAAAAAAAAAAAAAECEQMEMRIhQf/aAAwDAQACEQMRAD8A+YLSv0rFl0xohYHSCO2PHwlxq+b+v36LNLY6aW/12PsdY8Md75rlSXL5VprETEs7g4eQ3VYYnxuY5jw87h2B6/hXOvxul0/4OTG4PI710P7VjtG4uobiALrsEc0OaWuAIIogjqjkt3m14tnpmtK0t2TJ4mTG9sNWDdbjx61S61/GggnidC1rHPB3MbwBVUa7d/ZaIRsAaA1oDflodO3Hos5/IyDqLQCCWxgGjdGyjfy626dd/FUiIq7hERAREQEREGsZg6fk4zDHDG6Mi2ubwfUjn3UnGxo8WIxw7g3dYaTYb5KHpGBNhREyyk7wCYx0af8Af/cqd4sdgeIyzdDcOa6qPH6TOzWJ2HaLl0kbI/Ee9rWddxNBcMyseR4ZHkROcega8EqNeS9VEl0vBme6WWIukceSXu5/Plwpa5kYJI3MPRwIPAP7VWtprP1OM7r7MaOaJkDGMkAO8MFV0r/KqVP1HTcjFc6VxMsZNmT7n6qAq9bjnwjJ0RERtEREBERBc6lrLpHeHhPc1nd9UT5dwql8sj9u+RztoIbZugSTQ9SfdcIjCnOtIyBERGbuOWSJ26KR7HEVbTRU/H1rMgj2Etk5+aQEn3tVqIxtStvcLfL1s5GM6EY7RvFO3G68vwqhERKc60jKiIiMxERAREQEREBERAREQEREBERAREQEREH/2Q==" alt="Mariana" loading="lazy" class="sb-logo">
-    <div class="sb-brand">Terp<em>train</em></div>
+    <div class="sb-brand">Terp<em>train</em>
   </div>
-  <div class="sb-bookmarks" id="sb-bookmarks">
-  <div class="sb-bm-title"><span>🔖 Lesezeichen</span></div>
-  <div id="sb-bm-list"><div class="sb-bm-empty">Noch keine Lesezeichen</div></div>
-</div>
-<div class="color-picker-wrap">
-  <div class="cp-title">🎨 Akzentfarbe</div>
-  <div class="color-swatches" id="color-swatches"><div class="cs  active" style="background:#4caf50" title="Grün (Standard)" onclick="setAccent('#4caf50','#66bb6a')" data-c1="#4caf50" data-c2="#66bb6a" aria-label="Grün (Standard)"></div><div class="cs" style="background:#1976d2" title="Blau" onclick="setAccent('#1976d2','#42a5f5')" data-c1="#1976d2" data-c2="#42a5f5" aria-label="Blau"></div><div class="cs" style="background:#e65100" title="Orange" onclick="setAccent('#e65100','#ff9800')" data-c1="#e65100" data-c2="#ff9800" aria-label="Orange"></div><div class="cs" style="background:#7b1fa2" title="Lila" onclick="setAccent('#7b1fa2','#ab47bc')" data-c1="#7b1fa2" data-c2="#ab47bc" aria-label="Lila"></div><div class="cs" style="background:#c62828" title="Rot" onclick="setAccent('#c62828','#ef5350')" data-c1="#c62828" data-c2="#ef5350" aria-label="Rot"></div><div class="cs" style="background:#00838f" title="Türkis" onclick="setAccent('#00838f','#26c6da')" data-c1="#00838f" data-c2="#26c6da" aria-label="Türkis"></div></div>
-</div>
-<div class="fs-controls">
-  <span class="fs-lbl">Schrift:</span>
-  <button class="fs-btn" onclick="fsChange(-1)" title="Kleiner" aria-label="Schrift kleiner">−</button>
-  <span class="fs-val" id="fs-val">15px</span>
-  <button class="fs-btn" onclick="fsChange(1)" title="Größer" aria-label="Schrift größer">+</button>
-  <button class="fs-btn" onclick="toggleSerif()" id="serif-btn" title="Schriftart" style="width:auto;padding:0 5px;font-size:.62rem" aria-label="Schriftart umschalten">Aa</button>
-</div>
-<div class="fs-controls">
-  <span class="fs-lbl">Zeilen:</span>
-  <button class="fs-btn" onclick="lhChange(-1)" title="Enger" aria-label="Zeilenabstand verringern">−</button>
-  <span class="fs-val" id="lh-val">1.7</span>
-  <button class="fs-btn" onclick="lhChange(1)" title="Weiter" aria-label="Zeilenabstand erhöhen">+</button>
-  <button class="fs-btn" onclick="toggleRuler()" id="ruler-btn" title="Leselineal" style="width:auto;padding:0 5px;font-size:.6rem" aria-label="Leselineal">📏</button>
-</div>
-<div class="sb-tools">
-  <span style="display:none">
-  <button class="fs-btn" onclick="fsChange(-1)" title="Kleiner">−</button>
-  <span class="fs-val" id="fs-val">15px</span>
-  <button class="fs-btn" onclick="fsChange(1)" title="Größer">+</button>
-</div>
-<div class="sb-tools">
-  <button id="theme-btn" class="sb-tool-btn" onclick="toggleTheme()">☀️ Hell</button>
-  <button class="sb-tool-btn" onclick="enterFocus()" title="Fokus-Modus">🎯 Fokus</button>
-  <button class="sb-tool-btn" onclick="openLearningPaths()" title="Lernpfade">🗺️ Pfade</button>
-  <button class="sb-tool-btn" id="compact-btn" onclick="toggleCompact()" title="Kompaktansicht">⊞ Kompakt</button>
-  <button class="sb-tool-btn" onclick="printGuide()">🖨️ Drucken</button>
-  <button class="sb-tool-btn" onclick="printToc()">📋 Inhaltsverz.</button>
-</div>
-<a id="last-sec-btn" class="nl sb-last" style="color:var(--go2);border-left-color:var(--go)">
-  <span class="ic">↩</span><span>Zuletzt gelesen</span>
-</a>
-<div class="sb-sw"><input type="search" class="sb-si" placeholder="🔍 Kapitel suchen…" oninput="sbSearch(this.value)"></div>
-  <div class="sb-pr"><div class="sb-pb"><div class="sb-pf" id="pf"></div></div><div class="sb-pl" id="pl">0% gelesen</div>
-<button id="cert-btn" onclick="openCert()" style="display:none;margin-top:5px;width:100%;background:linear-gradient(90deg,var(--g1),var(--g2));color:#000;border:none;padding:5px;border-radius:7px;cursor:pointer;font-weight:700;font-size:.68rem;font-family:inherit;align-items:center;justify-content:center;gap:4px">🏆 Zertifikat ansehen</button>
-</div>
 
-  <div class="sb-sec">👋 Willkommen</div>
+  <!-- SIDEBAR TABS -->
+  <div class="sb-tabs" role="tablist" aria-label="Sidebar Bereiche">
+    <button class="sb-tab act" data-tab="nav"    onclick="sbTab('nav')"   role="tab" aria-selected="true"  title="Navigation">📖</button>
+    <button class="sb-tab"     data-tab="config" onclick="sbTab('config')" role="tab" aria-selected="false" title="Einstellungen">⚙️</button>
+    <button class="sb-tab"     data-tab="bm"     onclick="sbTab('bm')"    role="tab" aria-selected="false" title="Lesezeichen">🔖</button>
+    <button class="sb-tab"     data-tab="stats"  onclick="sbTab('stats')" role="tab" aria-selected="false" title="Statistik">📊</button>
+  </div>
+
+  <!-- TAB: NAVIGATION -->
+  <div class="sb-panel" id="sbp-nav" role="tabpanel">
+    <div class="sb-search-row">
+      <div class="sb-sw"><input type="search" class="sb-si" id="ms-i" placeholder="🔍 Kapitel suchen…" 
+        oninput="sbSearch(this.value);doSearch(this.value)" 
+        aria-label="Kapitel suchen" autocomplete="off"></div>
+    </div>
+    <a id="last-sec-btn" class="nl sb-last" style="display:none;color:var(--go2);border-left-color:var(--go)">
+      <span class="ic">↩</span><span id="last-sec-txt">Zuletzt gelesen</span>
+    </a>
+    <div class="sb-pr">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+        <span class="sb-pl" id="pl">0% gelesen</span>
+        <button id="cert-btn" onclick="openCert()" style="display:none;background:var(--g1);color:#000;border:none;padding:2px 8px;border-radius:6px;cursor:pointer;font-weight:700;font-size:.62rem;font-family:inherit">🏆</button>
+      </div>
+      <div class="sb-pb"><div class="sb-pf" id="pf"></div></div>
+    </div>
+    <div id="sr" role="listbox">
+      <div class="search-suggestions" id="ss">
+        <p>Häufige Suchanfragen</p>
+        <span class="ss-tag" onclick="ssClick('kündigen')">kündigen</span>
+        <span class="ss-tag" onclick="ssClick('tokens')">tokens</span>
+        <span class="ss-tag" onclick="ssClick('passwort')">passwort</span>
+        <span class="ss-tag" onclick="ssClick('gruppe')">gruppe</span>
+        <span class="ss-tag" onclick="ssClick('app')">app</span>
+        <span class="ss-tag" onclick="ssClick('zahlung')">zahlung</span>
+        <span class="ss-tag" onclick="ssClick('ticket')">ticket</span>
+        <span class="ss-tag" onclick="ssClick('vereinswechsel')">vereinswechsel</span>
+        <div id="search-hist"></div>
+      </div>
+    </div>
+    <div class="sb-sec">👋 Willkommen</div>
   <a href="#s-was" class="nl"><span class="ic">🌿</span>Was ist Terptrain?</a>
   <a href="#s-aufbau" class="nl"><span class="ic">🏗️</span>Aufbau der Plattform</a>
   <div class="sb-sec">🔑 Erste Schritte</div>
@@ -807,7 +850,91 @@ body.serif .sec-h,body.serif .ssh,body.serif .rc-title,body.serif .cert-h{
 <div style="padding:5px 10px 8px;flex-shrink:0">
   <div id="ana-top-chapters" style="font-size:.68rem;color:var(--mu)">Wird geladen…</div>
   <button class="ana-reset" onclick="resetAnalytics()" style="margin-top:4px;font-size:.62rem">🗑️ Zurücksetzen</button>
-</div>
+
+    <div style="padding:4px 10px 8px;flex-shrink:0">
+      <button class="export-notes-btn" onclick="exportNotes()" style="font-size:.67rem;width:100%;justify-content:center">📥 Notizen exportieren</button>
+    </div>
+  </div>
+
+  <!-- TAB: CONFIG/SETTINGS -->
+  <div class="sb-panel" id="sbp-config" style="display:none" role="tabpanel">
+    <!-- Theme + Language -->
+    <div class="cfg-row">
+      <button id="theme-btn" class="cfg-btn" onclick="toggleTheme()">☀️ Hell</button>
+      <div class="lang-wrap">
+        <button class="cfg-btn lang-btn" id="lang-btn" onclick="toggleLangDD()">🌐 DE</button>
+        <div class="lang-dd" id="lang-dd">
+          <div class="lang-opt active" data-lang="de" onclick="setLang('de')">🇩🇪 Deutsch</div>
+          <div class="lang-opt" data-lang="en" onclick="setLang('en')">🇬🇧 English</div>
+          <div class="lang-opt" data-lang="tr" onclick="setLang('tr')">🇹🇷 Türkçe</div>
+          <hr style="border:none;border-top:1px solid var(--bd);margin:3px 0">
+          <div class="lang-opt" data-lang="fr" onclick="setLang('fr')">🇫🇷 Français</div>
+          <div class="lang-opt" data-lang="es" onclick="setLang('es')">🇪🇸 Español</div>
+          <div class="lang-opt" data-lang="nl" onclick="setLang('nl')">🇳🇱 Nederlands</div>
+          <div class="lang-opt" data-lang="pl" onclick="setLang('pl')">🇵🇱 Polski</div>
+          <div class="lang-opt" data-lang="ar" onclick="setLang('ar')">🇸🇦 عربي</div>
+        </div>
+      </div>
+    </div>
+    <!-- Accessibility -->
+    <div class="cfg-label">♿ Barrierefreiheit</div>
+    <div class="cfg-row">
+      <button class="cfg-btn" id="a11y-btn" onclick="toggleA11y()">⬜ Screenreader</button>
+      <button class="cfg-btn" id="hc-btn" onclick="toggleHighContrast()">🔆 Kontrast</button>
+    </div>
+    <!-- Font size -->
+    <div class="cfg-label">🔤 Schrift &amp; Zeilen</div>
+    <div class="cfg-row cfg-row-compact">
+      <span class="cfg-mini-lbl">Größe</span>
+      <button class="fs-btn" onclick="fsChange(-1)" aria-label="Kleiner">−</button>
+      <span class="fs-val" id="fs-val">15px</span>
+      <button class="fs-btn" onclick="fsChange(1)" aria-label="Größer">+</button>
+      <button class="fs-btn" onclick="toggleSerif()" id="serif-btn" style="width:auto;padding:0 5px;font-size:.6rem">Aa</button>
+    </div>
+    <div class="cfg-row cfg-row-compact">
+      <span class="cfg-mini-lbl">Zeilen</span>
+      <button class="fs-btn" onclick="lhChange(-1)" aria-label="Enger">−</button>
+      <span class="fs-val" id="lh-val">1.7</span>
+      <button class="fs-btn" onclick="lhChange(1)" aria-label="Weiter">+</button>
+      <button class="fs-btn" onclick="toggleRuler()" id="ruler-btn" style="width:auto;padding:0 5px;font-size:.58rem" title="Leselineal">📏</button>
+    </div>
+    <!-- Colors -->
+    <div class="cfg-label">🎨 Akzentfarbe</div>
+    <div class="color-swatches" id="color-swatches" style="padding:0 10px 6px;gap:6px">
+      <div class="cs active" style="background:#4caf50" data-c1="#4caf50" data-c2="#66bb6a" onclick="setAccent('#4caf50','#66bb6a')" aria-label="Grün"></div>
+      <div class="cs" style="background:#1976d2" data-c1="#1976d2" data-c2="#42a5f5" onclick="setAccent('#1976d2','#42a5f5')" aria-label="Blau"></div>
+      <div class="cs" style="background:#e65100" data-c1="#e65100" data-c2="#ff9800" onclick="setAccent('#e65100','#ff9800')" aria-label="Orange"></div>
+      <div class="cs" style="background:#7b1fa2" data-c1="#7b1fa2" data-c2="#ab47bc" onclick="setAccent('#7b1fa2','#ab47bc')" aria-label="Lila"></div>
+      <div class="cs" style="background:#c62828" data-c1="#c62828" data-c2="#ef5350" onclick="setAccent('#c62828','#ef5350')" aria-label="Rot"></div>
+      <div class="cs" style="background:#00838f" data-c1="#00838f" data-c2="#26c6da" onclick="setAccent('#00838f','#26c6da')" aria-label="Türkis"></div>
+    </div>
+    <!-- Action buttons -->
+    <div class="cfg-label">🛠️ Aktionen</div>
+    <div class="cfg-row">
+      <button class="cfg-btn" onclick="enterFocus()" id="focus-btn">🎯 Fokus</button>
+      <button class="cfg-btn" onclick="openLearningPaths()" id="paths-btn">🗺️ Pfade</button>
+    </div>
+    <div class="cfg-row">
+      <button class="cfg-btn" id="compact-btn" onclick="toggleCompact()">⊞ Kompakt</button>
+      <button class="cfg-btn" onclick="printGuide()">🖨️ Drucken</button>
+    </div>
+    <div class="cfg-row">
+      <button class="cfg-btn" style="flex:1" onclick="printToc()">📋 Inhaltsverzeichnis drucken</button>
+    </div>
+  </div>
+
+  <!-- TAB: BOOKMARKS -->
+  <div class="sb-panel" id="sbp-bm" style="display:none" role="tabpanel">
+    <div style="padding:8px 10px 4px;font-size:.66rem;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.08em" id="bm-panel-title">🔖 Lesezeichen</div>
+    <div id="sb-bm-list" style="padding:0 4px"><div class="sb-bm-empty">Noch keine Lesezeichen</div></div>
+  </div>
+
+  <!-- TAB: STATS -->
+  <div class="sb-panel" id="sbp-stats" style="display:none" role="tabpanel">
+    <div style="padding:8px 10px 4px;font-size:.66rem;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.08em">📊 Meine Statistik</div>
+    <div id="ana-top-chapters" style="padding:4px 10px;font-size:.68rem;color:var(--mu)">Wird geladen…</div>
+    <button class="ana-reset" onclick="resetAnalytics()" style="margin:4px 10px;font-size:.62rem">🗑️ Zurücksetzen</button>
+  </div>
 </nav>
 
 <!-- MAIN -->
@@ -849,10 +976,6 @@ body.serif .sec-h,body.serif .ssh,body.serif .rc-title,body.serif .cert-h{
 </div>
   </div>
   <span class="sh" id="sh-hint">↑ Direkt zum richtigen Kapitel springen</span>
-<div class="lang-wrap" style="margin-left:auto">
-  <button class="lang-btn" id="lang-btn" onclick="toggleLangDD()">🌐 DE</button>
-  <div class="lang-dd" id="lang-dd">
-    <div class="lang-opt active" data-lang="de" onclick="setLang('de')">🇩🇪 Deutsch</div>
     <div class="lang-opt" data-lang="en" onclick="setLang('en')">🇬🇧 English</div>
     <div class="lang-opt" data-lang="tr" onclick="setLang('tr')">🇹🇷 Türkçe</div>
     <hr style="border:none;border-top:1px solid var(--bd);margin:3px 0">
@@ -4442,30 +4565,36 @@ document.querySelectorAll('.cl-item, .pc-item').forEach(function(el){
 // ═══════════════════════════════════════════════════════
 window.enterFocus = function(){
   document.body.classList.add('focus-mode');
-  // Focus on current visible section
   var secs = document.querySelectorAll('section[id]');
-  var current = null;
-  secs.forEach(function(s){
-    var r = s.getBoundingClientRect();
-    if(r.top >= -50 && r.top < window.innerHeight/2) current = s;
-  });
-  if(!current && secs.length) current = secs[0];
-  if(current){
-    secs.forEach(function(s){ s.classList.remove('focused'); });
-    current.classList.add('focused');
-    // Update focused on scroll
-    var scrollHandler = function(){
-      if(!document.body.classList.contains('focus-mode')){
-        window.removeEventListener('scroll', scrollHandler);
-        return;
+  
+  function updateFocused(){
+    if(!document.body.classList.contains('focus-mode')) return;
+    var center = window.innerHeight / 2;
+    var best = null, bestDist = Infinity;
+    secs.forEach(function(s){
+      var r = s.getBoundingClientRect();
+      // Section is "focused" if it covers the center of the screen
+      // OR if we're inside it (top is above center and bottom is below center)
+      var dist = Math.abs(r.top + r.height/2 - center);
+      if(dist < bestDist){
+        bestDist = dist;
+        best = s;
       }
-      secs.forEach(function(s){
-        var r = s.getBoundingClientRect();
-        s.classList.toggle('focused', r.top >= -100 && r.top < window.innerHeight*0.6);
-      });
-    };
-    window.addEventListener('scroll', scrollHandler, {passive:true});
+    });
+    secs.forEach(function(s){ s.classList.toggle('focused', s === best); });
   }
+  
+  updateFocused();
+  var scrollTimer;
+  var scrollHandler = function(){
+    if(!document.body.classList.contains('focus-mode')){
+      window.removeEventListener('scroll', scrollHandler);
+      return;
+    }
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(updateFocused, 80);
+  };
+  window.addEventListener('scroll', scrollHandler, {passive:true});
 };
 
 window.exitFocus = function(){
@@ -4762,6 +4891,165 @@ window.exitFocus = function(){
   applyLang(curLang);
 })();
 
+
+// ── SIDEBAR TABS ──
+window.sbTab = function(tab){
+  document.querySelectorAll('.sb-tab').forEach(function(b){
+    b.classList.toggle('act', b.dataset.tab === tab);
+    b.setAttribute('aria-selected', b.dataset.tab === tab ? 'true' : 'false');
+  });
+  document.querySelectorAll('.sb-panel').forEach(function(p){
+    p.style.display = 'none';
+  });
+  var panel = document.getElementById('sbp-'+tab);
+  if(panel) panel.style.display = 'flex';
+  localStorage.setItem('tt-sb-tab', tab);
+};
+
+// Restore last tab
+(function(){
+  var t = localStorage.getItem('tt-sb-tab') || 'nav';
+  sbTab(t);
+})();
+
+// ── ACCESSIBILITY / SCREEN READER MODE ──
+(function(){
+  var on = localStorage.getItem('tt-a11y') === '1';
+  var hc = localStorage.getItem('tt-hc') === '1';
+  
+  function applyA11y(){
+    document.body.classList.toggle('a11y-mode', on);
+    var btn = document.getElementById('a11y-btn');
+    if(btn){
+      btn.classList.toggle('active', on);
+      btn.textContent = on ? '✅ Screenreader' : '⬜ Screenreader';
+    }
+    if(on){
+      // Add role=main if not present
+      var main = document.getElementById('main');
+      if(main) main.setAttribute('role','main');
+      // Make all images have meaningful alt text for sr
+      document.querySelectorAll('img[loading="lazy"]').forEach(function(img){
+        if(!img.getAttribute('alt') || img.getAttribute('alt')==='') 
+          img.setAttribute('alt','Screenshot');
+      });
+      // Add aria-expanded to all accordions
+      document.querySelectorAll('.acc-h').forEach(function(h){
+        h.setAttribute('role','button');
+        h.setAttribute('tabindex','0');
+        var isOpen = h.closest('.acc').classList.contains('open');
+        h.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+      document.querySelectorAll('.faq-h').forEach(function(h){
+        h.setAttribute('role','button');
+        h.setAttribute('tabindex','0');
+      });
+      // Announce region labels
+      document.querySelectorAll('section[id]').forEach(function(s){
+        var h2 = s.querySelector('h2');
+        if(h2 && !s.getAttribute('aria-label')){
+          s.setAttribute('aria-label', h2.textContent.replace(/[^\w\s&äöüÄÖÜß\-]/g,'').trim());
+        }
+      });
+    }
+    localStorage.setItem('tt-a11y', on ? '1' : '0');
+  }
+  
+  function applyHC(){
+    document.body.classList.toggle('high-contrast', hc);
+    var btn = document.getElementById('hc-btn');
+    if(btn){
+      btn.classList.toggle('active', hc);
+      btn.textContent = hc ? '✅ Kontrast' : '🔆 Kontrast';
+    }
+    localStorage.setItem('tt-hc', hc ? '1' : '0');
+  }
+  
+  window.toggleA11y = function(){ on = !on; applyA11y(); };
+  window.toggleHighContrast = function(){ hc = !hc; applyHC(); };
+  
+  // Keyboard support for accordions in a11y mode
+  document.addEventListener('keydown', function(e){
+    if(!on) return;
+    if((e.key === ' ' || e.key === 'Enter') && e.target.classList.contains('acc-h')){
+      e.preventDefault();
+      e.target.click();
+    }
+  });
+  
+  // Update aria-expanded when accordions are toggled
+  var origTAcc = window.tAcc;
+  window.tAcc = function(el){
+    if(origTAcc) origTAcc(el);
+    el.setAttribute('aria-expanded', el.closest('.acc').classList.contains('open') ? 'true' : 'false');
+  };
+  
+  applyA11y();
+  applyHC();
+})();
+
+// ── FIX TRANSLATIONS: translate the UI labels when language changes ──
+// Override setLang to also translate new sidebar elements
+(function(){
+  var origSetLang = window.setLang;
+  window.setLang = function(lang){
+    if(origSetLang) origSetLang(lang);
+    var L = {
+      de: { bm_panel: '🔖 Lesezeichen', bm_empty: 'Noch keine Lesezeichen',
+            stats: '📊 Meine Statistik', cfg: '⚙️ Einstellungen', nav: '📖 Navigation',
+            a11y: '⬜ Screenreader', hc: '🔆 Kontrast',
+            focus: '🎯 Fokus', paths: '🗺️ Pfade', compact_on: '⊞ Kompakt', compact_off: '⊟ Normal',
+            print: '🖨️ Drucken', toc: '📋 Inhaltsverz.',
+            serif_label: 'Aa', ruler_label: '📏' },
+      en: { bm_panel: '🔖 Bookmarks', bm_empty: 'No bookmarks yet',
+            stats: '📊 My Statistics', cfg: '⚙️ Settings', nav: '📖 Navigation',
+            a11y: '⬜ Screen Reader', hc: '🔆 Contrast',
+            focus: '🎯 Focus', paths: '🗺️ Paths', compact_on: '⊞ Compact', compact_off: '⊟ Normal',
+            print: '🖨️ Print', toc: '📋 Contents' },
+      tr: { bm_panel: '🔖 Yer İşaretleri', bm_empty: 'Henüz yer işareti yok',
+            stats: '📊 İstatistiklerim', cfg: '⚙️ Ayarlar', nav: '📖 Navigasyon',
+            a11y: '⬜ Ekran Okuyucu', hc: '🔆 Kontrast',
+            focus: '🎯 Odak', paths: '🗺️ Yollar', compact_on: '⊞ Kompakt', compact_off: '⊟ Normal',
+            print: '🖨️ Yazdır', toc: '📋 İçerik' },
+      fr: { bm_panel: '🔖 Signets', bm_empty: 'Pas encore de signets',
+            a11y: '⬜ Lecteur écran', hc: '🔆 Contraste',
+            focus: '🎯 Focus', paths: '🗺️ Parcours', compact_on: '⊞ Compact', compact_off: '⊟ Normal',
+            print: '🖨️ Imprimer' },
+      es: { bm_panel: '🔖 Marcadores', bm_empty: 'Aún no hay marcadores',
+            a11y: '⬜ Lector pantalla', hc: '🔆 Contraste',
+            focus: '🎯 Enfoque', paths: '🗺️ Rutas', compact_on: '⊞ Compacto', compact_off: '⊟ Normal',
+            print: '🖨️ Imprimir' },
+      nl: { bm_panel: '🔖 Bladwijzers', bm_empty: 'Nog geen bladwijzers',
+            a11y: '⬜ Schermlezer', hc: '🔆 Contrast',
+            focus: '🎯 Focus', paths: '🗺️ Routes', compact_on: '⊞ Compact', compact_off: '⊟ Normaal',
+            print: '🖨️ Afdrukken' },
+      pl: { bm_panel: '🔖 Zakładki', bm_empty: 'Brak zakładek',
+            a11y: '⬜ Czytnik ekranu', hc: '🔆 Kontrast',
+            focus: '🎯 Skupienie', paths: '🗺️ Ścieżki', compact_on: '⊞ Kompakt', compact_off: '⊟ Normalny',
+            print: '🖨️ Drukuj' },
+      ar: { bm_panel: '🔖 الإشارات', bm_empty: 'لا توجد إشارات بعد',
+            a11y: '⬜ قارئ الشاشة', hc: '🔆 تباين',
+            focus: '🎯 تركيز', paths: '🗺️ مسارات', compact_on: '⊞ مدمج', compact_off: '⊟ عادي',
+            print: '🖨️ طباعة' },
+    }[lang] || {};
+    
+    var bmTitle = document.getElementById('bm-panel-title');
+    if(bmTitle && L.bm_panel) bmTitle.textContent = L.bm_panel;
+    var bmEmpty = document.querySelector('.sb-bm-empty');
+    if(bmEmpty && L.bm_empty) bmEmpty.textContent = L.bm_empty;
+    var a11yBtn = document.getElementById('a11y-btn');
+    if(a11yBtn && L.a11y) a11yBtn.textContent = document.body.classList.contains('a11y-mode') ? L.a11y.replace('⬜','✅') : L.a11y;
+    var hcBtn = document.getElementById('hc-btn');
+    if(hcBtn && L.hc) hcBtn.textContent = document.body.classList.contains('high-contrast') ? L.hc.replace('🔆','✅') : L.hc;
+    var focusBtn = document.getElementById('focus-btn');
+    if(focusBtn && L.focus) focusBtn.textContent = L.focus;
+    var pathsBtn = document.getElementById('paths-btn');
+    if(pathsBtn && L.paths) pathsBtn.textContent = L.paths;
+    var compactBtn = document.getElementById('compact-btn');
+    if(compactBtn) compactBtn.textContent = document.body.classList.contains('compact') ? (L.compact_off||'⊟ Normal') : (L.compact_on||'⊞ Kompakt');
+  };
+})();
+
 </script>
 
 <div id="term-tip" class="term-tip"></div>
@@ -4826,8 +5114,8 @@ window.exitFocus = function(){
 <!-- WELCOME OVERLAY -->
 <div id="welcome-overlay" class="welcome-overlay">
   <div class="welcome-box">
-    <h2>👋 Terptrain'e Hoş Geldiniz!</h2>
-    <p>Yeni misiniz? Bu 5 adım başlamanıza yardımcı olacak:</p>
+    <h2>👋 Willkommen bei Terptrain!</h2>
+    <p>Bist du neu hier? Diese 5 Schritte helfen dir beim Einstieg:</p>
     <div class="wstep" onclick="closeWelcome('#s-aufbau')"><span class="wstep-num">1</span><span class="wstep-ic">🏗️</span><span>Aufbau der Plattform verstehen</span></div>
     <div class="wstep" onclick="closeWelcome('#s-login')"><span class="wstep-num">2</span><span class="wstep-ic">🔐</span><span>Einloggen &amp; Passwort ändern</span></div>
     <div class="wstep" onclick="closeWelcome('#s-profil')"><span class="wstep-num">3</span><span class="wstep-ic">👤</span><span>Profil einrichten</span></div>
