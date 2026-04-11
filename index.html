@@ -925,6 +925,246 @@ body.serif h2,body.serif h3,body.serif h4{
 #main,#main p,#main li,#main td,#main .acc-b p,#main .st-d,#main .sec-intro{
   line-height:var(--lh,1.7)!important}
 
+
+@media print{
+  body.print-toc section.sec:not(#s-toc){display:none!important}
+  body.print-toc #s-toc{display:block!important}
+}
+
+
+/* ── OFFLINE INDICATOR ── */
+.offline-indicator{position:fixed;top:8px;right:8px;z-index:9990;
+  display:flex;align-items:center;gap:5px;background:var(--s1);
+  border:1px solid var(--bd);border-radius:20px;padding:3px 10px;
+  font-size:.67rem;color:var(--mu);box-shadow:0 2px 8px rgba(0,0,0,.4);
+  transition:all .3s}
+.offline-indicator .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.offline-indicator.online .dot{background:#4caf50;box-shadow:0 0 6px #4caf50}
+.offline-indicator.offline .dot{background:#f44336;box-shadow:0 0 6px #f44336}
+.offline-indicator.cached .dot{background:#ff9800;box-shadow:0 0 6px #ff9800}
+
+/* ── QR MODAL ── */
+.qr-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);
+  z-index:9800;align-items:center;justify-content:center;padding:20px}
+.qr-modal.open{display:flex}
+.qr-box{background:var(--s1);border:1px solid var(--g1);border-radius:13px;
+  padding:22px 28px;text-align:center;max-width:320px;width:100%}
+.qr-box h3{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;
+  color:var(--g2);margin-bottom:10px}
+.qr-box img{border-radius:8px;background:#fff;padding:8px;width:200px;height:200px}
+.qr-url{font-size:.68rem;color:var(--mu);margin-top:8px;word-break:break-all}
+.qr-copy-btn{background:var(--g1);color:#000;border:none;padding:6px 16px;
+  border-radius:8px;cursor:pointer;font-weight:700;font-size:.75rem;margin-top:10px;
+  font-family:inherit}
+
+/* ── LEGAL TRACKER ── */
+.legal-tracker{background:var(--s2);border:1px solid var(--bd);border-radius:10px;
+  padding:12px 14px;margin:10px 0}
+.lt-status{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.lt-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.lt-dot.ok{background:#4caf50}
+.lt-dot.warn{background:#ff9800}
+.lt-entry{font-size:.78rem;color:var(--tx2);border-left:3px solid var(--g1);
+  padding:6px 10px;margin-bottom:5px;background:rgba(76,175,80,.05);border-radius:0 6px 6px 0}
+.lt-entry .lt-date{font-size:.63rem;color:var(--mu);margin-bottom:2px}
+
+/* ── SORTE GLOSSAR ── */
+.terpene-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.terpene-card{background:var(--s2);border:1px solid var(--bd);border-radius:10px;
+  padding:12px;cursor:pointer;transition:all .15s}
+.terpene-card:hover{border-color:var(--bd2);transform:translateY(-2px)}
+.tc-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.88rem;margin-bottom:3px}
+.tc-aroma{font-size:.72rem;color:var(--mu);margin-bottom:5px}
+.tc-bar-wrap{height:6px;background:var(--bd);border-radius:3px;margin:3px 0}
+.tc-bar{height:100%;border-radius:3px;transition:width .4s}
+.tc-detail{display:none;margin-top:8px;padding-top:8px;border-top:1px solid var(--bd);
+  font-size:.76rem;color:var(--tx2);line-height:1.6}
+.terpene-card.open .tc-detail{display:block}
+
+/* ── SORTEN KARTE ── */
+.sorte-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin:10px 0}
+.sorte-card{background:var(--s2);border:1px solid var(--bd);border-radius:10px;
+  padding:11px;transition:all .15s;cursor:pointer}
+.sorte-card:hover{border-color:var(--g1)}
+.sc-type{font-size:.58rem;font-weight:700;padding:2px 7px;border-radius:5px;
+  display:inline-block;margin-bottom:5px}
+.sc-indica{background:rgba(100,130,255,.2);color:#9db4ff}
+.sc-sativa{background:rgba(255,179,0,.2);color:#ffca28}
+.sc-hybrid{background:rgba(76,175,80,.2);color:#81c784}
+.sc-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;margin-bottom:3px}
+.sc-desc{font-size:.72rem;color:var(--mu);line-height:1.4}
+.sc-profile{margin-top:6px}
+.sc-row{display:flex;align-items:center;gap:6px;font-size:.66rem;margin-bottom:2px}
+.sc-row span:first-child{color:var(--mu);width:30px;flex-shrink:0}
+.sc-fill{height:4px;background:var(--g1);border-radius:2px}
+
+/* ── BESTELLSIMULATOR ── */
+.order-sim{background:var(--s2);border:1px solid var(--bd);border-radius:12px;
+  padding:16px;margin:10px 0}
+.order-sim h4{font-family:'Syne',sans-serif;font-weight:700;color:var(--g2);margin-bottom:10px}
+.sorte-picker{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:12px}
+.sp-opt{background:var(--s1);border:2px solid var(--bd);border-radius:8px;padding:8px;
+  cursor:pointer;text-align:center;transition:all .15s;font-size:.75rem}
+.sp-opt:hover{border-color:var(--bd2)}
+.sp-opt.selected{border-color:var(--g1);background:rgba(76,175,80,.1)}
+.sp-opt .sp-name{font-weight:700;font-size:.8rem;display:block;margin-bottom:2px}
+.sp-opt .sp-thc{font-size:.65rem;color:var(--mu)}
+.menge-slider{width:100%;accent-color:var(--g1);margin:8px 0}
+.sim-result{background:rgba(76,175,80,.08);border:1px solid rgba(76,175,80,.25);
+  border-radius:8px;padding:10px 12px;margin-top:10px;font-size:.8rem;color:var(--tx2)}
+.sim-result strong{color:var(--g2)}
+
+/* ── EXPORT PANEL ── */
+.export-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:8px 0}
+.exp-btn{background:var(--s2);border:1px solid var(--bd);color:var(--tx2);
+  padding:9px 10px;border-radius:9px;cursor:pointer;font-size:.74rem;font-family:inherit;
+  transition:all .15s;display:flex;align-items:center;gap:6px}
+.exp-btn:hover{border-color:var(--g1);color:var(--g2)}
+
+/* ── PRINT OPTIMIZED ── */
+@media print{
+  #sb,.sbar,.ql-bar,.minimap,.feedback-bar,.notes-area,.cert-overlay,.welcome-overlay,
+  .lp-overlay,.focus-exit,#ruler,#ruler-band,.tts-bar,.mob-a11y-bar,.confused-btn,
+  .confused-form,.chap-actions,.star-rating,.offline-indicator,.gh-actions,
+  .breadcrumb,.read-time,.done-check,.progress-ring-wrap,.rec-bar,
+  .chap-nav,.sec-toc,.acc-controls,.version-banner,#translating-msg{display:none!important}
+  #main{margin-left:0!important;padding:0}
+  body{background:#fff!important;color:#000!important;font-size:10pt}
+  .sec{page-break-inside:avoid;border:1px solid #ddd!important;padding:12pt!important;
+    margin-bottom:8pt;background:#fff!important;color:#000!important;border-radius:0!important}
+  .sec-h{font-size:13pt!important;color:#000!important}
+  .sec-tag{font-size:8pt;color:#666!important}
+  .sec-intro{font-size:9pt!important;color:#333!important}
+  .ssh{font-size:9pt;font-weight:700;color:#333!important;border-bottom:1pt solid #ddd;padding-bottom:2pt}
+  a{color:#000!important;text-decoration:underline}
+  .tab-panel,.acc-b{display:block!important}
+  h1{font-size:18pt;text-align:center;color:#000!important;margin-bottom:6pt}
+  /* Print TOC first page */
+  body.print-toc section.sec:not(#s-toc){display:none!important}
+  body.print-toc #s-toc{display:block!important}
+  body.print-toc #s-toc table{font-size:9pt}
+  /* Two columns for content */
+  body.print-full #main{columns:2 280pt;column-gap:16pt}
+  body.print-full .sec{break-inside:avoid;column-break-inside:avoid}
+}
+
+
+/* ── GUIDED TOUR ── */
+.tour-overlay{position:fixed;inset:0;z-index:9900;pointer-events:none}
+.tour-highlight{position:fixed;border:3px solid var(--g1);border-radius:10px;
+  box-shadow:0 0 0 9999px rgba(0,0,0,.72);z-index:9901;transition:all .4s ease;
+  pointer-events:none}
+.tour-tooltip{position:fixed;background:var(--s1);border:1px solid var(--g1);
+  border-radius:12px;padding:14px 18px;max-width:280px;z-index:9902;
+  box-shadow:0 6px 32px rgba(0,0,0,.6);pointer-events:auto}
+.tour-tooltip h3{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:800;
+  color:var(--g2);margin-bottom:5px}
+.tour-tooltip p{font-size:.78rem;color:var(--tx2);line-height:1.55;margin-bottom:10px}
+.tour-btns{display:flex;gap:7px;align-items:center}
+.tour-next{background:var(--g1);color:#000;border:none;padding:6px 14px;
+  border-radius:8px;cursor:pointer;font-weight:700;font-size:.76rem;font-family:inherit}
+.tour-skip{background:none;border:none;color:var(--mu);cursor:pointer;
+  font-size:.7rem;font-family:inherit}
+.tour-prog{font-size:.65rem;color:var(--mu);margin-left:auto}
+
+/* ── QUICK START KACHELN ── */
+.qs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:10px;margin:14px 0}
+.qs-tile{background:var(--s2);border:1px solid var(--bd);border-radius:12px;
+  padding:16px 12px;cursor:pointer;text-align:center;transition:all .2s;
+  text-decoration:none;color:inherit;display:block}
+.qs-tile:hover{border-color:var(--g1);transform:translateY(-3px);
+  box-shadow:0 6px 20px rgba(0,0,0,.3);text-decoration:none;color:inherit}
+.qs-icon{font-size:1.8rem;display:block;margin-bottom:7px}
+.qs-title{font-family:'Syne',sans-serif;font-weight:700;font-size:.83rem;
+  color:var(--tx);margin-bottom:3px}
+.qs-desc{font-size:.68rem;color:var(--mu);line-height:1.4}
+
+/* ── CONTINUE READING CARD ── */
+.continue-card{display:none;background:linear-gradient(135deg,rgba(76,175,80,.12),rgba(102,187,106,.06));
+  border:1px solid rgba(76,175,80,.3);border-radius:11px;padding:12px 16px;
+  margin:10px 0;cursor:pointer;transition:all .15s;align-items:center;gap:12px}
+.continue-card:hover{border-color:var(--g1);transform:translateX(3px)}
+.continue-card.show{display:flex}
+.cc-icon{font-size:1.3rem;flex-shrink:0}
+.cc-txt{flex:1}
+.cc-label{font-size:.62rem;color:var(--mu);text-transform:uppercase;letter-spacing:.08em}
+.cc-title{font-size:.84rem;font-weight:700;color:var(--g2)}
+.cc-arr{color:var(--g1);font-size:1rem;flex-shrink:0}
+
+/* ── VOICE SEARCH ── */
+.search-wrap{position:relative;display:flex;align-items:center}
+.search-wrap input{flex:1;padding-right:32px}
+.mic-btn{position:absolute;right:6px;background:none;border:none;cursor:pointer;
+  color:var(--mu);font-size:.9rem;padding:2px;transition:color .15s;line-height:1}
+.mic-btn:hover,.mic-btn.active{color:var(--g1)}
+.mic-btn.listening{animation:micPulse .8s ease infinite alternate}
+@keyframes micPulse{from{color:var(--g1)}to{color:#a5d6a7}}
+
+/* ── QUICK FAQ BUTTON ── */
+.quick-faq-btn{position:fixed;bottom:74px;right:14px;width:44px;height:44px;
+  border-radius:50%;background:var(--g1);color:#000;border:none;cursor:pointer;
+  font-size:1.1rem;font-weight:700;z-index:280;box-shadow:0 3px 14px rgba(0,0,0,.5);
+  transition:transform .15s;display:flex;align-items:center;justify-content:center}
+.quick-faq-btn:hover{transform:scale(1.1)}
+@media(max-width:920px){.quick-faq-btn{bottom:110px}}
+.quick-faq-panel{display:none;position:fixed;bottom:125px;right:14px;
+  width:300px;max-height:400px;background:var(--s1);border:1px solid var(--g1);
+  border-radius:12px;z-index:280;box-shadow:0 6px 28px rgba(0,0,0,.5);
+  overflow-y:auto}
+.quick-faq-panel.open{display:block}
+.qfp-head{padding:10px 14px;border-bottom:1px solid var(--bd);
+  font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;color:var(--g2);
+  display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;
+  background:var(--s1)}
+.qfp-item{padding:9px 14px;border-bottom:1px solid var(--bd);cursor:pointer;transition:background .12s}
+.qfp-item:hover{background:var(--s2)}
+.qfp-item:last-child{border-bottom:none}
+.qfp-q{font-size:.78rem;font-weight:600;color:var(--tx);margin-bottom:2px}
+.qfp-a{font-size:.73rem;color:var(--mu);display:none;line-height:1.5;padding-top:4px}
+.qfp-item.open .qfp-a{display:block}
+.qfp-item.open .qfp-q{color:var(--g2)}
+
+/* ── AUTO NIGHT MODE indicator ── */
+.night-mode-badge{font-size:.6rem;color:var(--mu);padding:2px 6px;background:var(--s2);
+  border:1px solid var(--bd);border-radius:5px;display:none}
+.night-mode-badge.show{display:inline-block}
+
+/* ── PRESENTATION MODE ── */
+body.present-mode{font-size:20px!important}
+body.present-mode .sec{padding:28px!important}
+body.present-mode .sec-h{font-size:1.6rem!important}
+body.present-mode .sec-intro{font-size:1rem!important}
+body.present-mode p,body.present-mode li,body.present-mode td{font-size:.95rem!important;line-height:1.9!important}
+body.present-mode .nl{font-size:.88rem!important;padding:10px 14px!important}
+
+/* ── IMAGES TOGGLE ── */
+body.no-images .sc-fig,.body.no-images .sc-iw{display:none!important}
+body.no-images .sc-fig::after{content:'[Bild ausgeblendet]';display:block;
+  padding:10px;color:var(--mu);font-size:.75rem;text-align:center;
+  border:1px dashed var(--bd);border-radius:6px}
+
+/* ── CHAPTER SCROLL PROGRESS ── */
+.chap-scroll-bar{position:fixed;left:var(--sw);right:0;top:0;height:2px;
+  background:transparent;z-index:97;pointer-events:none;transition:left .3s}
+.chap-scroll-fill{height:100%;background:var(--g1);width:0%;transition:width .1s}
+body.sb-col .chap-scroll-bar{left:14px}
+@media(max-width:920px){.chap-scroll-bar{left:0}}
+
+/* ── SYNONYM SEARCH hint ── */
+.search-synonyms{font-size:.62rem;color:var(--mu);padding:3px 11px 6px;
+  font-style:italic}
+
+/* ── SIMPLIFY BUTTON ── */
+.simplify-btn{background:none;border:1px solid rgba(100,181,246,.4);color:#90caf9;
+  padding:3px 9px;border-radius:7px;cursor:pointer;font-size:.68rem;font-family:inherit;
+  transition:all .15s;margin-top:4px}
+.simplify-btn:hover{border-color:#64b5f6;background:rgba(100,181,246,.08)}
+.simple-version{display:none;background:rgba(100,181,246,.06);border:1px solid rgba(100,181,246,.2);
+  border-radius:8px;padding:10px 12px;margin-top:6px;font-size:.82rem;
+  color:var(--tx2);line-height:1.65}
+.simple-version.show{display:block}
+
 </style>
 
   <div id="google_translate_element" style="display:none" aria-hidden="true"></div>
@@ -1054,6 +1294,8 @@ body.serif h2,body.serif h3,body.serif h4{
   <a href="#s-vereinsstruktur" class="nl"><span class="ic">🏛️</span>Vereinsstruktur</a>
   <a href="#s-abholung" class="nl"><span class="ic">📦</span>Abholung</a>
   <a href="#s-a11y" class="nl"><span class="ic">♿</span>Barrierefreiheits-Guide</a>
+  <a href="#s-bestellung" class="nl"><span class="ic">🛒</span>Bestellung &amp; Abgabe</a>
+  <a href="#s-cannabiskunde" class="nl"><span class="ic">🔬</span>Cannabiskunde</a>
 <div class="sb-sec">📊 Statistik</div>
 <div style="padding:5px 10px 8px;flex-shrink:0">
   <div id="ana-top-chapters" style="font-size:.68rem;color:var(--mu)">Wird geladen…</div>
@@ -1139,6 +1381,11 @@ body.serif h2,body.serif h3,body.serif h4{
       <div style="padding:3px 10px 3px;display:flex;gap:5px">
         <button onclick="openLearningPaths()" style="flex:1;background:var(--s2);border:1px solid var(--bd);color:var(--tx2);padding:5px;border-radius:7px;cursor:pointer;font-size:.7rem;font-family:inherit">🗺️ Lernpfade</button>
         <button onclick="printGuide()" style="flex:1;background:var(--s2);border:1px solid var(--bd);color:var(--tx2);padding:5px;border-radius:7px;cursor:pointer;font-size:.7rem;font-family:inherit">🖨️ Drucken</button>
+        <button onclick="printToc()" style="flex:1;background:var(--s2);border:1px solid var(--bd);color:var(--tx2);padding:5px;border-radius:7px;cursor:pointer;font-size:.7rem;font-family:inherit">📋 Inhaltsvz.</button>
+      </div>
+      <div style="padding:3px 10px 3px;display:flex;gap:5px">
+        <button onclick="exportAllData()" style="flex:1;background:var(--s2);border:1px solid var(--bd);color:var(--tx2);padding:5px;border-radius:7px;cursor:pointer;font-size:.7rem;font-family:inherit">📦 Alles exportieren</button>
+        <button onclick="showQR()" style="flex:1;background:var(--s2);border:1px solid var(--bd);color:var(--tx2);padding:5px;border-radius:7px;cursor:pointer;font-size:.7rem;font-family:inherit">📱 QR-Code</button>
       </div>
 
       <div style="padding:2px 10px 4px;font-size:.6rem;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.1em;margin-top:4px">♿ Barrierefreiheit</div>
@@ -1224,15 +1471,13 @@ body.serif h2,body.serif h3,body.serif h4{
 </div>
   </div>
   <span class="sh" id="sh-hint">↑ Direkt zum richtigen Kapitel springen</span>
-<div class="lang-wrap" style="margin-left:auto">
-  
-  /div>
-</div>
+
 </div>
 
 <!-- QUICK LINKS -->
 <div class="minimap" id="minimap"><div class="minimap-fill" id="mm-fill"></div></div>
 <div class="sticky-title" id="sticky-title"></div>
+<div class="chap-scroll-bar"><div class="chap-scroll-fill" id="chap-scroll-fill"></div></div>
 <div id="season-banner" class="season-banner"></div>
 <div id="lang-notice-bar" style="display:none;background:rgba(76,175,80,.08);border-bottom:1px solid rgba(76,175,80,.2);padding:6px 16px;font-size:.76rem;color:var(--tx2);text-align:center;flex-shrink:0"></div>
 <div id="translating-msg" style="position:fixed;bottom:70px;left:50%;transform:translateX(-50%);background:var(--s1);border:1px solid var(--g1);border-radius:20px;padding:6px 16px;font-size:.74rem;color:var(--g2);z-index:5000;display:none;box-shadow:0 4px 16px rgba(0,0,0,.4)">🌍 Wird übersetzt…</div>
@@ -1275,6 +1520,45 @@ body.serif h2,body.serif h3,body.serif h4{
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Willkommen</span><span>›</span><span>Was ist Terptrain?</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Terptrain ist die digitale Community-Plattform der <strong>Mariana Community</strong> – speziell für Mitglieder der Cannabis Social Clubs.</p>
+
+<div id="continue-card" class="continue-card" onclick="goLastSection()">
+  <span class="cc-icon">↩</span>
+  <div class="cc-txt">
+    <div class="cc-label">Weiterlesen</div>
+    <div class="cc-title" id="cc-title">Zuletzt gelesen</div>
+  </div>
+  <span class="cc-arr">→</span>
+</div>
+
+<div class="ssh">🚀 Was möchtest du tun?</div>
+<div class="qs-grid">
+  <a class="qs-tile" onclick="closeWelcome('#s-aufbau')" href="#s-aufbau">
+    <span class="qs-icon">🆕</span>
+    <div class="qs-title">Ich bin neu</div>
+    <div class="qs-desc">Erste Schritte auf Terptrain</div>
+  </a>
+  <a class="qs-tile" href="#s-fehler">
+    <span class="qs-icon">🔧</span>
+    <div class="qs-title">Ich habe ein Problem</div>
+    <div class="qs-desc">Fehler &amp; Lösungen</div>
+  </a>
+  <a class="qs-tile" href="#s-lizenz">
+    <span class="qs-icon">🌿</span>
+    <div class="qs-title">Cannabis kommt bald</div>
+    <div class="qs-desc">Nach der Anbaulizenz</div>
+  </a>
+  <a class="qs-tile" href="#s-kuendigung">
+    <span class="qs-icon">🚪</span>
+    <div class="qs-title">Ich möchte kündigen</div>
+    <div class="qs-desc">Kündigung &amp; Austritt</div>
+  </a>
+  <a class="qs-tile" href="#s-faq">
+    <span class="qs-icon">❓</span>
+    <div class="qs-title">Einfach stöbern</div>
+    <div class="qs-desc">FAQ &amp; Glossar</div>
+  </a>
+</div>
+
 
 <div 
 <div class="acc-controls" data-ctrl="s-was"><button class="acc-ctrl-btn" onclick="expandAll('s-was')">▼ Alle aufklappen</button><button class="acc-ctrl-btn" onclick="collapseAll('s-was')">▲ Alle zuklappen</button></div><div class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
@@ -1361,6 +1645,8 @@ body.serif h2,body.serif h3,body.serif h4{
   <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-was"></textarea>
   <button onclick="sendConfused('s-was')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
 </div>
+<button class="simplify-btn" onclick="toggleSimple('s-was')" aria-label="Einfachere Version anzeigen">✨ Einfacher erklären</button>
+<div class="simple-version" id="simple-s-was">Terptrain ist eine App für Mitglieder von Cannabis-Vereinen. Dort kannst du Nachrichten lesen, mit anderen reden und deinen Verein verwalten.</div>
 <div class="feedback-bar" data-sec="s-was">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-was','yes')">👍 Ja</button>
@@ -1422,6 +1708,8 @@ body.serif h2,body.serif h3,body.serif h4{
   <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-aufbau"></textarea>
   <button onclick="sendConfused('s-aufbau')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
 </div>
+<button class="simplify-btn" onclick="toggleSimple('s-aufbau')" aria-label="Einfachere Version anzeigen">✨ Einfacher erklären</button>
+<div class="simple-version" id="simple-s-aufbau">Die App hat 3 Teile: Links die Navigation, in der Mitte der Inhalt, rechts Infos. Auf dem Handy ist es anders angeordnet.</div>
 <div class="feedback-bar" data-sec="s-aufbau">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-aufbau','yes')">👍 Ja</button>
@@ -1477,6 +1765,8 @@ body.serif h2,body.serif h3,body.serif h4{
   <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-login"></textarea>
   <button onclick="sendConfused('s-login')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
 </div>
+<button class="simplify-btn" onclick="toggleSimple('s-login')" aria-label="Einfachere Version anzeigen">✨ Einfacher erklären</button>
+<div class="simple-version" id="simple-s-login">Geh auf terptrain.app. Tippe deine E-Mail und dein Passwort ein. Klicke auf „Anmelden". Passwort vergessen? Klicke auf den Link darunter.</div>
 <div class="feedback-bar" data-sec="s-login">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-login','yes')">👍 Ja</button>
@@ -2598,6 +2888,8 @@ body.serif h2,body.serif h3,body.serif h4{
   <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-tokens"></textarea>
   <button onclick="sendConfused('s-tokens')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
 </div>
+<button class="simplify-btn" onclick="toggleSimple('s-tokens')" aria-label="Einfachere Version anzeigen">✨ Einfacher erklären</button>
+<div class="simple-version" id="simple-s-tokens">Tokens sind Punkte. Du bekommst sie wenn du deinen Monatsbeitrag zahlst. Je mehr Punkte, desto mehr bekommst du von der Ernte. Punkte verfallen wenn du austritts.</div>
 <div class="feedback-bar" data-sec="s-tokens">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-tokens','yes')">👍 Ja</button>
@@ -2889,6 +3181,8 @@ body.serif h2,body.serif h3,body.serif h4{
   <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-kuendigung"></textarea>
   <button onclick="sendConfused('s-kuendigung')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
 </div>
+<button class="simplify-btn" onclick="toggleSimple('s-kuendigung')" aria-label="Einfachere Version anzeigen">✨ Einfacher erklären</button>
+<div class="simple-version" id="simple-s-kuendigung">Um zu kündigen: Geh in dein Profil, dann zu Mitgliedschaft, dann zu Verein. Dort findest du den Kündigen-Button. Achtung: Deine Punkte verfallen dabei!</div>
 <div class="feedback-bar" data-sec="s-kuendigung">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-kuendigung','yes')">👍 Ja</button>
@@ -3004,6 +3298,28 @@ body.serif h2,body.serif h3,body.serif h4{
   <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
   <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-datenschutz"></textarea>
   <button onclick="sendConfused('s-datenschutz')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
+
+<div class="ssh">⚖️ Rechtlicher Update-Tracker – KCanG Status</div>
+<div class="legal-tracker" id="legal-tracker">
+  <div class="lt-status">
+    <div class="lt-dot ok" id="lt-dot"></div>
+    <span style="font-size:.82rem;font-weight:600;color:var(--tx)" id="lt-status-text">Kein Update bekannt – Stand April 2026</span>
+  </div>
+  <div class="lt-entry">
+    <div class="lt-date">01. April 2024</div>
+    <strong>KCanG in Kraft getreten</strong> – Konsumcannabisgesetz tritt in Kraft. Privater Anbau (3 Pflanzen) und CSC-Gründungen erlaubt.
+  </div>
+  <div class="lt-entry">
+    <div class="lt-date">Juli 2024</div>
+    <strong>CSC-Lizenzvergabe startet</strong> – Behörden beginnen mit der Bearbeitung von Anbaulizenzen für Cannabis Social Clubs.
+  </div>
+  <div class="lt-entry">
+    <div class="lt-date">Fortlaufend</div>
+    <strong>Gemeindliche Regelungen</strong> – Einige Kommunen erlassen lokale Einschränkungen (z.B. Abstands-Regelungen zu Schulen).
+  </div>
+  <p style="font-size:.7rem;color:var(--mu);margin-top:8px" id="lt-check-time">Letzte Prüfung: lokal</p>
+  <button onclick="checkLegalUpdates()" style="background:none;border:1px solid var(--bd);color:var(--mu);padding:3px 10px;border-radius:7px;cursor:pointer;font-size:.7rem;font-family:inherit;margin-top:4px">🔄 Jetzt prüfen</button>
 </div>
 <div class="feedback-bar" data-sec="s-datenschutz">
   <span class="fb-lbl">War das hilfreich?</span>
@@ -4171,6 +4487,134 @@ body.serif h2,body.serif h3,body.serif h4{
   <span class="note-saved">✓ Gespeichert</span>
 </div>
 </section>
+<section class="sec" id="s-bestellung" aria-labelledby="h2-bestellung">
+<div class="sec-tag">Kapitel 41</div>
+<h2 class="sec-h" id="h2-bestellung"><div class="sec-icon">🛒</div>Abgabe &amp; Bestellvorgang</h2>
+<div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Cannabis</span><span>›</span><span>Bestellung</span></div>
+<p class="sec-intro">Sobald dein Verein die Anbaulizenz erhalten und die erste Ernte eingeholt hat, kannst du Cannabis bestellen. Hier erklärt – und als interaktiver Simulator zum Ausprobieren.</p>
+
+<div class="call warn"><span class="ci">⏳</span><div>Noch nicht verfügbar. Freigeschaltet wenn Meilenstein <strong>„Abgabe gestartet"</strong> erreicht ist → <a href="#s-standorte">Standorte</a></div></div>
+
+<div class="ssh">🎮 Bestellvorgang-Simulator</div>
+<p style="font-size:.8rem;color:var(--mu);margin-bottom:8px">Klicke dich durch den Bestellvorgang – so wird es funktionieren:</p>
+
+<div class="order-sim" id="order-sim">
+  <h4 id="sim-step-title">Schritt 1: Sorte wählen</h4>
+  <div id="sim-step-1">
+    <div class="sorte-picker">
+      <div class="sp-opt" onclick="simSelectSorte(this,'Haze OG')"><span class="sp-name">🌿 Haze OG</span><span class="sp-thc">THC: 18%</span></div>
+      <div class="sp-opt" onclick="simSelectSorte(this,'Blue Dream')"><span class="sp-name">💙 Blue Dream</span><span class="sp-thc">THC: 20%</span></div>
+      <div class="sp-opt" onclick="simSelectSorte(this,'Indica Special')"><span class="sp-name">🌙 Indica Special</span><span class="sp-thc">THC: 22%</span></div>
+    </div>
+    <button onclick="simNext(2)" style="background:var(--g1);color:#000;border:none;padding:7px 18px;border-radius:8px;cursor:pointer;font-weight:700;font-size:.8rem;font-family:inherit;opacity:.5" id="sim-next-1" disabled>Weiter →</button>
+  </div>
+  <div id="sim-step-2" style="display:none">
+    <p style="font-size:.82rem;color:var(--tx2);margin-bottom:6px">Menge wählen (max. 25g/Tag, 50g/Monat):</p>
+    <input type="range" class="menge-slider" id="sim-menge" min="1" max="25" value="5" oninput="document.getElementById('sim-menge-val').textContent=this.value+'g'">
+    <div style="text-align:center;font-size:1.1rem;font-weight:700;color:var(--g2)" id="sim-menge-val">5g</div>
+    <button onclick="simNext(3)" style="background:var(--g1);color:#000;border:none;padding:7px 18px;border-radius:8px;cursor:pointer;font-weight:700;font-size:.8rem;font-family:inherit;margin-top:8px">Weiter →</button>
+  </div>
+  <div id="sim-step-3" style="display:none">
+    <p style="font-size:.82rem;color:var(--tx2);margin-bottom:8px">Abholtermin wählen:</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px">
+      <div onclick="simSelectTermin(this,'Mo 14:00')" style="background:var(--s1);border:2px solid var(--bd);border-radius:7px;padding:8px;text-align:center;cursor:pointer;font-size:.78rem">Mo<br><strong>14:00</strong></div>
+      <div onclick="simSelectTermin(this,'Di 10:00')" style="background:var(--s1);border:2px solid var(--bd);border-radius:7px;padding:8px;text-align:center;cursor:pointer;font-size:.78rem">Di<br><strong>10:00</strong></div>
+      <div onclick="simSelectTermin(this,'Fr 16:00')" style="background:var(--s1);border:2px solid var(--bd);border-radius:7px;padding:8px;text-align:center;cursor:pointer;font-size:.78rem">Fr<br><strong>16:00</strong></div>
+    </div>
+    <button onclick="simNext(4)" style="background:var(--g1);color:#000;border:none;padding:7px 18px;border-radius:8px;cursor:pointer;font-weight:700;font-size:.8rem;font-family:inherit;opacity:.5" id="sim-next-3" disabled>Bestellen →</button>
+  </div>
+  <div id="sim-step-4" style="display:none">
+    <div class="sim-result">
+      ✅ <strong>Bestellung erfolgreich!</strong><br>
+      <span id="sim-summary"></span><br>
+      Termin erscheint jetzt in deinem <a href="#s-kalender">Kalender</a>.<br>
+      Mitgliedsnummer bereithalten für die Abholung!
+    </div>
+    <button onclick="simReset()" style="background:var(--s2);border:1px solid var(--bd);color:var(--mu);padding:6px 14px;border-radius:8px;cursor:pointer;font-size:.78rem;margin-top:8px;font-family:inherit">↩ Nochmal simulieren</button>
+  </div>
+</div>
+
+<div class="ssh">📋 Was brauche ich für die Abholung?</div>
+<div class="cards">
+  <div class="card"><div class="ci">🪪</div><h4>Mitgliedsnummer</h4><p>Beginnt mit A. Unter Profil → Mitgliederdaten → Mitgliedschaft.</p></div>
+  <div class="card"><div class="ci">📅</div><h4>Gebuchter Termin</h4><p>Im Kalender sichtbar. Pünktlich erscheinen – Termin kann verfallen.</p></div>
+  <div class="card"><div class="ci">📦</div><h4>Verpackung</h4><p>Nicht-einsehbare Verpackung für den Transport in der Öffentlichkeit.</p></div>
+  <div class="card"><div class="ci">⚖️</div><h4>Mengenlimit</h4><p>Max. 25g/Tag, 50g/Monat. Wird beim Verein erfasst.</p></div>
+</div>
+<div class="feedback-bar" data-sec="s-bestellung">
+  <span class="fb-lbl">War das hilfreich?</span>
+  <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-bestellung','yes')">👍 Ja</button>
+  <button class="fb-btn" data-v="no" onclick="fbClick(this,'s-bestellung','no')">👎 Nein</button>
+  <span class="fb-thanks">Danke! 🙏</span>
+  <button class="note-btn" onclick="toggleNotes(this,'s-bestellung')">📝 Notiz</button>
+  <span class="note-dot" data-ni="s-bestellung"></span>
+</div>
+<div class="notes-area"><textarea placeholder="Notizen…"></textarea>
+<button class="note-save" onclick="saveNote(this,'s-bestellung')">Speichern</button>
+<span class="note-saved">✓ Gespeichert</span></div>
+</section>
+<section class="sec" id="s-cannabiskunde" aria-labelledby="h2-cannabiskunde">
+<div class="sec-tag">Kapitel 42</div>
+<h2 class="sec-h" id="h2-cannabiskunde"><div class="sec-icon">🔬</div>Cannabiskunde für Einsteiger</h2>
+<div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Wissen</span><span>›</span><span>Cannabiskunde</span></div>
+<p class="sec-intro">Basiswissen über Cannabis – Wirkstoffe, Sorten und Terpene. Kein Konsum-Guide, sondern sachliche Informationen zur Einordnung.</p>
+
+<div class="ssh">🧪 Die wichtigsten Cannabinoide</div>
+<div class="cards">
+  <div class="card"><div class="ci">🟢</div><h4>THC (Tetrahydrocannabinol)</h4><p>Der psychoaktive Hauptwirkstoff. Verantwortlich für die berauschende Wirkung. Gehalt in Clubpflanzen typischerweise 10–25%.</p></div>
+  <div class="card"><div class="ci">🔵</div><h4>CBD (Cannabidiol)</h4><p>Nicht psychoaktiv. Wird als entspannend beschrieben. Hoher CBD-Gehalt kann THC-Effekte abmildern. Basis für viele Medizinalprodukte.</p></div>
+  <div class="card"><div class="ci">🟡</div><h4>CBN / CBG</h4><p>Weitere Cannabinoide in geringen Mengen. CBN entsteht beim Abbau von THC. CBG gilt als Vorläufer anderer Cannabinoide.</p></div>
+  <div class="card"><div class="ci">🧬</div><h4>Der Entourage-Effekt</h4><p>Cannabinoide und Terpene wirken zusammen stärker als einzeln – das Zusammenspiel aller Inhaltsstoffe beeinflusst die Gesamtwirkung.</p></div>
+</div>
+
+<div class="ssh">🌿 Sorten-Typen</div>
+<table class="tbl">
+  <tr><th>Typ</th><th>Herkunft</th><th>Wuchsform</th><th>Bekannte Wirkung</th></tr>
+  <tr><td>🌙 Indica</td><td>Zentralasien (Afghanistan, Pakistan)</td><td>Buschig, kompakt</td><td>Entspannend, Körpergefühl</td></tr>
+  <tr><td>☀️ Sativa</td><td>Äquatornah (Südamerika, Afrika)</td><td>Groß, schlank</td><td>Anregend, kreativ</td></tr>
+  <tr><td>🌗 Hybrid</td><td>Kreuzung beider Typen</td><td>Variabel</td><td>Je nach Kreuzung</td></tr>
+  <tr><td>🌱 Ruderalis</td><td>Russland/Osteuropa</td><td>Klein, autoflowering</td><td>Kaum psychoaktiv, Zuchtbasis</td></tr>
+</table>
+
+<div class="ssh">🍋 Interaktives Terpenprofil-Glossar</div>
+<div class="terpene-grid">
+  <div class="terpene-card" onclick="this.classList.toggle('open')"><div class="tc-name">Myrcen 🥭</div><div class="tc-aroma">Erdige, Mango-Note</div><div class="tc-bar-wrap"><div class="tc-bar" style="width:85%;background:#4caf50"></div></div><div class="tc-detail">Das häufigste Terpen in Cannabis. Soll entspannende und sedierende Eigenschaften haben. Auch in Mango, Hopfen und Zitronengras vorhanden.</div></div>
+  <div class="terpene-card" onclick="this.classList.toggle('open')"><div class="tc-name">Limonen 🍋</div><div class="tc-aroma">Zitrus, frisch</div><div class="tc-bar-wrap"><div class="tc-bar" style="width:70%;background:#ffb300"></div></div><div class="tc-detail">Frischer Zitrusduft. Bekannt aus Zitrusfrüchten. Gilt als stimmungsaufhellend und antifungal. Häufig in Sativa-Sorten.</div></div>
+  <div class="terpene-card" onclick="this.classList.toggle('open')"><div class="tc-name">Caryophyllen 🌶️</div><div class="tc-aroma">Würzig, Pfeffer</div><div class="tc-bar-wrap"><div class="tc-bar" style="width:65%;background:#e65100"></div></div><div class="tc-detail">Einziges Terpen das direkt an CB2-Rezeptoren bindet. Auch in schwarzem Pfeffer und Nelken. Gilt als entzündungshemmend.</div></div>
+  <div class="terpene-card" onclick="this.classList.toggle('open')"><div class="tc-name">Linalool 💜</div><div class="tc-aroma">Lavendel, blumig</div><div class="tc-bar-wrap"><div class="tc-bar" style="width:50%;background:#7b1fa2"></div></div><div class="tc-detail">Lavendelähnlicher Duft. Auch in Lavendel, Minze und Zimt. Soll beruhigend und angstlösend wirken.</div></div>
+  <div class="terpene-card" onclick="this.classList.toggle('open')"><div class="tc-name">Pinen 🌲</div><div class="tc-aroma">Kiefer, Holz, frisch</div><div class="tc-bar-wrap"><div class="tc-bar" style="width:60%;background:#00838f"></div></div><div class="tc-detail">Riecht nach Kiefernnadeln. α-Pinen und β-Pinen sind die häufigsten Terpene in der Natur überhaupt. Kommt auch in Rosmarin und Salbei vor.</div></div>
+  <div class="terpene-card" onclick="this.classList.toggle('open')"><div class="tc-name">Terpinolen 🍎</div><div class="tc-aroma">Blumig, Apfel, Holzig</div><div class="tc-bar-wrap"><div class="tc-bar" style="width:40%;background:#1976d2"></div></div><div class="tc-detail">Komplexes Aromaprofil. Weniger häufig aber charakteristisch für bestimmte Sorten wie Jack Herer. Antioxidative Eigenschaften bekannt.</div></div>
+</div>
+
+<div class="ssh">🌱 Interaktive Sorten-Datenbank</div>
+<div style="margin-bottom:8px;display:flex;gap:6px;flex-wrap:wrap">
+  <button onclick="filterSorten('')" class="fs-btn" style="width:auto;padding:4px 10px" id="sort-all">Alle</button>
+  <button onclick="filterSorten('indica')" class="fs-btn" style="width:auto;padding:4px 10px" id="sort-ind">🌙 Indica</button>
+  <button onclick="filterSorten('sativa')" class="fs-btn" style="width:auto;padding:4px 10px" id="sort-sat">☀️ Sativa</button>
+  <button onclick="filterSorten('hybrid')" class="fs-btn" style="width:auto;padding:4px 10px" id="sort-hyb">🌗 Hybrid</button>
+</div>
+<div class="sorte-grid" id="sorte-grid">
+  <div class="sorte-card" data-type="sativa"><span class="sc-type sc-sativa">☀️ Sativa</span><div class="sc-name">Haze OG</div><div class="sc-desc">Klassische Sativa mit zitrusartiger Note. Hoch THC, kreative Wirkung.</div><div class="sc-profile"><div class="sc-row"><span>THC</span><div class="sc-fill" style="width:80%"></div><span>20%</span></div><div class="sc-row"><span>CBD</span><div class="sc-fill" style="width:5%"></div><span>1%</span></div></div></div>
+  <div class="sorte-card" data-type="indica"><span class="sc-type sc-indica">🌙 Indica</span><div class="sc-name">Purple Kush</div><div class="sc-desc">Tiefentspannende Indica mit Beerenduft und erdigem Profil.</div><div class="sc-profile"><div class="sc-row"><span>THC</span><div class="sc-fill" style="width:90%"></div><span>22%</span></div><div class="sc-row"><span>CBD</span><div class="sc-fill" style="width:3%"></div><span>0.5%</span></div></div></div>
+  <div class="sorte-card" data-type="hybrid"><span class="sc-type sc-hybrid">🌗 Hybrid</span><div class="sc-name">Blue Dream</div><div class="sc-desc">Ausgeglichener Hybrid – beliebt wegen des ausgewogenen THC/CBD-Profils.</div><div class="sc-profile"><div class="sc-row"><span>THC</span><div class="sc-fill" style="width:75%"></div><span>18%</span></div><div class="sc-row"><span>CBD</span><div class="sc-fill" style="width:10%"></div><span>2%</span></div></div></div>
+  <div class="sorte-card" data-type="hybrid"><span class="sc-type sc-hybrid">🌗 Hybrid</span><div class="sc-name">OG Kush</div><div class="sc-desc">Erdige, holzige Note. Beliebt und vielfach ausgezeichnet.</div><div class="sc-profile"><div class="sc-row"><span>THC</span><div class="sc-fill" style="width:85%"></div><span>21%</span></div><div class="sc-row"><span>CBD</span><div class="sc-fill" style="width:4%"></div><span>0.8%</span></div></div></div>
+  <div class="sorte-card" data-type="sativa"><span class="sc-type sc-sativa">☀️ Sativa</span><div class="sc-name">Jack Herer</div><div class="sc-desc">Würzig-pinienartiger Duft, nach dem Cannabis-Aktivisten benannt.</div><div class="sc-profile"><div class="sc-row"><span>THC</span><div class="sc-fill" style="width:70%"></div><span>18%</span></div><div class="sc-row"><span>CBD</span><div class="sc-fill" style="width:8%"></div><span>1.5%</span></div></div></div>
+  <div class="sorte-card" data-type="indica"><span class="sc-type sc-indica">🌙 Indica</span><div class="sc-name">Northern Lights</div><div class="sc-desc">Klassiker mit süßlich-erdiger Note. Einer der meistangebauten Indica-Stämme.</div><div class="sc-profile"><div class="sc-row"><span>THC</span><div class="sc-fill" style="width:80%"></div><span>20%</span></div><div class="sc-row"><span>CBD</span><div class="sc-fill" style="width:3%"></div><span>0.5%</span></div></div></div>
+</div>
+
+<div class="call info"><span class="ci">ℹ️</span><div>Die Sortendaten dienen nur der Orientierung. Tatsächliche Werte können variieren. Die verfügbaren Sorten und Gehalte teilt dein Verein mit sobald die Abgabe startet.</div></div>
+<div class="feedback-bar" data-sec="s-cannabiskunde">
+  <span class="fb-lbl">War das hilfreich?</span>
+  <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-cannabiskunde','yes')">👍 Ja</button>
+  <button class="fb-btn" data-v="no" onclick="fbClick(this,'s-cannabiskunde','no')">👎 Nein</button>
+  <span class="fb-thanks">Danke! 🙏</span>
+  <button class="note-btn" onclick="toggleNotes(this,'s-cannabiskunde')">📝 Notiz</button>
+  <span class="note-dot" data-ni="s-cannabiskunde"></span>
+</div>
+<div class="notes-area"><textarea placeholder="Notizen…"></textarea>
+<button class="note-save" onclick="saveNote(this,'s-cannabiskunde')">Speichern</button>
+<span class="note-saved">✓ Gespeichert</span></div>
+</section>
 <div class="footer">
   <div>
     <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAA4AHADASIAAhEBAxEB/8QAGgABAAMBAQEAAAAAAAAAAAAAAAQFBgIDB//EAC0QAAEEAQMCBAYCAwAAAAAAAAEAAgMRBAUSITFBE3GBkSIyUWGhsQYVwdHw/8QAGQEBAQADAQAAAAAAAAAAAAAAAAECAwQF/8QAHREBAAMBAAIDAAAAAAAAAAAAAAECEQMEMRIhQf/aAAwDAQACEQMRAD8A+YLSv0rFl0xohYHSCO2PHwlxq+b+v36LNLY6aW/12PsdY8Md75rlSXL5VprETEs7g4eQ3VYYnxuY5jw87h2B6/hXOvxul0/4OTG4PI710P7VjtG4uobiALrsEc0OaWuAIIogjqjkt3m14tnpmtK0t2TJ4mTG9sNWDdbjx61S61/GggnidC1rHPB3MbwBVUa7d/ZaIRsAaA1oDflodO3Hos5/IyDqLQCCWxgGjdGyjfy626dd/FUiIq7hERAREQEREGsZg6fk4zDHDG6Mi2ubwfUjn3UnGxo8WIxw7g3dYaTYb5KHpGBNhREyyk7wCYx0af8Af/cqd4sdgeIyzdDcOa6qPH6TOzWJ2HaLl0kbI/Ee9rWddxNBcMyseR4ZHkROcega8EqNeS9VEl0vBme6WWIukceSXu5/Plwpa5kYJI3MPRwIPAP7VWtprP1OM7r7MaOaJkDGMkAO8MFV0r/KqVP1HTcjFc6VxMsZNmT7n6qAq9bjnwjJ0RERtEREBERBc6lrLpHeHhPc1nd9UT5dwql8sj9u+RztoIbZugSTQ9SfdcIjCnOtIyBERGbuOWSJ26KR7HEVbTRU/H1rMgj2Etk5+aQEn3tVqIxtStvcLfL1s5GM6EY7RvFO3G68vwqhERKc60jKiIiMxERAREQEREBERAREQEREBERAREQEREH/2Q==" alt="Mariana Community" loading="lazy">
@@ -5197,6 +5641,471 @@ document.addEventListener('keydown', function(e){
   window.addEventListener('resize', checkMobile, {passive:true});
 })();
 
+
+// ════════════════════════════════════════════
+// PRINT TOC
+// ════════════════════════════════════════════
+window.printToc = function(){
+  var toc = document.getElementById('s-toc');
+  if(!toc){ alert('Inhaltsverzeichnis nicht gefunden.'); return; }
+  // Make visible
+  toc.style.removeProperty('display');
+  toc.style.display = 'block';
+  document.body.classList.add('print-toc');
+  window.print();
+  setTimeout(function(){
+    document.body.classList.remove('print-toc');
+    toc.style.display = 'none';
+  }, 500);
+};
+
+
+// ════════════════════════════════════════════════════
+// OFFLINE INDICATOR
+// ════════════════════════════════════════════════════
+(function(){
+  var el = document.getElementById('offline-indicator');
+  var txt = document.getElementById('offline-txt');
+  function update(){
+    if(!el) return;
+    var on = navigator.onLine;
+    el.className = 'offline-indicator ' + (on ? 'online' : 'offline');
+    if(txt) txt.textContent = on ? 'Online' : 'Offline';
+  }
+  window.addEventListener('online', update);
+  window.addEventListener('offline', update);
+  update();
+  // Check if page is cached by service worker
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.getRegistration().then(function(reg){
+      if(reg && reg.active){
+        el.className = 'offline-indicator cached';
+        if(txt) txt.textContent = 'Offline verfügbar';
+      }
+    }).catch(function(){});
+  }
+})();
+
+// ════════════════════════════════════════════════════
+// QR CODE
+// ════════════════════════════════════════════════════
+window.showQR = function(sid){
+  var url = sid
+    ? window.location.href.split('#')[0] + '#' + sid
+    : window.location.href.split('#')[0];
+  var title = sid ? 'QR – ' + (document.getElementById(sid) ? document.getElementById(sid).querySelector('h2').textContent.replace(/[^\w\s&äöüÄÖÜß\-]/g,'').trim().slice(0,30) : sid) : 'QR – Startseite';
+  var qrApiUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(url) + '&margin=4&color=1a2e1a&bgcolor=ffffff';
+  document.getElementById('qr-title').textContent = title;
+  document.getElementById('qr-img').src = qrApiUrl;
+  document.getElementById('qr-url').textContent = url;
+  document.getElementById('qr-modal').classList.add('open');
+  window._qrUrl = url;
+};
+window.showChapterQR = function(sid){ window.showQR(sid); };
+window.qrCopyUrl = function(){
+  if(navigator.clipboard && window._qrUrl){
+    navigator.clipboard.writeText(window._qrUrl);
+    var btn = document.querySelector('.qr-copy-btn');
+    if(btn){ var o=btn.textContent; btn.textContent='✓ Kopiert!'; setTimeout(function(){btn.textContent=o;},2000); }
+  }
+};
+document.addEventListener('click', function(e){
+  var m = document.getElementById('qr-modal');
+  if(m && e.target === m) m.classList.remove('open');
+});
+
+// ════════════════════════════════════════════════════
+// EXPORT ALL DATA (CSV + JSON)
+// ════════════════════════════════════════════════════
+window.exportAllData = function(){
+  var data = {
+    exported: new Date().toISOString(),
+    bookmarks: JSON.parse(localStorage.getItem('tt-bm')||'[]'),
+    notes: {},
+    ratings: {},
+    progress: JSON.parse(localStorage.getItem('tt-read-v3')||'[]'),
+    done: JSON.parse(localStorage.getItem('tt-done')||'[]'),
+  };
+  // Collect notes and ratings
+  Object.keys(localStorage).forEach(function(k){
+    if(k.startsWith('tt-note-')) data.notes[k.replace('tt-note-','')] = localStorage.getItem(k);
+    if(k.startsWith('tt-star-')) data.ratings[k.replace('tt-star-','')] = parseInt(localStorage.getItem(k));
+  });
+
+  // Build CSV
+  var csv = 'Typ,ID,Inhalt\n';
+  data.bookmarks.forEach(function(b){ csv += 'Lesezeichen,'+b.id+','+b.title+'\n'; });
+  Object.keys(data.notes).forEach(function(id){ csv += 'Notiz,'+id+',\"'+data.notes[id].replace(/"/g,'""').replace(/\n/g,' ')+'\"\n'; });
+  Object.keys(data.ratings).forEach(function(id){ csv += 'Bewertung,'+id+','+data.ratings[id]+' Sterne\n'; });
+  data.progress.forEach(function(id){ csv += 'Gelesen,'+id+',ja\n'; });
+  data.done.forEach(function(id){ csv += 'Erledigt,'+id+',ja\n'; });
+
+  // Download CSV
+  var a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,\uFEFF' + encodeURIComponent(csv);
+  a.download = 'terptrain-daten-' + new Date().toLocaleDateString('de-DE').replace(/\./g,'-') + '.csv';
+  a.click();
+
+  // Also offer JSON
+  setTimeout(function(){
+    var b = document.createElement('a');
+    b.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(data, null, 2));
+    b.download = 'terptrain-daten.json';
+    b.click();
+  }, 500);
+};
+
+// ════════════════════════════════════════════════════
+// LEGAL UPDATE CHECKER
+// ════════════════════════════════════════════════════
+window.checkLegalUpdates = function(){
+  var el = document.getElementById('lt-check-time');
+  var dot = document.getElementById('lt-dot');
+  var status = document.getElementById('lt-status-text');
+  if(el) el.textContent = 'Prüfe…';
+  // Check via fetch (would need a real endpoint in production)
+  // For now: check GitHub for any updates
+  fetch('https://api.github.com/repos/MarianaCannabis/terptrain-anleitung/commits?per_page=1', {cache:'no-store'})
+  .then(function(r){ return r.json(); })
+  .then(function(data){
+    if(data && data[0]){
+      var d = new Date(data[0].commit.author.date);
+      if(el) el.textContent = 'Letzte Prüfung: ' + d.toLocaleDateString('de-DE') + ' (GitHub)';
+    }
+  })
+  .catch(function(){
+    if(el) el.textContent = 'Prüfung fehlgeschlagen (offline?)';
+  });
+  if(dot) dot.className = 'lt-dot ok';
+  if(status) status.textContent = 'Kein Update bekannt – Stand April 2026';
+};
+
+// ════════════════════════════════════════════════════
+// BESTELLSIMULATOR
+// ════════════════════════════════════════════════════
+var simData = { sorte: '', termin: '' };
+window.simSelectSorte = function(el, name){
+  document.querySelectorAll('.sp-opt').forEach(function(o){ o.classList.remove('selected'); });
+  el.classList.add('selected');
+  simData.sorte = name;
+  var btn = document.getElementById('sim-next-1');
+  if(btn){ btn.disabled=false; btn.style.opacity='1'; }
+};
+window.simSelectTermin = function(el, termin){
+  el.closest('.order-sim').querySelectorAll('[onclick^="simSelectTermin"]').forEach(function(o){ o.style.borderColor='var(--bd)'; });
+  el.style.borderColor='var(--g1)';
+  simData.termin = termin;
+  var btn = document.getElementById('sim-next-3');
+  if(btn){ btn.disabled=false; btn.style.opacity='1'; }
+};
+window.simNext = function(step){
+  for(var i=1;i<=4;i++){
+    var s=document.getElementById('sim-step-'+i);
+    if(s) s.style.display = i===step ? 'block' : 'none';
+  }
+  var titles=['','Schritt 1: Sorte wählen','Schritt 2: Menge festlegen','Schritt 3: Termin wählen','Bestätigung'];
+  var t=document.getElementById('sim-step-title'); if(t) t.textContent=titles[step]||'';
+  if(step===4){
+    var m=document.getElementById('sim-menge'); var mg=m?m.value+'g':'?g';
+    var sum=document.getElementById('sim-summary');
+    if(sum) sum.innerHTML='Sorte: <strong>'+simData.sorte+'</strong> · Menge: <strong>'+mg+'</strong> · Termin: <strong>'+simData.termin+'</strong>';
+  }
+};
+window.simReset = function(){ simData={sorte:'',termin:''}; simNext(1); };
+
+// ════════════════════════════════════════════════════
+// SORT FILTER
+// ════════════════════════════════════════════════════
+window.filterSorten = function(type){
+  document.querySelectorAll('.sorte-card').forEach(function(c){
+    c.style.display = (!type || c.dataset.type===type) ? 'block' : 'none';
+  });
+};
+
+
+// ════════════════════════════════════════════════════
+// CONTINUE READING CARD
+// ════════════════════════════════════════════════════
+(function(){
+  var last = localStorage.getItem('tt-last-sec');
+  if(!last) return;
+  var el = document.querySelector(last);
+  if(!el) return;
+  var h2 = el.querySelector('h2');
+  var title = h2 ? h2.textContent.replace(/[^\w\s&äöüÄÖÜß\-]/g,'').trim().slice(0,35) : last;
+  var card = document.getElementById('continue-card');
+  var ttl = document.getElementById('cc-title');
+  if(card && ttl){
+    ttl.textContent = title;
+    card.classList.add('show');
+  }
+  window.goLastSection = function(){
+    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  };
+})();
+
+// ════════════════════════════════════════════════════
+// GUIDED TOUR
+// ════════════════════════════════════════════════════
+(function(){
+  var STEPS = [
+    { target:'#sb', title:'📚 Seitenleiste', text:'Hier findest du alle 41 Kapitel. Die 4 Tabs oben wechseln zwischen Navigation, Einstellungen, Lesezeichen und Statistik.' },
+    { target:'.sb-tabs', title:'🗂️ Sidebar-Tabs', text:'📖 Navigation · ⚙️ Einstellungen · 🔖 Lesezeichen · 📊 Statistik. Klicke die Icons um zu wechseln.' },
+    { target:'#ms-i', title:'🔍 Suche', text:'Tippe hier um Kapitel zu suchen. Oder klicke das 🎤 Mikrofon für Sprachsuche!' },
+    { target:'.tts-bar', title:'🔊 Vorlesefunktion', text:'Klicke ▶ Vorlesen um die gesamte Anleitung vorlesen zu lassen. Du kannst Geschwindigkeit und Lautstärke anpassen.' },
+    { target:'.quick-faq-btn', title:'❓ Schnell-FAQ', text:'Dieser Button zeigt die 10 häufigsten Fragen sofort – ohne scrollen.' },
+    { target:'#sbp-config', title:'⚙️ Einstellungen', text:'Im Einstellungs-Tab findest du Sprache, Design, Schrift, Barrierefreiheit und mehr. Probiere die Hochkontrast-Paletten aus!' },
+  ];
+  var cur = 0;
+  var ov = null, hl = null, tt = null;
+
+  function getEl(){ return ov=document.getElementById('tour-overlay'); }
+  function getHl(){ return hl=document.getElementById('tour-highlight'); }
+  function getTt(){ return tt=document.getElementById('tour-tooltip'); }
+
+  function positionTooltip(rect){
+    var t = getTt(); if(!t) return;
+    var margin = 12;
+    var tw = 290, th = 150;
+    var left = rect.left + rect.width/2 - tw/2;
+    var top = rect.bottom + margin;
+    // Flip if too close to bottom
+    if(top + th > window.innerHeight - 20) top = rect.top - th - margin;
+    // Clamp
+    left = Math.max(10, Math.min(window.innerWidth - tw - 10, left));
+    top = Math.max(10, Math.min(window.innerHeight - th - 10, top));
+    t.style.left = left + 'px';
+    t.style.top = top + 'px';
+    t.style.width = tw + 'px';
+  }
+
+  function showStep(idx){
+    var step = STEPS[idx];
+    var target = document.querySelector(step.target);
+    var o = getEl(), h = getHl(), t = getTt();
+    if(!o||!h||!t) return;
+    o.style.display = 'block';
+
+    document.getElementById('tour-ttl').textContent = step.title;
+    document.getElementById('tour-txt').textContent = step.text;
+    document.getElementById('tour-prog').textContent = (idx+1)+'/'+STEPS.length;
+    document.getElementById('tour-next-btn').textContent = idx < STEPS.length-1 ? 'Weiter →' : 'Fertig! 🎉';
+
+    if(target){
+      // If it's inside the sidebar config, switch to that tab
+      if(step.target === '#sbp-config' && typeof sbTab === 'function') sbTab('config');
+      var rect = target.getBoundingClientRect();
+      if(step.target === '#sbp-config' || step.target === '.sb-tabs') {
+        target.scrollIntoView({block:'nearest'});
+        setTimeout(function(){
+          var r = target.getBoundingClientRect();
+          h.style.cssText = 'left:'+(r.left-4)+'px;top:'+(r.top-4)+'px;width:'+(r.width+8)+'px;height:'+(r.height+8)+'px';
+          positionTooltip(r);
+        }, 300);
+      } else {
+        h.style.cssText = 'left:'+(rect.left-4)+'px;top:'+(rect.top-4)+'px;width:'+(rect.width+8)+'px;height:'+(rect.height+8)+'px';
+        positionTooltip(rect);
+      }
+    } else {
+      h.style.cssText = 'display:none';
+      t.style.cssText = 'left:50%;top:50%;transform:translate(-50%,-50%);width:290px';
+    }
+  }
+
+  window.tourNext = function(){
+    cur++;
+    if(cur >= STEPS.length){ tourEnd(); return; }
+    showStep(cur);
+  };
+
+  window.tourEnd = function(){
+    var o = getEl(); if(o) o.style.display='none';
+    localStorage.setItem('tt-tour-done','1');
+    if(typeof sbTab === 'function') sbTab('nav');
+  };
+
+  window.startTour = function(){ cur=0; showStep(0); };
+
+  // Auto-start tour for new users
+  document.addEventListener('DOMContentLoaded', function(){
+    if(!localStorage.getItem('tt-tour-done') && !localStorage.getItem('tt-welcomed')){
+      setTimeout(window.startTour, 2000);
+    }
+  });
+})();
+
+// ════════════════════════════════════════════════════
+// VOICE SEARCH
+// ════════════════════════════════════════════════════
+(function(){
+  var SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SpeechRec) return;
+  var rec = new SpeechRec();
+  rec.lang = 'de-DE';
+  rec.continuous = false;
+  rec.interimResults = false;
+  var listening = false;
+
+  rec.onresult = function(e){
+    var text = e.results[0][0].transcript;
+    var mi = document.getElementById('ms-i');
+    if(mi){ mi.value = text; if(typeof doSearch==='function') doSearch(text); }
+    setMicState(false);
+  };
+  rec.onerror = function(){ setMicState(false); };
+  rec.onend = function(){ setMicState(false); };
+
+  function setMicState(on){
+    listening = on;
+    var btn = document.getElementById('mic-btn');
+    if(btn) btn.classList.toggle('listening', on);
+  }
+
+  window.toggleVoiceSearch = function(){
+    if(listening){ rec.stop(); setMicState(false); }
+    else { rec.start(); setMicState(true); }
+  };
+})();
+
+// ════════════════════════════════════════════════════
+// CHAPTER SCROLL PROGRESS (current chapter)
+// ════════════════════════════════════════════════════
+(function(){
+  var fill = document.getElementById('chap-scroll-fill'); if(!fill) return;
+  var currentSec = null;
+
+  window.addEventListener('scroll', function(){
+    var secs = document.querySelectorAll('section[id]');
+    var cur = null;
+    secs.forEach(function(s){
+      var r = s.getBoundingClientRect();
+      if(r.top <= 50) cur = s;
+    });
+    if(cur !== currentSec){ currentSec = cur; }
+    if(!cur){ fill.style.width='0%'; return; }
+    var r = cur.getBoundingClientRect();
+    var secH = cur.offsetHeight;
+    var scrolled = -r.top;
+    var pct = Math.min(100, Math.max(0, (scrolled / (secH - window.innerHeight)) * 100));
+    fill.style.width = pct + '%';
+  }, {passive:true});
+})();
+
+// ════════════════════════════════════════════════════
+// QUICK FAQ
+// ════════════════════════════════════════════════════
+window.toggleQuickFaq = function(){
+  var panel = document.getElementById('quick-faq-panel');
+  if(panel) panel.classList.toggle('open');
+};
+document.addEventListener('click', function(e){
+  var t = e.target && e.target.nodeType===1 ? e.target : e.target&&e.target.parentElement;
+  if(t && t.closest && !t.closest('#quick-faq-panel') && !t.closest('.quick-faq-btn')){
+    var p = document.getElementById('quick-faq-panel');
+    if(p) p.classList.remove('open');
+  }
+});
+
+// ════════════════════════════════════════════════════
+// AUTO NIGHT MODE
+// ════════════════════════════════════════════════════
+(function(){
+  function checkNight(){
+    var h = new Date().getHours();
+    var isNight = h >= 21 || h < 7;
+    var alreadyDark = document.body.classList.contains('light') === false;
+    var forced = localStorage.getItem('tt-theme');
+    if(isNight && !forced && alreadyDark){
+      // Already in dark mode naturally, just note it
+    } else if(isNight && forced !== 'light'){
+      document.body.classList.remove('light');
+      localStorage.setItem('tt-theme','dark');
+      var btn = document.getElementById('theme-btn');
+      if(btn) btn.textContent = '☀️ Hell';
+    }
+  }
+  checkNight();
+  setInterval(checkNight, 60000);
+})();
+
+// ════════════════════════════════════════════════════
+// PRESENTATION MODE
+// ════════════════════════════════════════════════════
+(function(){
+  if(localStorage.getItem('tt-present')==='1') document.body.classList.add('present-mode');
+  window.togglePresentMode = function(){
+    document.body.classList.toggle('present-mode');
+    var on = document.body.classList.contains('present-mode');
+    localStorage.setItem('tt-present', on?'1':'0');
+    var b = document.getElementById('present-btn');
+    if(b){ b.classList.toggle('active',on); b.textContent=on?'🖥️ Normal':'🖥️ Präsentation'; }
+  };
+})();
+
+// ════════════════════════════════════════════════════
+// IMAGES TOGGLE
+// ════════════════════════════════════════════════════
+(function(){
+  if(localStorage.getItem('tt-noimages')==='1') document.body.classList.add('no-images');
+  window.toggleImages = function(){
+    document.body.classList.toggle('no-images');
+    var on = document.body.classList.contains('no-images');
+    localStorage.setItem('tt-noimages', on?'1':'0');
+    var b = document.getElementById('no-img-btn');
+    if(b){ b.classList.toggle('active',on); b.textContent=on?'🖼️ Bilder AN':'🖼️ Bilder AUS'; }
+  };
+})();
+
+// ════════════════════════════════════════════════════
+// SIMPLIFY BUTTON
+// ════════════════════════════════════════════════════
+window.toggleSimple = function(sid){
+  var el = document.getElementById('simple-'+sid);
+  if(el) el.classList.toggle('show');
+};
+
+// ════════════════════════════════════════════════════
+// SYNONYM SEARCH
+// ════════════════════════════════════════════════════
+(function(){
+  var SYNONYMS = {
+    'kündigen':['kündigung','austreten','austritt','beenden','verlassen','mitgliedschaft beenden'],
+    'tokens':['punkte','tokensystem','guthaben','punkte sammeln'],
+    'passwort':['password','kennwort','login','anmelden','zugangsdaten'],
+    'zahlung':['bezahlen','beitrag','rechnung','zahlen','mollie','lastschrift','sepa'],
+    'gruppe':['gruppen','community','beitreten','gründen','verlassen'],
+    'support':['hilfe','problem','ticket','anfrage','kontakt'],
+    'app':['installieren','pwa','homescreen','smartphone','handy'],
+    'vereinswechsel':['verein wechseln','umziehen','anderen verein','übertragen'],
+    'kcanG':['gesetz','recht','legal','erlaubt','verboten','konsumcannabisgesetz'],
+  };
+
+  var origDoSearch = window.doSearch;
+  window.doSearch = function(v){
+    if(typeof origDoSearch === 'function') origDoSearch(v);
+    // Check synonyms
+    if(!v || v.length < 3) return;
+    var vl = v.toLowerCase();
+    var hint = null;
+    Object.keys(SYNONYMS).forEach(function(main){
+      SYNONYMS[main].forEach(function(syn){
+        if(syn.includes(vl) && !hint) hint = main;
+      });
+    });
+    var sr = document.getElementById('sr');
+    var existing = sr && sr.querySelector('.search-synonyms');
+    if(existing) existing.remove();
+    if(hint && sr){
+      var div = document.createElement('div');
+      div.className = 'search-synonyms';
+      div.textContent = '→ Auch suchen nach: ' + hint;
+      div.style.cursor = 'pointer';
+      div.onclick = function(){ var mi=document.getElementById('ms-i'); if(mi){mi.value=hint; window.doSearch(hint);} };
+      sr.insertBefore(div, sr.firstChild);
+    }
+  };
+})();
+
 </script>
 
 <div id="term-tip" class="term-tip"></div>
@@ -5307,5 +6216,88 @@ document.addEventListener('keydown', function(e){
     </div>
   </div>
 </div>
+
+<!-- OFFLINE INDICATOR -->
+<div class="offline-indicator online" id="offline-indicator">
+  <div class="dot"></div>
+  <span id="offline-txt">Online</span>
+</div>
+
+<!-- QR MODAL -->
+<div class="qr-modal" id="qr-modal" role="dialog">
+  <div class="qr-box">
+    <h3 id="qr-title">QR-Code</h3>
+    <img id="qr-img" src="" alt="QR Code">
+    <div class="qr-url" id="qr-url"></div>
+    <div style="display:flex;gap:8px;justify-content:center;margin-top:10px">
+      <button class="qr-copy-btn" onclick="qrCopyUrl()">🔗 URL kopieren</button>
+      <button onclick="document.getElementById('qr-modal').classList.remove('open')"
+        style="background:var(--s2);border:1px solid var(--bd);color:var(--mu);padding:6px 14px;border-radius:8px;cursor:pointer;font-size:.75rem;font-family:inherit">Schließen</button>
+    </div>
+  </div>
+</div>
+
+<button class="quick-faq-btn" id="quick-faq-btn" onclick="toggleQuickFaq()" title="Schnell-FAQ" aria-label="Häufige Fragen">❓</button>
+<div class="quick-faq-panel" id="quick-faq-panel">
+  <div class="qfp-head">
+    <span>❓ Häufige Fragen</span>
+    <button onclick="toggleQuickFaq()" style="background:none;border:none;color:var(--mu);cursor:pointer;font-size:.9rem">✕</button>
+  </div>
+  <div class="qfp-item" onclick="this.classList.toggle('open')">
+    <div class="qfp-q">Wo finde ich meine Mitgliedsnummer?</div>
+    <div class="qfp-a">Profil → Mitgliederdaten → Mitgliedschaft. Beginnt mit „A".</div>
+  </div>
+  <div class="qfp-item" onclick="this.classList.toggle('open')">
+    <div class="qfp-q">Wie kündige ich meine Mitgliedschaft?</div>
+    <div class="qfp-a">Profil → Mitgliederdaten → Mitgliedschaft → Verein → Mitgliedschaft kündigen. → <a href="#s-kuendigung">Kap. 23</a></div>
+  </div>
+  <div class="qfp-item" onclick="this.classList.toggle('open')">
+    <div class="qfp-q">Was sind Tokens?</div>
+    <div class="qfp-a">Internes Punktesystem. Aus Beitrag + Aufnahmegebühr berechnet. Basis für Ernteanteil. → <a href="#s-tokens">Kap. 19</a></div>
+  </div>
+  <div class="qfp-item" onclick="this.classList.toggle('open')">
+    <div class="qfp-q">Wie ändere ich mein Passwort?</div>
+    <div class="qfp-a">Profil (Avatar oben rechts) → Profil verwalten → Passwort. → <a href="#s-passwort">Kap. 15</a></div>
+  </div>
+  <div class="qfp-item" onclick="this.classList.toggle('open')">
+    <div class="qfp-q">Wo finde ich Antworten auf Support-Tickets?</div>
+    <div class="qfp-a">Nachrichten → System Nachrichten (2. Tab). NICHT im normalen Chat!</div>
+  </div>
+  <div class="qfp-item" onclick="this.classList.toggle('open')">
+    <div class="qfp-q">Wann kommt die Abholung?</div>
+    <div class="qfp-a">Sobald dein Verein „Abgabe gestartet" als Meilenstein hat. → <a href="#s-standorte">Standorte</a></div>
+  </div>
+  <div class="qfp-item" onclick="this.classList.toggle('open')">
+    <div class="qfp-q">Wie installiere ich die App?</div>
+    <div class="qfp-a">Browser → „Zum Startbildschirm" / „App installieren". Kein App Store nötig. → <a href="#s-webapp">Kap. 28</a></div>
+  </div>
+  <div class="qfp-item" onclick="this.classList.toggle('open')">
+    <div class="qfp-q">Was kostet die Mitgliedschaft?</div>
+    <div class="qfp-a">Mindestbeitrag 10€/Monat + 5€ Community + einmalige Aufnahmegebühr. Anpassbar 10–400€.</div>
+  </div>
+  <div class="qfp-item" onclick="this.classList.toggle('open')">
+    <div class="qfp-q">Kann ich in mehreren Vereinen Mitglied sein?</div>
+    <div class="qfp-a">Nein. Das KCanG erlaubt nur eine CSC-Mitgliedschaft gleichzeitig.</div>
+  </div>
+  <div class="qfp-item" onclick="this.classList.toggle('open')">
+    <div class="qfp-q">Ich bekomme keine Push-Benachrichtigungen.</div>
+    <div class="qfp-a">1. Browser-Berechtigung prüfen. 2. Toggles in Profil → Benachrichtigungen aktivieren. → <a href="#s-benachrichtigungen">Kap. 17</a></div>
+  </div>
+</div>
+
+
+<div id="tour-overlay" class="tour-overlay" style="display:none">
+  <div id="tour-highlight" class="tour-highlight"></div>
+  <div id="tour-tooltip" class="tour-tooltip">
+    <h3 id="tour-ttl">Willkommen!</h3>
+    <p id="tour-txt">Lass mich dir kurz zeigen wo alles ist.</p>
+    <div class="tour-btns">
+      <button class="tour-next" onclick="tourNext()" id="tour-next-btn">Weiter →</button>
+      <button class="tour-skip" onclick="tourEnd()">Tour überspringen</button>
+      <span class="tour-prog" id="tour-prog">1/6</span>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
