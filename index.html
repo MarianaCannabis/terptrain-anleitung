@@ -1165,6 +1165,31 @@ body.sb-col .chap-scroll-bar{left:14px}
   color:var(--tx2);line-height:1.65}
 .simple-version.show{display:block}
 
+
+/* ── COLLAPSIBLE SIDEBAR GROUPS ── */
+.sbn-group{border-bottom:1px solid var(--bd)}
+.sbn-hd{display:flex;align-items:center;justify-content:space-between;
+  padding:7px 12px;cursor:pointer;user-select:none;font-size:.6rem;
+  font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--mu);
+  transition:color .15s;flex-shrink:0}
+.sbn-hd:hover{color:var(--tx2);background:rgba(255,255,255,.03)}
+.sbn-arr{transition:transform .2s;font-size:.55rem;flex-shrink:0}
+.sbn-group.open .sbn-arr{transform:rotate(90deg)}
+.sbn-links{display:none}
+.sbn-group.open .sbn-links{display:block}
+
+
+/* ── COLLAPSIBLE SIDEBAR GROUPS ── */
+.sbn-group{border-bottom:1px solid var(--bd)}
+.sbn-hd{display:flex;align-items:center;justify-content:space-between;
+  padding:7px 12px;cursor:pointer;user-select:none;font-size:.6rem;font-weight:700;
+  letter-spacing:.09em;text-transform:uppercase;color:var(--mu);transition:color .15s}
+.sbn-hd:hover{color:var(--tx2);background:rgba(255,255,255,.03)}
+.sbn-arr{transition:transform .2s;font-size:.55rem}
+.sbn-group.open .sbn-arr{transform:rotate(90deg)}
+.sbn-links{display:none}
+.sbn-group.open .sbn-links{display:block}
+
 </style>
 
   <div id="google_translate_element" style="display:none" aria-hidden="true"></div>
@@ -1221,10 +1246,17 @@ body.sb-col .chap-scroll-bar{left:14px}
     <!-- NAV PANEL -->
     <div id="sbp-nav" style="position:absolute;top:0;left:0;right:0;bottom:0;overflow-y:auto;display:flex;flex-direction:column">
       <div style="padding:5px 8px 3px;flex-shrink:0">
-        <input type="search" id="ms-i" placeholder="🔍 Suchen…"
-          oninput="doSearch(this.value)" aria-label="Suchen" autocomplete="off"
-          style="width:100%;background:var(--s2);border:1px solid var(--bd);border-radius:8px;
-                 padding:6px 10px;color:var(--tx);font-size:.78rem;font-family:inherit;outline:none">
+        <div style="position:relative">
+          <input type="search" id="ms-i" placeholder="🔍 Suchen…"
+            oninput="doSearch(this.value)" aria-label="Suchen" autocomplete="off"
+            style="width:100%;background:var(--s2);border:1px solid var(--bd);border-radius:8px;
+                   padding:6px 34px 6px 10px;color:var(--tx);font-size:.78rem;font-family:inherit;outline:none">
+          <button id="mic-btn" onclick="toggleVoiceSearch()" title="Sprachsuche (🎤)"
+            style="position:absolute;right:4px;top:50%;transform:translateY(-50%);
+                   background:rgba(76,175,80,.18);border:1px solid var(--g1);color:var(--g1);
+                   border-radius:6px;padding:2px 6px;cursor:pointer;font-size:.78rem;line-height:1.2;
+                   font-family:inherit" aria-label="Sprachsuche">🎤</button>
+        </div>
       </div>
       <div id="sr" role="listbox">
         <div id="ss" style="padding:6px 10px;border-bottom:1px solid var(--bd)">
@@ -1249,59 +1281,87 @@ body.sb-col .chap-scroll-bar{left:14px}
         <div class="sb-pb"><div class="sb-pf" id="pf"></div></div>
       </div>
       
-<div class="sb-sec">👋 Willkommen</div>
-  <a href="#s-was" class="nl"><span class="ic">🌿</span>Was ist Terptrain?</a>
-  <a href="#s-aufbau" class="nl"><span class="ic">🏗️</span>Aufbau der Plattform</a>
-  <div class="sb-sec">🔑 Erste Schritte</div>
-  <a href="#s-login" class="nl"><span class="ic">🔐</span>Login &amp; Registrierung</a>
-  <a href="#s-mobil" class="nl"><span class="ic">📱</span>Bedienung Handy/Tablet</a>
-  <a href="#s-desktop" class="nl"><span class="ic">🖥️</span>Bedienung Computer</a>
-  <div class="sb-sec">📱 Alle Bereiche</div>
-  <a href="#s-feed" class="nl"><span class="ic">📰</span>Feed</a>
-  <a href="#s-gruppen" class="nl"><span class="ic">👥</span>Gruppen</a>
-  <a href="#s-nachrichten" class="nl"><span class="ic">💬</span>Nachrichten</a>
-  <a href="#s-mitteilungen" class="nl"><span class="ic">🔔</span>Mitteilungen</a>
-  <a href="#s-kalender" class="nl"><span class="ic">📅</span>Kalender</a>
-  <a href="#s-standorte" class="nl"><span class="ic">📍</span>Standorte &amp; Verein</a>
-  <a href="#s-entwicklung" class="nl"><span class="ic">🗺️</span>Entwicklung</a>
-  <a href="#s-cannabis" class="nl"><span class="ic">🌿</span>Cannabis</a>
-  <div class="sb-sec">👤 Profil &amp; Konto</div>
-  <a href="#s-profil" class="nl"><span class="ic">✏️</span>Profil bearbeiten</a>
-  <a href="#s-passwort" class="nl"><span class="ic">🔑</span>Passwort ändern</a>
-  <a href="#s-privatsphaere" class="nl"><span class="ic">🛡️</span>Privatsphäre</a>
-  <a href="#s-benachrichtigungen" class="nl"><span class="ic">🔔</span>Benachrichtigungen</a>
-  <a href="#s-auszeichnungen" class="nl"><span class="ic">🏆</span>Auszeichnungen</a>
-  <div class="sb-sec">💳 Mitgliedschaft</div>
-  <a href="#s-tokens" class="nl"><span class="ic">🪙</span>Tokens</a>
-  <a href="#s-zahlungen" class="nl"><span class="ic">💳</span>Zahlungen &amp; Rechnungen</a>
-  <a href="#s-beitrag" class="nl"><span class="ic">💰</span>Beitrag anpassen</a>
-  <a href="#s-mitgliedschaft" class="nl"><span class="ic">📋</span>Mitgliedschaft verwalten</a>
-  <a href="#s-kuendigung" class="nl"><span class="ic">🚪</span>Kündigung</a>
-  <a href="#s-vereinswechsel" class="nl"><span class="ic">🔄</span>Vereinswechsel</a>
-  <div class="sb-sec">⚖️ Rechtliches</div>
-  <a href="#s-datenschutz" class="nl"><span class="ic">⚖️</span>Datenschutz &amp; AGB</a>
-  <div class="sb-sec">🆘 Hilfe</div>
-  <a href="#s-support" class="nl"><span class="ic">🆘</span>Support &amp; Hilfe</a>
-  <a href="#s-ticket" class="nl"><span class="ic">📨</span>Ticket erstellen</a>
-  <a href="#s-webapp" class="nl"><span class="ic">📲</span>Als App installieren <span class="nb-new">NEU</span></a>
-  <a href="#s-regelwerk" class="nl"><span class="ic">🚦</span>Regelwerk</a>
-  <a href="#s-faq" class="nl"><span class="ic">❓</span>Häufige Fragen (FAQ)</a>
-  <a href="#s-glossar" class="nl"><span class="ic">📖</span>Glossar</a>
-  <a href="#s-changelog" class="nl"><span class="ic">📝</span>Changelog</a>
-  <a href="#s-fehler" class="nl"><span class="ic">🔧</span>Fehler &amp; Lösungen</a>
-  <a href="#s-lizenz" class="nl"><span class="ic">🚀</span>Nach der Anbaulizenz</a>
-  <a href="#s-quiz" class="nl"><span class="ic">🧠</span>Quiz</a>
-  <a href="#s-vereinsstruktur" class="nl"><span class="ic">🏛️</span>Vereinsstruktur</a>
-  <a href="#s-abholung" class="nl"><span class="ic">📦</span>Abholung</a>
-  <a href="#s-a11y" class="nl"><span class="ic">♿</span>Barrierefreiheits-Guide</a>
-  <a href="#s-bestellung" class="nl"><span class="ic">🛒</span>Bestellung &amp; Abgabe</a>
-  <a href="#s-cannabiskunde" class="nl"><span class="ic">🔬</span>Cannabiskunde</a>
-<div class="sb-sec">📊 Statistik</div>
-<div style="padding:5px 10px 8px;flex-shrink:0">
-  <div id="ana-top-chapters" style="font-size:.68rem;color:var(--mu)">Wird geladen…</div>
-  <button class="ana-reset" onclick="resetAnalytics()" style="margin-top:4px;font-size:.62rem">🗑️ Zurücksetzen</button>
-</div>
-      <div style="padding:4px 10px 10px;flex-shrink:0">
+<div class="sbn-group open">
+    <div class="sbn-hd" onclick="this.closest('.sbn-group').classList.toggle('open')">🚀 Erste Schritte <span class="sbn-arr">▶</span></div>
+    <div class="sbn-links">
+      <a href="#s-was" class="nl"><span class="ic">🌿</span>Was ist Terptrain?</a>
+      <a href="#s-aufbau" class="nl"><span class="ic">🏗️</span>Aufbau der Plattform</a>
+      <a href="#s-login" class="nl"><span class="ic">🔐</span>Login &amp; Registrierung</a>
+      <a href="#s-mobil" class="nl"><span class="ic">📱</span>Bedienung Handy/Tablet</a>
+      <a href="#s-desktop" class="nl"><span class="ic">🖥️</span>Bedienung Computer</a>
+    </div>
+  </div>
+  <div class="sbn-group open">
+    <div class="sbn-hd" onclick="this.closest('.sbn-group').classList.toggle('open')">📱 Alle Bereiche <span class="sbn-arr">▶</span></div>
+    <div class="sbn-links">
+      <a href="#s-feed" class="nl"><span class="ic">📰</span>Feed</a>
+      <a href="#s-gruppen" class="nl"><span class="ic">👥</span>Gruppen</a>
+      <a href="#s-nachrichten" class="nl"><span class="ic">💬</span>Nachrichten</a>
+      <a href="#s-mitteilungen" class="nl"><span class="ic">🔔</span>Mitteilungen</a>
+      <a href="#s-kalender" class="nl"><span class="ic">📅</span>Kalender</a>
+      <a href="#s-standorte" class="nl"><span class="ic">📍</span>Standorte &amp; Verein</a>
+      <a href="#s-entwicklung" class="nl"><span class="ic">🗺️</span>Entwicklung</a>
+      <a href="#s-cannabis" class="nl"><span class="ic">🌿</span>Cannabis</a>
+    </div>
+  </div>
+  <div class="sbn-group">
+    <div class="sbn-hd" onclick="this.closest('.sbn-group').classList.toggle('open')">👤 Profil &amp; Konto <span class="sbn-arr">▶</span></div>
+    <div class="sbn-links">
+      <a href="#s-profil" class="nl"><span class="ic">✏️</span>Profil bearbeiten</a>
+      <a href="#s-passwort" class="nl"><span class="ic">🔑</span>Passwort ändern</a>
+      <a href="#s-privatsphaere" class="nl"><span class="ic">🛡️</span>Privatsphäre</a>
+      <a href="#s-benachrichtigungen" class="nl"><span class="ic">🔔</span>Benachrichtigungen</a>
+      <a href="#s-auszeichnungen" class="nl"><span class="ic">🏆</span>Auszeichnungen</a>
+    </div>
+  </div>
+  <div class="sbn-group">
+    <div class="sbn-hd" onclick="this.closest('.sbn-group').classList.toggle('open')">💳 Mitgliedschaft <span class="sbn-arr">▶</span></div>
+    <div class="sbn-links">
+      <a href="#s-tokens" class="nl"><span class="ic">🪙</span>Tokens</a>
+      <a href="#s-zahlungen" class="nl"><span class="ic">💳</span>Zahlungen &amp; Rechnungen</a>
+      <a href="#s-beitrag" class="nl"><span class="ic">💰</span>Beitrag anpassen</a>
+      <a href="#s-mitgliedschaft" class="nl"><span class="ic">📋</span>Mitgliedschaft verwalten</a>
+      <a href="#s-kuendigung" class="nl"><span class="ic">🚪</span>Kündigung</a>
+      <a href="#s-vereinswechsel" class="nl"><span class="ic">🔄</span>Vereinswechsel</a>
+    </div>
+  </div>
+  <div class="sbn-group">
+    <div class="sbn-hd" onclick="this.closest('.sbn-group').classList.toggle('open')">🆘 Hilfe &amp; Support <span class="sbn-arr">▶</span></div>
+    <div class="sbn-links">
+      <a href="#s-support" class="nl"><span class="ic">🆘</span>Support &amp; Hilfe</a>
+      <a href="#s-ticket" class="nl"><span class="ic">🎫</span>Ticket erstellen</a>
+      <a href="#s-webapp" class="nl"><span class="ic">📲</span>App installieren</a>
+      <a href="#s-fehler" class="nl"><span class="ic">🔧</span>Fehler &amp; Lösungen</a>
+      <a href="#s-faq" class="nl"><span class="ic">❓</span>Häufige Fragen</a>
+    </div>
+  </div>
+  <div class="sbn-group">
+    <div class="sbn-hd" onclick="this.closest('.sbn-group').classList.toggle('open')">⚖️ Regeln &amp; Recht <span class="sbn-arr">▶</span></div>
+    <div class="sbn-links">
+      <a href="#s-regelwerk" class="nl"><span class="ic">🚦</span>Regelwerk</a>
+      <a href="#s-datenschutz" class="nl"><span class="ic">⚖️</span>Datenschutz &amp; AGB</a>
+    </div>
+  </div>
+  <div class="sbn-group">
+    <div class="sbn-hd" onclick="this.closest('.sbn-group').classList.toggle('open')">🌿 Cannabis &amp; Abgabe <span class="sbn-arr">▶</span></div>
+    <div class="sbn-links">
+      <a href="#s-lizenz" class="nl"><span class="ic">🚀</span>Nach der Anbaulizenz</a>
+      <a href="#s-bestellung" class="nl"><span class="ic">🛒</span>Bestellung &amp; Abgabe</a>
+      <a href="#s-abholung" class="nl"><span class="ic">📦</span>Abholung</a>
+      <a href="#s-cannabiskunde" class="nl"><span class="ic">🔬</span>Cannabiskunde</a>
+      <a href="#s-vereinsstruktur" class="nl"><span class="ic">🏛️</span>Vereinsstruktur</a>
+    </div>
+  </div>
+  <div class="sbn-group">
+    <div class="sbn-hd" onclick="this.closest('.sbn-group').classList.toggle('open')">📚 Wissen &amp; Extras <span class="sbn-arr">▶</span></div>
+    <div class="sbn-links">
+      <a href="#s-glossar" class="nl"><span class="ic">📖</span>Glossar</a>
+      <a href="#s-changelog" class="nl"><span class="ic">📝</span>Changelog</a>
+      <a href="#s-quiz" class="nl"><span class="ic">🧠</span>Quiz</a>
+      <a href="#s-a11y" class="nl"><span class="ic">♿</span>Barrierefreiheit</a>
+    </div>
+  </div>
+  <div style="padding:4px 10px 10px;flex-shrink:0">
         <button onclick="exportNotes()" style="width:100%;background:var(--s2);border:1px solid var(--bd);color:var(--mu);padding:5px;border-radius:8px;cursor:pointer;font-size:.67rem;font-family:inherit">📥 Notizen exportieren</button>
       </div>
     </div>
@@ -2473,6 +2533,11 @@ body.sb-col .chap-scroll-bar{left:14px}
   <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-cannabis"></textarea>
   <button onclick="sendConfused('s-cannabis')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
 </div>
+<div class="ssh">⚖️ Gesetzliche Mengengrenzen nach Alter</div>
+<table class="tbl"><tr><th>Alter</th><th>Tageslimit</th><th>Monatslimit</th><th>THC-Limit</th></tr>
+<tr><td>✅ Ab 21 J.</td><td>25 g</td><td>50 g</td><td>Kein Limit</td></tr>
+<tr><td>🔶 18–20 J.</td><td>25 g</td><td>30 g</td><td>max. 10% THC</td></tr>
+<tr><td>🚫 &lt;18 J.</td><td colspan="3" style="color:var(--mu)">Kein Zugang – Mindestalter 18 Jahre</td></tr></table>
 <div class="feedback-bar" data-sec="s-cannabis">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-cannabis','yes')">👍 Ja</button>
@@ -3700,7 +3765,7 @@ body.sb-col .chap-scroll-bar{left:14px}
 
 <div class="acc open"><div class="acc-h" onclick="tAcc(this)"><span>§1 Mitgliedschaft &amp; Zulassung</span><span class="arr">▶</span></div>
 <div class="acc-b"><p style="color:var(--tx2);font-size:.82rem;line-height:1.7">
-Die Mitgliedschaft in der Mariana Community setzt eine aktive CSC-Mitgliedschaft voraus. Jedes Mitglied ist verpflichtet, wahrheitsgemäße Angaben zu machen. Die Weitergabe von Zugangsdaten ist verboten. Pro Person ist nur eine Mitgliedschaft erlaubt. Mit der Registrierung erkennt jedes Mitglied dieses Regelwerk an.
+Die Mariana Community bietet zwei Bereiche: <strong>Community-Mitgliedschaft</strong> (soziale Plattform – Feed, Gruppen, Nachrichten, kein CSC erforderlich) und <strong>CSC-Mitgliedschaft</strong> (Cannabis Social Club für Eigenanbau, 18+, Wohnsitz Deutschland, nur ein CSC gleichzeitig laut KCanG). Jedes Mitglied ist verpflichtet, wahrheitsgemäße Angaben zu machen. Die Weitergabe von Zugangsdaten ist verboten. Pro Person ist nur eine Mitgliedschaft erlaubt. Mit der Registrierung erkennt jedes Mitglied dieses Regelwerk an.
 </p></div></div>
 
 <div class="acc"><div class="acc-h" onclick="tAcc(this)"><span>§2 Verhaltensregeln in der Community</span><span class="arr">▶</span></div>
@@ -4468,6 +4533,7 @@ Das Regelwerk kann jederzeit angepasst werden. Wesentliche Änderungen werden pe
   <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-abholung"></textarea>
   <button onclick="sendConfused('s-abholung')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
 </div>
+<div class="call warn"><span class="ci">⚠️</span><div><strong>Offene Rechnungen:</strong> Bei mehr als 2 offenen Rechnungen ist keine Ausgabe möglich bis alle Außenstände beglichen sind. Rechnungen: Profil → Zahlungen</div></div>
 <div class="feedback-bar" data-sec="s-abholung">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-abholung','yes')">👍 Ja</button>
@@ -4730,14 +4796,13 @@ window.pickLang = function(el){
   localStorage.setItem('tt-page-lang', lang);
   
   if(lang === 'de'){
-    // Remove saved language
     localStorage.removeItem('tt-page-lang');
     sessionStorage.setItem('tt-force-de','1');
-    // Google Translate: set cookie to reset, then reload
-    document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.' + location.hostname;
-    // Force reload without cache
-    window.location.href = window.location.pathname + window.location.search + (window.location.hash || '');
+    ['googtrans'].forEach(function(n){
+      document.cookie=n+'=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+      document.cookie=n+'=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.'+location.hostname;
+    });
+    window.location.replace(window.location.pathname+'?noredir=1'+(window.location.hash||''));
     return;
   }
   
@@ -4772,16 +4837,16 @@ document.addEventListener('click', function(e){
 
 // Restore saved language on load  
 (function(){
-  // If user just reset to German, block ALL translation
-  if(sessionStorage.getItem('tt-force-de')){
+  var hasNoredir = window.location.search.indexOf('noredir') >= 0;
+  if(sessionStorage.getItem('tt-force-de') || hasNoredir){
     sessionStorage.removeItem('tt-force-de');
     localStorage.removeItem('tt-page-lang');
-    // Kill any GT initialization  
-    window.googleTranslateElementInit = function(){ 
-      // Do nothing - user wants German
-      var el = document.getElementById('google_translate_element');
-      if(el) el.style.display = 'none';
+    window.googleTranslateElementInit = function(){
+      var el=document.getElementById('google_translate_element');
+      if(el) el.style.display='none';
     };
+    if(hasNoredir && window.history.replaceState)
+      window.history.replaceState({},document.title,window.location.pathname+window.location.hash);
     return;
   }
   var saved = localStorage.getItem('tt-page-lang');
@@ -5751,15 +5816,22 @@ window.printToc = function(){
 // QR CODE
 // ════════════════════════════════════════════════════
 window.showQR = function(sid){
-  var url = sid
-    ? window.location.href.split('#')[0] + '#' + sid
-    : window.location.href.split('#')[0];
-  var title = sid ? 'QR – ' + (document.getElementById(sid) ? document.getElementById(sid).querySelector('h2').textContent.replace(/[^\w\s&äöüÄÖÜß\-]/g,'').trim().slice(0,30) : sid) : 'QR – Startseite';
-  var qrApiUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(url) + '&margin=4&color=1a2e1a&bgcolor=ffffff';
-  document.getElementById('qr-title').textContent = title;
-  document.getElementById('qr-img').src = qrApiUrl;
-  document.getElementById('qr-url').textContent = url;
-  document.getElementById('qr-modal').classList.add('open');
+  var url = window.location.href.split('#')[0] + (sid ? '#' + sid : '');
+  var title = 'Terptrain Anleitung';
+  if(sid){
+    var sec = document.getElementById(sid);
+    if(sec){ var h2=sec.querySelector('h2'); if(h2) title=(h2.innerText||h2.textContent||'').replace(/[^\w\s&äöüÄÖÜß\-]/g,'').trim().slice(0,35); }
+    else title = sid.replace('s-','').replace(/-/g,' ');
+  }
+  var encoded = encodeURIComponent(url);
+  var qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data='+encoded+'&margin=6';
+  var modal = document.getElementById('qr-modal');
+  var img = document.getElementById('qr-img');
+  if(!modal) return;
+  var t = document.getElementById('qr-title'); if(t) t.textContent=title;
+  var u = document.getElementById('qr-url'); if(u) u.textContent=url;
+  if(img){ img.style.opacity='0.5'; img.onerror=function(){img.src='https://quickchart.io/qr?text='+encoded+'&size=200';}; img.onload=function(){img.style.opacity='1';}; img.src=qrUrl; }
+  modal.classList.add('open');
   window._qrUrl = url;
 };
 window.showChapterQR = function(sid){ window.showQR(sid); };
