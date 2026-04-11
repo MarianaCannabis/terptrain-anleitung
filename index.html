@@ -3274,11 +3274,11 @@ window.pickLang = function(el){
   localStorage.setItem('tt-page-lang', lang);
   
   if(lang === 'de'){
+    // Signal that we want German on next load
+    sessionStorage.setItem('tt-force-de','1');
     localStorage.removeItem('tt-page-lang');
-    // Reload to restore German (most reliable method)
     var hash = window.location.hash;
-    window.location.reload();
-    if(hash) setTimeout(function(){ window.location.hash = hash; }, 800);
+    window.location.replace(window.location.pathname + (hash||''));
     return;
   }
   
@@ -3314,6 +3314,11 @@ document.addEventListener('click', function(e){
 // Restore saved language on load
 (function(){
   var saved = localStorage.getItem('tt-page-lang');
+  // Check if user just reset to German
+  if(sessionStorage.getItem('tt-force-de')){
+    sessionStorage.removeItem('tt-force-de');
+    return; // Don't restore any translation
+  }
   // Only restore if NOT German (German = no translation needed)
   if(saved && saved !== 'de'){
     var item = document.querySelector('.lsi[data-lang="'+saved+'"]');
