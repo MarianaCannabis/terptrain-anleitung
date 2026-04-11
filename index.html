@@ -1016,12 +1016,8 @@ body.high-contrast{filter:contrast(1.6)}
   </div>
   <span class="sh" id="sh-hint">↑ Direkt zum richtigen Kapitel springen</span>
 <div class="lang-wrap" style="margin-left:auto">
-  <button class="lang-btn" id="lang-btn" onclick="toggleLangDD()">🌐 DE</button>
-  <div class="lang-dd" id="lang-dd">
-    <div class="lang-opt active" data-lang="de" onclick="setLang('de')">🇩🇪 Deutsch</div>
-    <div class="lang-opt" data-lang="en" onclick="setLang('en')">🇬🇧 English</div>
-    <div class="lang-opt" data-lang="tr" onclick="setLang('tr')">🇹🇷 Türkçe</div>
-  </div>
+  
+  /div>
 </div>
 </div>
 
@@ -3278,14 +3274,11 @@ window.pickLang = function(el){
   localStorage.setItem('tt-page-lang', lang);
   
   if(lang === 'de'){
-    // Reset to German
-    var combo = document.querySelector('.goog-te-combo');
-    if(combo){ combo.value=''; combo.dispatchEvent(new Event('change')); }
-    else{ window.location.reload(); }
-    var nb = document.getElementById('lang-notice-bar');
-    if(nb) nb.style.display='none';
-    if(typeof window.setLang==='function') window.setLang('de');
     localStorage.removeItem('tt-page-lang');
+    // Reload to restore German (most reliable method)
+    var hash = window.location.hash;
+    window.location.reload();
+    if(hash) setTimeout(function(){ window.location.hash = hash; }, 800);
     return;
   }
   
@@ -3318,10 +3311,11 @@ document.addEventListener('click', function(e){
   var dd=document.getElementById('lang-sel-dd'); if(dd) dd.style.display='none';
 });
 
-// Restore saved language
+// Restore saved language on load
 (function(){
   var saved = localStorage.getItem('tt-page-lang');
-  if(saved && saved!=='de'){
+  // Only restore if NOT German (German = no translation needed)
+  if(saved && saved !== 'de'){
     var item = document.querySelector('.lsi[data-lang="'+saved+'"]');
     if(item){
       document.getElementById('lang-sel-label').textContent = item.dataset.lbl;
