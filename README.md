@@ -1,70 +1,61 @@
+# 🚂 Terptrain – Offizielle Mitglieder-Anleitung
 
-## ⚠️ WICHTIG: GitHub Pages Einstellung
+> **Version 2.7 – April 2026**  
+> Vollständige, interaktive Anleitung für alle Mitglieder der Terptrain Cannabis Social Club Plattform.
 
-Gehe zu: **Settings → Pages → Source → GitHub Actions** (NICHT "Deploy from branch"!)
+## 🌐 Live-Version
 
-Wenn du "Deploy from branch" siehst → auf "GitHub Actions" umstellen.
-Dann den Workflow manuell starten: **Actions → Deploy to GitHub Pages → Run workflow**
+**[https://MarianaCannabis.github.io/terptrain-anleitung/](https://MarianaCannabis.github.io/terptrain-anleitung/)**
 
-# Terptrain Mitglieder-Anleitung
+---
 
-Interaktive Mitglieder-Anleitung für die Terptrain Community-Plattform.
+## 📚 Inhalt (42 Kapitel)
 
-## 🌍 Sprachen / Languages
+| # | Kapitel | Beschreibung |
+|---|---------|-------------|
+| 01 | Was ist Terptrain? | Überblick & Quick-Start Kacheln |
+| 02 | Aufbau der Plattform | Desktop & Mobil |
+| 03 | Login & Registrierung | Anmeldung, Passwort vergessen |
+| 04–05 | Bedienung | Smartphone, Tablet, Computer |
+| 06–13 | Alle Bereiche | Feed, Gruppen, Nachrichten, Kalender, Standorte... |
+| 14–18 | Profil & Konto | Profil, Passwort, Privatsphäre, Benachrichtigungen |
+| 19–24 | Mitgliedschaft | Tokens, Zahlungen, Kündigung, Vereinswechsel |
+| 25–30 | Rechtliches & Hilfe | Datenschutz, Regelwerk, Support, FAQ |
+| 31–38 | Wissen | Glossar, Changelog, Quiz, Barrierefreiheit |
+| 39–42 | Cannabis | Anbau, Bestellung, Abholung, Cannabiskunde |
 
-| Sprache | URL |
-|---------|-----|
-| 🇩🇪 Deutsch (Standard) | `https://MarianaCannabis.github.io/terptrain-anleitung/` |
-| 🇬🇧 English | `https://MarianaCannabis.github.io/terptrain-anleitung/index-en.html` |
-| 🇹🇷 Türkçe | `https://MarianaCannabis.github.io/terptrain-anleitung/index-tr.html` |
-| 🇫🇷 Français | `https://MarianaCannabis.github.io/terptrain-anleitung/index-fr.html` |
-| 🇪🇸 Español | `https://MarianaCannabis.github.io/terptrain-anleitung/index-es.html` |
-| 🇳🇱 Nederlands | `https://MarianaCannabis.github.io/terptrain-anleitung/index-nl.html` |
-| 🇵🇱 Polski | `https://MarianaCannabis.github.io/terptrain-anleitung/index-pl.html` |
+---
 
 ## ✨ Features
 
-- 38 Kapitel · 51 Screenshots · 2,6 MB
-- Dark/Light Mode · 6 Akzentfarben
-- 8 Sprachen (DE/EN/TR/FR/ES/NL/PL/AR)
-- Offline-fähig (PWA) · Installierbar
-- Lesezeichen · Notizen · Fortschritt-Tracking
-- Quiz · Lernpfade · Glossar
-- Leselineal · Fokus-Modus · Zeilenabstand
-- Keyboard Shortcuts · Suche · Statistik
+- 🌍 **17 Sprachen** – Google Translate Integration
+- 🔊 **Vorlesefunktion** – Web Speech API
+- ♿ **Barrierefreiheit** – 6 Hochkontrast-Paletten, Dyslexie-Schrift, Lupe
+- ⌨️ **Tastatur-Navigation** – Vollständige Shortcut-Übersicht (?-Taste)
+- 🔍 **Sprachsuche** – 🎤 Mikrofon-Button im Suchfeld
+- 📱 **PWA** – Offline-fähig, installierbar ohne App Store
+- 📊 **Gamification** – Fortschritts-Tracking, Lesezeichen, Quiz, Zertifikat
+- 📱 **QR-Code** – Für jedes Kapitel generierbar
+- 📦 **Export** – Notizen, Lesezeichen als CSV/JSON
 
-## 🚀 Deployment
+---
 
-Automatisch via GitHub Actions – jeder Push auf `main` deployt sofort.
+## 🚀 Deployment (GitHub Pages)
 
-### Einmalige Einrichtung:
-1. Repo `terptrain-anleitung` auf https://github.com/MarianaCannabis anlegen
-2. **Settings → Pages → Source: "GitHub Actions"** aktivieren
-3. Diese Dateien pushen → fertig!
+**Einrichtung:**
+1. Repository → Settings → Pages
+2. Source: **GitHub Actions** auswählen
+3. Workflow wird automatisch ausgeführt bei jedem Push
 
-```bash
-git init
-git add .
-git commit -m "Terptrain Anleitung v2.2"
-git remote add origin https://github.com/MarianaCannabis/terptrain-anleitung.git
-git push -u origin main
-```
+**Oder:** Source: **Deploy from branch** → main / (root)
 
-## 📁 Dateien
+---
 
-```
-index.html          ← Deutsche Hauptversion
-index-en.html       ← English
-index-tr.html       ← Türkçe
-index-fr.html       ← Français
-index-es.html       ← Español
-index-nl.html       ← Nederlands
-index-pl.html       ← Polski
-manifest.json       ← PWA Manifest
-icon-192.png        ← PWA Icon
-icon-512.png        ← PWA Icon (groß)
-.nojekyll           ← GitHub Pages: Jekyll deaktiviert
-.github/workflows/  ← Auto-Deploy Workflow
-```
+## 📧 Kontakt
 
-**Version 2.2 · April 2026**
+**Mariana Cannabis Social Clubs Deutschland**  
+kontakt@cscsdeutschland.de
+
+---
+
+*Zuletzt aktualisiert: April 2026 · Alle Angaben ohne Gewähr · Keine Rechtsberatung*
