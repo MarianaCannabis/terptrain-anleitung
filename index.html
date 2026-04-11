@@ -782,12 +782,11 @@ body[class*="hc-"] .nl:hover{color:var(--g1)!important;background:var(--s2)!impo
 .tts-word{background:rgba(255,179,0,.35);border-radius:2px;padding:0 1px;transition:background .1s}
 
 /* ── MAGNIFIER ── */
-#magnifier{position:fixed;width:180px;height:180px;border-radius:50%;border:3px solid var(--g1);
-  box-shadow:0 4px 24px rgba(0,0,0,.6);pointer-events:none;z-index:9999;display:none;
-  overflow:hidden;background:var(--bg)}
-#magnifier-content{position:absolute;transform-origin:top left;font-size:1.2em;
-  width:100%;padding:6px;color:var(--tx);line-height:1.7}
+#magnifier{position:fixed;width:160px;height:160px;border-radius:50%;border:3px solid var(--g1);
+  box-shadow:0 4px 24px rgba(0,0,0,.7);pointer-events:none;z-index:9999;display:none;
+  overflow:hidden;background:#fff}
 body.mag-on #magnifier{display:block}
+body.mag-on{cursor:crosshair}
 
 /* ── MOBILE OPTIMIZED ── */
 @media(max-width:920px){
@@ -1222,8 +1221,7 @@ kbd{background:var(--s2);border:1px solid var(--bd);border-radius:4px;padding:2p
 <p class="sec-intro">Terptrain ist die digitale Community-Plattform der <strong>Mariana Community</strong> – speziell für Mitglieder der Cannabis Social Clubs.</p>
 
 <div 
-<div class="acc-controls" data-ctrl="s-was"><button class="acc-ctrl-btn" onclick="expandAll('s-was')">▼ Alle aufklappen</button><button class="acc-ctrl-btn" onclick="collapseAll('s-was')">▲ Alle zuklappen</button></div>
-class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
+<div class="acc-controls" data-ctrl="s-was"><button class="acc-ctrl-btn" onclick="expandAll('s-was')">▼ Alle aufklappen</button><button class="acc-ctrl-btn" onclick="collapseAll('s-was')">▲ Alle zuklappen</button></div><div class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 <div class="cl-progress-label" id="cl-pct">0 / 10 erledigt</div>
 <div class="cl-progress"><div class="cl-progress-fill" id="cl-fill" style="width:0%"></div></div>
 <div class="checklist" id="new-member-checklist">
@@ -3007,8 +3005,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div 
-<div class="acc-controls" data-ctrl="s-kuendigung"><button class="acc-ctrl-btn" onclick="expandAll('s-kuendigung')">▼ Alle aufklappen</button><button class="acc-ctrl-btn" onclick="collapseAll('s-kuendigung')">▲ Alle zuklappen</button></div>
-class="ssh">🤔 Was brauchst du? – Entscheidungshilfe</div>
+<div class="acc-controls" data-ctrl="s-kuendigung"><button class="acc-ctrl-btn" onclick="expandAll('s-kuendigung')">▼ Alle aufklappen</button><button class="acc-ctrl-btn" onclick="collapseAll('s-kuendigung')">▲ Alle zuklappen</button></div><div class="ssh">🤔 Was brauchst du? – Entscheidungshilfe</div>
 <div class="dtree">
   <div class="dt-q" id="dt-start">
     <p>Was möchtest du tun?</p>
@@ -3337,8 +3334,7 @@ class="ssh">🤔 Was brauchst du? – Entscheidungshilfe</div>
 <p class="sec-intro">Klicke auf eine Frage um die Antwort zu sehen.</p>
 
 <div 
-<div class="acc-controls" data-ctrl="s-faq"><button class="acc-ctrl-btn" onclick="expandAll('s-faq')">▼ Alle aufklappen</button><button class="acc-ctrl-btn" onclick="collapseAll('s-faq')">▲ Alle zuklappen</button></div>
-class="ssh">👤 Profil &amp; Konto</div>
+<div class="acc-controls" data-ctrl="s-faq"><button class="acc-ctrl-btn" onclick="expandAll('s-faq')">▼ Alle aufklappen</button><button class="acc-ctrl-btn" onclick="collapseAll('s-faq')">▲ Alle zuklappen</button></div><div class="ssh">👤 Profil &amp; Konto</div>
 <div class="faq-item"><div class="faq-h" onclick="tFaq(this)"><span class="faq-cat">Profil</span><span class="faq-q-t">Wie ändere ich meinen Anzeigenamen?</span><span class="fa">+</span></div><div class="faq-body"><p><a href="#s-profil">Profil → Profil bearbeiten</a> → Anzeigename ändern (3–25 Zeichen) → Speichern.</p></div></div>
 <div class="faq-item"><div class="faq-h" onclick="tFaq(this)"><span class="faq-cat">Datenschutz</span><span class="faq-q-t">Warum sieht niemand meinen echten Namen?</span><span class="fa">+</span></div><div class="faq-body"><p>Das ist Absicht! Terptrain trennt Social-Media und CSC-Mitgliedsdaten komplett. Nur dein Anzeigename ist sichtbar.</p></div></div>
 <div class="faq-item"><div class="faq-h" onclick="tFaq(this)"><span class="faq-cat">Mitgliedschaft</span><span class="faq-q-t">Wo finde ich meine Mitgliedsnummer?</span><span class="fa">+</span></div><div class="faq-body"><p><a href="#s-mitgliedschaft">Profil → Mitgliederdaten → Mitgliedschaft</a>. Beginnt mit dem Buchstaben A.</p></div></div>
@@ -3437,8 +3433,7 @@ class="ssh">👤 Profil &amp; Konto</div>
 <p class="sec-intro">Erklärungen zu den wichtigsten Begriffen rund um Terptrain, Mariana Community und Cannabis Social Clubs.</p>
 
 <div 
-<div class="acc-controls" data-ctrl="s-glossar"><button class="acc-ctrl-btn" onclick="expandAll('s-glossar')">▼ Alle aufklappen</button><button class="acc-ctrl-btn" onclick="collapseAll('s-glossar')">▲ Alle zuklappen</button></div>
-class="ssh">🌿 Cannabis &amp; Recht</div>
+<div class="acc-controls" data-ctrl="s-glossar"><button class="acc-ctrl-btn" onclick="expandAll('s-glossar')">▼ Alle aufklappen</button><button class="acc-ctrl-btn" onclick="collapseAll('s-glossar')">▲ Alle zuklappen</button></div><div class="ssh">🌿 Cannabis &amp; Recht</div>
 <div class="acc open"><div class="acc-h" onclick="tAcc(this)"><span>🏛️ CSC – Cannabis Social Club</span><span class="arr">▶</span></div>
 <div class="acc-b"><p style="color:var(--tx2);font-size:.82rem;line-height:1.7">Ein <strong>Cannabis Social Club (CSC)</strong> ist ein gemeinnütziger Verein, der seinen Mitgliedern nach dem deutschen Konsumcannabisgesetz (KCanG) Cannabis für den Eigenkonsum anbaut und nicht-kommerziell abgibt. Mitglieder müssen volljährig sein und am Wohnort in Deutschland gemeldet sein. Jede Person darf nur in einem CSC gleichzeitig Mitglied sein.</p></div></div>
 
@@ -3584,8 +3579,7 @@ class="ssh">🌿 Cannabis &amp; Recht</div>
 <p class="sec-intro">Hier findest du Lösungen zu den häufigsten Problemen. Klicke auf ein Problem für die Lösung.</p>
 
 <div 
-<div class="acc-controls" data-ctrl="s-fehler"><button class="acc-ctrl-btn" onclick="expandAll('s-fehler')">▼ Alle aufklappen</button><button class="acc-ctrl-btn" onclick="collapseAll('s-fehler')">▲ Alle zuklappen</button></div>
-class="ssh">👤 Profil &amp; Konto</div>
+<div class="acc-controls" data-ctrl="s-fehler"><button class="acc-ctrl-btn" onclick="expandAll('s-fehler')">▼ Alle aufklappen</button><button class="acc-ctrl-btn" onclick="collapseAll('s-fehler')">▲ Alle zuklappen</button></div><div class="ssh">👤 Profil &amp; Konto</div>
 <div class="err-item"><div class="err-h" onclick="this.closest('.err-item').classList.toggle('open')">
   <span class="err-tag">Profil</span><span class="err-q">Ich werde nicht als Admin meiner Gruppe angezeigt</span><span class="err-arr">+</span>
 </div><div class="err-body">Das passiert wenn du die Gruppe erstellt hast aber deine Ansicht noch nicht aktualisiert wurde. Seite neu laden (F5 / Pull-to-Refresh). Falls das Problem bleibt → Support-Ticket.<br><strong>Pfad:</strong> Gruppen → Meine → Gruppe öffnen → ⋯ → Einstellungen</div></div><div class="err-item"><div class="err-h" onclick="this.closest('.err-item').classList.toggle('open')">
@@ -4175,11 +4169,14 @@ window.pickLang = function(el){
   localStorage.setItem('tt-page-lang', lang);
   
   if(lang === 'de'){
-    // Signal that we want German on next load
-    sessionStorage.setItem('tt-force-de','1');
+    // Remove saved language
     localStorage.removeItem('tt-page-lang');
-    var hash = window.location.hash;
-    window.location.replace(window.location.pathname + (hash||''));
+    sessionStorage.setItem('tt-force-de','1');
+    // Google Translate: set cookie to reset, then reload
+    document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.' + location.hostname;
+    // Force reload without cache
+    window.location.href = window.location.pathname + window.location.search + (window.location.hash || '');
     return;
   }
   
@@ -4212,14 +4209,21 @@ document.addEventListener('click', function(e){
   var dd=document.getElementById('lang-sel-dd'); if(dd) dd.style.display='none';
 });
 
-// Restore saved language on load
+// Restore saved language on load  
 (function(){
-  var saved = localStorage.getItem('tt-page-lang');
-  // Check if user just reset to German
+  // If user just reset to German, block ALL translation
   if(sessionStorage.getItem('tt-force-de')){
     sessionStorage.removeItem('tt-force-de');
-    return; // Don't restore any translation
+    localStorage.removeItem('tt-page-lang');
+    // Kill any GT initialization  
+    window.googleTranslateElementInit = function(){ 
+      // Do nothing - user wants German
+      var el = document.getElementById('google_translate_element');
+      if(el) el.style.display = 'none';
+    };
+    return;
   }
+  var saved = localStorage.getItem('tt-page-lang');
   // Only restore if NOT German (German = no translation needed)
   if(saved && saved !== 'de'){
     var item = document.querySelector('.lsi[data-lang="'+saved+'"]');
@@ -4786,22 +4790,26 @@ window.setLang = function(lang){
 // ════════════════════════════════════════════════════
 (function(){
   var magOn = false;
-  var mag = null, magContent = null;
-  function getMag(){ if(!mag) mag=document.getElementById('magnifier'); return mag; }
-  function getMagContent(){ if(!magContent) magContent=document.getElementById('magnifier-content'); return magContent; }
+  var mag = null;
+  var ZOOM = 2.5;
+  var SIZE = 160;
+  var HALF = SIZE / 2;
 
+  function getMag(){ if(!mag) mag=document.getElementById('magnifier'); return mag; }
+
+  // Use background-image trick: clone the page as a zoomed background
   document.addEventListener('mousemove', function(e){
     if(!magOn) return;
     var m = getMag(); if(!m) return;
-    m.style.left = (e.clientX - 90) + 'px';
-    m.style.top = (e.clientY - 90) + 'px';
-    // Get text near cursor
-    var el = document.elementFromPoint(e.clientX, e.clientY);
-    if(el && el !== m && !m.contains(el)){
-      var txt = el.textContent || '';
-      var mc = getMagContent();
-      if(mc && txt.trim()) mc.textContent = txt.trim().slice(0, 120);
-    }
+    var x = e.clientX, y = e.clientY;
+    m.style.left = (x - HALF) + 'px';
+    m.style.top = (y - HALF) + 'px';
+    
+    // Use CSS to show a magnified view of the area
+    var bgX = -(x * ZOOM - HALF);
+    var bgY = -(y * ZOOM - HALF);
+    m.style.backgroundSize = (window.innerWidth * ZOOM) + 'px ' + (document.body.scrollHeight * ZOOM) + 'px';
+    m.style.backgroundPosition = bgX + 'px ' + (bgY - window.scrollY * ZOOM + window.scrollY) + 'px';
   });
 
   window.toggleMagnifier = function(){
@@ -4809,9 +4817,42 @@ window.setLang = function(lang){
     document.body.classList.toggle('mag-on', magOn);
     localStorage.setItem('tt-mag', magOn?'1':'0');
     var b = document.getElementById('mag-btn');
-    if(b){ b.classList.toggle('active', magOn); b.style.borderColor = magOn?'var(--g1)':''; }
-    document.body.style.cursor = magOn ? 'none' : '';
+    if(b){ b.classList.toggle('active', magOn); b.textContent = magOn ? '🔍 Lupe AN' : '🔍 Lupe'; }
+    var m = getMag(); if(!m) return;
+    if(magOn){
+      // Use html2canvas approach via CSS background screenshot
+      // Simple alternative: show a text magnifier
+      m.style.background = 'var(--s1)';
+      m.style.display = 'flex';
+      m.style.alignItems = 'center';
+      m.style.justifyContent = 'center';
+      m.innerHTML = '<div id="mag-txt" style="font-size:1.4rem;padding:12px;text-align:center;line-height:1.5;color:var(--tx);font-family:inherit;overflow:hidden;word-break:break-word;max-height:150px"></div>';
+      
+      // Update text under cursor
+      document.addEventListener('mousemove', updateMagText, {passive:true});
+    } else {
+      m.style.display = 'none';
+      document.removeEventListener('mousemove', updateMagText);
+    }
   };
+  
+  function updateMagText(e){
+    var el = document.elementFromPoint(e.clientX, e.clientY);
+    var t = document.getElementById('mag-txt');
+    if(!t || !el) return;
+    // Walk up to find a text-containing element
+    var target = el;
+    while(target && target !== document.body){
+      var txt = '';
+      // Get direct text nodes
+      for(var i=0;i<target.childNodes.length;i++){
+        if(target.childNodes[i].nodeType===3) txt += target.childNodes[i].textContent;
+      }
+      if(txt.trim().length > 2){ t.textContent = txt.trim().slice(0,60); return; }
+      target = target.parentElement;
+    }
+  }
+
   if(localStorage.getItem('tt-mag')==='1') window.toggleMagnifier();
 })();
 
@@ -5050,6 +5091,18 @@ document.addEventListener('keydown', function(e){
   }).catch(function(){/* offline */});
 })();
 
+
+// Auto-apply mobile optimized on small screens
+(function(){
+  function checkMobile(){
+    if(window.innerWidth <= 920){
+      document.body.classList.add('mobile-opt');
+    }
+  }
+  checkMobile();
+  window.addEventListener('resize', checkMobile, {passive:true});
+})();
+
 </script>
 
 <div id="term-tip" class="term-tip"></div>
@@ -5138,7 +5191,7 @@ document.addEventListener('keydown', function(e){
   <button class="mob-a11y-btn" onclick="fsChange(1)" aria-label="Schrift größer"><span>A+</span><span>Größer</span></button>
   <button class="mob-a11y-btn" onclick="sbTab('nav');document.getElementById('sb').classList.add('open')" aria-label="Menü öffnen"><span>☰</span><span>Menü</span></button>
 </div>
-<div id="magnifier"><div id="magnifier-content"></div></div>
+<div id="magnifier" style="display:none"></div>
 <div id="kb-overlay" class="kb-shortcut-overlay" role="dialog" aria-modal="true" aria-label="Tastatur-Shortcuts">
   <div class="kb-box">
     <h2>⌨️ Tastatur-Shortcuts</h2>
