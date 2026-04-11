@@ -737,6 +737,145 @@ body.high-contrast{filter:contrast(1.6)}
 .skip-link:focus{top:0}
 :focus-visible{outline:2px solid var(--g1);outline-offset:2px}
 
+
+/* ── OPENDY S LEXIC FONT ── */
+@font-face{font-family:'OpenDyslexic';src:url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/fonts/OpenDyslexic-Regular.otf');font-weight:400}
+@font-face{font-family:'OpenDyslexic';src:url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/fonts/OpenDyslexic-Bold.otf');font-weight:700}
+body.dyslexic *{font-family:'OpenDyslexic',sans-serif!important;letter-spacing:.06em;word-spacing:.18em;line-height:1.9!important}
+
+/* ── HIGH CONTRAST THEMES ── */
+body.hc-yb{--bg:#000;--s1:#111;--s2:#181800;--s3:#222200;--bd:#444400;--bd2:#666600;--tx:#ffff00;--tx2:#ffee00;--mu:#cccc00;--g1:#ffff00;--g2:#ffee00}
+body.hc-wb{--bg:#000;--s1:#0a0a0a;--s2:#111;--s3:#1a1a1a;--bd:#444;--bd2:#666;--tx:#ffffff;--tx2:#f0f0f0;--mu:#aaa;--g1:#fff;--g2:#f0f0f0}
+body.hc-gb{--bg:#000;--s1:#001100;--s2:#002200;--s3:#003300;--bd:#004400;--bd2:#006600;--tx:#00ff00;--tx2:#00ee00;--mu:#009900;--g1:#00ff00;--g2:#00dd00}
+body.hc-bw{--bg:#fff;--s1:#f0f0f0;--s2:#e0e0e0;--s3:#d0d0d0;--bd:#999;--bd2:#666;--tx:#000;--tx2:#111;--mu:#444;--g1:#000;--g2:#111}
+body.hc-ob{--bg:#000;--s1:#110500;--s2:#1a0a00;--s3:#220f00;--bd:#441500;--bd2:#662200;--tx:#ff6600;--tx2:#ff5500;--mu:#cc4400;--g1:#ff6600;--g2:#ff5500}
+body.hc-bb{--bg:#000;--s1:#000011;--s2:#000022;--s3:#000033;--bd:#000066;--bd2:#0000aa;--tx:#4488ff;--tx2:#3377ff;--mu:#2255cc;--g1:#4488ff;--g2:#3377ff}
+body[class*="hc-"] #sb{background:var(--s1)!important;border-color:var(--bd)!important}
+body[class*="hc-"] .sec{border-color:var(--bd)!important}
+body[class*="hc-"] a{color:var(--g1)!important}
+body[class*="hc-"] .nl{color:var(--tx2)!important}
+body[class*="hc-"] .nl:hover{color:var(--g1)!important;background:var(--s2)!important}
+
+/* ── HC PALETTE PICKER ── */
+.hc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;padding:4px 10px 6px}
+.hc-swatch{padding:5px;border-radius:7px;cursor:pointer;font-size:.62rem;font-weight:700;
+  text-align:center;border:2px solid transparent;transition:border .15s}
+.hc-swatch:hover,.hc-swatch.active{border-color:var(--tx)!important}
+
+/* ── TTS (TEXT TO SPEECH) ── */
+.tts-bar{display:flex;align-items:center;gap:6px;padding:7px 10px;background:var(--s2);
+  border-bottom:1px solid var(--bd);flex-shrink:0;flex-wrap:wrap}
+.tts-btn{background:var(--s3);border:1px solid var(--bd);color:var(--tx2);padding:5px 10px;
+  border-radius:8px;cursor:pointer;font-size:.73rem;font-family:inherit;transition:all .15s;
+  display:flex;align-items:center;gap:4px;white-space:nowrap}
+.tts-btn:hover{border-color:var(--bd2);color:var(--tx)}
+.tts-btn.active{background:rgba(76,175,80,.2);border-color:var(--g1);color:var(--g2)}
+.tts-speed{background:var(--s2);border:1px solid var(--bd);color:var(--tx2);padding:4px 6px;
+  border-radius:7px;font-size:.7rem;font-family:inherit;cursor:pointer}
+.tts-vol{width:60px;accent-color:var(--g1)}
+.tts-section-btn{background:none;border:1px solid var(--bd);color:var(--mu);padding:3px 8px;
+  border-radius:7px;cursor:pointer;font-size:.67rem;font-family:inherit;margin-left:auto;
+  transition:all .15s;flex-shrink:0}
+.tts-section-btn:hover{border-color:var(--g1);color:var(--g2)}
+.tts-section-btn.reading{background:rgba(76,175,80,.15);border-color:var(--g1);color:var(--g2)}
+/* Word highlight */
+.tts-word{background:rgba(255,179,0,.35);border-radius:2px;padding:0 1px;transition:background .1s}
+
+/* ── MAGNIFIER ── */
+#magnifier{position:fixed;width:180px;height:180px;border-radius:50%;border:3px solid var(--g1);
+  box-shadow:0 4px 24px rgba(0,0,0,.6);pointer-events:none;z-index:9999;display:none;
+  overflow:hidden;background:var(--bg)}
+#magnifier-content{position:absolute;transform-origin:top left;font-size:1.2em;
+  width:100%;padding:6px;color:var(--tx);line-height:1.7}
+body.mag-on #magnifier{display:block}
+
+/* ── MOBILE OPTIMIZED ── */
+@media(max-width:920px){
+  body.mobile-opt .sec{padding:14px 12px;border-radius:10px;margin-bottom:8px}
+  body.mobile-opt .acc-h{padding:12px 14px;min-height:48px}
+  body.mobile-opt .nl{padding:10px 14px;min-height:44px;font-size:.84rem}
+  body.mobile-opt .fb-btn,.tts-btn,.ca-btn{min-height:44px;padding:10px 14px;font-size:.82rem}
+  body.mobile-opt .sb-tab{padding:12px 0}
+  body.mobile-opt #main{padding:10px 6px}
+}
+/* Mobile bottom bar */
+.mob-a11y-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--s1);
+  border-top:1px solid var(--bd);padding:6px 12px;z-index:250;
+  justify-content:space-around;align-items:center}
+@media(max-width:920px){.mob-a11y-bar{display:flex}}
+.mob-a11y-btn{background:none;border:none;color:var(--mu);cursor:pointer;font-size:.65rem;
+  display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 8px;
+  border-radius:8px;transition:all .15s;font-family:inherit}
+.mob-a11y-btn span:first-child{font-size:1.1rem}
+.mob-a11y-btn.active,.mob-a11y-btn:hover{color:var(--g1)}
+
+/* ── PROGRESS RING ── */
+.progress-ring-wrap{display:inline-flex;align-items:center;justify-content:center;
+  width:20px;height:20px;flex-shrink:0;margin-left:6px;vertical-align:middle}
+.progress-ring{transform:rotate(-90deg)}
+.ring-bg{fill:none;stroke:var(--bd);stroke-width:2.5}
+.ring-fill{fill:none;stroke:var(--g1);stroke-width:2.5;stroke-linecap:round;
+  transition:stroke-dashoffset .5s ease;stroke-dasharray:50.27;stroke-dashoffset:50.27}
+
+/* ── STAR RATING ── */
+.star-rating{display:flex;align-items:center;gap:3px;margin-top:6px}
+.star{font-size:1.05rem;cursor:pointer;transition:transform .1s;color:var(--bd2);
+  line-height:1;user-select:none}
+.star.lit{color:#ffd700}
+.star:hover,.star.hover{transform:scale(1.2);color:#ffd700}
+.star-lbl{font-size:.68rem;color:var(--mu);margin-left:5px}
+.star-thanks{font-size:.68rem;color:var(--g2);margin-left:5px;display:none}
+
+/* ── CONFUSED BUTTON ── */
+.confused-btn{background:none;border:1px solid rgba(255,152,0,.4);color:rgba(255,152,0,.7);
+  padding:3px 9px;border-radius:7px;cursor:pointer;font-size:.68rem;font-family:inherit;
+  transition:all .15s;margin-top:4px}
+.confused-btn:hover{border-color:var(--go);color:var(--go);background:rgba(255,152,0,.08)}
+.confused-form{display:none;margin-top:5px;background:var(--s2);border:1px solid var(--bd);
+  border-radius:8px;padding:8px 10px}
+.confused-form.open{display:block}
+.confused-form textarea{width:100%;background:var(--s1);border:1px solid var(--bd);
+  border-radius:7px;padding:6px 8px;color:var(--tx);font-family:inherit;font-size:.76rem;
+  resize:none;height:55px;outline:none}
+.confused-form textarea:focus{border-color:var(--go)}
+
+/* ── VERSION BANNER ── */
+#version-banner{display:none;background:rgba(76,175,80,.1);border:1px solid rgba(76,175,80,.3);
+  padding:7px 16px;text-align:center;font-size:.77rem;color:var(--g2);flex-shrink:0}
+#version-banner a{color:var(--g1);font-weight:600}
+
+/* ── PRINT 2-COLUMN ── */
+@media print{
+  #sb,.sbar,.ql-bar,.minimap,.feedback-bar,.notes-area,.cert-overlay,.welcome-overlay,
+  .lp-overlay,.focus-exit,#ruler,#ruler-band,.tts-bar,.mob-a11y-bar,
+  .confused-btn,.confused-form,.chap-actions{display:none!important}
+  #main{margin-left:0!important;columns:2;column-gap:24px}
+  .sec{break-inside:avoid;border:1px solid #ccc;padding:12px!important;
+    margin-bottom:10px;border-radius:0;background:#fff!important;color:#000!important}
+  .sec-h{font-size:14pt;color:#000!important}
+  .sec-intro{font-size:10pt}
+  h1,h2,h3{color:#000!important}
+  .tab-panel{display:block!important}
+  body{background:#fff!important;color:#000!important}
+}
+
+/* ── KEYBOARD NAV ── */
+.kb-shortcut-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);
+  z-index:9600;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto}
+.kb-shortcut-overlay.open{display:flex}
+.kb-box{background:var(--s1);border:1px solid var(--g1);border-radius:12px;padding:20px 24px;
+  max-width:500px;width:100%}
+.kb-box h2{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:var(--g2);margin-bottom:12px}
+.kb-row{display:flex;align-items:center;gap:10px;padding:5px 0;border-bottom:1px solid var(--bd);
+  font-size:.79rem;color:var(--tx2)}
+.kb-row:last-child{border-bottom:none}
+kbd{background:var(--s2);border:1px solid var(--bd);border-radius:4px;padding:2px 7px;
+  font-size:.72rem;font-family:monospace;color:var(--tx);min-width:28px;text-align:center;
+  flex-shrink:0}
+
+/* ── TTS SECTION BUTTON in chap-actions ── */
+.ca-btn.tts-active{background:rgba(76,175,80,.15);border-color:var(--g1);color:var(--g2)}
+
 </style>
 
   <div id="google_translate_element" style="display:none" aria-hidden="true"></div>
@@ -865,6 +1004,7 @@ body.high-contrast{filter:contrast(1.6)}
   <a href="#s-quiz" class="nl"><span class="ic">🧠</span>Quiz</a>
   <a href="#s-vereinsstruktur" class="nl"><span class="ic">🏛️</span>Vereinsstruktur</a>
   <a href="#s-abholung" class="nl"><span class="ic">📦</span>Abholung</a>
+  <a href="#s-a11y" class="nl"><span class="ic">♿</span>Barrierefreiheits-Guide</a>
 <div class="sb-sec">📊 Statistik</div>
 <div style="padding:5px 10px 8px;flex-shrink:0">
   <div id="ana-top-chapters" style="font-size:.68rem;color:var(--mu)">Wird geladen…</div>
@@ -953,9 +1093,23 @@ body.high-contrast{filter:contrast(1.6)}
       </div>
 
       <div style="padding:2px 10px 4px;font-size:.6rem;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.1em;margin-top:4px">♿ Barrierefreiheit</div>
-      <div style="padding:0 10px 8px;display:flex;gap:5px">
-        <button id="a11y-btn" onclick="toggleA11y()" style="flex:1;background:var(--s2);border:1px solid var(--bd);color:var(--tx2);padding:5px;border-radius:7px;cursor:pointer;font-size:.7rem;font-family:inherit">⬜ Screenreader</button>
-        <button id="hc-btn" onclick="toggleHighContrast()" style="flex:1;background:var(--s2);border:1px solid var(--bd);color:var(--tx2);padding:5px;border-radius:7px;cursor:pointer;font-size:.7rem;font-family:inherit">🔆 Kontrast</button>
+      <div style="padding:0 10px 3px;display:flex;gap:5px">
+        <button id="a11y-btn" onclick="toggleA11y()" style="flex:1;background:var(--s2);border:1px solid var(--bd);color:var(--tx2);padding:5px;border-radius:7px;cursor:pointer;font-size:.68rem;font-family:inherit">⬜ Screenreader</button>
+        <button id="dyslexic-btn" onclick="toggleDyslexic()" style="flex:1;background:var(--s2);border:1px solid var(--bd);color:var(--tx2);padding:5px;border-radius:7px;cursor:pointer;font-size:.68rem;font-family:inherit">Aa Dyslexie</button>
+      </div>
+      <div style="padding:3px 10px 3px;display:flex;gap:5px">
+        <button id="mag-btn" onclick="toggleMagnifier()" style="flex:1;background:var(--s2);border:1px solid var(--bd);color:var(--tx2);padding:5px;border-radius:7px;cursor:pointer;font-size:.68rem;font-family:inherit">🔍 Lupe</button>
+        <button id="mob-opt-btn" onclick="toggleMobileOpt()" style="flex:1;background:var(--s2);border:1px solid var(--bd);color:var(--tx2);padding:5px;border-radius:7px;cursor:pointer;font-size:.68rem;font-family:inherit">📱 Mobil</button>
+      </div>
+      <div style="padding:3px 10px 4px;font-size:.62rem;color:var(--mu);font-weight:600">Hochkontrast:</div>
+      <div class="hc-grid">
+        <div class="hc-swatch" style="background:#000;color:#ff0" onclick="setHC('hc-yb')" data-hc="hc-yb" title="Gelb auf Schwarz">🟡 Gelb/Sw.</div>
+        <div class="hc-swatch" style="background:#000;color:#fff" onclick="setHC('hc-wb')" data-hc="hc-wb" title="Weiß auf Schwarz">⬜ Weiß/Sw.</div>
+        <div class="hc-swatch" style="background:#000;color:#0f0" onclick="setHC('hc-gb')" data-hc="hc-gb" title="Grün auf Schwarz">🟢 Grün/Sw.</div>
+        <div class="hc-swatch" style="background:#fff;color:#000" onclick="setHC('hc-bw')" data-hc="hc-bw" title="Schwarz auf Weiß">⬛ Schw./Weiß</div>
+        <div class="hc-swatch" style="background:#000;color:#f60" onclick="setHC('hc-ob')" data-hc="hc-ob" title="Orange auf Schwarz">🟠 Orange/Sw.</div>
+        <div class="hc-swatch" style="background:#000;color:#48f" onclick="setHC('hc-bb')" data-hc="hc-bb" title="Blau auf Schwarz">🔵 Blau/Sw.</div>
+        <div class="hc-swatch" style="background:var(--bg);color:var(--tx);border:1px solid var(--bd)" onclick="setHC('')" data-hc="" title="Normal">✕ Normal</div>
       </div>
     </div>
 
@@ -1027,6 +1181,24 @@ body.high-contrast{filter:contrast(1.6)}
 <div id="season-banner" class="season-banner"></div>
 <div id="lang-notice-bar" style="display:none;background:rgba(76,175,80,.08);border-bottom:1px solid rgba(76,175,80,.2);padding:6px 16px;font-size:.76rem;color:var(--tx2);text-align:center;flex-shrink:0"></div>
 <div id="translating-msg" style="position:fixed;bottom:70px;left:50%;transform:translateX(-50%);background:var(--s1);border:1px solid var(--g1);border-radius:20px;padding:6px 16px;font-size:.74rem;color:var(--g2);z-index:5000;display:none;box-shadow:0 4px 16px rgba(0,0,0,.4)">🌍 Wird übersetzt…</div>
+<div class="tts-bar" id="tts-bar" aria-label="Vorlesefunktion">
+  <button class="tts-btn" id="tts-play-btn" onclick="ttsToggle()" aria-label="Vorlesen starten/stoppen">
+    <span id="tts-icon">▶</span> <span id="tts-label">Vorlesen</span>
+  </button>
+  <button class="tts-btn" onclick="ttsStop()" aria-label="Vorlesen stoppen">⏹</button>
+  <select class="tts-speed" id="tts-speed" onchange="ttsSetSpeed(this.value)" aria-label="Lesegeschwindigkeit">
+    <option value="0.7">0.7×</option>
+    <option value="0.85">0.85×</option>
+    <option value="1.0" selected>1.0×</option>
+    <option value="1.25">1.25×</option>
+    <option value="1.5">1.5×</option>
+  </select>
+  <input type="range" class="tts-vol" id="tts-vol" min="0" max="1" step="0.1" value="1" 
+    oninput="ttsSetVol(this.value)" aria-label="Lautstärke" title="Lautstärke">
+  <span style="font-size:.62rem;color:var(--mu)">🔊</span>
+  <button class="tts-btn" onclick="showKbShortcuts()" aria-label="Tastatur-Shortcuts" title="Tastatur-Shortcuts" style="margin-left:auto">⌨️ Shortcuts</button>
+</div>
+<div id="version-banner"></div>
 <div class="ql-bar">
   <a href="#s-aufbau" class="ql">🏗️ Aufbau</a>
   <a href="#s-login" class="ql">🔐 Login</a>
@@ -1044,7 +1216,7 @@ body.high-contrast{filter:contrast(1.6)}
 
 <section class="sec" id="s-was">
 <div class="sec-tag">Kapitel 01</div>
-<h2 class="sec-h"><div class="sec-icon">🌿</div>Was ist Terptrain?</h2>
+<h2 class="sec-h"><div class="sec-icon">🌿</div>Was ist Terptrain?<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-was" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Willkommen</span><span>›</span><span>Was ist Terptrain?</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Terptrain ist die digitale Community-Plattform der <strong>Mariana Community</strong> – speziell für Mitglieder der Cannabis Social Clubs.</p>
@@ -1117,6 +1289,24 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-was" onclick="toggleDone('s-was')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-was" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-was',1)" onmouseover="starHover('s-was',1)" onmouseout="starOut('s-was')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-was',2)" onmouseover="starHover('s-was',2)" onmouseout="starOut('s-was')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-was',3)" onmouseover="starHover('s-was',3)" onmouseout="starOut('s-was')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-was',4)" onmouseover="starHover('s-was',4)" onmouseout="starOut('s-was')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-was',5)" onmouseover="starHover('s-was',5)" onmouseout="starOut('s-was')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-was">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-was">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-was" onclick="ttsSection('s-was',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-was')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-was">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-was"></textarea>
+  <button onclick="sendConfused('s-was')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-was">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-was','yes')">👍 Ja</button>
@@ -1134,7 +1324,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <section class="sec" id="s-aufbau">
 <div class="sec-tag">Kapitel 02</div>
-<h2 class="sec-h"><div class="sec-icon">🏗️</div>Aufbau der Plattform</h2>
+<h2 class="sec-h"><div class="sec-icon">🏗️</div>Aufbau der Plattform<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-aufbau" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Willkommen</span><span>›</span><span>Aufbau der Plattform</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Die Plattform ist in <strong>3 Spalten</strong> aufgebaut – links Navigation, Mitte Inhalt, rechts Einstellungen &amp; Infos.</p>
@@ -1160,6 +1350,24 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-aufbau" onclick="toggleDone('s-aufbau')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-aufbau" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-aufbau',1)" onmouseover="starHover('s-aufbau',1)" onmouseout="starOut('s-aufbau')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-aufbau',2)" onmouseover="starHover('s-aufbau',2)" onmouseout="starOut('s-aufbau')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-aufbau',3)" onmouseover="starHover('s-aufbau',3)" onmouseout="starOut('s-aufbau')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-aufbau',4)" onmouseover="starHover('s-aufbau',4)" onmouseout="starOut('s-aufbau')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-aufbau',5)" onmouseover="starHover('s-aufbau',5)" onmouseout="starOut('s-aufbau')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-aufbau">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-aufbau">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-aufbau" onclick="ttsSection('s-aufbau',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-aufbau')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-aufbau">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-aufbau"></textarea>
+  <button onclick="sendConfused('s-aufbau')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-aufbau">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-aufbau','yes')">👍 Ja</button>
@@ -1177,7 +1385,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <section class="sec" id="s-login">
 <div class="sec-tag">Kapitel 03</div>
-<h2 class="sec-h"><div class="sec-icon">🔐</div>Login &amp; Registrierung</h2>
+<h2 class="sec-h"><div class="sec-icon">🔐</div>Login &amp; Registrierung<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-login" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Erste Schritte</span><span>›</span><span>Login & Registrierung</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Die Zugangsdaten erhältst du bei der Aufnahme in deinen Cannabis Social Club per E-Mail.</p>
@@ -1197,6 +1405,24 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-login" onclick="toggleDone('s-login')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-login" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-login',1)" onmouseover="starHover('s-login',1)" onmouseout="starOut('s-login')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-login',2)" onmouseover="starHover('s-login',2)" onmouseout="starOut('s-login')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-login',3)" onmouseover="starHover('s-login',3)" onmouseout="starOut('s-login')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-login',4)" onmouseover="starHover('s-login',4)" onmouseout="starOut('s-login')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-login',5)" onmouseover="starHover('s-login',5)" onmouseout="starOut('s-login')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-login">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-login">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-login" onclick="ttsSection('s-login',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-login')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-login">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-login"></textarea>
+  <button onclick="sendConfused('s-login')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-login">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-login','yes')">👍 Ja</button>
@@ -1214,7 +1440,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <section class="sec" id="s-mobil">
 <div class="sec-tag">Kapitel 04</div>
-<h2 class="sec-h"><div class="sec-icon">📱</div>Bedienung – Smartphone &amp; Tablet</h2>
+<h2 class="sec-h"><div class="sec-icon">📱</div>Bedienung – Smartphone &amp; Tablet<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-mobil" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Erste Schritte</span><span>›</span><span>Bedienung Smartphone</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Auf mobilen Geräten sind die 3 Spalten per Buttons erreichbar.</p>
@@ -1242,6 +1468,24 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-mobil" onclick="toggleDone('s-mobil')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-mobil" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-mobil',1)" onmouseover="starHover('s-mobil',1)" onmouseout="starOut('s-mobil')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-mobil',2)" onmouseover="starHover('s-mobil',2)" onmouseout="starOut('s-mobil')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-mobil',3)" onmouseover="starHover('s-mobil',3)" onmouseout="starOut('s-mobil')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-mobil',4)" onmouseover="starHover('s-mobil',4)" onmouseout="starOut('s-mobil')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-mobil',5)" onmouseover="starHover('s-mobil',5)" onmouseout="starOut('s-mobil')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-mobil">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-mobil">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-mobil" onclick="ttsSection('s-mobil',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-mobil')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-mobil">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-mobil"></textarea>
+  <button onclick="sendConfused('s-mobil')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-mobil">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-mobil','yes')">👍 Ja</button>
@@ -1259,7 +1503,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <section class="sec" id="s-desktop">
 <div class="sec-tag">Kapitel 05</div>
-<h2 class="sec-h"><div class="sec-icon">🖥️</div>Bedienung – Computer &amp; Laptop</h2>
+<h2 class="sec-h"><div class="sec-icon">🖥️</div>Bedienung – Computer &amp; Laptop<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-desktop" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Erste Schritte</span><span>›</span><span>Bedienung Computer</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Am Computer sind alle Menüpunkte mit Beschriftung dauerhaft sichtbar – die Bedienung ist intuitiv und übersichtlich.</p>
@@ -1281,6 +1525,24 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-desktop" onclick="toggleDone('s-desktop')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-desktop" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-desktop',1)" onmouseover="starHover('s-desktop',1)" onmouseout="starOut('s-desktop')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-desktop',2)" onmouseover="starHover('s-desktop',2)" onmouseout="starOut('s-desktop')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-desktop',3)" onmouseover="starHover('s-desktop',3)" onmouseout="starOut('s-desktop')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-desktop',4)" onmouseover="starHover('s-desktop',4)" onmouseout="starOut('s-desktop')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-desktop',5)" onmouseover="starHover('s-desktop',5)" onmouseout="starOut('s-desktop')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-desktop">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-desktop">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-desktop" onclick="ttsSection('s-desktop',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-desktop')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-desktop">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-desktop"></textarea>
+  <button onclick="sendConfused('s-desktop')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-desktop">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-desktop','yes')">👍 Ja</button>
@@ -1298,7 +1560,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <section class="sec" id="s-feed">
 <div class="sec-tag">Kapitel 06</div>
-<h2 class="sec-h"><div class="sec-icon">📰</div>Feed – Die Community-Zentrale</h2>
+<h2 class="sec-h"><div class="sec-icon">📰</div>Feed – Die Community-Zentrale<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-feed" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Alle Bereiche</span><span>›</span><span>Feed</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Der <strong>Hauptbildschirm</strong> nach dem Login. Beiträge lesen und selbst posten.</p>
@@ -1327,6 +1589,24 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-gruppen" class="rec-link">→ Gruppen entdecken</a></div>
 <div class="done-check" id="done-s-feed" onclick="toggleDone('s-feed')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-feed" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-feed',1)" onmouseover="starHover('s-feed',1)" onmouseout="starOut('s-feed')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-feed',2)" onmouseover="starHover('s-feed',2)" onmouseout="starOut('s-feed')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-feed',3)" onmouseover="starHover('s-feed',3)" onmouseout="starOut('s-feed')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-feed',4)" onmouseover="starHover('s-feed',4)" onmouseout="starOut('s-feed')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-feed',5)" onmouseover="starHover('s-feed',5)" onmouseout="starOut('s-feed')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-feed">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-feed">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-feed" onclick="ttsSection('s-feed',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-feed')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-feed">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-feed"></textarea>
+  <button onclick="sendConfused('s-feed')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-feed">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-feed','yes')">👍 Ja</button>
@@ -1344,7 +1624,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <section class="sec" id="s-gruppen">
 <div class="sec-tag">Kapitel 07</div>
-<h2 class="sec-h"><div class="sec-icon">👥</div>Gruppen</h2>
+<h2 class="sec-h"><div class="sec-icon">👥</div>Gruppen<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-gruppen" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Alle Bereiche</span><span>›</span><span>Gruppen</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Thematische Communities. Offen = sofort beitreten, Privat = Anfrage stellen, oder selbst gründen.</p>
@@ -1418,6 +1698,24 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-nachrichten" class="rec-link">→ Nachrichten & Chat</a></div>
 <div class="done-check" id="done-s-gruppen" onclick="toggleDone('s-gruppen')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-gruppen" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-gruppen',1)" onmouseover="starHover('s-gruppen',1)" onmouseout="starOut('s-gruppen')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-gruppen',2)" onmouseover="starHover('s-gruppen',2)" onmouseout="starOut('s-gruppen')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-gruppen',3)" onmouseover="starHover('s-gruppen',3)" onmouseout="starOut('s-gruppen')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-gruppen',4)" onmouseover="starHover('s-gruppen',4)" onmouseout="starOut('s-gruppen')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-gruppen',5)" onmouseover="starHover('s-gruppen',5)" onmouseout="starOut('s-gruppen')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-gruppen">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-gruppen">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-gruppen" onclick="ttsSection('s-gruppen',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-gruppen')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-gruppen">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-gruppen"></textarea>
+  <button onclick="sendConfused('s-gruppen')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-gruppen">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-gruppen','yes')">👍 Ja</button>
@@ -1435,7 +1733,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <section class="sec" id="s-nachrichten">
 <div class="sec-tag">Kapitel 08</div>
-<h2 class="sec-h"><div class="sec-icon">💬</div>Nachrichten – Privater Chat</h2>
+<h2 class="sec-h"><div class="sec-icon">💬</div>Nachrichten – Privater Chat<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-nachrichten" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Alle Bereiche</span><span>›</span><span>Nachrichten</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Private Chats mit anderen Mitgliedern. Support-Antworten erscheinen unter „System Nachrichten".</p>
@@ -1466,6 +1764,24 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-nachrichten" onclick="toggleDone('s-nachrichten')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-nachrichten" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-nachrichten',1)" onmouseover="starHover('s-nachrichten',1)" onmouseout="starOut('s-nachrichten')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-nachrichten',2)" onmouseover="starHover('s-nachrichten',2)" onmouseout="starOut('s-nachrichten')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-nachrichten',3)" onmouseover="starHover('s-nachrichten',3)" onmouseout="starOut('s-nachrichten')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-nachrichten',4)" onmouseover="starHover('s-nachrichten',4)" onmouseout="starOut('s-nachrichten')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-nachrichten',5)" onmouseover="starHover('s-nachrichten',5)" onmouseout="starOut('s-nachrichten')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-nachrichten">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-nachrichten">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-nachrichten" onclick="ttsSection('s-nachrichten',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-nachrichten')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-nachrichten">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-nachrichten"></textarea>
+  <button onclick="sendConfused('s-nachrichten')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-nachrichten">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-nachrichten','yes')">👍 Ja</button>
@@ -1483,7 +1799,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <section class="sec" id="s-mitteilungen">
 <div class="sec-tag">Kapitel 09</div>
-<h2 class="sec-h"><div class="sec-icon">🔔</div>Mitteilungen – Benachrichtigungen</h2>
+<h2 class="sec-h"><div class="sec-icon">🔔</div>Mitteilungen – Benachrichtigungen<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-mitteilungen" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Alle Bereiche</span><span>›</span><span>Mitteilungen</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro"><strong>Automatische</strong> Benachrichtigungen über neue Follower, Kommentare und Erwähnungen.</p>
@@ -1504,6 +1820,24 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-mitteilungen" onclick="toggleDone('s-mitteilungen')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-mitteilungen" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-mitteilungen',1)" onmouseover="starHover('s-mitteilungen',1)" onmouseout="starOut('s-mitteilungen')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-mitteilungen',2)" onmouseover="starHover('s-mitteilungen',2)" onmouseout="starOut('s-mitteilungen')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-mitteilungen',3)" onmouseover="starHover('s-mitteilungen',3)" onmouseout="starOut('s-mitteilungen')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-mitteilungen',4)" onmouseover="starHover('s-mitteilungen',4)" onmouseout="starOut('s-mitteilungen')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-mitteilungen',5)" onmouseover="starHover('s-mitteilungen',5)" onmouseout="starOut('s-mitteilungen')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-mitteilungen">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-mitteilungen">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-mitteilungen" onclick="ttsSection('s-mitteilungen',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-mitteilungen')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-mitteilungen">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-mitteilungen"></textarea>
+  <button onclick="sendConfused('s-mitteilungen')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-mitteilungen">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-mitteilungen','yes')">👍 Ja</button>
@@ -1521,7 +1855,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <section class="sec" id="s-kalender">
 <div class="sec-tag">Kapitel 10</div>
-<h2 class="sec-h"><div class="sec-icon">📅</div>Kalender &amp; Events</h2>
+<h2 class="sec-h"><div class="sec-icon">📅</div>Kalender &amp; Events<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-kalender" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Alle Bereiche</span><span>›</span><span>Kalender & Events</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Club-Events, Mitgliedertreffen und Abholtermine.</p>
@@ -1542,6 +1876,24 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-kalender" onclick="toggleDone('s-kalender')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-kalender" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-kalender',1)" onmouseover="starHover('s-kalender',1)" onmouseout="starOut('s-kalender')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-kalender',2)" onmouseover="starHover('s-kalender',2)" onmouseout="starOut('s-kalender')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-kalender',3)" onmouseover="starHover('s-kalender',3)" onmouseout="starOut('s-kalender')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-kalender',4)" onmouseover="starHover('s-kalender',4)" onmouseout="starOut('s-kalender')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-kalender',5)" onmouseover="starHover('s-kalender',5)" onmouseout="starOut('s-kalender')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-kalender">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-kalender">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-kalender" onclick="ttsSection('s-kalender',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-kalender')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-kalender">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-kalender"></textarea>
+  <button onclick="sendConfused('s-kalender')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-kalender">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-kalender','yes')">👍 Ja</button>
@@ -1559,7 +1911,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <section class="sec" id="s-standorte">
 <div class="sec-tag">Kapitel 11</div>
-<h2 class="sec-h"><div class="sec-icon">📍</div>Standorte – Mein Verein &amp; Alle Vereine<span class="ch-updated ch-upd-badge" data-badge="AKTUALISIERT">AKTUALISIERT</span><span style="font-size:.56rem;color:var(--mu);margin-left:4px">Apr 2026</span></h2>
+<h2 class="sec-h"><div class="sec-icon">📍</div>Standorte – Mein Verein &amp; Alle Vereine<span class="ch-updated ch-upd-badge" data-badge="AKTUALISIERT">AKTUALISIERT</span><span style="font-size:.56rem;color:var(--mu);margin-left:4px">Apr 2026</span><span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-standorte" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Alle Bereiche</span><span>›</span><span>Standorte</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Details zu deinem Verein, alle Clubs und aktuelle Vereinsneuigkeiten.</p>
@@ -1615,6 +1967,24 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-lizenz" class="rec-link">→ Was passiert nach der Anbaulizenz?</a></div>
 <div class="done-check" id="done-s-standorte" onclick="toggleDone('s-standorte')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-standorte" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-standorte',1)" onmouseover="starHover('s-standorte',1)" onmouseout="starOut('s-standorte')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-standorte',2)" onmouseover="starHover('s-standorte',2)" onmouseout="starOut('s-standorte')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-standorte',3)" onmouseover="starHover('s-standorte',3)" onmouseout="starOut('s-standorte')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-standorte',4)" onmouseover="starHover('s-standorte',4)" onmouseout="starOut('s-standorte')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-standorte',5)" onmouseover="starHover('s-standorte',5)" onmouseout="starOut('s-standorte')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-standorte">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-standorte">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-standorte" onclick="ttsSection('s-standorte',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-standorte')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-standorte">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-standorte"></textarea>
+  <button onclick="sendConfused('s-standorte')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-standorte">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-standorte','yes')">👍 Ja</button>
@@ -1632,7 +2002,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <section class="sec" id="s-entwicklung">
 <div class="sec-tag">Kapitel 12</div>
-<h2 class="sec-h"><div class="sec-icon">🗺️</div>Entwicklung – News, Roadmap &amp; Requests</h2>
+<h2 class="sec-h"><div class="sec-icon">🗺️</div>Entwicklung – News, Roadmap &amp; Requests<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-entwicklung" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Alle Bereiche</span><span>›</span><span>Entwicklung</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Transparent was an Terptrain gearbeitet wird – und du kannst selbst Bugs melden oder Funktionen wünschen!</p>
@@ -1672,6 +2042,24 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-entwicklung" onclick="toggleDone('s-entwicklung')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-entwicklung" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-entwicklung',1)" onmouseover="starHover('s-entwicklung',1)" onmouseout="starOut('s-entwicklung')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-entwicklung',2)" onmouseover="starHover('s-entwicklung',2)" onmouseout="starOut('s-entwicklung')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-entwicklung',3)" onmouseover="starHover('s-entwicklung',3)" onmouseout="starOut('s-entwicklung')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-entwicklung',4)" onmouseover="starHover('s-entwicklung',4)" onmouseout="starOut('s-entwicklung')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-entwicklung',5)" onmouseover="starHover('s-entwicklung',5)" onmouseout="starOut('s-entwicklung')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-entwicklung">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-entwicklung">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-entwicklung" onclick="ttsSection('s-entwicklung',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-entwicklung')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-entwicklung">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-entwicklung"></textarea>
+  <button onclick="sendConfused('s-entwicklung')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-entwicklung">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-entwicklung','yes')">👍 Ja</button>
@@ -1689,7 +2077,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <section class="sec" id="s-cannabis">
 <div class="sec-tag">Kapitel 13</div>
-<h2 class="sec-h"><div class="sec-icon">🌿</div>Cannabis – Freizeit, Wissen &amp; Medizinal<span class="ch-updated ch-upd-badge" data-badge="AKTUALISIERT">AKTUALISIERT</span><span style="font-size:.56rem;color:var(--mu);margin-left:4px">Apr 2026</span></h2>
+<h2 class="sec-h"><div class="sec-icon">🌿</div>Cannabis – Freizeit, Wissen &amp; Medizinal<span class="ch-updated ch-upd-badge" data-badge="AKTUALISIERT">AKTUALISIERT</span><span style="font-size:.56rem;color:var(--mu);margin-left:4px">Apr 2026</span><span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-cannabis" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Alle Bereiche</span><span>›</span><span>Cannabis</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Bestellfunktion, Wissensdatenbank und Zugang zu Clubdoktor.</p>
@@ -1723,6 +2111,24 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-abholung" class="rec-link">→ Abholung Schritt für Schritt</a></div>
 <div class="done-check" id="done-s-cannabis" onclick="toggleDone('s-cannabis')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-cannabis" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-cannabis',1)" onmouseover="starHover('s-cannabis',1)" onmouseout="starOut('s-cannabis')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-cannabis',2)" onmouseover="starHover('s-cannabis',2)" onmouseout="starOut('s-cannabis')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-cannabis',3)" onmouseover="starHover('s-cannabis',3)" onmouseout="starOut('s-cannabis')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-cannabis',4)" onmouseover="starHover('s-cannabis',4)" onmouseout="starOut('s-cannabis')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-cannabis',5)" onmouseover="starHover('s-cannabis',5)" onmouseout="starOut('s-cannabis')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-cannabis">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-cannabis">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-cannabis" onclick="ttsSection('s-cannabis',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-cannabis')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-cannabis">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-cannabis"></textarea>
+  <button onclick="sendConfused('s-cannabis')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-cannabis">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-cannabis','yes')">👍 Ja</button>
@@ -1740,7 +2146,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <section class="sec" id="s-profil">
 <div class="sec-tag">Kapitel 14</div>
-<h2 class="sec-h"><div class="sec-icon">👤</div>Profil bearbeiten &amp; einrichten</h2>
+<h2 class="sec-h"><div class="sec-icon">👤</div>Profil bearbeiten &amp; einrichten<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-profil" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Profil & Konto</span><span>›</span><span>Profil bearbeiten</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Dein öffentliches Profil verwalten. Die <strong>rechte Spalte</strong> ist die Schaltzentrale.</p>
@@ -1769,6 +2175,24 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-passwort" class="rec-link">→ Passwort ändern</a></div>
 <div class="done-check" id="done-s-profil" onclick="toggleDone('s-profil')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-profil" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-profil',1)" onmouseover="starHover('s-profil',1)" onmouseout="starOut('s-profil')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-profil',2)" onmouseover="starHover('s-profil',2)" onmouseout="starOut('s-profil')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-profil',3)" onmouseover="starHover('s-profil',3)" onmouseout="starOut('s-profil')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-profil',4)" onmouseover="starHover('s-profil',4)" onmouseout="starOut('s-profil')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-profil',5)" onmouseover="starHover('s-profil',5)" onmouseout="starOut('s-profil')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-profil">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-profil">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-profil" onclick="ttsSection('s-profil',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-profil')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-profil">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-profil"></textarea>
+  <button onclick="sendConfused('s-profil')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-profil">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-profil','yes')">👍 Ja</button>
@@ -1786,7 +2210,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <section class="sec" id="s-passwort">
 <div class="sec-tag">Kapitel 15</div>
-<h2 class="sec-h"><div class="sec-icon">🔑</div>Passwort ändern</h2>
+<h2 class="sec-h"><div class="sec-icon">🔑</div>Passwort ändern<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-passwort" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Profil & Konto</span><span>›</span><span>Passwort ändern</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Unter Profil → Passwort ändern jederzeit anpassbar.</p>
@@ -1815,6 +2239,24 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-privatsphaere" class="rec-link">→ Privatsphäre-Einstellungen</a></div>
 <div class="done-check" id="done-s-passwort" onclick="toggleDone('s-passwort')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-passwort" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-passwort',1)" onmouseover="starHover('s-passwort',1)" onmouseout="starOut('s-passwort')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-passwort',2)" onmouseover="starHover('s-passwort',2)" onmouseout="starOut('s-passwort')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-passwort',3)" onmouseover="starHover('s-passwort',3)" onmouseout="starOut('s-passwort')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-passwort',4)" onmouseover="starHover('s-passwort',4)" onmouseout="starOut('s-passwort')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-passwort',5)" onmouseover="starHover('s-passwort',5)" onmouseout="starOut('s-passwort')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-passwort">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-passwort">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-passwort" onclick="ttsSection('s-passwort',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-passwort')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-passwort">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-passwort"></textarea>
+  <button onclick="sendConfused('s-passwort')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-passwort">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-passwort','yes')">👍 Ja</button>
@@ -1832,7 +2274,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <section class="sec" id="s-privatsphaere">
 <div class="sec-tag">Kapitel 16</div>
-<h2 class="sec-h"><div class="sec-icon">🛡️</div>Privatsphäre – Einstellungen</h2>
+<h2 class="sec-h"><div class="sec-icon">🛡️</div>Privatsphäre – Einstellungen<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-privatsphaere" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Profil & Konto</span><span>›</span><span>Privatsphäre</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Steuere wer dir schreiben kann und welche Mitglieder du blockieren oder ignorieren möchtest.</p>
@@ -1860,6 +2302,24 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-privatsphaere" onclick="toggleDone('s-privatsphaere')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-privatsphaere" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-privatsphaere',1)" onmouseover="starHover('s-privatsphaere',1)" onmouseout="starOut('s-privatsphaere')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-privatsphaere',2)" onmouseover="starHover('s-privatsphaere',2)" onmouseout="starOut('s-privatsphaere')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-privatsphaere',3)" onmouseover="starHover('s-privatsphaere',3)" onmouseout="starOut('s-privatsphaere')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-privatsphaere',4)" onmouseover="starHover('s-privatsphaere',4)" onmouseout="starOut('s-privatsphaere')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-privatsphaere',5)" onmouseover="starHover('s-privatsphaere',5)" onmouseout="starOut('s-privatsphaere')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-privatsphaere">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-privatsphaere">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-privatsphaere" onclick="ttsSection('s-privatsphaere',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-privatsphaere')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-privatsphaere">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-privatsphaere"></textarea>
+  <button onclick="sendConfused('s-privatsphaere')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-privatsphaere">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-privatsphaere','yes')">👍 Ja</button>
@@ -1877,7 +2337,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <section class="sec" id="s-benachrichtigungen">
 <div class="sec-tag">Kapitel 17</div>
-<h2 class="sec-h"><div class="sec-icon">🔔</div>Browser-Benachrichtigungen aktivieren</h2>
+<h2 class="sec-h"><div class="sec-icon">🔔</div>Browser-Benachrichtigungen aktivieren<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-benachrichtigungen" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Profil & Konto</span><span>›</span><span>Benachrichtigungen</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Push-Benachrichtigungen für Nachrichten und Vereinsanfragen – pro Browser steuerbar.</p>
@@ -1903,6 +2363,24 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-benachrichtigungen" onclick="toggleDone('s-benachrichtigungen')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-benachrichtigungen" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-benachrichtigungen',1)" onmouseover="starHover('s-benachrichtigungen',1)" onmouseout="starOut('s-benachrichtigungen')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-benachrichtigungen',2)" onmouseover="starHover('s-benachrichtigungen',2)" onmouseout="starOut('s-benachrichtigungen')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-benachrichtigungen',3)" onmouseover="starHover('s-benachrichtigungen',3)" onmouseout="starOut('s-benachrichtigungen')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-benachrichtigungen',4)" onmouseover="starHover('s-benachrichtigungen',4)" onmouseout="starOut('s-benachrichtigungen')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-benachrichtigungen',5)" onmouseover="starHover('s-benachrichtigungen',5)" onmouseout="starOut('s-benachrichtigungen')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-benachrichtigungen">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-benachrichtigungen">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-benachrichtigungen" onclick="ttsSection('s-benachrichtigungen',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-benachrichtigungen')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-benachrichtigungen">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-benachrichtigungen"></textarea>
+  <button onclick="sendConfused('s-benachrichtigungen')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-benachrichtigungen">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-benachrichtigungen','yes')">👍 Ja</button>
@@ -1920,7 +2398,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <section class="sec" id="s-auszeichnungen">
 <div class="sec-tag">Kapitel 18</div>
-<h2 class="sec-h"><div class="sec-icon">🏆</div>Auszeichnungen &amp; Badges</h2>
+<h2 class="sec-h"><div class="sec-icon">🏆</div>Auszeichnungen &amp; Badges<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-auszeichnungen" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Profil & Konto</span><span>›</span><span>Auszeichnungen</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Unter Profil → Auszeichnungen findest du alle Badges.</p>
@@ -1942,6 +2420,24 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-auszeichnungen" onclick="toggleDone('s-auszeichnungen')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-auszeichnungen" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-auszeichnungen',1)" onmouseover="starHover('s-auszeichnungen',1)" onmouseout="starOut('s-auszeichnungen')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-auszeichnungen',2)" onmouseover="starHover('s-auszeichnungen',2)" onmouseout="starOut('s-auszeichnungen')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-auszeichnungen',3)" onmouseover="starHover('s-auszeichnungen',3)" onmouseout="starOut('s-auszeichnungen')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-auszeichnungen',4)" onmouseover="starHover('s-auszeichnungen',4)" onmouseout="starOut('s-auszeichnungen')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-auszeichnungen',5)" onmouseover="starHover('s-auszeichnungen',5)" onmouseout="starOut('s-auszeichnungen')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-auszeichnungen">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-auszeichnungen">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-auszeichnungen" onclick="ttsSection('s-auszeichnungen',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-auszeichnungen')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-auszeichnungen">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-auszeichnungen"></textarea>
+  <button onclick="sendConfused('s-auszeichnungen')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-auszeichnungen">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-auszeichnungen','yes')">👍 Ja</button>
@@ -1959,7 +2455,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <section class="sec" id="s-tokens">
 <div class="sec-tag">Kapitel 19</div>
-<h2 class="sec-h"><div class="sec-icon">🪙</div>Tokens – Das interne Punktesystem</h2>
+<h2 class="sec-h"><div class="sec-icon">🪙</div>Tokens – Das interne Punktesystem<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-tokens" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Mitgliedschaft</span><span>›</span><span>Tokens</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <div class="sec-toc" role="navigation" aria-label="Abschnitte in diesem Kapitel"><div class="sec-toc-title">📑 In diesem Kapitel</div><a href="#" onclick="scrollToSsh(this,event)">❓ Token-FAQ</a></div>
@@ -2030,6 +2526,24 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-zahlungen" class="rec-link">→ Zahlungen & Rechnungen</a></div>
 <div class="done-check" id="done-s-tokens" onclick="toggleDone('s-tokens')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-tokens" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-tokens',1)" onmouseover="starHover('s-tokens',1)" onmouseout="starOut('s-tokens')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-tokens',2)" onmouseover="starHover('s-tokens',2)" onmouseout="starOut('s-tokens')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-tokens',3)" onmouseover="starHover('s-tokens',3)" onmouseout="starOut('s-tokens')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-tokens',4)" onmouseover="starHover('s-tokens',4)" onmouseout="starOut('s-tokens')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-tokens',5)" onmouseover="starHover('s-tokens',5)" onmouseout="starOut('s-tokens')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-tokens">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-tokens">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-tokens" onclick="ttsSection('s-tokens',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-tokens')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-tokens">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-tokens"></textarea>
+  <button onclick="sendConfused('s-tokens')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-tokens">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-tokens','yes')">👍 Ja</button>
@@ -2047,7 +2561,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <section class="sec" id="s-zahlungen">
 <div class="sec-tag">Kapitel 20</div>
-<h2 class="sec-h"><div class="sec-icon">💳</div>Zahlungen &amp; Rechnungen</h2>
+<h2 class="sec-h"><div class="sec-icon">💳</div>Zahlungen &amp; Rechnungen<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-zahlungen" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Mitgliedschaft</span><span>›</span><span>Zahlungen & Rechnungen</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Zahlungshistorie, offene Beträge und Rechnungen unter Profil → Mitgliederdaten → Zahlungen.</p>
@@ -2080,6 +2594,24 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-beitrag" class="rec-link">→ Beitrag anpassen</a></div>
 <div class="done-check" id="done-s-zahlungen" onclick="toggleDone('s-zahlungen')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-zahlungen" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-zahlungen',1)" onmouseover="starHover('s-zahlungen',1)" onmouseout="starOut('s-zahlungen')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-zahlungen',2)" onmouseover="starHover('s-zahlungen',2)" onmouseout="starOut('s-zahlungen')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-zahlungen',3)" onmouseover="starHover('s-zahlungen',3)" onmouseout="starOut('s-zahlungen')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-zahlungen',4)" onmouseover="starHover('s-zahlungen',4)" onmouseout="starOut('s-zahlungen')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-zahlungen',5)" onmouseover="starHover('s-zahlungen',5)" onmouseout="starOut('s-zahlungen')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-zahlungen">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-zahlungen">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-zahlungen" onclick="ttsSection('s-zahlungen',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-zahlungen')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-zahlungen">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-zahlungen"></textarea>
+  <button onclick="sendConfused('s-zahlungen')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-zahlungen">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-zahlungen','yes')">👍 Ja</button>
@@ -2097,7 +2629,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <section class="sec" id="s-beitrag">
 <div class="sec-tag">Kapitel 21</div>
-<h2 class="sec-h"><div class="sec-icon">💰</div>Beitrag anpassen</h2>
+<h2 class="sec-h"><div class="sec-icon">💰</div>Beitrag anpassen<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-beitrag" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Mitgliedschaft</span><span>›</span><span>Beitrag anpassen</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Monatlichen Beitrag zwischen 10 € und 400 € anpassen. Gilt ab dem nächsten Abrechnungszeitraum.</p>
@@ -2123,6 +2655,24 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-beitrag" onclick="toggleDone('s-beitrag')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-beitrag" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-beitrag',1)" onmouseover="starHover('s-beitrag',1)" onmouseout="starOut('s-beitrag')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-beitrag',2)" onmouseover="starHover('s-beitrag',2)" onmouseout="starOut('s-beitrag')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-beitrag',3)" onmouseover="starHover('s-beitrag',3)" onmouseout="starOut('s-beitrag')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-beitrag',4)" onmouseover="starHover('s-beitrag',4)" onmouseout="starOut('s-beitrag')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-beitrag',5)" onmouseover="starHover('s-beitrag',5)" onmouseout="starOut('s-beitrag')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-beitrag">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-beitrag">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-beitrag" onclick="ttsSection('s-beitrag',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-beitrag')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-beitrag">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-beitrag"></textarea>
+  <button onclick="sendConfused('s-beitrag')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-beitrag">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-beitrag','yes')">👍 Ja</button>
@@ -2140,7 +2690,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <section class="sec" id="s-mitgliedschaft">
 <div class="sec-tag">Kapitel 22</div>
-<h2 class="sec-h"><div class="sec-icon">📋</div>Mitgliedschaft verwalten</h2>
+<h2 class="sec-h"><div class="sec-icon">📋</div>Mitgliedschaft verwalten<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-mitgliedschaft" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Mitgliedschaft</span><span>›</span><span>Mitgliedschaft verwalten</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <div class="sec-toc" role="navigation" aria-label="Abschnitte in diesem Kapitel"><div class="sec-toc-title">📑 In diesem Kapitel</div><a href="#" onclick="scrollToSsh(this,event)">3 Mitgliedschafts-Typen</a></div>
@@ -2210,6 +2760,24 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-kuendigung" class="rec-link">→ Mitgliedschaft kündigen</a></div>
 <div class="done-check" id="done-s-mitgliedschaft" onclick="toggleDone('s-mitgliedschaft')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-mitgliedschaft" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-mitgliedschaft',1)" onmouseover="starHover('s-mitgliedschaft',1)" onmouseout="starOut('s-mitgliedschaft')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-mitgliedschaft',2)" onmouseover="starHover('s-mitgliedschaft',2)" onmouseout="starOut('s-mitgliedschaft')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-mitgliedschaft',3)" onmouseover="starHover('s-mitgliedschaft',3)" onmouseout="starOut('s-mitgliedschaft')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-mitgliedschaft',4)" onmouseover="starHover('s-mitgliedschaft',4)" onmouseout="starOut('s-mitgliedschaft')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-mitgliedschaft',5)" onmouseover="starHover('s-mitgliedschaft',5)" onmouseout="starOut('s-mitgliedschaft')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-mitgliedschaft">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-mitgliedschaft">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-mitgliedschaft" onclick="ttsSection('s-mitgliedschaft',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-mitgliedschaft')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-mitgliedschaft">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-mitgliedschaft"></textarea>
+  <button onclick="sendConfused('s-mitgliedschaft')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-mitgliedschaft">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-mitgliedschaft','yes')">👍 Ja</button>
@@ -2227,7 +2795,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <section class="sec" id="s-kuendigung">
 <div class="sec-tag">Kapitel 23</div>
-<h2 class="sec-h"><div class="sec-icon">🚪</div>Mitgliedschaft kündigen</h2>
+<h2 class="sec-h"><div class="sec-icon">🚪</div>Mitgliedschaft kündigen<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-kuendigung" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Mitgliedschaft</span><span>›</span><span>Kündigung</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Du möchtest deine Mitgliedschaft beenden? Hier sind deine Optionen.</p>
@@ -2249,6 +2817,24 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-vereinswechsel" class="rec-link">→ Vereinswechsel</a></div>
 <div class="done-check" id="done-s-kuendigung" onclick="toggleDone('s-kuendigung')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-kuendigung" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-kuendigung',1)" onmouseover="starHover('s-kuendigung',1)" onmouseout="starOut('s-kuendigung')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-kuendigung',2)" onmouseover="starHover('s-kuendigung',2)" onmouseout="starOut('s-kuendigung')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-kuendigung',3)" onmouseover="starHover('s-kuendigung',3)" onmouseout="starOut('s-kuendigung')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-kuendigung',4)" onmouseover="starHover('s-kuendigung',4)" onmouseout="starOut('s-kuendigung')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-kuendigung',5)" onmouseover="starHover('s-kuendigung',5)" onmouseout="starOut('s-kuendigung')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-kuendigung">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-kuendigung">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-kuendigung" onclick="ttsSection('s-kuendigung',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-kuendigung')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-kuendigung">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-kuendigung"></textarea>
+  <button onclick="sendConfused('s-kuendigung')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-kuendigung">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-kuendigung','yes')">👍 Ja</button>
@@ -2266,7 +2852,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <section class="sec" id="s-vereinswechsel">
 <div class="sec-tag">Kapitel 24</div>
-<h2 class="sec-h"><div class="sec-icon">🔄</div>Vereinswechsel</h2>
+<h2 class="sec-h"><div class="sec-icon">🔄</div>Vereinswechsel<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-vereinswechsel" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Mitgliedschaft</span><span>›</span><span>Vereinswechsel</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Zu einem anderen Mariana <span class="term" data-tip="Cannabis Social Club – gemeinnütziger Verein für nicht-kommerziellen Cannabis-Eigenanbau." tabindex="0" role="tooltip" aria-label="CSC: Cannabis Social Club – gemeinnütziger Verein für nicht-kommerziellen Cannabis-Eigenanbau.">CSC</span> wechseln. Immer nur in <strong>einem <span class="term" data-tip="Cannabis Social Club – gemeinnütziger Verein für nicht-kommerziellen Cannabis-Eigenanbau." tabindex="0" role="tooltip" aria-label="CSC: Cannabis Social Club – gemeinnütziger Verein für nicht-kommerziellen Cannabis-Eigenanbau.">CSC</span> gleichzeitig</strong> möglich (<span class="term" data-tip="Das Konsumcannabisgesetz (April 2024) regelt den Eigenanbau und die CSC-Tätigkeit in Deutschland." tabindex="0" role="tooltip" aria-label="KCanG: Das Konsumcannabisgesetz (April 2024) regelt den Eigenanbau und die CSC-Tätigkeit in Deutschland.">KCanG</span>).</p>
@@ -2285,6 +2871,24 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-vereinswechsel" onclick="toggleDone('s-vereinswechsel')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-vereinswechsel" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-vereinswechsel',1)" onmouseover="starHover('s-vereinswechsel',1)" onmouseout="starOut('s-vereinswechsel')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-vereinswechsel',2)" onmouseover="starHover('s-vereinswechsel',2)" onmouseout="starOut('s-vereinswechsel')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-vereinswechsel',3)" onmouseover="starHover('s-vereinswechsel',3)" onmouseout="starOut('s-vereinswechsel')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-vereinswechsel',4)" onmouseover="starHover('s-vereinswechsel',4)" onmouseout="starOut('s-vereinswechsel')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-vereinswechsel',5)" onmouseover="starHover('s-vereinswechsel',5)" onmouseout="starOut('s-vereinswechsel')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-vereinswechsel">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-vereinswechsel">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-vereinswechsel" onclick="ttsSection('s-vereinswechsel',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-vereinswechsel')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-vereinswechsel">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-vereinswechsel"></textarea>
+  <button onclick="sendConfused('s-vereinswechsel')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-vereinswechsel">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-vereinswechsel','yes')">👍 Ja</button>
@@ -2302,7 +2906,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <section class="sec" id="s-datenschutz">
 <div class="sec-tag">Kapitel 25</div>
-<h2 class="sec-h"><div class="sec-icon">⚖️</div>Datenschutz, Impressum &amp; AGB</h2>
+<h2 class="sec-h"><div class="sec-icon">⚖️</div>Datenschutz, Impressum &amp; AGB<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-datenschutz" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Rechtliches</span><span>›</span><span>Datenschutz & AGB</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Alle rechtlichen Dokumente unter Profil → Rechtliches. Vollständige Texte in der App einsehbar.</p>
@@ -2329,6 +2933,24 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 </div>
 
 <div class="done-check" id="done-s-datenschutz" onclick="toggleDone('s-datenschutz')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-datenschutz" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-datenschutz',1)" onmouseover="starHover('s-datenschutz',1)" onmouseout="starOut('s-datenschutz')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-datenschutz',2)" onmouseover="starHover('s-datenschutz',2)" onmouseout="starOut('s-datenschutz')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-datenschutz',3)" onmouseover="starHover('s-datenschutz',3)" onmouseout="starOut('s-datenschutz')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-datenschutz',4)" onmouseover="starHover('s-datenschutz',4)" onmouseout="starOut('s-datenschutz')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-datenschutz',5)" onmouseover="starHover('s-datenschutz',5)" onmouseout="starOut('s-datenschutz')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-datenschutz">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-datenschutz">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-datenschutz" onclick="ttsSection('s-datenschutz',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-datenschutz')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-datenschutz">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-datenschutz"></textarea>
+  <button onclick="sendConfused('s-datenschutz')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-datenschutz">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-datenschutz','yes')">👍 Ja</button>
@@ -2346,7 +2968,7 @@ class="ssh">✅ Neues Mitglied – Deine 10 ersten Schritte</div>
 
 <section class="sec" id="s-support">
 <div class="sec-tag">Kapitel 26</div>
-<h2 class="sec-h"><div class="sec-icon">🆘</div>Support – Hilfe &amp; Kontakt</h2>
+<h2 class="sec-h"><div class="sec-icon">🆘</div>Support – Hilfe &amp; Kontakt<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-support" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Hilfe</span><span>›</span><span>Support</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 2 Min.</div>
 <div class="sec-toc" role="navigation" aria-label="Abschnitte in diesem Kapitel"><div class="sec-toc-title">📑 In diesem Kapitel</div><a href="#" onclick="scrollToSsh(this,event)">Die 4 Support-Optionen</a><a href="#" onclick="scrollToSsh(this,event)">Entscheidungshilfe</a></div>
@@ -2450,6 +3072,24 @@ class="ssh">🤔 Was brauchst du? – Entscheidungshilfe</div>
 
 <div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-ticket" class="rec-link">→ Support-Ticket erstellen</a></div>
 <div class="done-check" id="done-s-support" onclick="toggleDone('s-support')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-support" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-support',1)" onmouseover="starHover('s-support',1)" onmouseout="starOut('s-support')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-support',2)" onmouseover="starHover('s-support',2)" onmouseout="starOut('s-support')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-support',3)" onmouseover="starHover('s-support',3)" onmouseout="starOut('s-support')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-support',4)" onmouseover="starHover('s-support',4)" onmouseout="starOut('s-support')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-support',5)" onmouseover="starHover('s-support',5)" onmouseout="starOut('s-support')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-support">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-support">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-support" onclick="ttsSection('s-support',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-support')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-support">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-support"></textarea>
+  <button onclick="sendConfused('s-support')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-support">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-support','yes')">👍 Ja</button>
@@ -2467,7 +3107,7 @@ class="ssh">🤔 Was brauchst du? – Entscheidungshilfe</div>
 
 <section class="sec" id="s-ticket">
 <div class="sec-tag">Kapitel 27</div>
-<h2 class="sec-h"><div class="sec-icon">📨</div>Support-Ticket erstellen</h2>
+<h2 class="sec-h"><div class="sec-icon">📨</div>Support-Ticket erstellen<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-ticket" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Hilfe</span><span>›</span><span>Ticket erstellen</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Für persönliche Anliegen (Adresse, Zahlung, Konto) ein privates Ticket erstellen.</p>
@@ -2503,6 +3143,24 @@ class="ssh">🤔 Was brauchst du? – Entscheidungshilfe</div>
 </div>
 
 <div class="done-check" id="done-s-ticket" onclick="toggleDone('s-ticket')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-ticket" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-ticket',1)" onmouseover="starHover('s-ticket',1)" onmouseout="starOut('s-ticket')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-ticket',2)" onmouseover="starHover('s-ticket',2)" onmouseout="starOut('s-ticket')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-ticket',3)" onmouseover="starHover('s-ticket',3)" onmouseout="starOut('s-ticket')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-ticket',4)" onmouseover="starHover('s-ticket',4)" onmouseout="starOut('s-ticket')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-ticket',5)" onmouseover="starHover('s-ticket',5)" onmouseout="starOut('s-ticket')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-ticket">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-ticket">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-ticket" onclick="ttsSection('s-ticket',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-ticket')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-ticket">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-ticket"></textarea>
+  <button onclick="sendConfused('s-ticket')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-ticket">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-ticket','yes')">👍 Ja</button>
@@ -2520,7 +3178,7 @@ class="ssh">🤔 Was brauchst du? – Entscheidungshilfe</div>
 
 <section class="sec" id="s-webapp">
 <div class="sec-tag">Kapitel 28 – NEU</div>
-<h2 class="sec-h"><div class="sec-icon">📲</div>Terptrain als App installieren<span class="ch-updated ch-new-badge" data-badge="NEU">NEU</span><span style="font-size:.56rem;color:var(--mu);margin-left:4px">Apr 2026</span></h2>
+<h2 class="sec-h"><div class="sec-icon">📲</div>Terptrain als App installieren<span class="ch-updated ch-new-badge" data-badge="NEU">NEU</span><span style="font-size:.56rem;color:var(--mu);margin-left:4px">Apr 2026</span><span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-webapp" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Hilfe</span><span>›</span><span>Als App installieren</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Kostenlos als App installieren – kein App Store nötig!</p>
@@ -2565,6 +3223,24 @@ class="ssh">🤔 Was brauchst du? – Entscheidungshilfe</div>
 </div>
 
 <div class="done-check" id="done-s-webapp" onclick="toggleDone('s-webapp')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-webapp" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-webapp',1)" onmouseover="starHover('s-webapp',1)" onmouseout="starOut('s-webapp')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-webapp',2)" onmouseover="starHover('s-webapp',2)" onmouseout="starOut('s-webapp')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-webapp',3)" onmouseover="starHover('s-webapp',3)" onmouseout="starOut('s-webapp')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-webapp',4)" onmouseover="starHover('s-webapp',4)" onmouseout="starOut('s-webapp')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-webapp',5)" onmouseover="starHover('s-webapp',5)" onmouseout="starOut('s-webapp')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-webapp">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-webapp">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-webapp" onclick="ttsSection('s-webapp',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-webapp')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-webapp">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-webapp"></textarea>
+  <button onclick="sendConfused('s-webapp')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-webapp">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-webapp','yes')">👍 Ja</button>
@@ -2582,7 +3258,7 @@ class="ssh">🤔 Was brauchst du? – Entscheidungshilfe</div>
 
 <section class="sec" id="s-regelwerk">
 <div class="sec-tag">Kapitel 29</div>
-<h2 class="sec-h"><div class="sec-icon">🚦</div>Regelwerk – Die Streckenregeln 🚂</h2>
+<h2 class="sec-h"><div class="sec-icon">🚦</div>Regelwerk – Die Streckenregeln 🚂<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-regelwerk" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Hilfe</span><span>›</span><span>Regelwerk</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Damit der Terptrain reibungslos fährt, gibt es Regeln für alle Mitglieder gleichermaßen.</p>
@@ -2619,6 +3295,24 @@ class="ssh">🤔 Was brauchst du? – Entscheidungshilfe</div>
 </div>
 
 <div class="done-check" id="done-s-regelwerk" onclick="toggleDone('s-regelwerk')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-regelwerk" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-regelwerk',1)" onmouseover="starHover('s-regelwerk',1)" onmouseout="starOut('s-regelwerk')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-regelwerk',2)" onmouseover="starHover('s-regelwerk',2)" onmouseout="starOut('s-regelwerk')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-regelwerk',3)" onmouseover="starHover('s-regelwerk',3)" onmouseout="starOut('s-regelwerk')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-regelwerk',4)" onmouseover="starHover('s-regelwerk',4)" onmouseout="starOut('s-regelwerk')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-regelwerk',5)" onmouseover="starHover('s-regelwerk',5)" onmouseout="starOut('s-regelwerk')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-regelwerk">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-regelwerk">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-regelwerk" onclick="ttsSection('s-regelwerk',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-regelwerk')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-regelwerk">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-regelwerk"></textarea>
+  <button onclick="sendConfused('s-regelwerk')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-regelwerk">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-regelwerk','yes')">👍 Ja</button>
@@ -2636,7 +3330,7 @@ class="ssh">🤔 Was brauchst du? – Entscheidungshilfe</div>
 
 <section class="sec" id="s-faq">
 <div class="sec-tag">Kapitel 30</div>
-<h2 class="sec-h"><div class="sec-icon">❓</div>Häufige Fragen &amp; Antworten</h2>
+<h2 class="sec-h"><div class="sec-icon">❓</div>Häufige Fragen &amp; Antworten<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-faq" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Hilfe</span><span>›</span><span>Häufige Fragen</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 3 Min.</div>
 <div class="sec-toc" role="navigation" aria-label="Abschnitte in diesem Kapitel"><div class="sec-toc-title">📑 In diesem Kapitel</div><a href="#" onclick="scrollToSsh(this,event)">👤 Profil & Konto</a><a href="#" onclick="scrollToSsh(this,event)">📋 Mitgliedschaft & Zahlung</a><a href="#" onclick="scrollToSsh(this,event)">🌿 Cannabis</a><a href="#" onclick="scrollToSsh(this,event)">⚙️ Technisches</a></div>
@@ -2701,6 +3395,24 @@ class="ssh">👤 Profil &amp; Konto</div>
 </div>
 
 <div class="done-check" id="done-s-faq" onclick="toggleDone('s-faq')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-faq" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-faq',1)" onmouseover="starHover('s-faq',1)" onmouseout="starOut('s-faq')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-faq',2)" onmouseover="starHover('s-faq',2)" onmouseout="starOut('s-faq')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-faq',3)" onmouseover="starHover('s-faq',3)" onmouseout="starOut('s-faq')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-faq',4)" onmouseover="starHover('s-faq',4)" onmouseout="starOut('s-faq')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-faq',5)" onmouseover="starHover('s-faq',5)" onmouseout="starOut('s-faq')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-faq">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-faq">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-faq" onclick="ttsSection('s-faq',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-faq')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-faq">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-faq"></textarea>
+  <button onclick="sendConfused('s-faq')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-faq">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-faq','yes')">👍 Ja</button>
@@ -2719,7 +3431,7 @@ class="ssh">👤 Profil &amp; Konto</div>
 
 <section class="sec" id="s-glossar">
 <div class="sec-tag">Kapitel 31</div>
-<h2 class="sec-h"><div class="sec-icon">📖</div>Glossar – Wichtige Begriffe<span class="ch-updated ch-new-badge" data-badge="NEU">NEU</span><span style="font-size:.56rem;color:var(--mu);margin-left:4px">Apr 2026</span></h2>
+<h2 class="sec-h"><div class="sec-icon">📖</div>Glossar – Wichtige Begriffe<span class="ch-updated ch-new-badge" data-badge="NEU">NEU</span><span style="font-size:.56rem;color:var(--mu);margin-left:4px">Apr 2026</span><span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-glossar" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Hilfe</span><span>›</span><span>Glossar</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 2 Min.</div>
 <p class="sec-intro">Erklärungen zu den wichtigsten Begriffen rund um Terptrain, Mariana Community und Cannabis Social Clubs.</p>
@@ -2765,6 +3477,24 @@ class="ssh">🌿 Cannabis &amp; Recht</div>
 </div>
 
 <div class="done-check" id="done-s-glossar" onclick="toggleDone('s-glossar')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-glossar" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-glossar',1)" onmouseover="starHover('s-glossar',1)" onmouseout="starOut('s-glossar')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-glossar',2)" onmouseover="starHover('s-glossar',2)" onmouseout="starOut('s-glossar')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-glossar',3)" onmouseover="starHover('s-glossar',3)" onmouseout="starOut('s-glossar')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-glossar',4)" onmouseover="starHover('s-glossar',4)" onmouseout="starOut('s-glossar')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-glossar',5)" onmouseover="starHover('s-glossar',5)" onmouseout="starOut('s-glossar')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-glossar">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-glossar">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-glossar" onclick="ttsSection('s-glossar',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-glossar')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-glossar">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-glossar"></textarea>
+  <button onclick="sendConfused('s-glossar')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-glossar">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-glossar','yes')">👍 Ja</button>
@@ -2782,7 +3512,7 @@ class="ssh">🌿 Cannabis &amp; Recht</div>
 
 <section class="sec" id="s-changelog">
 <div class="sec-tag">Kapitel 32</div>
-<h2 class="sec-h"><div class="sec-icon">📝</div>Changelog – Was hat sich wann geändert?<span class="ch-updated ch-new-badge" data-badge="NEU">NEU</span><span style="font-size:.56rem;color:var(--mu);margin-left:4px">Apr 2026</span></h2>
+<h2 class="sec-h"><div class="sec-icon">📝</div>Changelog – Was hat sich wann geändert?<span class="ch-updated ch-new-badge" data-badge="NEU">NEU</span><span style="font-size:.56rem;color:var(--mu);margin-left:4px">Apr 2026</span><span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-changelog" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Hilfe</span><span>›</span><span>Changelog</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 1 Min.</div>
 <p class="sec-intro">Alle Änderungen an dieser Anleitung auf einen Blick. Klicke auf einen Eintrag für Details.</p>
@@ -2811,6 +3541,24 @@ class="ssh">🌿 Cannabis &amp; Recht</div>
 </div>
 
 <div class="done-check" id="done-s-changelog" onclick="toggleDone('s-changelog')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-changelog" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-changelog',1)" onmouseover="starHover('s-changelog',1)" onmouseout="starOut('s-changelog')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-changelog',2)" onmouseover="starHover('s-changelog',2)" onmouseout="starOut('s-changelog')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-changelog',3)" onmouseover="starHover('s-changelog',3)" onmouseout="starOut('s-changelog')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-changelog',4)" onmouseover="starHover('s-changelog',4)" onmouseout="starOut('s-changelog')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-changelog',5)" onmouseover="starHover('s-changelog',5)" onmouseout="starOut('s-changelog')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-changelog">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-changelog">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-changelog" onclick="ttsSection('s-changelog',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-changelog')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-changelog">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-changelog"></textarea>
+  <button onclick="sendConfused('s-changelog')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-changelog">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-changelog','yes')">👍 Ja</button>
@@ -2829,7 +3577,7 @@ class="ssh">🌿 Cannabis &amp; Recht</div>
 
 <section class="sec" id="s-fehler">
 <div class="sec-tag">Kapitel 33</div>
-<h2 class="sec-h"><div class="sec-icon">🔧</div>Häufige Fehler &amp; Lösungen<span class="ch-updated ch-new-badge" data-badge="NEU">NEU</span><span style="font-size:.56rem;color:var(--mu);margin-left:4px">Apr 2026</span></h2>
+<h2 class="sec-h"><div class="sec-icon">🔧</div>Häufige Fehler &amp; Lösungen<span class="ch-updated ch-new-badge" data-badge="NEU">NEU</span><span style="font-size:.56rem;color:var(--mu);margin-left:4px">Apr 2026</span><span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-fehler" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Hilfe</span><span>›</span><span>Häufige Fehler & Lösungen</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 3 Min.</div>
 <div class="sec-toc" role="navigation" aria-label="Abschnitte in diesem Kapitel"><div class="sec-toc-title">📑 In diesem Kapitel</div><a href="#" onclick="scrollToSsh(this,event)">Profil & Konto</a><a href="#" onclick="scrollToSsh(this,event)">Zahlung & Mitgliedschaft</a><a href="#" onclick="scrollToSsh(this,event)">Technische Probleme</a><a href="#" onclick="scrollToSsh(this,event)">Gruppen & Nachrichten</a></div>
@@ -2885,6 +3633,24 @@ class="ssh">👤 Profil &amp; Konto</div>
 </div>
 
 <div class="done-check" id="done-s-fehler" onclick="toggleDone('s-fehler')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-fehler" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-fehler',1)" onmouseover="starHover('s-fehler',1)" onmouseout="starOut('s-fehler')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-fehler',2)" onmouseover="starHover('s-fehler',2)" onmouseout="starOut('s-fehler')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-fehler',3)" onmouseover="starHover('s-fehler',3)" onmouseout="starOut('s-fehler')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-fehler',4)" onmouseover="starHover('s-fehler',4)" onmouseout="starOut('s-fehler')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-fehler',5)" onmouseover="starHover('s-fehler',5)" onmouseout="starOut('s-fehler')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-fehler">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-fehler">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-fehler" onclick="ttsSection('s-fehler',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-fehler')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-fehler">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-fehler"></textarea>
+  <button onclick="sendConfused('s-fehler')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-fehler">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-fehler','yes')">👍 Ja</button>
@@ -2902,7 +3668,7 @@ class="ssh">👤 Profil &amp; Konto</div>
 
 <section class="sec" id="s-lizenz">
 <div class="sec-tag">Kapitel 34</div>
-<h2 class="sec-h"><div class="sec-icon">🚀</div>Was passiert nach der Anbaulizenz?<span class="ch-updated ch-new-badge" data-badge="NEU">NEU</span><span style="font-size:.56rem;color:var(--mu);margin-left:4px">Apr 2026</span></h2>
+<h2 class="sec-h"><div class="sec-icon">🚀</div>Was passiert nach der Anbaulizenz?<span class="ch-updated ch-new-badge" data-badge="NEU">NEU</span><span style="font-size:.56rem;color:var(--mu);margin-left:4px">Apr 2026</span><span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-lizenz" cx="10" cy="10" r="8"/></svg></span></h2>
 <div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Cannabis</span><span>›</span><span>Nach der Anbaulizenz</span></div>
 <div class="read-time">⏱️ Lesezeit: ca. 8 Min.</div>
 <p class="sec-intro">Euer Verein hat die <span class="term" data-tip="Behördliche Genehmigung zum Cannabis-Anbau. Ohne diese darf kein Verein abgeben." tabindex="0" role="tooltip" aria-label="Anbaulizenz: Behördliche Genehmigung zum Cannabis-Anbau. Ohne diese darf kein Verein abgeben.">Anbaulizenz</span> erhalten – herzlichen Glückwunsch! 🎉 Hier erfährst du was als nächstes passiert und was du als Mitglied tun kannst.</p>
@@ -2963,6 +3729,24 @@ class="ssh">👤 Profil &amp; Konto</div>
 
 <div class="rec-bar" role="complementary" aria-label="Empfehlung"><span class="rec-label">💡 Könnte dich auch interessieren:</span><a href="#s-abholung" class="rec-link">→ Abholung Schritt für Schritt</a></div>
 <div class="done-check" id="done-s-lizenz" onclick="toggleDone('s-lizenz')" title="Als erledigt markieren"><div class="dc-box">✓</div><span>Als erledigt markieren</span></div>
+<div class="star-rating" id="stars-s-lizenz" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-lizenz',1)" onmouseover="starHover('s-lizenz',1)" onmouseout="starOut('s-lizenz')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-lizenz',2)" onmouseover="starHover('s-lizenz',2)" onmouseout="starOut('s-lizenz')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-lizenz',3)" onmouseover="starHover('s-lizenz',3)" onmouseout="starOut('s-lizenz')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-lizenz',4)" onmouseover="starHover('s-lizenz',4)" onmouseout="starOut('s-lizenz')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-lizenz',5)" onmouseover="starHover('s-lizenz',5)" onmouseout="starOut('s-lizenz')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-lizenz">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-lizenz">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-lizenz" onclick="ttsSection('s-lizenz',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-lizenz')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-lizenz">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-lizenz"></textarea>
+  <button onclick="sendConfused('s-lizenz')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-lizenz">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-lizenz','yes')">👍 Ja</button>
@@ -2981,7 +3765,7 @@ class="ssh">👤 Profil &amp; Konto</div>
 
 <section class="sec" id="s-quiz">
 <div class="sec-tag">Kapitel 35</div>
-<h2 class="sec-h"><div class="sec-icon">🧠</div>Quiz – Wie gut kennst du Terptrain?</h2>
+<h2 class="sec-h"><div class="sec-icon">🧠</div>Quiz – Wie gut kennst du Terptrain?<span class="progress-ring-wrap" aria-hidden="true"><svg class="progress-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="ring-bg" cx="10" cy="10" r="8"/><circle class="ring-fill" id="ring-s-quiz" cx="10" cy="10" r="8"/></svg></span></h2>
 <p class="sec-intro">Teste dein Wissen! 10 Fragen rund um Terptrain, die Mariana Community und Cannabis Social Clubs. Viel Spaß!</p>
 
 <div class="quiz-wrap" id="quiz-container">
@@ -3006,6 +3790,24 @@ class="ssh">👤 Profil &amp; Konto</div>
   <button class="ca-btn" id="bm-btn-s-quiz" onclick="toggleBookmark('s-quiz','Quiz')" title="Lesezeichen">🔖 Merken</button>
   <button class="ca-btn" onclick="shareChapter('s-quiz',this)">🔗 Teilen</button>
   <button class="ca-btn" onclick="printChapter('s-quiz')">🖨️ Drucken</button>
+</div>
+<div class="star-rating" id="stars-s-quiz" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-quiz',1)" onmouseover="starHover('s-quiz',1)" onmouseout="starOut('s-quiz')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-quiz',2)" onmouseover="starHover('s-quiz',2)" onmouseout="starOut('s-quiz')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-quiz',3)" onmouseover="starHover('s-quiz',3)" onmouseout="starOut('s-quiz')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-quiz',4)" onmouseover="starHover('s-quiz',4)" onmouseout="starOut('s-quiz')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-quiz',5)" onmouseover="starHover('s-quiz',5)" onmouseout="starOut('s-quiz')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-quiz">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-quiz">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-quiz" onclick="ttsSection('s-quiz',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-quiz')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-quiz">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-quiz"></textarea>
+  <button onclick="sendConfused('s-quiz')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
 </div>
 <div class="feedback-bar" data-sec="s-quiz">
   <span class="fb-lbl">War das hilfreich?</span>
@@ -3121,6 +3923,24 @@ class="ssh">👤 Profil &amp; Konto</div>
   <button class="ca-btn" onclick="shareChapter('s-vereinsstruktur',this)">🔗 Teilen</button>
   <button class="ca-btn" onclick="printChapter('s-vereinsstruktur')">🖨️ Drucken</button>
 </div>
+<div class="star-rating" id="stars-s-vereinsstruktur" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-vereinsstruktur',1)" onmouseover="starHover('s-vereinsstruktur',1)" onmouseout="starOut('s-vereinsstruktur')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-vereinsstruktur',2)" onmouseover="starHover('s-vereinsstruktur',2)" onmouseout="starOut('s-vereinsstruktur')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-vereinsstruktur',3)" onmouseover="starHover('s-vereinsstruktur',3)" onmouseout="starOut('s-vereinsstruktur')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-vereinsstruktur',4)" onmouseover="starHover('s-vereinsstruktur',4)" onmouseout="starOut('s-vereinsstruktur')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-vereinsstruktur',5)" onmouseover="starHover('s-vereinsstruktur',5)" onmouseout="starOut('s-vereinsstruktur')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-vereinsstruktur">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-vereinsstruktur">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-vereinsstruktur" onclick="ttsSection('s-vereinsstruktur',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-vereinsstruktur')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-vereinsstruktur">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-vereinsstruktur"></textarea>
+  <button onclick="sendConfused('s-vereinsstruktur')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-vereinsstruktur">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-vereinsstruktur','yes')">👍 Ja</button>
@@ -3205,6 +4025,24 @@ class="ssh">👤 Profil &amp; Konto</div>
   <button class="ca-btn" onclick="shareChapter('s-abholung',this)">🔗 Teilen</button>
   <button class="ca-btn" onclick="printChapter('s-abholung')">🖨️ Drucken</button>
 </div>
+<div class="star-rating" id="stars-s-abholung" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-abholung',1)" onmouseover="starHover('s-abholung',1)" onmouseout="starOut('s-abholung')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-abholung',2)" onmouseover="starHover('s-abholung',2)" onmouseout="starOut('s-abholung')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-abholung',3)" onmouseover="starHover('s-abholung',3)" onmouseout="starOut('s-abholung')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-abholung',4)" onmouseover="starHover('s-abholung',4)" onmouseout="starOut('s-abholung')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-abholung',5)" onmouseover="starHover('s-abholung',5)" onmouseout="starOut('s-abholung')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-abholung">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-abholung">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-abholung" onclick="ttsSection('s-abholung',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-abholung')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-abholung">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-abholung"></textarea>
+  <button onclick="sendConfused('s-abholung')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
 <div class="feedback-bar" data-sec="s-abholung">
   <span class="fb-lbl">War das hilfreich?</span>
   <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-abholung','yes')">👍 Ja</button>
@@ -3220,6 +4058,69 @@ class="ssh">👤 Profil &amp; Konto</div>
 </div>
 </section>
 
+<section class="sec" id="s-a11y" aria-labelledby="h2-a11y">
+<div class="sec-tag">Kapitel 40</div>
+<h2 class="sec-h" id="h2-a11y"><div class="sec-icon">♿</div>Barrierefreiheits-Guide</h2>
+<div class="breadcrumb"><a href="#">Startseite</a><span>›</span><span>Hilfe</span><span>›</span><span>Barrierefreiheit</span></div>
+<p class="sec-intro">Diese Anleitung enthält zahlreiche Funktionen für Menschen mit unterschiedlichen Bedürfnissen. Hier erfährst du wie du sie findest und nutzt.</p>
+
+<div class="ssh">🔊 Vorlesefunktion</div>
+<div class="cards">
+  <div class="card"><div class="ci">▶</div><h4>Ganze Seite vorlesen</h4><p>Grüner „▶ Vorlesen"-Button in der Leiste oben. Liest alle Kapitel nacheinander vor. Die jeweils vorgelesenen Wörter werden <mark style="background:rgba(255,179,0,.35)">gelb hervorgehoben</mark>.</p></div>
+  <div class="card"><div class="ci">🔊</div><h4>Einzelnes Kapitel</h4><p>Am Ende jedes Kapitels: „🔊 Vorlesen"-Button liest nur dieses Kapitel vor.</p></div>
+  <div class="card"><div class="ci">⏸</div><h4>Pausieren / Fortsetzen</h4><p>Klick auf den Play-Button oder <kbd>Space</kbd>-Taste. Fortsetzen funktioniert beim aktuellen Satz.</p></div>
+  <div class="card"><div class="ci">🎚</div><h4>Geschwindigkeit & Lautstärke</h4><p>Dropdown neben dem Button (0.7× bis 1.5×). Lautstärke über den Schieberegler (🔊-Symbol).</p></div>
+</div>
+
+<div class="ssh">🎨 Hochkontrast & Schrift</div>
+<div class="cards">
+  <div class="card"><div class="ci">🟡</div><h4>Hochkontrast-Paletten</h4><p>⚙️ Einstellungen → Hochkontrast → 6 Farbkombinationen: Gelb/Schwarz, Weiß/Schwarz, Grün/Schwarz, Schwarz/Weiß, Orange/Schwarz, Blau/Schwarz.</p></div>
+  <div class="card"><div class="ci">Aa</div><h4>Dyslexie-Schrift</h4><p>⚙️ → Dyslexie: aktiviert OpenDyslexic-Font, größere Buchstabenabstände. Hilft bei Legasthenie und Leserschwäche.</p></div>
+  <div class="card"><div class="ci">🔍</div><h4>Vergrößerungslupe</h4><p>⚙️ → Lupe: eine kreisförmige Lupe folgt dem Mauszeiger und vergrößert den Text darunter 2,5×.</p></div>
+  <div class="card"><div class="ci">A+</div><h4>Schriftgröße</h4><p>⚙️ → Text → − / + (12px bis 20px). Auf Mobilgeräten auch per A+ Button in der unteren Leiste.</p></div>
+</div>
+
+<div class="ssh">⌨️ Tastatur-Navigation</div>
+<div class="call tip"><span class="ci">💡</span><div>Drücke <kbd>?</kbd> auf der Tastatur für die vollständige Shortcut-Übersicht. Die wichtigsten: <kbd>←</kbd><kbd>→</kbd> für Kapitel, <kbd>R</kbd> zum Vorlesen, <kbd>F</kbd> für Suche.</div></div>
+<p style="font-size:.82rem;color:var(--tx2);margin-top:10px">Alle interaktiven Elemente (Buttons, Links, Akkordeons) sind per <kbd>Tab</kbd> erreichbar. Fokus-Ringe zeigen das aktive Element deutlich an.</p>
+
+<div class="ssh">📱 Mobil-Modus</div>
+<div class="call info"><span class="ci">ℹ️</span><div>Auf Mobilgeräten erscheint automatisch eine Schnellzugriffsleiste unten: Vorlesen, Dyslexie-Schrift, Kontrast, Schrift größer und Menü direkt erreichbar.</div></div>
+<p style="font-size:.82rem;color:var(--tx2);margin-top:8px">Im Desktop-Modus: ⚙️ → Mobil aktiviert größere Tipp-Flächen (min. 44px) und kompaktere Abstände.</p>
+
+<div class="call tip"><span class="ci">🆘</span><div>Wenn eine Funktion nicht funktioniert oder du Verbesserungsvorschläge hast: <a href="#s-support">Support-Ticket erstellen</a> oder den <strong>„😕 Ich bin verwirrt"</strong>-Button am Ende jedes Kapitels nutzen.</div></div>
+<div class="star-rating" id="stars-s-a11y" role="group" aria-label="Kapitelbewertung">
+  <span class="star" data-v="1" onclick="rateSec('s-a11y',1)" onmouseover="starHover('s-a11y',1)" onmouseout="starOut('s-a11y')" role="button" aria-label="1 Stern" tabindex="0">★</span>
+  <span class="star" data-v="2" onclick="rateSec('s-a11y',2)" onmouseover="starHover('s-a11y',2)" onmouseout="starOut('s-a11y')" role="button" aria-label="2 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="3" onclick="rateSec('s-a11y',3)" onmouseover="starHover('s-a11y',3)" onmouseout="starOut('s-a11y')" role="button" aria-label="3 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="4" onclick="rateSec('s-a11y',4)" onmouseover="starHover('s-a11y',4)" onmouseout="starOut('s-a11y')" role="button" aria-label="4 Sterne" tabindex="0">★</span>
+  <span class="star" data-v="5" onclick="rateSec('s-a11y',5)" onmouseover="starHover('s-a11y',5)" onmouseout="starOut('s-a11y')" role="button" aria-label="5 Sterne" tabindex="0">★</span>
+  <span class="star-lbl" id="star-lbl-s-a11y">Bewerten</span>
+  <span class="star-thanks" id="star-thanks-s-a11y">Danke!</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px">
+  <button class="tts-section-btn" id="tts-sec-s-a11y" onclick="ttsSection('s-a11y',this)" aria-label="Dieses Kapitel vorlesen">🔊 Vorlesen</button>
+  <button class="confused-btn" onclick="toggleConfused('s-a11y')" aria-label="Ich bin verwirrt - Feedback geben">😕 Ich bin verwirrt</button>
+</div>
+<div class="confused-form" id="confused-s-a11y">
+  <p style="font-size:.72rem;color:var(--mu);margin-bottom:4px">Was ist unklar? (Optional)</p>
+  <textarea placeholder="z.B. dieser Schritt ist nicht klar…" id="confused-ta-s-a11y"></textarea>
+  <button onclick="sendConfused('s-a11y')" style="background:var(--go);color:#000;border:none;padding:4px 12px;border-radius:7px;cursor:pointer;font-size:.71rem;font-weight:700;margin-top:4px;font-family:inherit">Melden</button>
+</div>
+<div class="feedback-bar" data-sec="s-a11y">
+  <span class="fb-lbl">War das hilfreich?</span>
+  <button class="fb-btn" data-v="yes" onclick="fbClick(this,'s-a11y','yes')">👍 Ja</button>
+  <button class="fb-btn" data-v="no" onclick="fbClick(this,'s-a11y','no')">👎 Nein</button>
+  <span class="fb-thanks">Danke! 🙏</span>
+  <button class="note-btn" onclick="toggleNotes(this,'s-a11y')">📝 Notiz</button>
+  <span class="note-dot" data-ni="s-a11y"></span>
+</div>
+<div class="notes-area">
+  <textarea placeholder="Notizen…"></textarea>
+  <button class="note-save" onclick="saveNote(this,'s-a11y')">Speichern</button>
+  <span class="note-saved">✓ Gespeichert</span>
+</div>
+</section>
 <div class="footer">
   <div>
     <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAA4AHADASIAAhEBAxEB/8QAGgABAAMBAQEAAAAAAAAAAAAAAAQFBgIDB//EAC0QAAEEAQMCBAYCAwAAAAAAAAEAAgMRBAUSITFBE3GBkSIyUWGhsQYVwdHw/8QAGQEBAQADAQAAAAAAAAAAAAAAAAECAwQF/8QAHREBAAMBAAIDAAAAAAAAAAAAAAECEQMEMRIhQf/aAAwDAQACEQMRAD8A+YLSv0rFl0xohYHSCO2PHwlxq+b+v36LNLY6aW/12PsdY8Md75rlSXL5VprETEs7g4eQ3VYYnxuY5jw87h2B6/hXOvxul0/4OTG4PI710P7VjtG4uobiALrsEc0OaWuAIIogjqjkt3m14tnpmtK0t2TJ4mTG9sNWDdbjx61S61/GggnidC1rHPB3MbwBVUa7d/ZaIRsAaA1oDflodO3Hos5/IyDqLQCCWxgGjdGyjfy626dd/FUiIq7hERAREQEREGsZg6fk4zDHDG6Mi2ubwfUjn3UnGxo8WIxw7g3dYaTYb5KHpGBNhREyyk7wCYx0af8Af/cqd4sdgeIyzdDcOa6qPH6TOzWJ2HaLl0kbI/Ee9rWddxNBcMyseR4ZHkROcega8EqNeS9VEl0vBme6WWIukceSXu5/Plwpa5kYJI3MPRwIPAP7VWtprP1OM7r7MaOaJkDGMkAO8MFV0r/KqVP1HTcjFc6VxMsZNmT7n6qAq9bjnwjJ0RERtEREBERBc6lrLpHeHhPc1nd9UT5dwql8sj9u+RztoIbZugSTQ9SfdcIjCnOtIyBERGbuOWSJ26KR7HEVbTRU/H1rMgj2Etk5+aQEn3tVqIxtStvcLfL1s5GM6EY7RvFO3G68vwqhERKc60jKiIiMxERAREQEREBERAREQEREBERAREQEREH/2Q==" alt="Mariana Community" loading="lazy">
@@ -3847,6 +4748,308 @@ window.setLang = function(lang){
   document.querySelectorAll('[id^="bm-btn-"]').forEach(function(b){b.textContent=b.classList.contains('bm-active')?(L.bm_done||'🔖 Gemerkt'):(L.bm_add||'🔖 Merken');});
 };
 
+
+// ════════════════════════════════════════════════════
+// HIGH CONTRAST THEMES
+// ════════════════════════════════════════════════════
+(function(){
+  var cur = localStorage.getItem('tt-hc-theme') || '';
+  function applyHC(cls){
+    ['hc-yb','hc-wb','hc-gb','hc-bw','hc-ob','hc-bb'].forEach(function(c){ document.body.classList.remove(c); });
+    if(cls) document.body.classList.add(cls);
+    cur = cls;
+    localStorage.setItem('tt-hc-theme', cls);
+    document.querySelectorAll('.hc-swatch').forEach(function(s){ s.classList.toggle('active', s.dataset.hc===cls); });
+  }
+  window.setHC = function(cls){ applyHC(cls); };
+  applyHC(cur);
+})();
+
+// ════════════════════════════════════════════════════
+// DYSLEXIC FONT
+// ════════════════════════════════════════════════════
+(function(){
+  if(localStorage.getItem('tt-dyslexic')==='1') document.body.classList.add('dyslexic');
+  window.toggleDyslexic = function(){
+    document.body.classList.toggle('dyslexic');
+    var on = document.body.classList.contains('dyslexic');
+    localStorage.setItem('tt-dyslexic', on?'1':'0');
+    var b = document.getElementById('dyslexic-btn');
+    if(b){ b.classList.toggle('active', on); b.style.borderColor = on?'var(--g1)':''; }
+    var m = document.getElementById('mob-dys-btn');
+    if(m) m.classList.toggle('active', on);
+  };
+})();
+
+// ════════════════════════════════════════════════════
+// MAGNIFIER
+// ════════════════════════════════════════════════════
+(function(){
+  var magOn = false;
+  var mag = null, magContent = null;
+  function getMag(){ if(!mag) mag=document.getElementById('magnifier'); return mag; }
+  function getMagContent(){ if(!magContent) magContent=document.getElementById('magnifier-content'); return magContent; }
+
+  document.addEventListener('mousemove', function(e){
+    if(!magOn) return;
+    var m = getMag(); if(!m) return;
+    m.style.left = (e.clientX - 90) + 'px';
+    m.style.top = (e.clientY - 90) + 'px';
+    // Get text near cursor
+    var el = document.elementFromPoint(e.clientX, e.clientY);
+    if(el && el !== m && !m.contains(el)){
+      var txt = el.textContent || '';
+      var mc = getMagContent();
+      if(mc && txt.trim()) mc.textContent = txt.trim().slice(0, 120);
+    }
+  });
+
+  window.toggleMagnifier = function(){
+    magOn = !magOn;
+    document.body.classList.toggle('mag-on', magOn);
+    localStorage.setItem('tt-mag', magOn?'1':'0');
+    var b = document.getElementById('mag-btn');
+    if(b){ b.classList.toggle('active', magOn); b.style.borderColor = magOn?'var(--g1)':''; }
+    document.body.style.cursor = magOn ? 'none' : '';
+  };
+  if(localStorage.getItem('tt-mag')==='1') window.toggleMagnifier();
+})();
+
+// ════════════════════════════════════════════════════
+// MOBILE OPTIMIZED
+// ════════════════════════════════════════════════════
+(function(){
+  if(localStorage.getItem('tt-mobopt')==='1') document.body.classList.add('mobile-opt');
+  window.toggleMobileOpt = function(){
+    document.body.classList.toggle('mobile-opt');
+    var on = document.body.classList.contains('mobile-opt');
+    localStorage.setItem('tt-mobopt', on?'1':'0');
+    var b = document.getElementById('mob-opt-btn');
+    if(b){ b.classList.toggle('active', on); }
+  };
+})();
+
+// ════════════════════════════════════════════════════
+// TTS - TEXT TO SPEECH with word highlighting
+// ════════════════════════════════════════════════════
+(function(){
+  var synth = window.speechSynthesis;
+  if(!synth){ console.warn('TTS not supported'); return; }
+  var playing = false, paused = false;
+  var speed = 1.0, vol = 1.0;
+  var currentUtt = null;
+  var wordSpans = [];
+  var wordIdx = 0;
+
+  function updateBtn(){
+    var icon = document.getElementById('tts-icon');
+    var lbl = document.getElementById('tts-label');
+    var mobBtn = document.getElementById('mob-tts-btn');
+    if(!icon) return;
+    if(playing && !paused){ icon.textContent='⏸'; if(lbl) lbl.textContent='Pause'; }
+    else if(paused){ icon.textContent='▶'; if(lbl) lbl.textContent='Weiter'; }
+    else { icon.textContent='▶'; if(lbl) lbl.textContent='Vorlesen'; }
+    if(mobBtn) mobBtn.classList.toggle('active', playing);
+    document.getElementById('tts-play-btn').classList.toggle('active', playing);
+  }
+
+  function clearHighlights(){
+    document.querySelectorAll('.tts-word').forEach(function(s){
+      s.outerHTML = s.textContent;
+    });
+  }
+
+  function getTextFromSection(sec){
+    var texts = [];
+    var walker = document.createTreeWalker(sec, NodeFilter.SHOW_TEXT, {
+      acceptNode: function(n){
+        var p = n.parentElement;
+        if(!p) return NodeFilter.FILTER_REJECT;
+        if(['SCRIPT','STYLE','SVG','IMG'].indexOf(p.tagName)>=0) return NodeFilter.FILTER_REJECT;
+        if(p.closest('.feedback-bar,.notes-area,.chap-actions,.star-rating,.confused-form,.tts-section-btn,.ca-btn,.gh-actions,.breadcrumb,.read-time,.done-check')) return NodeFilter.FILTER_REJECT;
+        return n.textContent.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+      }
+    }, false);
+    var node;
+    while(node = walker.nextNode()) texts.push(node.textContent.trim());
+    return texts.filter(Boolean).join(' ');
+  }
+
+  function speakText(text, onEnd){
+    if(!text) return;
+    synth.cancel();
+    var utt = new SpeechSynthesisUtterance(text);
+    utt.lang = 'de-DE';
+    utt.rate = speed;
+    utt.volume = vol;
+    currentUtt = utt;
+    playing = true; paused = false;
+    updateBtn();
+
+    // Word boundary for highlighting
+    utt.addEventListener('boundary', function(e){
+      if(e.name !== 'word') return;
+      clearHighlights();
+      // Find and highlight word in DOM
+      var word = text.substr(e.charIndex, e.charLength || 5).trim();
+      if(!word) return;
+      // Simple visual feedback: highlight elements containing this word
+    });
+
+    utt.addEventListener('end', function(){
+      playing = false; paused = false;
+      clearHighlights();
+      updateBtn();
+      document.querySelectorAll('.tts-section-btn').forEach(function(b){ b.classList.remove('reading'); b.textContent='🔊 Vorlesen'; });
+      if(typeof onEnd === 'function') onEnd();
+    });
+    utt.addEventListener('error', function(){ playing=false; paused=false; updateBtn(); });
+    synth.speak(utt);
+  }
+
+  window.ttsToggle = function(){
+    if(playing && !paused){ synth.pause(); paused=true; updateBtn(); }
+    else if(paused){ synth.resume(); paused=false; updateBtn(); }
+    else {
+      // Read all visible sections
+      var secs = Array.from(document.querySelectorAll('section[id]'));
+      var idx = 0;
+      function next(){
+        if(idx >= secs.length) return;
+        var text = getTextFromSection(secs[idx]);
+        idx++;
+        speakText(text, next);
+      }
+      next();
+    }
+  };
+
+  window.ttsStop = function(){
+    synth.cancel();
+    playing=false; paused=false;
+    clearHighlights();
+    updateBtn();
+    document.querySelectorAll('.tts-section-btn').forEach(function(b){ b.classList.remove('reading'); b.textContent='🔊 Vorlesen'; });
+  };
+
+  window.ttsSection = function(sid, btn){
+    synth.cancel();
+    var sec = document.getElementById(sid);
+    if(!sec) return;
+    var text = getTextFromSection(sec);
+    if(!text) return;
+    document.querySelectorAll('.tts-section-btn').forEach(function(b){ b.classList.remove('reading'); b.textContent='🔊 Vorlesen'; });
+    btn.classList.add('reading');
+    btn.textContent='⏹ Stoppen';
+    speakText(text, function(){ btn.classList.remove('reading'); btn.textContent='🔊 Vorlesen'; });
+  };
+
+  window.ttsSetSpeed = function(s){ speed=parseFloat(s); if(playing&&!paused){ var pos=synth; } };
+  window.ttsSetVol = function(v){ vol=parseFloat(v); };
+
+  // Keyboard shortcut
+  document.addEventListener('keydown', function(e){
+    if(['INPUT','TEXTAREA'].indexOf(e.target.tagName)>=0) return;
+    if(e.key==='r'||e.key==='R') window.ttsToggle();
+    if(e.key===' ') { e.preventDefault(); if(playing){ window.ttsToggle(); } }
+    if(e.key==='Escape'&&playing) window.ttsStop();
+  });
+})();
+
+// ════════════════════════════════════════════════════
+// PROGRESS RINGS
+// ════════════════════════════════════════════════════
+(function(){
+  var readKey='tt-read-v3';
+  function updateRings(){
+    var read=new Set(JSON.parse(localStorage.getItem(readKey)||'[]'));
+    document.querySelectorAll('[id^="ring-"]').forEach(function(ring){
+      var sid=ring.id.replace('ring-','');
+      if(read.has(sid)){
+        ring.style.strokeDashoffset='0';
+        ring.style.stroke='var(--g1)';
+      } else {
+        ring.style.strokeDashoffset='50.27';
+      }
+    });
+  }
+  document.addEventListener('DOMContentLoaded', updateRings);
+  window.addEventListener('scroll', function(){ setTimeout(updateRings, 2000); }, {passive:true});
+})();
+
+// ════════════════════════════════════════════════════
+// STAR RATINGS
+// ════════════════════════════════════════════════════
+window.starHover = function(sid, n){
+  document.querySelectorAll('#stars-'+sid+' .star').forEach(function(s,i){ s.classList.toggle('hover', i<n); });
+};
+window.starOut = function(sid){
+  var saved = parseInt(localStorage.getItem('tt-star-'+sid)||'0');
+  document.querySelectorAll('#stars-'+sid+' .star').forEach(function(s,i){ s.classList.toggle('lit', i<saved); s.classList.remove('hover'); });
+};
+window.rateSec = function(sid, n){
+  localStorage.setItem('tt-star-'+sid, n);
+  document.querySelectorAll('#stars-'+sid+' .star').forEach(function(s,i){ s.classList.toggle('lit', i<n); });
+  var lbl=document.getElementById('star-lbl-'+sid); if(lbl) lbl.style.display='none';
+  var t=document.getElementById('star-thanks-'+sid); if(t) t.style.display='inline';
+  setTimeout(function(){ if(t) t.style.display='none'; if(lbl){lbl.textContent=n+' ★';lbl.style.display='';} }, 1500);
+};
+// Restore saved ratings
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.star-rating').forEach(function(sr){
+    var sid=sr.id.replace('stars-','');
+    var saved=parseInt(localStorage.getItem('tt-star-'+sid)||'0');
+    if(saved>0){
+      sr.querySelectorAll('.star').forEach(function(s,i){ s.classList.toggle('lit',i<saved); });
+      var lbl=document.getElementById('star-lbl-'+sid); if(lbl) lbl.textContent=saved+' ★';
+    }
+  });
+});
+
+// ════════════════════════════════════════════════════
+// CONFUSED BUTTON
+// ════════════════════════════════════════════════════
+window.toggleConfused = function(sid){
+  var f=document.getElementById('confused-'+sid); if(f) f.classList.toggle('open');
+};
+window.sendConfused = function(sid){
+  var ta=document.getElementById('confused-ta-'+sid);
+  var msg=(ta?ta.value.trim():'') || '(kein Kommentar)';
+  var url='https://github.com/MarianaCannabis/terptrain-anleitung/issues/new?labels=unclear&title='+encodeURIComponent('Unklarheit in: '+sid)+'&body='+encodeURIComponent('**Kapitel:** '+sid+'\n\n**Was ist unklar:**\n'+msg);
+  window.open(url,'_blank');
+  var f=document.getElementById('confused-'+sid); if(f) f.classList.remove('open');
+};
+
+// ════════════════════════════════════════════════════
+// KB SHORTCUTS OVERLAY
+// ════════════════════════════════════════════════════
+window.showKbShortcuts = function(){ document.getElementById('kb-overlay').classList.add('open'); };
+document.addEventListener('keydown', function(e){
+  if(['INPUT','TEXTAREA'].indexOf(e.target.tagName)>=0) return;
+  if(e.key==='?') window.showKbShortcuts();
+  if(e.key==='Escape'){
+    var kb=document.getElementById('kb-overlay'); if(kb) kb.classList.remove('open');
+  }
+});
+
+// ════════════════════════════════════════════════════
+// VERSION CHECK (GitHub Pages)
+// ════════════════════════════════════════════════════
+(function(){
+  var banner = document.getElementById('version-banner'); if(!banner) return;
+  var REPO_URL = 'https://raw.githubusercontent.com/MarianaCannabis/terptrain-anleitung/main/index.html';
+  var LOCAL_VERSION = '2.6'; // Update this when releasing new version
+  
+  fetch(REPO_URL+'?t='+Date.now(), {cache:'no-store'}).then(function(r){ return r.text(); })
+  .then(function(txt){
+    var m = txt.match(/VERSION[:\s]+([0-9.]+)/i);
+    if(m && m[1] !== LOCAL_VERSION){
+      banner.innerHTML = '🆕 Neue Version verfügbar (v'+m[1]+'). <a href="'+REPO_URL.replace('raw.githubusercontent.com','github.com').replace('/main/','/blob/main/')+'" target="_blank">Jetzt aktualisieren</a>';
+      banner.style.display = 'block';
+    }
+  }).catch(function(){/* offline */});
+})();
+
 </script>
 
 <div id="term-tip" class="term-tip"></div>
@@ -3928,5 +5131,34 @@ window.setLang = function(lang){
 
 <div id="hl-tooltip" style="position:fixed;display:none;background:var(--s1);border:1px solid var(--g1);border-radius:8px;padding:6px 11px;font-size:.72rem;color:var(--tx);z-index:7000;box-shadow:0 4px 16px rgba(0,0,0,.5);cursor:pointer;white-space:nowrap" onclick="saveHighlightFn()">📝 Als Notiz speichern</div>
 
+<div class="mob-a11y-bar" aria-label="Schnellzugriff Barrierefreiheit" role="toolbar">
+  <button class="mob-a11y-btn" onclick="ttsToggle()" id="mob-tts-btn" aria-label="Vorlesen"><span>🔊</span><span>Vorlesen</span></button>
+  <button class="mob-a11y-btn" onclick="toggleDyslexic()" id="mob-dys-btn" aria-label="Dyslexie-Schrift"><span>Aa</span><span>Dyslexie</span></button>
+  <button class="mob-a11y-btn" onclick="setHC('hc-yb')" aria-label="Hoher Kontrast"><span>🟡</span><span>Kontrast</span></button>
+  <button class="mob-a11y-btn" onclick="fsChange(1)" aria-label="Schrift größer"><span>A+</span><span>Größer</span></button>
+  <button class="mob-a11y-btn" onclick="sbTab('nav');document.getElementById('sb').classList.add('open')" aria-label="Menü öffnen"><span>☰</span><span>Menü</span></button>
+</div>
+<div id="magnifier"><div id="magnifier-content"></div></div>
+<div id="kb-overlay" class="kb-shortcut-overlay" role="dialog" aria-modal="true" aria-label="Tastatur-Shortcuts">
+  <div class="kb-box">
+    <h2>⌨️ Tastatur-Shortcuts</h2>
+    <div class="kb-row"><kbd>→</kbd><span>Nächstes Kapitel</span></div>
+    <div class="kb-row"><kbd>←</kbd><span>Vorheriges Kapitel</span></div>
+    <div class="kb-row"><kbd>F</kbd><span>Suche fokussieren</span></div>
+    <div class="kb-row"><kbd>B</kbd><span>Lesezeichen setzen/entfernen</span></div>
+    <div class="kb-row"><kbd>S</kbd><span>Sidebar ein-/ausklappen</span></div>
+    <div class="kb-row"><kbd>R</kbd><span>Vorlesen starten/stoppen</span></div>
+    <div class="kb-row"><kbd>Space</kbd><span>Vorlesen pausieren/fortsetzen</span></div>
+    <div class="kb-row"><kbd>Esc</kbd><span>Dialoge schließen / Suche verlassen</span></div>
+    <div class="kb-row"><kbd>Tab</kbd><span>Nächstes fokussierbares Element</span></div>
+    <div class="kb-row"><kbd>?</kbd><span>Diese Übersicht anzeigen</span></div>
+    <div style="margin-top:12px">
+      <button onclick="document.getElementById('kb-overlay').classList.remove('open')"
+        style="background:var(--g1);color:#000;border:none;padding:7px 18px;border-radius:8px;cursor:pointer;font-weight:700;font-size:.8rem;font-family:inherit">
+        Schließen (Esc)
+      </button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
